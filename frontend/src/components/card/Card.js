@@ -1,8 +1,9 @@
 import React from 'react'
+import { CardStyle } from './CardStyled'
 
 export default function Card({id, img, category, title, location, description}) {
     return (
-        <div>
+        <CardStyle>
             <div>
                 <img src={img} alt="img"/>
             </div>
@@ -16,6 +17,6 @@ export default function Card({id, img, category, title, location, description}) 
             </div>
 
 
-        </div>
+        </CardStyle>
     )
 }
