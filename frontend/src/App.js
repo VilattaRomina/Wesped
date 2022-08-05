@@ -1,6 +1,6 @@
 import SearchBlock from './components/searchBlock/SearchBlock';
 import Footer from './components/footer/Footer';
-import List from './components/list.js/List';
+import List from './components/list/List';
 
 function App() {
   return (
