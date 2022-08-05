@@ -3,12 +3,14 @@ import styled from 'styled-components';
 export const SearchContainer = styled.div `
 margin:0;
 background-color: #545776;
+width: 100vw;
 `
 export const SearchTitle = styled.h1`
 margin:0;
 font size: 24px;
 text-align: center;
 padding:10px;
+font-weight: 400;
 `
 export const Form = styled.form `
 display: flex;
