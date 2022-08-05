@@ -1,5 +1,5 @@
 import React from 'react';
-import producto from '.././data/producto.json';
+import producto from '.././data/product.json';
 import Card from '../card/Card';
 import { ListStyle } from './ListStyled';
 
