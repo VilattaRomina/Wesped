@@ -6,4 +6,5 @@ display: flex;
   justify-content: space-between;
   gap: 30px;
   color:#354259;
+  background-color:#DFE4EA ;
 `
