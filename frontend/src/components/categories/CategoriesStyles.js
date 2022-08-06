@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CategorieStyle = styled.div`
-  background: white;
+  background: #F3F1ED;
   padding: 1rem 2rem 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -41,17 +41,20 @@ export const CategoryCard = styled.div`
     padding: 10px;
     display: flex;
     flex-direction: column;
+    width:100%
   }
 
   h3{
-    font-size: 17px;
+    font-size: 20px;
   font-weight: 700;
   line-height: 23px;
+  margin:0;
   }
 
   p{
     font-weight: 700;
     font-size: 14px;
+    margin:0;
   } 
 `;
 
