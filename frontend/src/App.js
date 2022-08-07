@@ -1,12 +1,10 @@
-import SearchBlock from './components/searchBlock/SearchBlock';
+import Recommendations from './components/recommendations/Recommendations';
 import Footer from './components/footer/Footer';
-import List from './components/list/List';
 
 function App() {
   return (
     <div>
-          <SearchBlock />
-          <List />
+          <Recommendations />
           <Footer />
     </div>
   );
