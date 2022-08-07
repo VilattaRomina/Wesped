@@ -1,5 +1,5 @@
 import React from 'react'
-import categories from '../data/categories.json'
+import categories from '../../data/categories.json'
 import CategoryItem from './categoryItem/CategoryItem'
 import { CategoryContainerStyle, TitleStyle, CategoryListContainerStyle} from './CategoryStyles'
 
