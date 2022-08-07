@@ -2,8 +2,10 @@ import styled from "styled-components"
 
 
 export const RecommendationContainerStyle = styled.div`
+padding: 1rem 2rem 1rem 2rem;
 display: flex;
 flex-direction: column;
+align-items: flex-start;
 `
 
 export const RecomendationTitle = styled.h2`
@@ -22,14 +24,7 @@ export const ListRecommendationsStyle = styled.div`
 
 `
 
-export const RecommendationsItem = styled.div`
-  display: flex;
-  background: white;
-  border: 1px solid #dfe4ea;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
 
-`
 
 
 
