@@ -4,12 +4,18 @@ import Button from "../../UI/Button";
 import { BiMenu } from "react-icons/bi";
 import { IconContext } from "react-icons";
 
-const Nav = () => {
+const Nav = (props) => {
   return (
-    <IconContext.Provider value={{size:"2.5rem", color: "#545776"}}>
+    <IconContext.Provider value={{ size: "2.5rem", color: "#545776" }}>
       <StyledNav>
-        <Button>Crear cuenta</Button>
-        <Button>Ingresar</Button>
+        <Button width="12.5rem" theme="1">
+          Crear cuenta
+        </Button>
+        {!props.isLogin && (
+          <Button width="12.5rem" theme="1">
+            Ingresar
+          </Button>
+        )}
         <BiMenu className="react-icon" />
       </StyledNav>
     </IconContext.Provider>
@@ -21,9 +27,8 @@ export default Nav;
 const StyledNav = styled.nav`
   gap: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  width: 40%;
   margin-right: 1rem;
 
   .react-icon {
