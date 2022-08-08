@@ -22,7 +22,7 @@ const Header = (props) => {
           <Slogan>{slogan[randomSloganIndex]}</Slogan>
         </Link>
       </LogoSlogan>
-      <Nav />
+      <Nav isLogin={props.isLogin}/>
     </HeaderDiv>
   );
 };
@@ -35,6 +35,7 @@ const HeaderDiv = styled.div`
   position: fixed;
   display: flex;
   justify-content: space-between;
+  background-color: #fff;
 `;
 
 const Slogan = styled.span`
@@ -59,7 +60,7 @@ const LogoSlogan = styled.div`
 
   @media only screen and (max-width: 600px) {
     span {
-        display: none;
+      display: none;
     }
-}
+  }
 `;
