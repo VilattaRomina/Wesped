@@ -6,33 +6,32 @@ export const ItemCategoriesStyles = styled.div`
 `
 
 export const ImageCategoryStyles = styled.img`
-min-width: 100%;
-max-width: 100%;
+    min-width: 100%;
+    max-width: 100%;
 `;
 
 export const InfoCategoryStyle = styled.div`
-padding: 10px;
-display: flex;
-flex-direction: column;
-width:100%;
-
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    padding: 12px;
+    
 `;
 
  export const TitleCategoryStyle = styled.h3`
- font-weight: 700;
- font-size: 20px;
- line-height: 23px;
- color: #383B58;
- padding: 0 12px 25px 12px;
- margin:0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #383B58;
  `;
 
 export const DescriptionCategoryStyle = styled.p`
-font-weight: 700;
-font-size: 14px;
-line-height: 16px;
-color: #383B58;
-opacity: 0.6;
-margin:0;
-padding: 0 12px 6px 12px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #383B58;
+    opacity: 0.6;
+    
+    
 `;
