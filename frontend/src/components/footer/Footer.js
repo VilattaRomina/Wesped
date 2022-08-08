@@ -1,6 +1,6 @@
 
-import { FaRegCopyright, FaFacebook, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { ContainerFooter, FooterBlock, FooterIcon } from './FooterStyled'
+import { FaFacebook, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { ContainerFooter, FooterBlock,FooterText, FooterIcon } from './FooterStyled'
 
 
 
@@ -10,7 +10,7 @@ export default function Footer() {
     return (
         <ContainerFooter>
             <FooterBlock>
-                <p> <span><FaRegCopyright /></span> 2021 Digital Booking</p>
+                <FooterText> ©2021 Digital Booking</FooterText>
             </FooterBlock>
             <FooterBlock>
                 <FooterIcon><FaFacebook /></FooterIcon>
