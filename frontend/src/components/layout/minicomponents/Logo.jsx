@@ -12,6 +12,5 @@ import styled from 'styled-components'
 
  const Image = styled.img`
  margin: 1rem;
- margin-left: 2rem;
  height: 3.7rem;
  `

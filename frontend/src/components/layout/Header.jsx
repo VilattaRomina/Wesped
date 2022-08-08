@@ -15,10 +15,10 @@ const Header = (props) => {
   return (
     <HeaderDiv>
       <LogoSlogan>
-        <Link to="/hola" style={{ textDecoration: 'none' }}>
+        <Link to="/">
           <Logo />
         </Link>
-        <Link to="/hola" style={{ textDecoration: 'none' }}>
+        <Link to="/">
           <Slogan>{slogan[randomSloganIndex]}</Slogan>
         </Link>
       </LogoSlogan>
@@ -53,4 +53,13 @@ const Slogan = styled.span`
 const LogoSlogan = styled.div`
   display: flex;
   align-items: center;
+  a {
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    span {
+        display: none;
+    }
+}
 `;
