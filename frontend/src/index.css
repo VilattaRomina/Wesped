@@ -8,13 +8,12 @@
 }
 
 body {
-  margin: 0;
-  font-family: 'Work Sans', sans-serif;
   background-color: #F3F1ED;
-  background-position: center center;
-  min-height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  
+  font-family: 'Roboto', sans-serif;  
+  height: 100vh;
+
+
+
 }
 
 
