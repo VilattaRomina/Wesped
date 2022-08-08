@@ -24,6 +24,7 @@ export const InfoCategoryStyle = styled.div`
     font-size: 20px;
     line-height: 23px;
     color: #383B58;
+    margin: 0;
  `;
 
 export const DescriptionCategoryStyle = styled.p`
@@ -32,6 +33,7 @@ export const DescriptionCategoryStyle = styled.p`
     line-height: 16px;
     color: #383B58;
     opacity: 0.6;
+   
     
     
 `;
