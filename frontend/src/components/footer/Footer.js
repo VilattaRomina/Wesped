@@ -1,5 +1,5 @@
 
-import { FaFacebook, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaLinkedinIn, FaTwitter,FaInstagram } from "react-icons/fa";
 import { ContainerFooter, FooterBlock,FooterText, FooterIcon } from './FooterStyled'
 
 
@@ -16,6 +16,7 @@ export default function Footer() {
                 <FooterIcon><FaFacebook /></FooterIcon>
                 <FooterIcon><FaLinkedinIn /></FooterIcon>
                 <FooterIcon><FaTwitter /></FooterIcon>
+                <FooterIcon><FaInstagram /></FooterIcon>
             </FooterBlock>
         </ContainerFooter >
     )
