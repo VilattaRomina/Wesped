@@ -1,6 +1,6 @@
 import React from 'react'
 import { ItemCategoriesStyles, ImageCategoryStyles, InfoCategoryStyle, TitleCategoryStyle, DescriptionCategoryStyle } from './CategoryItemStyles'
-import Card from '../../card/Card'
+import Card from '../../../../components/card/Card'
 
 
 export default function CategoryItem({ image, category, descrption }) {
