@@ -18,7 +18,7 @@ export const RecommendationContainerStyle = styled.div`
   }
 
   @media (min-width:768px){
-   
+    width:100%;
   }
 
 `

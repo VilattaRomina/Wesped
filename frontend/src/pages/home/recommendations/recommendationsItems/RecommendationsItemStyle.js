@@ -22,10 +22,19 @@ min-height: 283px;
 export const ImageRecommendationStyle = styled.img`
 width:311px;
 height:100%;
+border-radius:8px 8px 0 0;
 
 @media (max-width: 414px) {
   width: 100%;
   height: 100%;
+}
+
+@media (min-width: 414px) and (max-width: 768px){
+
+}
+
+@media (min-width:768px){
+  
 }
 
 `;
