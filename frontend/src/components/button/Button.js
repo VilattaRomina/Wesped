@@ -38,6 +38,7 @@ const StyledButton = styled.button`
    height: 2.5rem;
    font-size: 1rem;
    font-family: 'Roboto', sans-serif;
+   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
    &:hover {
     background-color: #32d3c8;
     color: #fff;
