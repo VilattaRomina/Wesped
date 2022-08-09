@@ -32,6 +32,7 @@ const Header = (props) => {
 export default Header;
 
 const HeaderDiv = styled.div`
+  background-color: #fff;
   width: 100%;
   height: 80px;
   position: fixed;

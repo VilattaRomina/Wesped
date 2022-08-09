@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../../UI/Button";
+import Button from "../../button/Button";
 import { BiMenu } from "react-icons/bi";
 import { IconContext } from "react-icons";
 

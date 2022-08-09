@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import Header from "./components/layout/Header";
-import Login from "./pages/Login";
+import React from "react";
+import Header from "./components/header/Header";
+import Footer from './components/footer/Footer'
+import './App.css';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <>
-      <Header isLogin={isLogin} />
-      <Login />
+      <Header />
+      <Footer />
     </>
   );
+
 }
 
 export default App;
