@@ -1,4 +1,4 @@
-import Categories from './components/categories/Category';
+import Categories from './pages/home/categories/Category';
 
 function App() {
   return (
