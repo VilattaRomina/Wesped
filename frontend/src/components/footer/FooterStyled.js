@@ -42,18 +42,30 @@ export const FooterText = styled.p`
   @media (max-width: 414px) {
     font-size: 14px;
   }
+
+  @media (min-width: 415px) and (max-width: 768px){
+    font-size: 16px;
+  }
 `;
 
 
 export const FooterIcon = styled.div`
   padding-right:10px;
-  font-size: 24px;
+  font-size: 20px;
   align-items: center;
   line-height: 0;
 
   @media (max-width: 414px) {
-    font-size: 16px;
+   
     display: none;
+  }
+
+  @media (min-width: 414px) and (max-width: 768px){
+    font-size: 16px;
+  }
+  
+  @media (min-width:768px){
+    width:100%;
   }
 
 `
