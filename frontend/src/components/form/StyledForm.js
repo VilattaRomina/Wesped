@@ -8,9 +8,13 @@ align-items: center;
 background-color: #f5f5f5;
 height: 90vh;
 font-family: 'Roboto';
-gap: 3rem;
+gap: 1rem;
 h1{
     color: #1dbeb4;
+    margin-bottom: 1rem;
+}
+button{
+    margin-top: 2.5rem;
 }
 
 @media only screen and (max-width: 414px) {
@@ -20,11 +24,11 @@ h1{
         width: 80vw;
     }
   }
-`
+  `
 
 export const StyledDiv = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 align-items: ${props => props.alignItems};
 gap: 10px;
 
