@@ -13,7 +13,7 @@ color: #383B58;
 export const StyledDiv = styled.div`
 display: flex;
 flex-direction: column;
-align-items: ${props => props.justifyContent};
+align-items: ${props => props.alignItems};
 gap: 10px;
 
 span{
