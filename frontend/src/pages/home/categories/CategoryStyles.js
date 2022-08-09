@@ -28,6 +28,16 @@ export const CategoryListContainerStyle = styled.div`
       flex-direction: column;
       width: 100%;
     }
+
+    @media (min-width: 414px && max-widht: 768px) {
+      
+    }
+
+    @media (min-width: 768px) {
+      
+    }
+
+
   
     
     
