@@ -18,27 +18,28 @@ const StyledButton = styled.button`
   width: ${(props) => props.width};
   margin: 0px 5px;
   cursor: pointer;
-  ${(props) =>
-    props.theme === "1"
-      ? `background: #ffffff;
-      height: 2.5rem;
-      font-size: 1rem;
-      font-family: 'Roboto', sans-serif;
-  border: 1px solid #1dbeb4;
-  &:hover {
-  background-color: #1dbeb4;
-  color: #fff;
-  }
-  &:active {
-  background-color: #37d3c9;
-  }`
-      : `background-color: #1dbeb4;
-      color: #fff;
-      border: none;
-      height: 2.5rem;
-      font-size: 1rem;
-      font-family: 'Roboto', sans-serif;
-  &:hover {
+  ${(props) => props.theme === "primary"
+  ? 
+  `background: #ffffff;
+   height: 2.5rem;
+   font-size: 1rem;
+   font-family: 'Roboto', sans-serif;
+   border: 1px solid #1dbeb4;
+   &:hover {
+   background-color: #1dbeb4;
+   color: #fff;
+   }
+   &:active {
+   background-color: #37d3c9;
+   }`
+  : 
+  `background-color: #1dbeb4;
+   color: #fff;
+   border: none;
+   height: 2.5rem;
+   font-size: 1rem;
+   font-family: 'Roboto', sans-serif;
+   &:hover {
     background-color: #32d3c8;
     color: #fff;
   }

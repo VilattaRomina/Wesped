@@ -8,9 +8,11 @@ const Header = (props) => {
   const slogan = [
     "Sentite como en tu hogar",
     "Tu mejor descanso en un solo lugar",
-    "A pocos clicks de la estadía de tus sueños",
+    "Encuentra la estadía de tus sueños",
+    "Las mejores estadías en un solo lugar",
   ];
-  const randomSloganIndex = Math.round(Math.random() * 2);
+
+  const randomSloganIndex = Math.round(Math.random() * 3);
 
   return (
     <HeaderDiv>
@@ -22,7 +24,7 @@ const Header = (props) => {
           <Slogan>{slogan[randomSloganIndex]}</Slogan>
         </Link>
       </LogoSlogan>
-      <Nav isLogin={props.isLogin}/>
+      <Nav />
     </HeaderDiv>
   );
 };

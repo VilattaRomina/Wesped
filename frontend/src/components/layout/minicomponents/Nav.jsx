@@ -12,7 +12,7 @@ const Nav = (props) => {
           Crear cuenta
         </Button>
         {!props.isLogin && (
-          <Button width="12.5rem" theme="1">
+          <Button width="12.5rem" theme="primary">
             Ingresar
           </Button>
         )}
