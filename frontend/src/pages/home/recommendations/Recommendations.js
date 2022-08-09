@@ -1,5 +1,5 @@
 import React from 'react';
-import producto from '../../data/product.json';
+import producto from '../../../data/product.json';
 import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle } from './RecommendationsStyles';
 import RecommendationsItem from './recommendationsItems/RecommendationsItem';
 

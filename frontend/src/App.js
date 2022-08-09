@@ -1,4 +1,4 @@
-import Recommendations from './components/recommendations/Recommendations';
+import Recommendations from './pages/home/recommendations/Recommendations';
 
 function App() {
   return (

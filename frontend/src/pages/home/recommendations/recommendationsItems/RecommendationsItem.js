@@ -1,6 +1,6 @@
 import React from 'react'
 import { ItemRecommendationStyle ,ImageRecommendationStyle, InfoRecommendationsStyle, CategoryStyle, TitleStyle, LocationTextStyle, ButtonStyle, DescriptionStyle } from './RecommendationsItemStyle'
-import Card from '../../card/Card'
+import Card from '../../../../components/card/Card'
 
 export default function RecommendationsItem({ id, img, category, title, location, description }) {
     return (
