@@ -8,7 +8,7 @@ const Nav = (props) => {
   return (
     <IconContext.Provider value={{ size: "2.5rem", color: "#545776" }}>
       <StyledNav>
-        <Button width="12.5rem" theme="1">
+        <Button width="12.5rem" theme="primary">
           Crear cuenta
         </Button>
         {!props.isLogin && (

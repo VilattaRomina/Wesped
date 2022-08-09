@@ -18,9 +18,9 @@ const StyledButton = styled.button`
   width: ${(props) => props.width};
   margin: 0px 5px;
   cursor: pointer;
-  ${(props) => props.theme === "primary"
-  ? 
-  `background: #ffffff;
+  ${(props) =>
+    props.theme === "primary"
+      ? `background-color: #fff;
    height: 2.5rem;
    font-size: 1rem;
    font-family: 'Roboto', sans-serif;
@@ -32,8 +32,7 @@ const StyledButton = styled.button`
    &:active {
    background-color: #37d3c9;
    }`
-  : 
-  `background-color: #1dbeb4;
+      : `background-color: #1dbeb4;
    color: #fff;
    border: none;
    height: 2.5rem;
