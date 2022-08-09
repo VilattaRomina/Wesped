@@ -3,14 +3,14 @@ import { ItemCategoriesStyles, ImageCategoryStyles, InfoCategoryStyle, TitleCate
 import Card from '../../card/Card'
 
 
-export default function CategoryItem({ image, category, amount }) {
+export default function CategoryItem({ image, category, descrption }) {
     return (
         <Card>
             <ItemCategoriesStyles>
                 <ImageCategoryStyles src={image} alt="img" />
                 <InfoCategoryStyle >
                     < TitleCategoryStyle>{category} </ TitleCategoryStyle>
-                    <DescriptionCategoryStyle>{amount}</DescriptionCategoryStyle>
+                    <DescriptionCategoryStyle>{descrption}</DescriptionCategoryStyle>
                 </InfoCategoryStyle>
             </ItemCategoriesStyles>
         </Card>
