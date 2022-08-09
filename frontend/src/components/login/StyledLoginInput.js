@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const StyledLoginForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-    height: 100vh;
-    gap: 3rem;
-`
-
 export const StyledLabel = styled.label`
 font-family: 'Roboto';
 font-style: normal;
