@@ -13,9 +13,16 @@ export const RecommendationContainerStyle = styled.div`
     
   }
 
+  @media (min-width: 414px) and (max-width: 768px){
+
+  }
+
+  @media (min-width:768px){
+   
+  }
+
 `
 export const RecomendationTitle = styled.h2`
-  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 25px;
   margin-bottom: 10px;
@@ -23,6 +30,10 @@ export const RecomendationTitle = styled.h2`
 
   @media (max-width: 414px) {
     color:#ffffff;
+  }
+
+  @media (min-width: 414px) and (max-width: 768px){
+    font-size:20px;
   }
 `
 export const ListRecommendationsStyle = styled.div`
@@ -35,6 +46,16 @@ export const ListRecommendationsStyle = styled.div`
     display: flex;
     flex-direction: column;
 
+  }
+
+  @media (min-width: 414px) and (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  @media (min-width: 768px){
+    
   }
 
 

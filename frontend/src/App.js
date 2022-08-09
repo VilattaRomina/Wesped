@@ -1,8 +1,9 @@
 import Recommendations from './pages/home/recommendations/Recommendations';
 
+
 function App() {
   return (
-    <div>
+    <div >
           <Recommendations />
           
     </div>
