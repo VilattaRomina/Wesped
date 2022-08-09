@@ -10,6 +10,19 @@ justify-content: space-between;
 padding:20px;
 position: fixed;
 bottom:0;
+
+@media (max-width: 414px) {
+ 
+  
+}
+
+@media (min-width: 414px) and (max-width: 768px){
+
+}
+
+@media (min-width:768px){
+  width:100%;
+}
 `
 export const FooterBlock = styled.div`
   display: flex;
