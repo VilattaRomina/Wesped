@@ -3,7 +3,7 @@ import './App.css';
 import Header from "./components/header/Header";
 // import Login from "./pages/Login";
 // import Register from "./pages/Register";
-import { Routes, Route } from 'react-router-dom'
+//import { Routes, Route } from 'react-router-dom'
 import Footer from "./components/footer/Footer";
 
 
