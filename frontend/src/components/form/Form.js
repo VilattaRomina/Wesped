@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../button/Button'
 import StyledForm, { StyledDiv } from './StyledForm'
+import { Link } from 'react-router-dom'
 
 const Form = ({ buttonText, buttonType, children, questionToUser, linkText, title, redirectLink }) => {
     return (
@@ -10,7 +11,7 @@ const Form = ({ buttonText, buttonType, children, questionToUser, linkText, titl
             <StyledDiv alignItems="center">
                 <Button type={buttonType} width="12.5rem"><b>{buttonText}</b></Button>
                 <span>
-                    {questionToUser} <a href={redirectLink}>{linkText}</a>
+                    {questionToUser} <Link to={`/${redirectLink}`}>{linkText}</Link>
                 </span>
             </StyledDiv>
         </StyledForm>
