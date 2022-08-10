@@ -1,5 +1,5 @@
 import React from 'react'
-import { ItemRecommendationStyle, ImageRecommendationStyle, InfoRecommendationsStyle, CategoryStyle, TitleStyle, LocationTextStyle, ButtonStyle, DescriptionStyle, CardStyle } from './RecommendationsItemStyle'
+import { ItemRecommendationStyle, ImageRecommendationStyle, InfoRecommendationsStyle, CategoryStyle, TitleStyle, LocationTextStyle, ButtonStyle, DescriptionStyle } from './RecommendationsItemStyle'
 import {HiLocationMarker} from 'react-icons/hi'
 import Card from '../../../../components/card/Card'
 
