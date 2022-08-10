@@ -73,7 +73,7 @@ export const DescriptionStyle = styled.p`
 `
 
 export const ButtonStyle = styled.button`
-background: #1DBEB4;
+background-color: ${props => props.theme.primary};
 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
 border-radius: 5px;
 color: white;
