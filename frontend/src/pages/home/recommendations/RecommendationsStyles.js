@@ -14,7 +14,9 @@ export const RecommendationContainerStyle = styled.div`
     
   }
 
-
+  @media (min-width: 415px) and (max-width: 768px) {
+    min-width: 705px;
+  }
 
 `
 export const RecomendationTitle = styled.h2`
@@ -45,14 +47,14 @@ export const ListRecommendationsStyle = styled.div`
   }
 
   @media (min-width: 415px) and (max-width: 768px){
+    min-width: 625px;
     display: flex;
     flex-direction: column;
-
   }
 
-  
-
-
+  @media (min-width: 769px) {
+    flex-direction: row;
+  } 
 
 `
 

@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const CardStyle = styled.div`
+@media (min-width: 1265px) {
+  width: calc(50% - 15px)
+}
+`
+
+
 export const ItemRecommendationStyle = styled.div`
 display:flex;
 flex-flow: row nowrap;
@@ -12,8 +19,6 @@ min-height: 283px;
 @media (min-width: 415px) and (max-width: 768px){
   min-height: 279px;
 }
-
-
 `
 
 export const ImageRecommendationStyle = styled.img`
