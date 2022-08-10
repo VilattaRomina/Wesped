@@ -22,8 +22,8 @@ const RegisterInput = () => {
         <Input width="28rem" type="password" id="password" />
       </StyledDiv>
       <StyledDiv>
-        <StyledLabel htmlFor="password">Confirmar contraseña</StyledLabel>
-        <Input width="28rem" type="password" id="password" />
+        <StyledLabel htmlFor="confirm-password">Confirmar contraseña</StyledLabel>
+        <Input width="28rem" type="password" id="confirm-password" />
       </StyledDiv>
     </>
   )

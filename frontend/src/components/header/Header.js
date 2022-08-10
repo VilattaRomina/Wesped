@@ -17,10 +17,10 @@ const Header = (props) => {
   return (
     <StyledHeader>
       <LogoSlogan>
-        <Link to="/home">
+        <Link to="/">
           <Logo />
         </Link>
-        <Link to="/home">
+        <Link to="/">
           <Slogan>{slogan[randomSloganIndex]}</Slogan>
         </Link>
       </LogoSlogan>
