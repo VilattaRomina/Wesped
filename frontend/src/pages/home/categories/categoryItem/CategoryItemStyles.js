@@ -1,21 +1,16 @@
 import styled from "styled-components";
 
+export const CardStyle = styled.div`
+@media (min-width: 415px) and (max-width: 768px) {
+    width: calc(50% - 7px)
+}
+`
+
 export const ItemCategoriesStyles = styled.div`
     display: flex;
     flex-direction: column;
     
-
-    @media (max-width: 414px) {
-   
-    }
-  
-    @media (min-width: 414px) and (max-width: 768px) {
-        
-    }
-  
-    @media (min-width: 768px) {
-      
-    }
+    
 `
 
 export const ImageCategoryStyles = styled.img`
@@ -24,11 +19,15 @@ export const ImageCategoryStyles = styled.img`
 `;
 
 export const InfoCategoryStyle = styled.div`
-    padding: 10px;
     display: flex;
     flex-direction: column;
     width:100%;
+    padding:10px;
     
+
+    @media(max-width: 114px){
+        padding: 14px;
+    }
     
 `;
 
@@ -37,7 +36,11 @@ export const InfoCategoryStyle = styled.div`
     font-size: 20px;
     line-height: 23px;
     color: #383B58;
-    padding:7px 15px 0 13px;
+    
+
+    @media (min-width: 415px) and (max-width: 768px) {
+        
+    }
  `;
 
 export const DescriptionCategoryStyle = styled.p`
@@ -46,5 +49,5 @@ export const DescriptionCategoryStyle = styled.p`
     line-height: 16px;
     color: #383B58;
     opacity: 0.6;
-    padding:7px 15px 8px 13px;
+    
 `;

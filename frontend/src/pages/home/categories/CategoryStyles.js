@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const CategoryContainerStyle = styled.div`
+  min-width: calc(320px - 4rem);
   max-width: 1366px;
   margin: 0 auto;
   background: #F3F1ED;
@@ -8,20 +9,6 @@ export const CategoryContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
-
-  @media (max-width: 414px) {
-    
-  }
-
-  @media (min-width: 414px) and (max-width: 768px) {
-   
-  }
-
-  @media (min-width: 768px) {
-    
-  }
-
 
 `
 export const TitleStyle = styled.h2`
@@ -38,9 +25,8 @@ margin-bottom: 5px;
 
 export const CategoryListContainerStyle = styled.div`
     display: flex;
-    gap: 20px;
+    gap: 14px;
     flex-flow: row nowrap;
-
 
     @media (max-width: 414px) {
       display: flex;
@@ -50,17 +36,11 @@ export const CategoryListContainerStyle = styled.div`
 
     @media (min-width: 415px) and (max-width: 768px) {
       flex-flow: row wrap;
+      align-items: stretch;
     }
 
-    @media (min-width: 769px) {
-      
-    }
-
-
-  
-    
-    
    
+    
 `
 
 
