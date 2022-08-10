@@ -1,4 +1,4 @@
-import Recommendations from './pages/home/recommendations/Recommendations';
+import Home from './pages/home/Home'
 import {theme} from './ui/theme'
 import { ThemeProvider } from 'styled-components';
 
@@ -8,7 +8,7 @@ function App() {
 
     <ThemeProvider theme={theme}>
       <div >
-        <Recommendations />
+        <Home />
       </div>
     </ThemeProvider>
 
