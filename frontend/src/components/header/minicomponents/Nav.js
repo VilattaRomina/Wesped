@@ -3,18 +3,14 @@ import styled from "styled-components";
 import Button from "../../button/Button";
 import { BiMenu } from "react-icons/bi";
 import { IconContext } from "react-icons";
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { usePathname } from "../../../hooks/hooks";
 import validator from 'validator'
 
 const Nav = (props) => {
-
-  const location = useLocation();
-
-  const isHome = validator.equals(location.pathname, '/')
-  const isLogin = validator.equals(location.pathname, '/login')
-  const isRegister = validator.equals(location.pathname, '/registro')
-
-  console.log(location.pathname);
+  const isHome = validator.equals(usePathname(), '/')
+  const isLogin = validator.equals(usePathname(), '/login')
+  const isRegister = validator.equals(usePathname(), '/registro')
 
   return (
     <IconContext.Provider value={{ size: "2.5rem", color: "#545776" }}>
