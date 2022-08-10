@@ -9,13 +9,10 @@ min-height: 283px;
     flex-direction: column;   
     width:100%;
 }
-@media (min-width: 414px) and (max-width: 768px){
+@media (min-width: 415px) and (max-width: 768px){
   min-height: 279px;
 }
 
-@media (min-width:768px){
- 
-}
 
 `
 
@@ -29,11 +26,11 @@ border-radius:8px 8px 0 0;
   height: 100%;
 }
 
-@media (min-width: 414px) and (max-width: 768px){
+@media (min-width: 415px) and (max-width: 768px){
 
 }
 
-@media (min-width:768px){
+@media (min-width:769px){
   
 }
 

@@ -6,20 +6,15 @@ export const RecommendationContainerStyle = styled.div`
   align-items: flex-start;
   margin: 0 auto;
   max-width: 1366px;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 20px 40px;
 
   @media (max-width: 414px) {
     background-color:#545776;
+    padding: 10px 20px;
     
   }
 
-  @media (min-width: 414px) and (max-width: 768px){
 
-  }
-
-  @media (min-width:768px){
-    width:100%;
-  }
 
 `
 export const RecomendationTitle = styled.h2`
@@ -32,7 +27,7 @@ export const RecomendationTitle = styled.h2`
     color:#ffffff;
   }
 
-  @media (min-width: 414px) and (max-width: 768px){
+  @media (min-width: 415px) and (max-width: 768px){
     font-size:20px;
   }
 `
@@ -48,15 +43,13 @@ export const ListRecommendationsStyle = styled.div`
 
   }
 
-  @media (min-width: 414px) and (max-width: 768px){
+  @media (min-width: 415px) and (max-width: 768px){
     display: flex;
     flex-direction: column;
 
   }
 
-  @media (min-width: 768px){
-    
-  }
+  
 
 
 
