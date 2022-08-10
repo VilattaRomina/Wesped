@@ -48,7 +48,6 @@ align
 
 `;
 export const CategoryStyle = styled.h3`
-  font-family: "Quicksand";
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
@@ -87,5 +86,6 @@ box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
 border-radius: 5px;
 color: white;
 height: 40px;
+border:0;
 
 `;
