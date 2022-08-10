@@ -1,13 +1,15 @@
 import React from 'react'
+import Categories from './categories/Categories'
+import SearchBlock from './searchBlock/SearchBlock'
 import Recommendations from './recommendations/Recommendations'
 
 
-function Home() {
+export default function Home() {
   return (
     <>
-    <Recommendations />
+      <SearchBlock />
+      <Categories />
+      <Recommendations />
     </>
   )
 }
-
-export default Home
