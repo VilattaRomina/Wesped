@@ -1,14 +1,18 @@
 import React from "react";
-import './App.css';
 import Header from "./components/header/Header";
-import Footer from './components/footer/Footer'
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      <Footer />
-    </div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 
 }
