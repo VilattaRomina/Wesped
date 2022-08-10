@@ -38,6 +38,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 
+
 `;
 export const CategoryStyle = styled.h3`
   font-weight: 700;
@@ -68,7 +69,7 @@ export const DescriptionStyle = styled.p`
   font-size: 14px;
   line-height: 16px;
   padding-bottom: 19px;
-  color:#383B58
+  color:#383B58;
   
 `
 
