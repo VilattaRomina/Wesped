@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../input/Input";
+import Input from "../../components/input/Input";
 import { StyledLabel, StyledDiv } from "./StyledLoginInput";
 
 const LoginForm = () => {
