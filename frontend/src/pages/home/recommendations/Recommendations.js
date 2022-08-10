@@ -10,13 +10,11 @@ export default function Recommendations() {
 
   return (
     <RecommendationContainerStyle>
-      <RecomendationTitle>
-        <h2>Recomendaciones</h2>
-      </RecomendationTitle>
+      <RecomendationTitle>Recomendaciones</RecomendationTitle>
       <ListRecommendationsStyle>
         {
           producto.map(item =>
-            <RecommendationsItem {...item} />
+                <RecommendationsItem {...item} />
           )
         }
       </ListRecommendationsStyle>

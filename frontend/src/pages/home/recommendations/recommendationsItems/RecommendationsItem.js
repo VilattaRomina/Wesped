@@ -5,9 +5,9 @@ import Card from '../../../../components/card/Card'
 
 export default function RecommendationsItem({ id, img, category, title, location, description }) {
     return (
-        <CardStyle>
+        <CardStyle key={id}>
             <Card>
-                <ItemRecommendationStyle key={id}>
+                <ItemRecommendationStyle >
                     <div>
                         <ImageRecommendationStyle src={img} alt="img" />
                     </div>
