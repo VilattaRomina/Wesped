@@ -4,7 +4,7 @@ import LoginInput from "../components/login/LoginInput";
 
 const Login = () => {
   return (
-    <Form buttonText="Ingresar" buttonType="submit" questionToUser="¿Aún no tienes cuenta?" title="Iniciar Sesión" linkText="Registrate" redirectLink="/registro">
+    <Form buttonText="Ingresar" buttonType="submit" questionToUser="¿Aún no tienes cuenta?" title="Iniciar Sesión" linkText="Registrate" redirectLink="registro">
       <LoginInput />
     </Form>
   );
