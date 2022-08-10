@@ -7,4 +7,5 @@ border-radius: 8px 8px 8px 8px;
 overflow: hidden;
 height:100%;
 width:100%;
+cursor: pointer;
 `
