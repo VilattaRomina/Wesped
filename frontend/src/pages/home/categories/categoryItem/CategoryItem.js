@@ -1,5 +1,5 @@
 import React from 'react'
-import { ItemCategoriesStyles, ImageCategoryStyles, InfoCategoryStyle, TitleCategoryStyle, DescriptionCategoryStyle, CardStyle } from './CategoryItemStyles'
+import {ImageCategoryStyles, InfoCategoryStyle, TitleCategoryStyle, DescriptionCategoryStyle, CardStyle } from './CategoryItemStyles'
 import Card from '../../../../components/card/Card'
 
 
