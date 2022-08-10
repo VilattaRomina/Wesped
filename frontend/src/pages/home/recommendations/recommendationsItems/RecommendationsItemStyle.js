@@ -6,7 +6,6 @@ export const CardStyle = styled.div`
 }
 `
 
-
 export const ItemRecommendationStyle = styled.div`
 display:flex;
 flex-flow: row nowrap;
@@ -31,14 +30,6 @@ border-radius:8px 8px 0 0;
   height: 100%;
 }
 
-@media (min-width: 415px) and (max-width: 768px){
-
-}
-
-@media (min-width:769px){
-  
-}
-
 `;
 
 export const InfoRecommendationsStyle = styled.div`
@@ -46,10 +37,6 @@ padding: 22px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-align
-
-
-
 
 `;
 export const CategoryStyle = styled.h3`

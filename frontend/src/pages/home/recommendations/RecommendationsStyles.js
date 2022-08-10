@@ -11,7 +11,6 @@ export const RecommendationContainerStyle = styled.div`
   @media (max-width: 414px) {
     background-color:#545776;
     padding: 10px 20px;
-    
   }
 
   @media (min-width: 415px) and (max-width: 768px) {
