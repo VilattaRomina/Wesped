@@ -1,5 +1,6 @@
 import './App.css';
-import SearchBlock from './components/searchBlock/SearchBlock';
+import SearchBlock from './pages/home/searchBlock/SearchBlock';
+
 
 function App() {
   return (

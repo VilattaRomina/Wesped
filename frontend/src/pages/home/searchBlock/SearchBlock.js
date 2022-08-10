@@ -4,12 +4,13 @@ import {
   SearchBlockTitle,
   SearchBar,
 } from "./SearchBlockStyled";
-import SearchInput from "./SearchInput";
-import Button from "../button/Button";
+
+
 import DropdownList from "../dropdownList/DropdownList";
 import Schedule  from "../schedule/Schedule";
 import { FaMapMarkerAlt, FaRegCalendarAlt} from "react-icons/fa";
-
+import Button from "../../../components/button/Button";
+import SearchInput from "../searchBlock/SearchInput"
 
 function SearchBlock(picDate, city, ) {
   return (

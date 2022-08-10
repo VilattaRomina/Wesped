@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled';
-import url from "../../data/cities.json"
+import url from "../../../data/cities.json"
 
 function DropdownList({icon, picCity}){
     const [dataCities, setDataCities] = useState([]);
