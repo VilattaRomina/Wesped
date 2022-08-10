@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ContainerFooter = styled.div`
 background: #1DBEB4;
 width: 100vw;
-height: 58px;
+height: 60px;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -11,16 +11,8 @@ padding:20px;
 position: fixed;
 bottom:0;
 
-@media (max-width: 414px) {
- 
-  
-}
 
-@media (min-width: 414px) and (max-width: 768px){
-
-}
-
-@media (min-width:768px){
+@media (min-width:769px){
   width:100%;
 }
 `
@@ -56,15 +48,14 @@ export const FooterIcon = styled.div`
   line-height: 0;
 
   @media (max-width: 414px) {
-   
     display: none;
   }
 
-  @media (min-width: 414px) and (max-width: 768px){
+  @media (min-width: 415px) and (max-width: 768px){
     font-size: 16px;
   }
   
-  @media (min-width:768px){
+  @media (min-width:769px){
     width:100%;
   }
 
