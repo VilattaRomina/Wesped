@@ -7,7 +7,7 @@ export default function RecommendationsItem({ id, img, category, title, location
     return (
         <CardStyle>
             <Card>
-                <ItemRecommendationStyle>
+                <ItemRecommendationStyle key={id}>
                     <div>
                         <ImageRecommendationStyle src={img} alt="img" />
                     </div>
