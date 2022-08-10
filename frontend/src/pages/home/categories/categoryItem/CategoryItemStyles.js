@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-export const CardStyle = styled.div`
-@media (min-width: 415px) and (max-width: 768px) {
-    width: calc(50% - 7px)
-}
-`
+
 
 // export const ItemCategoriesStyles = styled.div`
 //     display: flex;

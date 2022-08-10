@@ -1,7 +1,7 @@
 import React from 'react'
 import categories from '../../../data/categories.json'
 import CategoryItem from './categoryItem/CategoryItem'
-import { CategoryContainerStyle, TitleStyle, CategoryListContainerStyle} from './CategoryStyles'
+import { CategoryContainerStyle, TitleStyle, CategoryListContainerStyle,CardStyle } from './CategoryStyles'
 
 
 export default function Categories() {
@@ -11,7 +11,10 @@ export default function Categories() {
             <CategoryListContainerStyle>
                 {
                     categories.map((item) =>
-                        <CategoryItem {...item} />
+                        <CardStyle key={item.id}>
+                            <CategoryItem {...item} />
+                        </CardStyle>
+
                     )
                 }
             </CategoryListContainerStyle>
