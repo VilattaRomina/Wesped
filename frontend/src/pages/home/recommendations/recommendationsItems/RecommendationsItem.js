@@ -5,7 +5,6 @@ import Card from '../../../../components/card/Card'
 
 export default function RecommendationsItem({ id, img, category, title, location, description }) {
     return (
-        <CardStyle key={id}>
             <Card>
                 <ItemRecommendationStyle >
                     <div>
@@ -20,8 +19,5 @@ export default function RecommendationsItem({ id, img, category, title, location
                     </InfoRecommendationsStyle>
                 </ItemRecommendationStyle>
             </Card>
-        </CardStyle>
-
-
     )
 }
