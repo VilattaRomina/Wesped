@@ -6,12 +6,10 @@ export const CardStyle = styled.div`
 }
 `
 
-export const ItemCategoriesStyles = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-    
-`
+// export const ItemCategoriesStyles = styled.div`
+//     display: flex;
+//     flex-direction: column;
+// `
 
 export const ImageCategoryStyles = styled.img`
     min-width: 100%;
