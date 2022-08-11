@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../../ui/theme";
 
 export const StyledAvatar = styled.div`
 display:flex;
@@ -8,6 +9,6 @@ cursor: pointer;
 border-radius: 10rem;
 height: 2.5rem;
     width: 2.5rem;
-    background-color: #383B58;
+    background-color: ${theme.secondary};
     color: #fff;
 `
