@@ -3,19 +3,19 @@ import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyle
 
   const data =[
     {
-       "city":"Buenos Aires",
+       "name":"Buenos Aires",
        "country" :"Argentina"
     },
     {
-        "city":"San Carlos de Bariloche",
+        "name":"San Carlos de Bariloche",
         "country" :"Argentina"
     },
     {
-        "city":"Mendoza",
+        "name":"Mendoza",
         "country" :"Argentina"
     },
     {
-        "city":"Córdoba",
+        "name":"Córdoba",
         "country" :"Argentina"
     }
   ];
@@ -55,21 +55,21 @@ export default function DropdownList({ picCity, icon}) {
         <SelectStyled onClick={() => toggleList()}>
             <p ref={selectRef}>{city}</p>
           </SelectStyled>
-          <ContainerStyled displayList={displayList}>
 
-            {data.map((i, city) => (
-
-              <div key={i} onClick={handleSelect}>
-
-                <OptionStyled key={i}>
-                  <div className="icon">{icon}</div>
-                  <div className="city-container">
-                    <h4>{city.name + " "}</h4>
-                    <p>{+ city.country}</p>
-                  </div>
-                </OptionStyled>
+          <ContainerStyled displayList={displayList}> 
+          
+          {data.map((city, i) => (
+           <div key={i} className="important" onClick={handleSelect}>
+           <OptionStyled>
+              <div className="icon">{icon}</div>
+              <div className="city-container">
+                <h4>{city.name + ", "}</h4>
+                <p>{city.country} </p>
               </div>
-            ))}
+            </OptionStyled>
+            </div>
+                    ))
+                }
 
           </ContainerStyled>
         </>

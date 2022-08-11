@@ -37,7 +37,7 @@ export const SearchBar = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-  padding: 0 20px 20px 20px;
+  padding: 0px 20px 20px 20px;
   
 
   @media(max-width: 723px){

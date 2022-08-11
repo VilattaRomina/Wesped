@@ -19,6 +19,7 @@ const Container = ({ children }) => {
           <Button width="12.5rem" theme="secondary">
             Aplicar
           </Button>
+
       </ButtonScheduleStyled>
     </div>
   );

@@ -3,7 +3,6 @@ import {
   ContainerSearchBlock,
   SearchBlockTitle,
   SearchBar,
-  ButtonStyle,
 } from "./SearchBlockStyled";
 
 
