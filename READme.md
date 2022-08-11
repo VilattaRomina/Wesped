@@ -30,7 +30,6 @@
  <p>El proyecto consta de la creación de un sitio web completo. Todo el proceso de desarrollo de esta web se divide en cuatro sprints.</p>
 
  ![](/Wesped/otros/sprints.png) 
- 
     <h3> Objetivos </h3>
 
     1- Desarrollar una web que consuma una API
@@ -111,7 +110,7 @@ Email: <a>pipeparra32@gmail.com</a>
 Email: <a>basualdo.ij@gmail.com</a> 
 <br>
 
-- <b>R Indira Valentina Réquiz Molina</b> <p>roles: Infra, Front, BBDD 
+- <b>R Indira Valentina Réquiz Molina</b> <p>roles: Infra, Front, BBDD </p>
 Email: <a>indirarequiz@gmail.com</a> 
 <br>
 <hr/>
