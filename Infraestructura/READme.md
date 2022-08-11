@@ -6,13 +6,23 @@
 
 
 
-## Gráfico de red
-![Gráfico](./Red/red-final.png)
+
+## Gráfico
+![Gráfico](Red/DisenioDeRed.png)
 
 ## Diseño de la red
- Basado en AWS, consideramos la conexión de los usuarios a nuestra app a partir de un Gateway, la creación de dos VPC que contengan los recursos del front y el back; cada una de ellas con su subnet y keypair. Además de dos grupo de seguridad (público en el caso del front y privado para el back). 
- Nos planteamos la estructa RDS para la BBDD y elementos adicionales como un loadbalancer para manejar los requerimientos del front.
- Por último, emplearemos tablas de enrutamiento, con su respectivo router para el manejo del tráfico de nuestra web. 
+Se establece como entorno de trabajo el servicio AWS. Así mismo, se encapsulan todos los recursos dentro de una **zona de diponibilidad**; y a su vez, de una **región** donde serán instalados.
+Teniendo en cuenta el objetivo de la aplicación, se agregan los siguientes recursos:
+Una **VPC** que va a contener dos subnets, una pública y una privada. Las subnet serán las encargadas de asignar las direcciones IP en la VPC que se va a asociar con los demás recursos. La conexión a la VPC será a través de un **Internet Gateway**, que es el que va a permitir a los usuarios a través de Internet conectarse a nuestra aplicación.
+La **subnet privada** contara con su respectivo **grupo de seguridad** y contendrá los recursos relacionados al Back End y Base de Datos, en este caso, una **instancia EC2**, con su respectivo par de llaves, así como también una **instancia RDS** que se encargará de manejar la base de datos, la cual será en MySQL. Además, se usa un **NAT Gateway**, en caso que se requiera conectar con servicios fuera de nuestra VPC (serivios externos que no pueden tener conexión con las instancias privadas).
+La **subnet pública** también tendrá su propio **grupo de seguridad** y contendrá los recursos relacionados al Front End, es decir, una **instancia EC2**.
+Ambos grupos de seguridad (privado y público) actuán como firewall virtual y controlan el tráfico entrante y saliente de las instancias.
+Así mismo, ambas subnet contienen **tablas de enrutamiento**, ya que son estás las que especifican cómo dirigir el tráfico de red desde dentro de la subnet.
+
+Por otra parte, en lo que concierne al Front End, se asocia el PaaS **Elastic Beanstalk**, ya que le daría soporte a nuestra aplicación. Es decir, manejaría los detalles de aprivisionamiento de capacidad, escalamiento, supervisión del estado de la aplicación y _load balancing_.
+
+Referente al Monitoreo, se implementaría **CloudWatch**, el cual arrojará alarmas de acuerdo a las métricas que deseemos analizar.
+Finalmente, se agrega un **S3 Bucket**, el cual almacenaría el código fuente, logs entre otros artefactos. 
 
 
 ## Documentación
@@ -25,7 +35,6 @@
 - [CloudWatch](https://aws.amazon.com/es/cloudwatch/)
 
 
-
-### Equipo de infraestructura
+### Equipo
 - Alejandra Marín
 - Indira Valentina Réquiz
