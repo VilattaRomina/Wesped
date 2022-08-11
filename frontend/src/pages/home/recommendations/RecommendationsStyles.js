@@ -16,7 +16,7 @@ export const RecommendationContainerStyle = styled.div`
 `
 export const RecomendationTitle = styled.h2`
   font-weight: 600;
-  font-size: 2px;
+  font-size: 24px;
   margin-bottom: 10px;
   color: #383B58;
 
@@ -25,9 +25,6 @@ export const RecomendationTitle = styled.h2`
     font-size:24px;
   }
 
-  @media (min-width: 415px) and (max-width: 768px){
-    font-size:20px;
-  }
 `
 export const ListRecommendationsStyle = styled.div`
   display: flex;
