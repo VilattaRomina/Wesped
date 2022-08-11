@@ -11,6 +11,7 @@ export const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
+ 
 
 
   @media (max-width: 723px) {
@@ -24,6 +25,7 @@ export const Input = styled.div`
   width: 422px;
   height: 40px;
   border: none;
+  margin-right: 20px;
 
   @media all and (max-width:700px){
     width:100%;
