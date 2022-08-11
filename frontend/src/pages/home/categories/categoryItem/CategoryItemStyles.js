@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 
 
-// export const ItemCategoriesStyles = styled.div`
-//     display: flex;
-//     flex-direction: column;
-// `
+export const ItemCategoriesStyles = styled.div`
+    cursor: pointer;
+`
 
 export const ImageCategoryStyles = styled.img`
     min-width: 100%;
@@ -17,7 +16,6 @@ export const InfoCategoryStyle = styled.div`
     flex-direction: column;
     width:100%;
     padding:10px;
-    
 
     @media(max-width: 114px){
         padding: 14px;
@@ -30,11 +28,6 @@ export const InfoCategoryStyle = styled.div`
     font-size: 20px;
     line-height: 23px;
     color: #383B58;
-    
-
-    @media (min-width: 415px) and (max-width: 768px) {
-        
-    }
  `;
 
 export const DescriptionCategoryStyle = styled.p`

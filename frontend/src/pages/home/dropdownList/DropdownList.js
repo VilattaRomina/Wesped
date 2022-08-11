@@ -1,67 +1,77 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled';
-import url from "../../../data/cities.json"
+import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled'; 
 
-function DropdownList({icon, picCity}){
-    const [dataCities, setDataCities] = useState([]);
-    const [displayList, setDisplayList] = useState('none');
-    const refCities = useRef();
-    const [city, setCity] = useState("¿A dónde vamos?");
+  const data =[
+    {
+       "name":"Buenos Aires",
+       "country" :"Argentina"
+    },
+    {
+        "name":"San Carlos de Bariloche",
+        "country" :"Argentina"
+    },
+    {
+        "name":"Mendoza",
+        "country" :"Argentina"
+    },
+    {
+        "name":"Córdoba",
+        "country" :"Argentina"
+    }
+  ];
 
-/*get cities from (json?)*/
-    useEffect(() => {
-    const getCities = async () => {
-      let response = await fetch(url);
-      response = await response.json();
-      setDataCities(response);
+export default function DropdownList({ picCity, icon}) {
+  const [displayList, setDisplayList] = useState("none");
+  const selectRef = useRef();
+  const [city, setCity] = useState("¿A dónde vamos?");
+
+
+  useEffect(() => {
+    /* Hidde component*/
+    const closeDropdown = (e) => {
+      if (e.path[0] !== selectRef.current) {
+        setDisplayList("none");
+      }
     };
-    getCities();
-
-/*Collapse list*/
-    const collapseDropdown = (e) => {
-        if (e.path[0] !== refCities.current) {
-          setDisplayList('none');
-        }
-      };
-      document.body.addEventListener("click", collapseDropdown);
-      return () => document.body.removeEventListener("click", collapseDropdown);
+    /* listener  */
+    document.body.addEventListener("click", closeDropdown);
+    return () => document.body.removeEventListener("click", closeDropdown);
   }, []);
 
-    const toggleList = () => {
-        displayList === 'none' ? setDisplayList([]) : setDisplayList('none');
-    };
 
-    const handleSelect = (i) => {
-        setCity(i.target.textContent);
-        picCity(i.target.textContent);
-      };
+  /* Show and hidde List */
+  const toggleList = () => {
+    displayList === "none" ? setDisplayList("initial") : setDisplayList("none");
+  };
+  const handleSelect = (e) => {
+    setCity(e.target.textContent);
+    picCity(e.target.textContent);
+  };
 
+  
 
-  return (
-    <div>
-    <SelectStyled onClick={() => toggleList()}>
-        <p ref={refCities}>{city}</p>
-    </SelectStyled>
+      return (
+        <>
+        <SelectStyled onClick={() => toggleList()}>
+            <p ref={selectRef}>{city}</p>
+          </SelectStyled>
 
-    <ContainerStyled displayList={displayList}>
-
-        {dataCities.map((city, i) => (
-
-          <div key={i} onClick={handleSelect}>
-            <OptionStyled className='option' key={i}>
+          <ContainerStyled displayList={displayList}> 
+          
+          {data.map((city, i) => (
+           <div key={i} className="important" onClick={handleSelect}>
+           <OptionStyled>
               <div className="icon">{icon}</div>
-
-              <div className="cities-container">
-              <h4>{city.name + " " }</h4>
-                <p>{ + city.country}</p>
+              <div className="city-container">
+                <h4>{city.name + ", "}</h4>
+                <p>{city.country} </p>
               </div>
-
             </OptionStyled>
-          </div>
-        ))}
-      </ContainerStyled>
-    
-</div>
-);
-};
-export default DropdownList;
+            </div>
+                    ))
+                }
+
+          </ContainerStyled>
+        </>
+      );
+    }
