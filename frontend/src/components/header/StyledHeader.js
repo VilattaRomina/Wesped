@@ -26,6 +26,10 @@ export const Slogan = styled.span`
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
+
+  @media (max-width: 800px) {
+    display:none;
+  }
 `;
 
 export const LogoSlogan = styled.div`
