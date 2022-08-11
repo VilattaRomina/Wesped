@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Input = (props) => {
-  return <StyledInput type={props.type} id={props.id} width={props.width} />;
+  return <StyledInput type={props.type} id={props.id} width={props.width} onChange={props.onChange} isError={props.isError} />;
 };
 
 export default Input;
@@ -14,4 +14,8 @@ const StyledInput = styled.input`
   border-radius: 5px;
   border: none;
   padding-inline-start: 1rem;
+  ${props => props.isError ?
+    `background-color: #FFE1E1;
+     border: 1px solid #FF0000;`
+    : ""}
 `;
