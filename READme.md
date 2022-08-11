@@ -28,7 +28,9 @@
 
  <h2 text-align=center>Proyecto</h2>
  <p>El proyecto consta de la creación de un sitio web completo. Todo el proceso de desarrollo de esta web se divide en cuatro sprints.</p>
- ![](/Wesped/otros/sprints.png)
+
+ ![](/Wesped/otros/sprints.png) 
+ 
     <h3> Objetivos </h3>
 
     1- Desarrollar una web que consuma una API
@@ -73,6 +75,7 @@ La palabra remite al húesped, vocablo que significa "el que hospeda y es hosped
 <hr/>
 <h3>Sprints</h3>
     - primer sprint
+
 ![](/Wesped/otros/1s.png)
 
     - segundo sprint
@@ -84,27 +87,33 @@ La palabra remite al húesped, vocablo que significa "el que hospeda y es hosped
 
 ### Equipo de Desarrollo
 
-- <b>Maira Alejandra Marin Morales</b> <p>roles: Infra, Back, BBDD</p><br>
-Email: <a>maialemarin@utp.edu.co</a> <br>
+- <b>Maira Alejandra Marin Morales</b> <p>roles: Infra, Back, BBDD</p>
+Email: <a>maialemarin@utp.edu.co</a> 
+<br>
 
-- <b>Pablo Alarcón</b> <p>roles: Back</p> <br>
-Email: <a>apablo.alarcon@gmail.com</a> <br>
+- <b>Pablo Alarcón</b> <p>roles: Back</p> 
+Email: <a>apablo.alarcon@gmail.com</a> 
+<br>
 
-- <b>Romina Vilatta Montenegro</b> <p>roles: Front</p><br>
-Email: <a>vilattaromina@gmail.com</a> <br>
+- <b>Romina Vilatta Montenegro</b> <p>roles: Front</p>
+Email: <a>vilattaromina@gmail.com</a> 
+<br>
 
-- <b>Dina Luz Perez Montes</b> <p>roles:Testing</p><br>
-Email: <a>dinaperezmontes@gmail.com</a> <br>
+- <b>Dina Luz Perez Montes</b> <p>roles:Testing</p>
+Email: <a>dinaperezmontes@gmail.com</a> 
+<br>
 
-- <b>Andres Felipe Fajardo Parra</b> <p>roles:Testing</p><br>
-Email: <a>pipeparra32@gmail.com</a> <br>
+- <b>Andres Felipe Fajardo Parra</b> <p>roles:Testing</p>
+Email: <a>pipeparra32@gmail.com</a> 
+<br>
 
-- <b>Juan Ignacio Basualdo</b> <p>roles: Front</p><br>
-Email: <a>basualdo.ij@gmail.com</a> <br>
+- <b>Juan Ignacio Basualdo</b> <p>roles: Front</p>
+Email: <a>basualdo.ij@gmail.com</a> 
+<br>
 
-- <b>R Indira Valentina Réquiz Molina</b> <p>roles: Infra, Front, BBDD <br>
-Email: <a>indirarequiz@gmail.com</a> <br>
-
+- <b>R Indira Valentina Réquiz Molina</b> <p>roles: Infra, Front, BBDD 
+Email: <a>indirarequiz@gmail.com</a> 
+<br>
 <hr/>
 
 ### Equipo técnico y rol
