@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../../assets/wespedlogo.jpeg'
+import logo from '../../../ui/wespedlogo.jpeg'
 import styled from 'styled-components'
 
 const Logo = () => {
