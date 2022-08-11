@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
   position: relative;
-  width: 420px;
+  max-width: 420px;
+  min-width: 254px;
   height: 40px;
   background: #FFFFFF;
   color: #DFE4EA;
@@ -12,14 +13,15 @@ export const InputContainer = styled.div`
   border-radius: 5px;
 
 
-  @media all and (max-width:768px){
-    width:45%
+  @media (max-width: 723px) {
+    max-width: 100%;
+    min-width: 100%;
   }
 `;
 
 
 export const Input = styled.div`
-  width: 448px;
+  width: 422px;
   height: 40px;
   border: none;
 
@@ -27,4 +29,9 @@ export const Input = styled.div`
     width:100%;
     margin-left:10px;
   }
+
+  @media(max-width:414px){
+    max-width:393px;
+  }
+
 `;

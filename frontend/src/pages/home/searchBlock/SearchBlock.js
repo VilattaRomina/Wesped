@@ -3,6 +3,7 @@ import {
   ContainerSearchBlock,
   SearchBlockTitle,
   SearchBar,
+  ButtonStyle,
 } from "./SearchBlockStyled";
 
 
@@ -20,7 +21,6 @@ function SearchBlock(picDate, city, ) {
       </SearchBlockTitle>
 
       <SearchBar>
-
         <SearchInput
           input={<DropdownList  city={city} icon={ <FaMapMarkerAlt />} />}
           icon={<FaMapMarkerAlt />}
@@ -29,9 +29,9 @@ function SearchBlock(picDate, city, ) {
           input={<Schedule icon={ <FaRegCalendarAlt />} picDate={picDate} placeHolderText="Chech in - Check out"/>}
           icon={<FaRegCalendarAlt />}
         />
-        <div>
-          <Button text="Buscar" color="#FFFFFF" backgroundColor="#1DBEB4" />
-        </div>
+        <ButtonStyle>
+          <Button width="100%">Buscar</Button>
+        </ButtonStyle>
 
       </SearchBar>
     </ContainerSearchBlock>
