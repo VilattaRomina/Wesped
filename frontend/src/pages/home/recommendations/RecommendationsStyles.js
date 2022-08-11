@@ -55,7 +55,7 @@ export const ListRecommendationsStyle = styled.div`
 export const CardStyle = styled.div`
 @media (min-width: 1265px) {
   width: calc(50% - 15px)
-  max-width: 313px;
+  
 }
 `
 
