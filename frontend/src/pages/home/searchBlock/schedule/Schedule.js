@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ScheduleMainStyled, ButtonScheduleStyled } from "./ScheduleStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Button from "../../../components/button/Button";
+import Button from "../../../../components/button/Button";
 import "./CalendarStyled.css";
 
 const Container = ({ children }) => {
