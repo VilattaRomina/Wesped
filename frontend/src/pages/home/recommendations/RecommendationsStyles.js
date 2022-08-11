@@ -6,15 +6,11 @@ export const RecommendationContainerStyle = styled.div`
   align-items: flex-start;
   margin: 0 auto;
   max-width: 1366px;
-  padding: 20px 40px;
+  padding: 20px 32px 76px 32px;
 
   @media (max-width: 414px) {
     background-color:#545776;
-    padding: 10px 20px;
-  }
-
-  @media (min-width: 415px) and (max-width: 768px) {
-    min-width: 705px;
+    padding: 10px 20px 76px 20px;
   }
 
 `
@@ -46,7 +42,6 @@ export const ListRecommendationsStyle = styled.div`
   }
 
   @media (min-width: 415px) and (max-width: 768px){
-    min-width: 625px;
     display: flex;
     flex-direction: column;
   }
@@ -60,6 +55,7 @@ export const ListRecommendationsStyle = styled.div`
 export const CardStyle = styled.div`
 @media (min-width: 1265px) {
   width: calc(50% - 15px)
+  max-width: 313px;
 }
 `
 

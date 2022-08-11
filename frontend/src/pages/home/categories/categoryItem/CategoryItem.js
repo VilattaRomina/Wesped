@@ -1,5 +1,5 @@
 import React from 'react'
-import {ImageCategoryStyles, InfoCategoryStyle, TitleCategoryStyle, DescriptionCategoryStyle } from './CategoryItemStyles'
+import {ItemCategoriesStyles,ImageCategoryStyles, InfoCategoryStyle, TitleCategoryStyle, DescriptionCategoryStyle } from './CategoryItemStyles'
 import Card from '../../../../components/card/Card'
 
 
@@ -8,13 +8,13 @@ export default function CategoryItem({ image, category, descrption }) {
 
         
             <Card>
-               {/*<ItemCategoriesStyles>*/}
+               <ItemCategoriesStyles>
                     <ImageCategoryStyles src={image} alt="img" />
                     <InfoCategoryStyle >
                         < TitleCategoryStyle>{category} </ TitleCategoryStyle>
                         <DescriptionCategoryStyle>{descrption}</DescriptionCategoryStyle>
                     </InfoCategoryStyle>
-                    {/*</ItemCategoriesStyles>*/}
+                    </ItemCategoriesStyles>
             </Card>
        
     )
