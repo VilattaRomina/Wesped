@@ -10,7 +10,7 @@ export default function Footer() {
     return (
         <ContainerFooter>
             <FooterBlock>
-                <FooterText> ©2021 Digital Booking</FooterText>
+                <FooterText> ©2022 Wesped </FooterText>
             </FooterBlock>
             <FooterBlock>
                 <FooterIcon><FaFacebook /></FooterIcon>
@@ -18,6 +18,6 @@ export default function Footer() {
                 <FooterIcon><FaTwitter /></FooterIcon>
                 <FooterIcon><FaInstagram /></FooterIcon>
             </FooterBlock>
-        </ContainerFooter >
+        </ContainerFooter>
     )
 }
