@@ -11,13 +11,12 @@ export const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
- 
 
-
-  @media (max-width: 723px) {
+  @media (max-width: 746px) {
     max-width: 100%;
     min-width: 100%;
   }
+
 `;
 
 
