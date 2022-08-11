@@ -10,9 +10,15 @@ export const CategoryContainerStyle = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width:768px) {
-    padding-top: 16px;
+  @media (max-width:795px) {
+    padding-top: 280px;
   }
+  
+  @media (max-width:768px) {
+    padding-top: 20px;
+  }
+
+  
 
 `
 export const TitleStyle = styled.h2`
