@@ -26,11 +26,11 @@ function SearchBlock(picDate, city, ) {
           icon={<FaMapMarkerAlt />}
         />
         <SearchInput
-          input={<Schedule icon={ <FaRegCalendarAlt />} picDate={picDate} placeHolderText="Chech in - Check out"/>}
+          input={<Schedule icon={ <FaRegCalendarAlt />} picDate={picDate} />}
           icon={<FaRegCalendarAlt />}
         />
         <div>
-          <Button text="Buscar" color="#FFFFFF" backgroundColor="#1DBEB4" />
+          <Button width="12.5rem" theme="secondary">Buscar</Button>
         </div>
 
       </SearchBar>

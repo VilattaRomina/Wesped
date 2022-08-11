@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 export const ScheduleMainStyled = styled.div`
   & * {
     background: white;
@@ -9,9 +10,7 @@ export const ScheduleMainStyled = styled.div`
   display: flex;
   width: max-content;
 
-  .react-datepicker__day--outside-month {
-    background: none;
-  }
+
 `;
 
 export const ButtonScheduleStyled = styled.div`

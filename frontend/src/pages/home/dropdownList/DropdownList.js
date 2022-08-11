@@ -1,41 +1,38 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled';
-import url from "../../../data/cities.json"
 
 function DropdownList({icon, picCity}){
-    const [dataCities, setDataCities] = useState([]);
     const [displayList, setDisplayList] = useState('none');
     const refCities = useRef();
     const [city, setCity] = useState("¿A dónde vamos?");
 
-/*get cities from (json?)*/
-    useEffect(() => {
-    const getCities = async () => {
-      let response = await fetch(url);
-      response = await response.json();
-      setDataCities(response);
-    };
-    getCities();
+    const  dataCities = [
+      {
+         "city":"Buenos Aires",
+         "country" :"Argentina"
+      },
+      {
+          "city":"San Carlos de Bariloche",
+          "country" :"Argentina"
+      },
+      {
+          "city":"Mendoza",
+          "country" :"Argentina"
+      },
+      {
+          "city":"Córdoba",
+          "country" :"Argentina"
+      }
+    ];
 
-/*Collapse list*/
-    const collapseDropdown = (e) => {
-        if (e.path[0] !== refCities.current) {
-          setDisplayList('none');
-        }
-      };
-      document.body.addEventListener("click", collapseDropdown);
-      return () => document.body.removeEventListener("click", collapseDropdown);
-  }, []);
 
-    const toggleList = () => {
+const toggleList = () => {
         displayList === 'none' ? setDisplayList([]) : setDisplayList('none');
     };
-
     const handleSelect = (i) => {
         setCity(i.target.textContent);
         picCity(i.target.textContent);
       };
-
 
   return (
     <div>
@@ -48,10 +45,11 @@ function DropdownList({icon, picCity}){
         {dataCities.map((city, i) => (
 
           <div key={i} onClick={handleSelect}>
+
             <OptionStyled className='option' key={i}>
               <div className="icon">{icon}</div>
 
-              <div className="cities-container">
+              <div className="cities-container" >
               <h4>{city.name + " " }</h4>
                 <p>{ + city.country}</p>
               </div>

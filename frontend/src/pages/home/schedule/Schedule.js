@@ -1,50 +1,52 @@
 import React, { useState } from "react";
-import { ScheduleMainStyled, ButtonScheduleStyled  } from "./ScheduleStyle";
+import { ScheduleMainStyled, ButtonScheduleStyled } from "./ScheduleStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../../../components/button/Button";
-
+import "./CalendarStyled.css";
 
 const Container = ({ children }) => {
+  
   return (
-    <div style={{ background: "#FFFFFF", position: "relative" }}>
-   <ScheduleMainStyled>
-        <div>
-          {children}
-        </div>
+    <div
+      style={{ background: "#FFFFFF", position: "relative", color: "#0073A3" }}
+    >
+      <ScheduleMainStyled>
+        <div>{children}</div>
       </ScheduleMainStyled>
-      
-      <ButtonScheduleStyled>
-        <Button text="Aplicar" color="#FFFFFF" backgroundColor="#1DBEB4" />
-     </ButtonScheduleStyled>
 
+      <ButtonScheduleStyled>
+          <Button width="12.5rem" theme="secondary">
+            Aplicar
+          </Button>
+      </ButtonScheduleStyled>
     </div>
   );
 };
 
+
 /* Calendar*/
-const Calendar = ({placeHolderText,picDate}) => {
+const Calendar = ({ picDate }) => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  const onChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+    picDate(start, end);
+  };
 
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(null);
-    const onChange = (dates) => {
-      const [start, end] = dates;
-      setStartDate(start);
-      setEndDate(end);
-      picDate(start,end);
-    };
-
-    return (
-      <DatePicker
-        onChange={onChange}
-        startDate={startDate}
-        endDate={endDate}
-        calendarContainer={Container}
-        selectsRange
-        isClearable
-        placeholderText={placeHolderText}
-        formatWeekDay={nameOfDay => nameOfDay.substr(0,1)}
-        renderCustomHeader={({
+  return (
+    <DatePicker
+      onChange={onChange}
+      startDate={startDate}
+      endDate={endDate}
+      calendarContainer={Container}
+      selectsRange
+      isClearable
+      placeholderText="Chech in - Check out"
+      formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
+      renderCustomHeader={({
         monthDate,
         customHeaderCount,
         decreaseMonth,
@@ -88,8 +90,7 @@ const Calendar = ({placeHolderText,picDate}) => {
               {">"}
             </span>
           </button>
-            <div className='react-datepicker__month'>
-            </div>
+          <div className="react-datepicker__month"></div>
         </div>
       )}
       monthsShown={2}
@@ -99,5 +100,5 @@ const Calendar = ({placeHolderText,picDate}) => {
 
 /*Schedule component*/
 export default function Schedule({ placeHolderText, picDate }) {
-  return (<Calendar picDate={picDate} placeholderText={placeHolderText} />);
+  return <Calendar picDate={picDate} placeholderText={placeHolderText} />;
 }
