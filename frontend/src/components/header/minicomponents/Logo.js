@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../../assets/wespedlogo.jpeg'
+import logo from '../../../ui/wespedlogo.jpeg'
 import styled from 'styled-components'
 
 const Logo = () => {
@@ -13,4 +13,5 @@ export default Logo
 const Image = styled.img`
  margin: 1rem;
  height: 3.7rem;
+ border-radius: .5rem;
  `
