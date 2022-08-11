@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ItemRecommendationStyle = styled.div`
 display:flex;
 flex-flow: row nowrap;
-min-height: 283px;
+height: 100%;
 
 @media (max-width: 414px){
     flex-direction: column;   
