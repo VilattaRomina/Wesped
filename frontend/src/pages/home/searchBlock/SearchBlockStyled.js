@@ -26,7 +26,7 @@ export const SearchBlockTitle = styled.h1`
   text-align: center;
   padding: 0.5em;
 
-  @media (max-width: 768px){
+  @media (max-width: 800px){
     font-size: 30px;
   }
 
@@ -40,7 +40,7 @@ export const SearchBar = styled.div`
   padding: 0px 20px 20px 20px;
   
 
-  @media(max-width: 723px){
+  @media(max-width: 760px){
     flex-direction: column;
     align-items: flex-end;
   }
