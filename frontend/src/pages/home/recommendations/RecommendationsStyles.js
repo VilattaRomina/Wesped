@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const RecommendationContainerStyle = styled.div`
+export const RecommendationContainerStyle = styled.Section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
