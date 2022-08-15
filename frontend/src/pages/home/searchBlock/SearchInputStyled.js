@@ -12,7 +12,7 @@ export const InputContainer = styled.div`
   justify-content: space-between;
   border-radius: 5px;
 
-  @media (max-width: 746px) {
+  @media (max-width: 760px) {
     max-width: 100%;
     min-width: 100%;
   }
@@ -26,7 +26,7 @@ export const Input = styled.div`
   border: none;
   margin-right: 20px;
 
-  @media all and (max-width:700px){
+  @media all and (max-width:760px){
     width:100%;
     margin-left:10px;
   }

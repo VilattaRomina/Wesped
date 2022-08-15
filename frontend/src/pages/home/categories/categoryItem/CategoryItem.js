@@ -5,8 +5,6 @@ import Card from '../../../../components/card/Card'
 
 export default function CategoryItem({ image, category, descrption }) {
     return (
-
-        
             <Card>
                <ItemCategoriesStyles>
                     <ImageCategoryStyles src={image} alt="img" />

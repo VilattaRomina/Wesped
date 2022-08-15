@@ -3,10 +3,6 @@ import producto from '../../../data/product.json';
 import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle,CardStyle } from './RecommendationsStyles';
 import RecommendationsItem from './recommendationsItems/RecommendationsItem';
 
-
-
-
-
 export default function Recommendations() {
 
   return (

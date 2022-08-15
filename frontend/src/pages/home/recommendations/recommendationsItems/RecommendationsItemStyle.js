@@ -81,12 +81,4 @@ export const DescriptionStyle = styled.p`
   
 `
 
-export const ButtonStyle = styled.button`
-background-color: ${props => props.theme.primary};
-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-border-radius: 5px;
-color: white;
-height: 40px;
-border:0;
-
-`;
+;

@@ -14,7 +14,6 @@ export default function Categories() {
                         <CardStyle key={item.id}>
                             <CategoryItem {...item} />
                         </CardStyle>
-
                     )
                 }
             </CategoryListContainerStyle>

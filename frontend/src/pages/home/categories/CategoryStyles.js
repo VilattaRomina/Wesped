@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CategoryContainerStyle = styled.div`
+export const CategoryContainerStyle = styled.section`
   min-width: calc(320px - 4rem);
   max-width: 1366px;
   margin: 0 auto;
@@ -10,9 +10,7 @@ export const CategoryContainerStyle = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width:795px) {
-    padding-top: 280px;
-  }
+ 
   
   @media (max-width:768px) {
     padding-top: 20px;
