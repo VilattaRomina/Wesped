@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ContainerFooter = styled.div`
-background: #1DBEB4;
+background:${props => props.theme.primary};
 width: 100vw;
 height: 60px;
 display: flex;

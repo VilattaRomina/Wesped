@@ -9,25 +9,22 @@ export const RecommendationContainerStyle = styled.div`
   padding: 20px 32px 76px 32px;
 
   @media (max-width: 414px) {
-    background-color:#545776;
+    background-color:${props => props.theme.secondary};
     padding: 10px 20px 76px 20px;
   }
 
 `
 export const RecomendationTitle = styled.h2`
   font-weight: 600;
-  font-size: 25px;
+  font-size: 24px;
   margin-bottom: 10px;
   color: #383B58;
 
   @media (max-width: 414px) {
     color:#ffffff;
-    font-size:20px;
+    font-size:24px;
   }
 
-  @media (min-width: 415px) and (max-width: 768px){
-    font-size:20px;
-  }
 `
 export const ListRecommendationsStyle = styled.div`
   display: flex;

@@ -12,11 +12,11 @@ export const InputContainer = styled.div`
   justify-content: space-between;
   border-radius: 5px;
 
-
-  @media (max-width: 723px) {
+  @media (max-width: 746px) {
     max-width: 100%;
     min-width: 100%;
   }
+
 `;
 
 
@@ -24,6 +24,7 @@ export const Input = styled.div`
   width: 422px;
   height: 40px;
   border: none;
+  margin-right: 20px;
 
   @media all and (max-width:700px){
     width:100%;
