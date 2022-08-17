@@ -40,6 +40,7 @@ public class Product {
     @JoinColumn(name="category_id")
     private Category category;
 
+    //features
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name="product_has_features",
@@ -51,6 +52,14 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="city_id")
     private City city;
+
+    //images
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<Image> images;
+
+    //policy
+    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Policy> policies;
 
 
     public Product(String title, String description, String latitude, String longitude, String rating, Boolean availability, Category category, City city, Set<Feature> features) {
