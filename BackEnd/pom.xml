@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dh</groupId>
-	<artifactId>DigitalBooking</artifactId>
+	<artifactId>ProyectoIntegrador</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DigitalBooking</name>
-	<description>CTD - Proyecto Integrador - Equipo 9</description>
+	<name>wesped</name>
+	<description>CTD - Proyecto Integrador - Wesped</description>
 	<properties>
 		<java.version>18</java.version>
 	</properties>
@@ -40,7 +40,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
