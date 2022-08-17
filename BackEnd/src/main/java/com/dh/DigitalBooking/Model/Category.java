@@ -1,17 +1,26 @@
 package com.dh.DigitalBooking.Model;
 
+import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "categories")
 public class Category {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String title;
     private String description;
     private String urlImage;
+
+    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Product> products = new HashSet<>();
 
     public Category() {
 
@@ -23,33 +32,7 @@ public class Category {
         this.urlImage = urlImage;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUrlImage() {
-        return urlImage;
-    }
-
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
-    }
 
     @Override
     public String toString() {
