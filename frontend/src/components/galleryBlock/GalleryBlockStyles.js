@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const ContainerStyles = styled.section`
 max-width: 1300px;
+max-height:441px;
 margin: 0 auto;
-padding: 0 20px;
+padding: 0 30px;
 position: relative;
 
 //Flex-box
@@ -41,6 +42,8 @@ export const CardLeft = styled.div`
 // width:100%;
 
 height:100%;
+border-radius: 8px;
+overflow: hidden;
 `
 export const CardRight = styled.div`
 //Flex-box
@@ -49,6 +52,8 @@ export const CardRight = styled.div`
 
 height:100%;
 position:relative;
+border-radius: 8px;
+overflow: hidden;
 `
 
 export const ImageLeft = styled.img`
