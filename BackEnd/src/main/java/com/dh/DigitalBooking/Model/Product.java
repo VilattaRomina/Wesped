@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -58,8 +59,13 @@ public class Product {
     private Set<Image> images;
 
     //policy
-    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Policy> policies;
+    @ManyToMany (cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "products_has_policy",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "policy_id")
+    )
+    private Set<Policy> policies = new HashSet<>();
 
 
     public Product(String title, String description, String latitude, String longitude, String rating, Boolean availability, Category category, City city, Set<Feature> features) {
