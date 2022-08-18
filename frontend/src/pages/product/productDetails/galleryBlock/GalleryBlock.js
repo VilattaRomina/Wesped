@@ -44,9 +44,9 @@ export default function GalleryBlock() {
             //onRequestClose={closeModal}
             >
                 <Carousel>
-                    {images.map(slide => (
-                        <div key={slide.id}>
-                            <img src={slide.img} alt="" />
+                    {images.map(item => (
+                        <div key={item.id}>
+                            <img src={item.img} alt="" />
                         </div>
                     ))}
                 </Carousel>

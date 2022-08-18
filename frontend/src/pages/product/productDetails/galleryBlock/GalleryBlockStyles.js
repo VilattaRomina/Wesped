@@ -103,7 +103,7 @@ padding-top:40px;
 
 export const CloseModalStyle = styled.div`
 top: 75px;
-right: 10px;
+right: 50px;
 font-size: 20px;
 color: white;
 position: absolute;
