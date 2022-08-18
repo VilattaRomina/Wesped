@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @NotNull
     @Column
     private String title;
@@ -37,7 +38,7 @@ public class Product {
 
     //category
     @ManyToOne( fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category", referencedColumnName = "id")
     private Category category;
 
     //features
@@ -58,8 +59,13 @@ public class Product {
     private Set<Image> images;
 
     //policy
-    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Policy> policies;
+    @ManyToMany (cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "products_has_policy",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "policy_id")
+    )
+    private Set<Policy> policies = new HashSet<>();
 
 
     public Product(String title, String description, String latitude, String longitude, String rating, Boolean availability, Category category, City city, Set<Feature> features) {
@@ -72,6 +78,24 @@ public class Product {
         this.category = category;
         this.city = city;
         this.features = features;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", rating='" + rating + '\'' +
+                ", availability=" + availability +
+                ", category=" + category +
+                ", features=" + features +
+                ", city=" + city +
+                ", images=" + images +
+                ", policies=" + policies +
+                '}';
     }
 }
 
