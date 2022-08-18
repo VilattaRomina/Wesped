@@ -22,7 +22,7 @@ public class Policy {
     @Column
     private String description;
 
-    @ManyToMany(mappedBy = "policy",fetch = FetchType.LAZY)
-    private Set<Product> productos = new HashSet<>();
+    @ManyToMany(mappedBy = "policies",fetch = FetchType.LAZY)
+    private Set<Product> products = new HashSet<>();
 }
 
