@@ -17,7 +17,7 @@ export default function Categories() {
     useEffect(()=> {
         axios.get(URL_API)
         .then((res)=> {
-           setCategories(res.data.categories);
+           setCategories(res.data);
         })
     }, [])
 

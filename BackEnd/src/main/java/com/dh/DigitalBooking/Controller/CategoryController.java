@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
@@ -30,6 +30,7 @@ public class CategoryController {
     public ResponseEntity<Category> categoryRegister(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.save(category));
     }
+
 
     @GetMapping
     public ResponseEntity<List<Category>> listAll() {
