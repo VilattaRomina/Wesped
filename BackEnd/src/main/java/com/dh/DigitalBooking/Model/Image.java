@@ -18,7 +18,7 @@ public class Image {
     @Column
     private String urlImage;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;
 

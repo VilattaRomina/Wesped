@@ -1,19 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../../button/Button";
-import { BiMenu } from "react-icons/bi";
-import { IconContext } from "react-icons";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import { usePathname } from "../../../hooks/hooks";
-import validator from 'validator'
+import { IconContext } from "react-icons";
+import styled from "styled-components";
+import Button from "../../button/Button";
 import LoggedIn from "./loggedin/LoggedIn";
+import BurgerMenu from "./burgerMenu/BurgerMenu";
+import BackgroundMenu from "./burgerMenu/BackgroundMenu";
+import validator from 'validator'
 
 const Nav = (props) => {
   const isHome = validator.equals(usePathname(), '/')
   const isLogin = validator.equals(usePathname(), '/login')
   const isRegister = validator.equals(usePathname(), '/registro')
   const isUserLogged = props?.loggedUser?.valid ?? false
+  const [clicked, setClicked] = useState(false);
 
+  const handleClick = () => {
+    setClicked(!clicked)
+  }
   return (
     <IconContext.Provider value={{ size: "2.5rem", color: "#545776" }}>
       <StyledNav>
@@ -35,7 +40,18 @@ const Nav = (props) => {
             </Button>
           </Link>
         }
-        <BiMenu className="react-icon" />
+        <div className="react-icon">
+          <BurgerMenu clicked={clicked} handleClick={handleClick} />
+        </div>
+        <BackgroundMenu className={`react-icon ${clicked ? "active" : ""}`} handleClick={handleClick}>
+          <Link to="/registro" onClick={handleClick}>
+            Crear cuenta
+          </Link>
+
+          <Link to="/login" onClick={handleClick}>
+            Ingresar
+          </Link>
+        </BackgroundMenu>
       </StyledNav>
     </IconContext.Provider>
   );

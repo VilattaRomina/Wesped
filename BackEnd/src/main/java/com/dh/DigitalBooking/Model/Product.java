@@ -18,7 +18,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @NotNull
     @Column
     private String title;
@@ -38,7 +38,7 @@ public class Product {
 
     //category
     @ManyToOne( fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category", referencedColumnName = "id")
     private Category category;
 
     //features
@@ -78,6 +78,24 @@ public class Product {
         this.category = category;
         this.city = city;
         this.features = features;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", rating='" + rating + '\'' +
+                ", availability=" + availability +
+                ", category=" + category +
+                ", features=" + features +
+                ", city=" + city +
+                ", images=" + images +
+                ", policies=" + policies +
+                '}';
     }
 }
 
