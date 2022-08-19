@@ -15,7 +15,7 @@ import java.util.Set;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @NotNull
     @Column
     private String name;
@@ -31,7 +31,7 @@ public class City {
     public City() {
     }
 
-    public City(Long id, String name, String country, Set<Product> products) {
+    public City(Integer id, String name, String country, Set<Product> products) {
         this.id = id;
         this.name = name;
         this.country = country;
