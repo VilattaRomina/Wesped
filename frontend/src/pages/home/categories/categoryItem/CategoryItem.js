@@ -1,18 +1,16 @@
 import React from 'react'
-import {ItemCategoriesStyles,ImageCategoryStyles, InfoCategoryStyle, TitleCategoryStyle, DescriptionCategoryStyle } from './CategoryItemStyles'
+import {ImageCategoryStyles, InfoCategoryStyle, TitleCategoryStyle, DescriptionCategoryStyle } from './CategoryItemStyles'
 import Card from '../../../../components/card/Card'
 
 
 export default function CategoryItem({ urlImage, title, description }) {
     return (
             <Card>
-               <ItemCategoriesStyles>
                     <ImageCategoryStyles src={urlImage} alt="imagen-categoria" />
                     <InfoCategoryStyle >
                         < TitleCategoryStyle>{title} </ TitleCategoryStyle>
                         <DescriptionCategoryStyle>{description}</DescriptionCategoryStyle>
-                    </InfoCategoryStyle>
-                    </ItemCategoriesStyles>
+                    </InfoCategoryStyle>     
             </Card>
        
     )
