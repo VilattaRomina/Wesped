@@ -3,14 +3,14 @@ import {ItemCategoriesStyles,ImageCategoryStyles, InfoCategoryStyle, TitleCatego
 import Card from '../../../../components/card/Card'
 
 
-export default function CategoryItem({ image, category, descrption }) {
+export default function CategoryItem({ urlImage, title, description }) {
     return (
             <Card>
                <ItemCategoriesStyles>
-                    <ImageCategoryStyles src={image} alt="img" />
+                    <ImageCategoryStyles src={urlImage} alt="imagen-categoria" />
                     <InfoCategoryStyle >
-                        < TitleCategoryStyle>{category} </ TitleCategoryStyle>
-                        <DescriptionCategoryStyle>{descrption}</DescriptionCategoryStyle>
+                        < TitleCategoryStyle>{title} </ TitleCategoryStyle>
+                        <DescriptionCategoryStyle>{description}</DescriptionCategoryStyle>
                     </InfoCategoryStyle>
                     </ItemCategoriesStyles>
             </Card>
