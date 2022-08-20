@@ -26,6 +26,22 @@ export default function ProductDetails() {
         <FaRegHeart />
       </BlockIconStyle>
       <GalleryBlock />
+      <section>
+          <h4>Bloque descripcion</h4>
+          <p>Texto de descripcion del producto</p>
+      </section>
+      <section>
+          <h4>Bloque caracteristicas del producto</h4>
+          <hr/>
+          <div>Grilla iconos</div>
+      </section>
+      <section>
+          <h4>Bloque de politicas del producto</h4>
+        <hr/>
+          <div>Normas de la casa</div>
+          <div>Salud y seguridad</div>
+          <div>Politica de cancelacion</div>
+      </section>
     </BodyStyle>
   )
 }
