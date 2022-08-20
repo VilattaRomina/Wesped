@@ -1,14 +1,9 @@
 import styled from "styled-components";
 
-
-
-export const ItemCategoriesStyles = styled.div`
-    cursor: pointer;
-`
-
 export const ImageCategoryStyles = styled.img`
-    min-width: 100%;
     max-width: 100%;
+    max-width: 100%;
+   
 `;
 
 export const InfoCategoryStyle = styled.div`

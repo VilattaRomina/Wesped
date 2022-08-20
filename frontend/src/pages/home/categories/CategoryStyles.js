@@ -9,8 +9,6 @@ export const CategoryContainerStyle = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
- 
   
   @media (max-width:768px) {
     padding-top: 20px;
@@ -20,8 +18,8 @@ export const CategoryContainerStyle = styled.section`
 
 `
 export const TitleStyle = styled.h2`
-font-weight: 700;
-font-size: 24px;
+font-weight: 600;
+font-size: 25px;
 line-height: 28px;
 color: #383B58;
 margin-bottom: 10px;
@@ -35,6 +33,8 @@ export const CategoryListContainerStyle = styled.div`
     display: flex;
     gap: 14px;
     flex-flow: row nowrap;
+    f
+    
 
     @media (max-width: 414px) {
       display: flex;
@@ -51,6 +51,11 @@ export const CategoryListContainerStyle = styled.div`
     
 `
 export const CardStyle = styled.div`
+transition: transform 500ms ease;
+&:hover {
+  transform: scale(1.05);
+}
+
 @media (min-width: 415px) and (max-width: 768px) {
     width: calc(50% - 7px)
 }
