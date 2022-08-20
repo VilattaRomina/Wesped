@@ -1,6 +1,8 @@
 import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, BlockIconStyle } from './ProductDetailsStyles'
 import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft} from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
+import GalleryBlock from './galleryBlock/GalleryBlock';
+import GalleryMobile from './galleryMobile/GalleryMobile'
 // import {Link} from 'react-router-dom'
 
 
@@ -26,8 +28,8 @@ export default function ProductDetails() {
         <BiShareAlt />
         <FaRegHeart />
       </BlockIconStyle>
-      
-      
+      <GalleryBlock/>
+      <GalleryMobile/>
     </BodyStyle>
   )
 }
