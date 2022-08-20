@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const BodyStyle = styled.body`
 padding-top:81px;
@@ -34,6 +35,10 @@ export const HeaderStyle = styled.div`
 
 export const Arrow= styled.div`
 font-size: 30px;
+`
+export const LinkStyle = styled(Link)`
+color: #fff;
+cursor:pointer;
 `
 
 
