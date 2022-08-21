@@ -33,9 +33,7 @@ export const CategoryListContainerStyle = styled.div`
     display: flex;
     gap: 14px;
     flex-flow: row nowrap;
-    f
-    
-
+  
     @media (max-width: 414px) {
       display: flex;
       flex-direction: column;
@@ -46,11 +44,11 @@ export const CategoryListContainerStyle = styled.div`
       flex-flow: row wrap;
       align-items: stretch;
     }
-
-   
-    
 `
+
 export const CardStyle = styled.div`
+width: 100%;
+
 transition: transform 500ms ease;
 &:hover {
   transform: scale(1.05);
