@@ -7,7 +7,8 @@ import Register from "./pages/register/Register";
 import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
-import Products from "./pages/products/Products";
+import Product from "./pages/product/Product";
+import ProductList from "./pages/productList/ProductList";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({ valid: false, email: "" });
@@ -24,7 +25,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
-          <Route path="/productos/*" element={<Products />}/>
+          <Route path="/productos" element={<ProductList/>}/>
+          <Route path="/producto/*" element={<Product/>}/>
         </Routes>
         <Footer />
       </ThemeProvider>
