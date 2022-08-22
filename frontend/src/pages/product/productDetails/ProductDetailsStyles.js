@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const BodyStyle = styled.body`
+export const BodyStyle = styled.section`
 padding-top:81px;
 `
 

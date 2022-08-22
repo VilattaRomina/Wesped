@@ -11,8 +11,29 @@ display: none;
     .thumbs-wrapper axis-vertical {
       display: none;
     }
+
+    .control-dots{
+      bottom:420px;
+    }
    
   }
+
+  @media (max-width: 414px) {
+    display: block;
+    max-width:768px;
+    max-height:300px;
+
+    .thumbs-wrapper axis-vertical {
+      display: none;
+    }
+
+    .control-dots{
+      bottom:240px;
+    }
+   
+  }
+
+
 
 `
 
