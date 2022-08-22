@@ -1,8 +1,9 @@
-import Carrousel from '../../../components/galleryBlock/Carrousel'
-import GalleryBlock from '../../../components/galleryBlock/GalleryBlock'
-import { HeaderStyle, Title, Arrow, UbicationStyle, BodyStyle, BlockIconStyle, DescriptionStyle, TextStyle} from './ProductDetailsStyles'
+import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, BlockIconStyle } from './ProductDetailsStyles'
 import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft} from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
+import GalleryBlock from './galleryBlock/GalleryBlock';
+import GalleryMobile from './galleryMobile/GalleryMobile'
+// import {Link} from 'react-router-dom'
 
 
 export default function ProductDetails() {
@@ -14,7 +15,9 @@ export default function ProductDetails() {
           <h4>Nombre del hotel</h4>
         </Title>
         <Arrow>
+          <LinkStyle to= "/">
           <FaChevronLeft/>
+          </LinkStyle>
         </Arrow>
       </HeaderStyle>
       <UbicationStyle>
@@ -25,23 +28,8 @@ export default function ProductDetails() {
         <BiShareAlt />
         <FaRegHeart />
       </BlockIconStyle>
-      <GalleryBlock />
-      <DescriptionStyle>
-          <h4>Bloque descripcion</h4>
-          <TextStyle>Texto de descripcion del producto</TextStyle>
-      </DescriptionStyle>
-      <section>
-          <h4>Bloque caracteristicas del producto</h4>
-          <hr/>
-          <div>Grilla iconos</div>
-      </section>
-      <section>
-          <h4>Bloque de politicas del producto</h4>
-        <hr/>
-          <div>Normas de la casa</div>
-          <div>Salud y seguridad</div>
-          <div>Politica de cancelacion</div>
-      </section>
+      <GalleryBlock/>
+      <GalleryMobile/>
     </BodyStyle>
   )
 }
