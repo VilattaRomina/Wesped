@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BodyStyle = styled.body`
+export const BodyStyle = styled.section`
 padding-top:81px;
 `
 
@@ -57,4 +57,17 @@ height:50px;
 padding: 20px 0 10px 30px;
 display:flex;
 
-`
+`;
+
+
+export const DescriptionStyle = styled.section`
+display:flex;
+flex-direction:column;
+padding: 20px 0 10px 30px;
+h4{
+  font-size: 20px;
+  color: red;
+
+}
+
+`;
