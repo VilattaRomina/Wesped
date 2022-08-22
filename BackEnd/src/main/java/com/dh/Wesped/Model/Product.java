@@ -31,17 +31,16 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "cities_id")
     private City city;
-    /*Si agregamos este atributo, el endpoint de Productos retorna el json de imagenes
-    @JsonIncludeProperties(value = {"id"})
+    @JsonIncludeProperties(value = {"id","urlImage"})
     @OneToMany(mappedBy = "product")
-    private Set<Image> images = new HashSet<>();*/
-    @JsonIncludeProperties(value = {"id"})
+    private Set<Image> images = new HashSet<>();
+   // @JsonIncludeProperties(value = {"id"})
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "product_has_features",
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "features_id")})
     private Set<Feature> features = new HashSet<>();
-    @JsonIncludeProperties(value = {"id"})
+   // @JsonIncludeProperties(value = {"id"})
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "product_has_policy",
             joinColumns = {@JoinColumn(name = "product_id")},
