@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import ProductDetails from './productDetails/ProductDetails'
 
 
-export default function Products() {
+export default function Product() {
   return (
     <div>
         <Routes>

@@ -31,7 +31,7 @@ export default function GalleryBlock() {
                 </ContainerImageLeft>
                 <ContainerImageRight>
                     {images.slice(1, 5).map((item) => (
-                        <CardRight>
+                        <CardRight key={item.id}>
                             <ImageRight src={item.img} alt="" />
                         </CardRight>
                     ))}

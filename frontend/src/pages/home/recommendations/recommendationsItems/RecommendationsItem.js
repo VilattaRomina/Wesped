@@ -3,20 +3,23 @@ import { ItemRecommendationStyle, ImageRecommendationStyle, InfoRecommendationsS
 import {HiLocationMarker} from 'react-icons/hi'
 import Card from '../../../../components/card/Card'
 import Button from '../../../../components/button/Button'
+import { Link } from 'react-router-dom'
 
-export default function RecommendationsItem({ id, img, category, title, location, description }) {
+export default function RecommendationsItem({ id, images, category, title, city, description }) {
     return (
             <Card>
                 <ItemRecommendationStyle >
                     <ImageWrapperStyle>
-                        <ImageRecommendationStyle src={img} alt="img"/>
+                        <ImageRecommendationStyle src={images[1].urlImage} alt="img"/>
                     </ImageWrapperStyle>
                     <InfoRecommendationsStyle>
-                        <CategoryStyle>{category}</CategoryStyle>
+                        <CategoryStyle>{category.id}</CategoryStyle>
                         <TitleStyle>{title}</TitleStyle>
-                        <LocationTextStyle><HiLocationMarker/>{location}</LocationTextStyle>
+                        <LocationTextStyle><HiLocationMarker/>{city.id}</LocationTextStyle>
                         <DescriptionStyle>{description}</DescriptionStyle>
-                        <Button>Ver detalle</Button>
+                        
+                        <Button><Link style={{ color:'#fff'}} to={`/producto/${id}`}>Ver detalle</Link></Button>
+                        
                     </InfoRecommendationsStyle>
                 </ItemRecommendationStyle>
             </Card>
