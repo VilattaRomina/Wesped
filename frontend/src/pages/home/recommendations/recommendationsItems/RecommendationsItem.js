@@ -17,9 +17,9 @@ export default function RecommendationsItem({ id, images, category, title, city,
                         <TitleStyle>{title}</TitleStyle>
                         <LocationTextStyle><HiLocationMarker/>{city.id}</LocationTextStyle>
                         <DescriptionStyle>{description}</DescriptionStyle>
-                        <Link to={`/producto/${id}`}>
-                        <Button>Ver detalle</Button>
-                        </Link>
+                        
+                        <Button><Link style={{ color:'#fff'}} to={`/producto/${id}`}>Ver detalle</Link></Button>
+                        
                     </InfoRecommendationsStyle>
                 </ItemRecommendationStyle>
             </Card>
