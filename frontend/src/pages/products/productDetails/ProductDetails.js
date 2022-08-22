@@ -1,6 +1,6 @@
 import Carrousel from '../../../components/galleryBlock/Carrousel'
 import GalleryBlock from '../../../components/galleryBlock/GalleryBlock'
-import { HeaderStyle, Title, Arrow, UbicationStyle, BodyStyle, BlockIconStyle } from './ProductDetailsStyles'
+import { HeaderStyle, Title, Arrow, UbicationStyle, BodyStyle, BlockIconStyle, DescriptionStyle, TextStyle} from './ProductDetailsStyles'
 import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft} from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 
@@ -26,10 +26,10 @@ export default function ProductDetails() {
         <FaRegHeart />
       </BlockIconStyle>
       <GalleryBlock />
-      <section>
+      <DescriptionStyle>
           <h4>Bloque descripcion</h4>
-          <p>Texto de descripcion del producto</p>
-      </section>
+          <TextStyle>Texto de descripcion del producto</TextStyle>
+      </DescriptionStyle>
       <section>
           <h4>Bloque caracteristicas del producto</h4>
           <hr/>
