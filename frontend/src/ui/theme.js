@@ -2,7 +2,7 @@ export const theme = {
         primary: '#1DBEB4',
         secondary: '#0073A3',
         background: '#fff',
-        text_primary: '#383B58',
-        text_secondary: 'rgb(56, 59, 88, 0.6)',
-        content_background: '#F3F1ED'   
+        text_primary: '#191B1D',
+        text_secondary: '#383B58',
+        content_background: '#FDF6EC'   
 }

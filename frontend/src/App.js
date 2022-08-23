@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
-          <Route path="/productos/*" element={<Products />}/>
+          <Route path="/producto/*" element={<Products />}/>
         </Routes>
         <Footer />
       </ThemeProvider>
