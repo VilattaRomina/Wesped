@@ -27,5 +27,6 @@ backend_deploy_job:
   script:
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-18-jdk -y" 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop wesped.service"
-      - scp wesped.jar ubuntu@$DEPLOY_SERVER_IP:~/wesped/ 
+      - ls BackEnd/target
+      - scp BackEnd/target/wesped.jar ubuntu@$DEPLOY_SERVER_IP:~/wesped/ 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start wesped.service"
