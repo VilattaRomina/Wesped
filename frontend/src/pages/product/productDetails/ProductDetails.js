@@ -4,13 +4,9 @@ import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft,  } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import GalleryBlock from './galleryBlock/GalleryBlock';
 import GalleryMobile from './galleryMobile/GalleryMobile';
-import axios from 'axios'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
-const client = axios.create({
-  baseURL: "http://localhost:8080"
-});
+import { AxiosInstance } from '../../../helpers/AxiosHelper';
 
 export default function ProductDetails() {
 
@@ -20,7 +16,7 @@ export default function ProductDetails() {
   // const [error, setError] =useState([])
 
   useEffect(() => {
-    client.get(`/products/${productId}`)
+    AxiosInstance.get(`/products/${productId}`)
       .then((res) => {
         console.log(res.data);
         res.data.images = res.data.images.sort((lhs, rhs) => lhs.id - rhs.id)
