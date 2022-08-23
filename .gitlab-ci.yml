@@ -8,27 +8,31 @@ variables:
   
 cache: 
   paths: 
-    - .m2/repository 
-    - BackEnd/target
+    - ./Backend/.m2/repository 
+    - ./BackEnd/target
 
 backend_build_job: 
   stage: build
   image: maven:3.8.6-openjdk-18-slim
   script:
     - cd ./BackEnd
-    - echo "Maven compile started" 
+    - echo "Maven compile started"
+    - pwd
     - "mvn compile"
+    - ls -lrta
 
 backend_package_job: 
   stage: package
   image: maven:3.8.6-openjdk-18-slim 
   artifacts: 
     paths: 
-     - BackEnd/target/wesped.jar
+     - ./BackEnd/target/wesped.jar
      
   script: 
      - cd ./BackEnd
+     - pwd
      - "mvn package"
+     - ls -lrta
 
 backend_deploy: 
   stage: deploy 
