@@ -21,12 +21,12 @@ export const Title = styled.div`
     flex-direction:column;
 
       h4{
-          font-size: 14px;  
+          font-size: 15px;  
           font-weight:300;
       }
 
       h2{
-          font-size: 20px;
+          font-size: 24px;
           line-height: 28px;
       }
 `;
@@ -44,25 +44,34 @@ export const UbicationStyle = styled.div`
   background: ${props => props.theme.content_background};;
   padding: 20px 0 10px 30px;
   display:flex;
+  font-size: 18px; 
   h4{
       color: black;
-      font-size: 14px; 
+      font-size: 15px; 
       font-weight: 500; 
-      padding-left:5px;
+      padding-left:10px;
   }
+
 `;
 
 export const ShareStyle = styled.div`
   height:50px;
   padding: 20px 0 10px 30px;
   display:flex;
-
+  font-size:18px;
+  div{
+    padding-right:10px;
+  }
 `;
 
 export const DescriptionStyle = styled.section`
-  padding: 20px 30px 10px 30px;
+  padding: 30px 30px 30px 30px;
   display:flex;
   flex-direction: column;
+  h4{
+    font-size:24px;
+    padding-bottom:20px;
+  }
   p{
     color: ${props => props.theme.text_secondary}
   }
@@ -72,10 +81,11 @@ export const DescriptionStyle = styled.section`
   }
 `;
 
-export const IconStyle = styled.section`
-  padding: 20px 30px 10px 30px;
+export const FeaturesStyle = styled.section`
+  padding: 40px 30px 30px 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:20px;
 
   @media (max-width: 768px){
     grid-template-columns: 1fr 1fr ;
@@ -83,9 +93,10 @@ export const IconStyle = styled.section`
 `
 
 export const PoliciesStyle = styled.section`
-  padding: 20px 30px 10px 30px;
+  padding: 40px 30px 80px 30px;
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:20px;
   p{
     color: ${props => props.theme.text_secondary}
   }
@@ -100,7 +111,8 @@ export const LineStyles = styled.hr`
   border-color:${props => props.theme.primary};
 `
 export const TitleStyles = styled.h4`
-  padding: 20px 0 10px 30px;
+  padding: 20px 0 12px 30px;
+  font-size:24px;
 
   
 `
