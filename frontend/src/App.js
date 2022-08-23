@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
 import Product from "./pages/product/Product";
+import CategoryFilter from "./pages/categoryFilter/CategoryFilter";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({ valid: false, email: "" });
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
           <Route path="/productos/*" element={<Product />}/>
+          <Route path="/categorias" element={<CategoryFilter />} />
         </Routes>
         <Footer />
       </ThemeProvider>
