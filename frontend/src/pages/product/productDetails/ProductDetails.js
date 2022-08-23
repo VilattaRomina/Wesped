@@ -15,20 +15,23 @@ export default function ProductDetails() {
 
   const { productId } = useParams();
 
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(null);
   // const [error, setError] =useState([])
 
   useEffect(() => {
     client.get(`/products/${productId}`)
-      .then(res => setProduct(res.data))
+      .then((res) => {
+        console.log(res.data);
+        res.data.images = res.data.images.sort((lhs, rhs) => lhs.id - rhs.id)
+        setProduct(res.data);
+    })
     //.catch(error => setError(error));
   }, [productId]);
 
 
   return (
     <>
-      {!product && <p>Cargando...</p>}
-      {product && (
+      {product ? 
         <BodyStyle>
           <HeaderStyle>
             <Title>
@@ -49,10 +52,11 @@ export default function ProductDetails() {
             <BiShareAlt />
             <FaRegHeart />
           </BlockIconStyle>
-          <GalleryBlock images={product.images}/>
+          <GalleryBlock images={product.images}/> 
           <GalleryMobile images={product.images}/>
-        </BodyStyle>
-      )}
+        </BodyStyle> :
+        <p>Cargando...</p>
+      }
     </>
 
   )
