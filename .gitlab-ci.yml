@@ -13,15 +13,15 @@ cache:
 
 backend_build_job: 
   stage: build
-  before_script: 
-    - apt-get install maven -y
+  image: maven:3.8.6-openjdk-18-slim
   script:
     - cd ./BackEnd
     - echo "Maven compile started" 
     - "mvn compile"
 
 backend_package_job: 
-  stage: package 
+  stage: package
+  image: maven:3.8.6-openjdk-18-slim 
   artifacts: 
     paths: 
      - BackEnd/target/wesped.jar
