@@ -2,7 +2,7 @@ stages:
     - build
     - deploy
 
-backend_build_job: 
+backend_build_job:
   stage: build
   image: maven:3.8.6-openjdk-18-slim
   script:
@@ -13,7 +13,20 @@ backend_build_job:
     paths:
       - BackEnd/target/wesped.jar
 
-backend_deploy_job: 
+frontend_build_job:
+  stage: build
+  image: node:latest
+  script:
+      - cd ./frontend
+      - echo "Start building App"
+      - npm install
+      - npm run build
+      - echo "Build successfully!"
+  artifacts:
+    paths:
+      - frontend/build/
+
+backend_deploy_job:
   stage: deploy 
   image: alpine:3.11 
   before_script: 
@@ -27,6 +40,13 @@ backend_deploy_job:
   script:
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-18-jdk -y" 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop wesped.service"
-      - ls BackEnd/target
       - scp BackEnd/target/wesped.jar ubuntu@$DEPLOY_SERVER_IP:~/wesped/ 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start wesped.service"
+
+frontend_deploy_job:
+  stage: deploy
+  image: python:latest
+  script:
+      - echo "Deploying App"
+      - pip3 install awscli
+      - aws s3 sync ./frontend/build s3://$S3_BUCKET_NAME --acl public-read
