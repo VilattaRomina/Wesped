@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContainerStyles, ContainerImageLeft, ContainerImageRight, ImageLeft, ImageRight, CardRight, CardLeft, TextStyles, CloseModalStyle, ModalStyle} from './GalleryBlockStyles'
+import { ContainerStyles, ContainerImageRight, ImageLeft, ImageRight, CardRight, CardLeft, LinkStyles, CloseModalStyle, ModalStyle} from './GalleryBlockStyles'
 import images from '../../../../data/images.json'
 import { useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -24,11 +24,11 @@ export default function GalleryBlock() {
     return (
         <>
             <ContainerStyles >
-                <ContainerImageLeft>
+                <div>
                     <CardLeft>
                         <ImageLeft src={images[0].img} alt="" />
                     </CardLeft>
-                </ContainerImageLeft>
+                </div>
                 <ContainerImageRight>
                     {images.slice(1, 5).map((item) => (
                         <CardRight key={item.id}>
@@ -36,12 +36,10 @@ export default function GalleryBlock() {
                         </CardRight>
                     ))}
                 </ContainerImageRight>
-                <TextStyles onClick={openModal}>Ver mas</TextStyles>
+                <LinkStyles onClick={openModal}>Ver mas</LinkStyles>
             </ContainerStyles>
-
             <ModalStyle
             isOpen={modalIsOpen}
-            //onRequestClose={closeModal}
             >
                 <Carousel>
                     {images.map(item => (

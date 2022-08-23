@@ -1,5 +1,5 @@
-import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, BlockIconStyle } from './ProductDetailsStyles'
-import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft} from "react-icons/fa";
+import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, ShareStyle, DescriptionStyle, LineStyles, IconStyle, PoliciesStyle, TitleStyles } from './ProductDetailsStyles'
+import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import GalleryBlock from './galleryBlock/GalleryBlock';
 import GalleryMobile from './galleryMobile/GalleryMobile'
@@ -11,25 +11,42 @@ export default function ProductDetails() {
     <BodyStyle>
       <HeaderStyle>
         <Title>
-          <h5>Categoria</h5>
-          <h4>Nombre del hotel</h4>
+          <h4>Categoria</h4>
+          <h2>Nombre del hotel</h2>
         </Title>
         <Arrow>
-          <LinkStyle to= "/">
-          <FaChevronLeft/>
+          <LinkStyle to="/">
+            <FaChevronLeft />
           </LinkStyle>
         </Arrow>
       </HeaderStyle>
       <UbicationStyle>
         <FaMapMarkerAlt />
-        <p>Ubicacion</p>
+        <h4>Ubicacion</h4>
       </UbicationStyle>
-      <BlockIconStyle>
+      <ShareStyle>
         <BiShareAlt />
         <FaRegHeart />
-      </BlockIconStyle>
-      <GalleryBlock/>
-      <GalleryMobile/>
+      </ShareStyle>
+      <GalleryBlock />
+      <GalleryMobile />
+      <DescriptionStyle>
+        <h4>titulo</h4>
+        <p>Description</p>
+      </DescriptionStyle>
+      <TitleStyles>titulo</TitleStyles>
+      <LineStyles />
+      <IconStyle>
+        <div>icon</div>
+      </IconStyle>
+      <TitleStyles>titulo</TitleStyles>
+      <LineStyles />
+      <PoliciesStyle>
+          <div>
+            <h4>titulo</h4>
+            <p>description</p>
+          </div>
+      </PoliciesStyle>
     </BodyStyle>
   )
 }
