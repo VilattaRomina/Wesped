@@ -1,15 +1,6 @@
 stages:
     - build
-    - package
     - deploy
-
-variables: 
-  MAVEN_OPTS: -Dmaven.repo.local=.m2/repository 
-  
-cache: 
-  paths: 
-    - .m2/repository 
-    - target
 
 backend_build_job: 
   stage: build
@@ -17,20 +8,12 @@ backend_build_job:
   script:
     - cd ./BackEnd
     - echo "Maven compile started"
-    - "mvn compile"
+    - mvn clean install
+  artifacts:
+    paths:
+      - BackEnd/target/wesped.jar
 
-backend_package_job: 
-  stage: package
-  image: maven:3.8.6-openjdk-18-slim 
-  artifacts: 
-    paths: 
-     - ./BackEnd/target/wesped.jar
-     
-  script: 
-     - cd ./BackEnd
-     - "mvn package"
-
-backend_deploy: 
+backend_deploy_job: 
   stage: deploy 
   image: alpine:3.11 
   before_script: 
@@ -44,5 +27,5 @@ backend_deploy:
   script:
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-18-jdk -y" 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop wesped.service"
-      - scp target/wesped.jar ubuntu@$DEPLOY_SERVER_IP:~/wesped/ 
+      - scp wesped.jar ubuntu@$DEPLOY_SERVER_IP:~/wesped/ 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start wesped.service"
