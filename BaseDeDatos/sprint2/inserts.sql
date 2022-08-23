@@ -33,10 +33,10 @@ VALUES(1, "CheckIn", "10:00"),
 (4, "Fumar", "Se permite fumar"),
 (5, "Fiestas", "No se permiten fiestas"),
 (6, "Fiestas", "Se permiten fiestas en áreas comunes como el SUM"),
-(7, "Salud", "Este establecimiento cumple con las normas sanitarias recomendadas por el ministerio de salud de su país."),
+(7, "Salud", "Se aplican las pautas de distanciamiento social y normas sanitarias por coronavirus"),
 (8, "Humo", "Detector de humo"),
 (9, "Seguridad", "Deposito de seguridad"),
-(10, "Cancelacion", "Las cancelaciones fuera de las 24h después del registro o no comparecencia a la reserva serán penalizadas con el cobro de la tarifa de un día. En caso de tarifas promocionales, las políticas de cancelación pueden modificarse");
+(10, "Cancelacion", "Agregá fechas de tu viaje para obtener los detalles de cancelación de esta estadía.");
 
 
 -- PRODUCT
