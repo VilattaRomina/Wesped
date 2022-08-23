@@ -5,17 +5,18 @@ import { CategoryContainerStyle, TitleStyle, CategoryListContainerStyle,CardStyl
 import { useState, useEffect} from 'react'
 import axios from 'axios'
 
-
+const client = axios.create({
+    baseURL: "http://localhost:8080"
+  });
 
 export default function Categories() {
 
     const [categories, setCategories] = useState([]);
 
     const URL_API ="http://localhost:8080/categories"
-    //const URL_API ="https://dummyjson.com/products"
 
     useEffect(()=> {
-        axios.get(URL_API)
+        client.get(URL_API)
         .then((res)=> {
            setCategories(res.data);
         })
