@@ -1,30 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled'; 
+import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled';
+import { AxiosIntance } from '../../../../helpers/AxiosHelper';
 
-  const data =[
-    {
-       "name":"Buenos Aires",
-       "country" :"Argentina"
-    },
-    {
-        "name":"San Carlos de Bariloche",
-        "country" :"Argentina"
-    },
-    {
-        "name":"Mendoza",
-        "country" :"Argentina"
-    },
-    {
-        "name":"Córdoba",
-        "country" :"Argentina"
-    }
-  ];
-
-export default function DropdownList({ picCity, icon}) {
+export default function DropdownList({ picCity, icon }) {
   const [displayList, setDisplayList] = useState("none");
   const selectRef = useRef();
   const [city, setCity] = useState("¿A dónde vamos?");
+  const [cities, setCities] = useState([]);
 
+  // Fill cities dropdown list with values coming from API endpoint 
+  useEffect(() => {
+    AxiosIntance.get('/cities').then(cities => setCities(cities.data))
+  }, [])
 
   useEffect(() => {
     /* Hidde component*/
@@ -48,30 +35,30 @@ export default function DropdownList({ picCity, icon}) {
     picCity(e.target.textContent);
   };
 
-  
 
-      return (
-        <>
-        <SelectStyled onClick={() => toggleList()}>
-            <p ref={selectRef}>{city}</p>
-          </SelectStyled>
 
-          <ContainerStyled displayList={displayList}> 
-          
-          {data.map((city, i) => (
-           <div key={i} className="important" onClick={handleSelect}>
-           <OptionStyled>
+  return (
+    <>
+      <SelectStyled onClick={() => toggleList()}>
+        <p ref={selectRef}>{city}</p>
+      </SelectStyled>
+
+      <ContainerStyled displayList={displayList}>
+
+        {cities.map((city, i) => (
+          <div key={i} className="important" onClick={handleSelect}>
+            <OptionStyled>
               <div className="icon">{icon}</div>
               <div className="city-container">
                 <h4>{city.name + ", "}</h4>
                 <p>{city.country} </p>
               </div>
             </OptionStyled>
-            </div>
-                    ))
-                }
+          </div>
+        ))
+        }
 
-          </ContainerStyled>
-        </>
-      );
-    }
+      </ContainerStyled>
+    </>
+  );
+}
