@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled';
-import { AxiosIntance } from '../../../../helpers/AxiosHelper';
+import { AxiosInstance } from '../../../../helpers/AxiosHelper';
 
 export default function DropdownList({ picCity, icon }) {
   const [displayList, setDisplayList] = useState("none");
@@ -10,7 +10,7 @@ export default function DropdownList({ picCity, icon }) {
 
   // Fill cities dropdown list with values coming from API endpoint 
   useEffect(() => {
-    AxiosIntance.get('/cities').then(cities => setCities(cities.data))
+    AxiosInstance.get('/cities').then(cities => setCities(cities.data))
   }, [])
 
   useEffect(() => {
