@@ -2,37 +2,35 @@ import styled from "styled-components";
 
 export const GalleryMobileStyle = styled.div`
 display: none;
+margin-bottom:20px;
+.carousel .thumbs-wrapper {
+  display:none;
+
+}
 
 @media (max-width: 768px) {
     display: block;
-   
-    .thumbs-wrapper axis-vertical {
-      display: none;
-    }
 
-    .control-dots{
-      bottom:420px;
+    .carousel-slider{
+      height: 400px;
     }
+   
    
   }
 
-  @media (max-width: 414px) {
+  @media (max-width: 600px) {
     display: block;
-    max-width:768px;
-    max-height:300px;
-
-    .thumbs-wrapper axis-vertical {
-      display: none;
-    }
-
-    .control-dots{
-      bottom:240px;
-    }
    
+    .carousel-slider{
+      max-height: 350px;
+    }
+}
+
+@media (max-width: 530px) {
+  .carousel-slider{
+    max-height: 300px;
   }
-
-
-
+}
 `
 
 export const MobileImage = styled.img`

@@ -1,6 +1,6 @@
 
-import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, ShareStyle, DescriptionStyle, LineStyles, IconStyle, PoliciesStyle, TitleStyles } from './ProductDetailsStyles'
-import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft } from "react-icons/fa";
+import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, ShareStyle, DescriptionStyle, LineStyles, FeaturesStyle, PoliciesStyle, TitleStyles } from './ProductDetailsStyles'
+import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft,  } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import GalleryBlock from './galleryBlock/GalleryBlock';
 import GalleryMobile from './galleryMobile/GalleryMobile';
@@ -29,16 +29,14 @@ export default function ProductDetails() {
     //.catch(error => setError(error));
   }, [productId]);
 
-
   return (
-
     <>
       {product ? 
         <BodyStyle>
           <HeaderStyle>
             <Title>
-              {/* <h5>{products.category.id}</h5> */}
-              <h4>{product.title}</h4>
+              {/* <h4>{products.category.id}</h4> */}
+              <h2>{product.title}</h2>
             </Title>
             <Arrow>
               <LinkStyle to="/">
@@ -48,30 +46,35 @@ export default function ProductDetails() {
           </HeaderStyle>
           <UbicationStyle>
             <FaMapMarkerAlt />
-            <p>Ubicacion</p>
+            <h4>Ubicacion</h4>
           </UbicationStyle>
           <ShareStyle>
-            <BiShareAlt />
-            <FaRegHeart />
+            <div><BiShareAlt /></div>
+            <div><FaRegHeart /></div>
           </ShareStyle>
           <GalleryBlock images={product.images}/> 
           <GalleryMobile images={product.images}/>
           <DescriptionStyle>
-        <h4>titulo</h4>
-        <p>Description</p>
+        <h4>Descripción del lugar</h4>
+        <p>{product.description}</p>
       </DescriptionStyle>
-      <TitleStyles>titulo</TitleStyles>
+      <TitleStyles>¿Que ofrece este lugar?</TitleStyles>
       <LineStyles />
-      <IconStyle>
-        <div>icon</div>
-      </IconStyle>
-      <TitleStyles>titulo</TitleStyles>
+      <FeaturesStyle>
+        {product.features.map(item =>(
+          <div key={item.id}>{item.title}</div>
+        ))}
+        
+      </FeaturesStyle>
+      <TitleStyles>Qué tenés que saber</TitleStyles>
       <LineStyles />
       <PoliciesStyle>
-          <div>
-            <h4>titulo</h4>
-            <p>description</p>
+        {product.policies.map(item =>(
+          <div key={item.id}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
           </div>
+        ))}
       </PoliciesStyle>
         </BodyStyle> :
         <p>Cargando...</p>
