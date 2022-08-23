@@ -8,8 +8,8 @@ variables:
   
 cache: 
   paths: 
-    - ./Backend/.m2/repository 
-    - ./BackEnd/target
+    - .m2/repository 
+    - target
 
 backend_build_job: 
   stage: build
@@ -33,6 +33,7 @@ backend_package_job:
      - pwd
      - "mvn package"
      - ls -lrta
+     - ls -lrta ./BackEnd/target/
 
 backend_deploy: 
   stage: deploy 
@@ -49,5 +50,5 @@ backend_deploy:
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-18-jdk -y" 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop wesped.service"
       - ls -lrta
-      - scp ./BackEnd/target/wesped.jar ubuntu@$DEPLOY_SERVER_IP:~/wesped/ 
+      - scp target/wesped.jar ubuntu@$DEPLOY_SERVER_IP:~/wesped/ 
       - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start wesped.service"
