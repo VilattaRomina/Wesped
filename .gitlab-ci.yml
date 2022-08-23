@@ -12,7 +12,9 @@ cache:
     - BackEnd/target
 
 backend_build_job: 
-  stage: build 
+  stage: build
+  before_script: 
+    - sudo apt-get install maven -y
   script:
     - cd ./BackEnd
     - echo "Maven compile started" 
