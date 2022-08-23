@@ -5,9 +5,7 @@ display: none;
 
 @media (max-width: 768px) {
     display: block;
-    max-width:768px;
-    max-height:300px;
-
+   
     .thumbs-wrapper axis-vertical {
       display: none;
     }

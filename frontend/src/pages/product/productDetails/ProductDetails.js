@@ -1,4 +1,5 @@
-import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, BlockIconStyle } from './ProductDetailsStyles';
+
+import { HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, ShareStyle, DescriptionStyle, LineStyles, IconStyle, PoliciesStyle, TitleStyles } from './ProductDetailsStyles'
 import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import GalleryBlock from './galleryBlock/GalleryBlock';
@@ -30,6 +31,7 @@ export default function ProductDetails() {
 
 
   return (
+
     <>
       {product ? 
         <BodyStyle>
@@ -48,12 +50,29 @@ export default function ProductDetails() {
             <FaMapMarkerAlt />
             <p>Ubicacion</p>
           </UbicationStyle>
-          <BlockIconStyle>
+          <ShareStyle>
             <BiShareAlt />
             <FaRegHeart />
-          </BlockIconStyle>
+          </ShareStyle>
           <GalleryBlock images={product.images}/> 
           <GalleryMobile images={product.images}/>
+          <DescriptionStyle>
+        <h4>titulo</h4>
+        <p>Description</p>
+      </DescriptionStyle>
+      <TitleStyles>titulo</TitleStyles>
+      <LineStyles />
+      <IconStyle>
+        <div>icon</div>
+      </IconStyle>
+      <TitleStyles>titulo</TitleStyles>
+      <LineStyles />
+      <PoliciesStyle>
+          <div>
+            <h4>titulo</h4>
+            <p>description</p>
+          </div>
+      </PoliciesStyle>
         </BodyStyle> :
         <p>Cargando...</p>
       }
