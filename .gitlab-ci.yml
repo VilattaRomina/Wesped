@@ -20,7 +20,7 @@ frontend_build_job:
       - cd ./frontend
       - echo "Start building App"
       - npm install
-      - npm run build
+      - CI=false npm run build
       - echo "Build successfully!"
   artifacts:
     paths:
