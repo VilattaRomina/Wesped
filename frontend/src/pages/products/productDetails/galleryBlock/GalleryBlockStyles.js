@@ -55,19 +55,22 @@ cursor:pointer;
 `
 export const ModalStyle = styled.div`
 background-color: rgba(0,0,0,0.9);
-height:400px;
+height:100%;
 width:100vw;
 position: absolute;
 bottom:10px;
 display: ${props => props.isOpen ? " " : "none"};
 
-
 div{
-max-width:600px;;
-max-height:500px;
+max-width:700px;;
+max-height:700px;
 margin: auto;
 padding-top:40px;
    
+}
+
+@media (max-width: 768px){
+  display:none;
 }
 
 `

@@ -38,10 +38,8 @@ export default function GalleryBlock() {
                 </ContainerImageRight>
                 <LinkStyles onClick={openModal}>Ver mas</LinkStyles>
             </ContainerStyles>
-
             <ModalStyle
             isOpen={modalIsOpen}
-            //onRequestClose={closeModal}
             >
                 <Carousel>
                     {images.map(item => (
