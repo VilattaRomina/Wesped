@@ -6,15 +6,10 @@ import { useState, useEffect} from 'react'
 // import axios from 'axios'
 import { AxiosInstance } from '../../../helpers/AxiosHelper'
 
-// const client = axios.create({
-//     baseURL: "http://localhost:8080"
-//   });
-
 export default function Categories() {
 
     const [categories, setCategories] = useState([]);
 
-    //const URL_API ="http://localhost:8080/categories"
 
     useEffect(()=> {
         AxiosInstance.get('/categories')
