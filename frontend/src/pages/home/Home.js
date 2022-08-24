@@ -6,27 +6,27 @@ import { useState, useEffect } from 'react';
 import { AxiosInstance } from '../../helpers/AxiosHelper'
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [productsToDisplay, setProductsToDisplay] = useState([]);
 
-  const setProductsToDisplayByCity = (city) => setProductsToDisplay(city)
+  const setProductsToDisplayByCity = (city) => setProducts(city)
 
   useEffect(() => {
     AxiosInstance.get("/products")
-      .then(res => setProductsToDisplay(res.data))
+      .then(res => setProducts(res.data))
   }, [])
 
   useEffect(() => {
     const url = selectedCategory ? `/products/category/${selectedCategory}` : '/products';
     AxiosInstance.get(url)
-      .then(res => setProductsToDisplay(res.data))
+      .then(res => setProducts(res.data))
   }, [selectedCategory])
 
   return (
     <>
       <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} />
       <Categories setSelectedCategory={setSelectedCategory} />
-      <Recommendations productsToDisplay={productsToDisplay} />
+      <Recommendations products={products} />
     </>
   )
 }

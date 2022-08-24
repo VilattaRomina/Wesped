@@ -10,12 +10,12 @@ export default function RecommendationsItem({ id, images, category, title, city,
             <Card>
                 <ItemRecommendationStyle >
                     <ImageWrapperStyle>
-                        <ImageRecommendationStyle src={images[1].urlImage} alt="img"/>
+                        <ImageRecommendationStyle src={images.sort((lhs, rhs) => lhs.id - rhs.id)[0].urlImage} alt="img"/>
                     </ImageWrapperStyle>
                     <InfoRecommendationsStyle>
-                        <CategoryStyle>{category.id}</CategoryStyle>
+                        <CategoryStyle>Categoria: {category.id}</CategoryStyle>
                         <TitleStyle>{title}</TitleStyle>
-                        <LocationTextStyle><HiLocationMarker/>{city.id}</LocationTextStyle>
+                        <LocationTextStyle><HiLocationMarker/>Ubicacion: {city.id}</LocationTextStyle>
                         <DescriptionStyle>{description}</DescriptionStyle>
                         
                         <Button><Link style={{ color:'#fff'}} to={`/producto/${id}`}>Ver detalle</Link></Button>

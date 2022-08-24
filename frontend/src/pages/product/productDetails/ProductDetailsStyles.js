@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 export const BodyStyle = styled.section`
   padding-top:81px;
+  height:${props => props.isOpen ? "100vh" : "auto"};
+  overflow-y:${props => props.isOpen ? "hidden" : "auto"}
 `
 export const HeaderStyle = styled.div`
   height:70px;
@@ -85,7 +87,7 @@ export const FeaturesStyle = styled.section`
   padding: 40px 30px 30px 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap:20px;
+  gap:30px;
 
   @media (max-width: 768px){
     grid-template-columns: 1fr 1fr ;
@@ -96,13 +98,14 @@ export const PoliciesStyle = styled.section`
   padding: 40px 30px 80px 30px;
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap:20px;
+  gap:30px;
   p{
     color: ${props => props.theme.text_secondary}
   }
 
   @media (max-width: 768px){
     grid-template-columns: 1fr 1fr ;
+    gap:40px;
   }
 `
 

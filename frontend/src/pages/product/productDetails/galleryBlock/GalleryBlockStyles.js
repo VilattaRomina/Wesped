@@ -58,14 +58,15 @@ background-color: rgba(0,0,0,0.9);
 height:100%;
 width:100vw;
 position: absolute;
-bottom:10px;
+top:12px;
+padding-top:100px;
 display: ${props => props.isOpen ? " " : "none"};
 
+
 div{
-max-width:700px;;
-max-height:700px;
+max-width:670px;;
+max-height:437px;
 margin: auto;
-padding-top:40px;
    
 }
 

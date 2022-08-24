@@ -51,6 +51,7 @@ padding:10px;
 max-width: 206px;
 min-width: 166px;
 
+
 @media (max-width: 414px) {
   max-width: 100%;
   min-width: 100%;
