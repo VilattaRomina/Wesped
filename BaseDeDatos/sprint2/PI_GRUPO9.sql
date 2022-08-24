@@ -8,15 +8,15 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema pi_grupo9
+-- Schema PI_GRUPO9
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `pi_grupo9` DEFAULT CHARACTER SET utf8mb3 ;
 USE `pi_grupo9` ;
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`categories`
+-- Table `PI_GRUPO9`.`categories`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`categories` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`categories` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
@@ -27,9 +27,9 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`cities`
+-- Table `PI_GRUPO9`.`cities`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`cities` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`cities` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   `country` VARCHAR(50) NOT NULL,
@@ -39,9 +39,9 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`features`
+-- Table `PI_GRUPO9`.`features`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`features` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`features` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `icon` VARCHAR(255) NULL DEFAULT NULL,
@@ -51,9 +51,9 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`product`
+-- Table `PI_GRUPO9`.`product`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`product` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
@@ -68,18 +68,18 @@ CREATE TABLE IF NOT EXISTS `pi_grupo9`.`product` (
   INDEX `fk_product_categories1_idx` (`categories_id` ASC) VISIBLE,
   CONSTRAINT `fk_product_categories1`
     FOREIGN KEY (`categories_id`)
-    REFERENCES `pi_grupo9`.`categories` (`id`),
+    REFERENCES `PI_GRUPO9`.`categories` (`id`),
   CONSTRAINT `fk_product_cities1`
     FOREIGN KEY (`cities_id`)
-    REFERENCES `pi_grupo9`.`cities` (`id`))
+    REFERENCES `PI_GRUPO9`.`cities` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`images`
+-- Table `PI_GRUPO9`.`images`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`images` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`images` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
@@ -89,15 +89,15 @@ CREATE TABLE IF NOT EXISTS `pi_grupo9`.`images` (
   INDEX `fk_images_product1_idx` (`product_id` ASC) VISIBLE,
   CONSTRAINT `fk_images_product1`
     FOREIGN KEY (`product_id`)
-    REFERENCES `pi_grupo9`.`product` (`id`))
+    REFERENCES `PI_GRUPO9`.`product` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`policy`
+-- Table `PI_GRUPO9`.`policy`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`policy` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`policy` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
@@ -107,9 +107,9 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`product_has_features`
+-- Table `PI_GRUPO9`.`product_has_features`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`product_has_features` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`product_has_features` (
   `product_id` INT NOT NULL,
   `features_id` INT NOT NULL,
   PRIMARY KEY (`product_id`, `features_id`),
@@ -117,18 +117,18 @@ CREATE TABLE IF NOT EXISTS `pi_grupo9`.`product_has_features` (
   INDEX `fk_product_has_features_product1_idx` (`product_id` ASC) VISIBLE,
   CONSTRAINT `fk_product_has_features_features1`
     FOREIGN KEY (`features_id`)
-    REFERENCES `pi_grupo9`.`features` (`id`),
+    REFERENCES `PI_GRUPO9`.`features` (`id`),
   CONSTRAINT `fk_product_has_features_product1`
     FOREIGN KEY (`product_id`)
-    REFERENCES `pi_grupo9`.`product` (`id`))
+    REFERENCES `PI_GRUPO9`.`product` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `pi_grupo9`.`product_has_policy`
+-- Table `PI_GRUPO9`.`product_has_policy`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pi_grupo9`.`product_has_policy` (
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`product_has_policy` (
   `product_id` INT NOT NULL,
   `policy_id` INT NOT NULL,
   PRIMARY KEY (`product_id`, `policy_id`),
@@ -136,10 +136,10 @@ CREATE TABLE IF NOT EXISTS `pi_grupo9`.`product_has_policy` (
   INDEX `fk_product_has_policy_product1_idx` (`product_id` ASC) VISIBLE,
   CONSTRAINT `fk_product_has_policy_policy1`
     FOREIGN KEY (`policy_id`)
-    REFERENCES `pi_grupo9`.`policy` (`id`),
+    REFERENCES `PI_GRUPO9`.`policy` (`id`),
   CONSTRAINT `fk_product_has_policy_product1`
     FOREIGN KEY (`product_id`)
-    REFERENCES `pi_grupo9`.`product` (`id`))
+    REFERENCES `PI_GRUPO9`.`product` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
