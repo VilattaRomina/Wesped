@@ -9,6 +9,7 @@ import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
 import Product from "./pages/product/Product";
 
+
 function App() {
   const [loggedUser, setLoggedUser] = useState({ valid: false, email: "" });
 

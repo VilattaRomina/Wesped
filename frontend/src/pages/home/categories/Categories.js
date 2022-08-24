@@ -3,25 +3,22 @@ import React from 'react'
 import CategoryItem from './categoryItem/CategoryItem'
 import { CategoryContainerStyle, TitleStyle, CategoryListContainerStyle,CardStyle } from './CategoryStyles'
 import { useState, useEffect} from 'react'
-import axios from 'axios'
-
-
+// import axios from 'axios'
+import { AxiosInstance } from '../../../helpers/AxiosHelper'
 
 export default function Categories() {
 
     const [categories, setCategories] = useState([]);
 
-    const URL_API ="http://localhost:8080/categories"
-    //const URL_API ="https://dummyjson.com/products"
 
     useEffect(()=> {
-        axios.get(URL_API)
+        AxiosInstance.get('/categories')
         .then((res)=> {
            setCategories(res.data);
         })
     }, [])
 
-
+    
     return (
         <CategoryContainerStyle>
             <TitleStyle>Buscar por tipo de alojamiento</TitleStyle>
