@@ -12,12 +12,12 @@ export default function Home() {
   const setProductsToDisplayByCity = (city) => setProductsToDisplay(city)
 
   useEffect(() => {
-    AxiosInstance.get("http://localhost:8080/products")
+    AxiosInstance.get("/products")
       .then(res => setProductsToDisplay(res.data))
   }, [])
 
   useEffect(() => {
-    const url = selectedCategory ? `http://localhost:8080/products/category/${selectedCategory}` : 'http://localhost:8080/products';
+    const url = selectedCategory ? `/products/category/${selectedCategory}` : '/products';
     AxiosInstance.get(url)
       .then(res => setProductsToDisplay(res.data))
   }, [selectedCategory])
