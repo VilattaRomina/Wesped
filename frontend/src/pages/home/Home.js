@@ -9,15 +9,22 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  const setProductsToDisplayByCity = (city) => setProducts(city)
+
   useEffect(() => {
-    const url = selectedCategory ? `http://ec2-18-224-138-216.us-east-2.compute.amazonaws.com:8080/products/category/${selectedCategory}` : 'http://ec2-18-224-138-216.us-east-2.compute.amazonaws.com:8080/products';
-   AxiosInstance.get(url)
-    .then(res => setProducts(res.data))
+    AxiosInstance.get("/products")
+      .then(res => setProducts(res.data))
+  }, [])
+
+  useEffect(() => {
+    const url = selectedCategory ? `/products/category/${selectedCategory}` : '/products';
+    AxiosInstance.get(url)
+      .then(res => setProducts(res.data))
   }, [selectedCategory])
 
   return (
     <>
-      <SearchBlock />
+      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} />
       <Categories setSelectedCategory={setSelectedCategory} />
       <Recommendations products={products} />
     </>

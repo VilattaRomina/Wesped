@@ -1,6 +1,5 @@
 import React from 'react';
-//import products from '../../../data/products.json';
-import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle,CardStyle } from './RecommendationsStyles';
+import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle, CardStyle } from './RecommendationsStyles';
 import RecommendationsItem from './recommendationsItems/RecommendationsItem';
 
 export default function Recommendations({ products }) {
