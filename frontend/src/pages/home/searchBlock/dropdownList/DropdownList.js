@@ -32,11 +32,13 @@ export default function DropdownList({ picCity, icon, getAndSetSelectedCityID })
   const toggleList = () => {
     displayList === "none" ? setDisplayList("initial") : setDisplayList("none");
   };
+
   const handleSelect = (e) => {
     setCity(e.target.textContent);
     setSelectedCityId(e.target.children[1].children[2].value)
   };
 
+  // Disparo un Timeout para que cuando haya un cambio en "selectedCityID" se dé lugar a finalizar el seteo de esa variable de estado y podamos capturar su valor
   setTimeout(() => {
     getAndSetSelectedCityID(selectedCityID)
   }, 25)
