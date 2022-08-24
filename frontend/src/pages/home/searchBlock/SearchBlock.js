@@ -14,7 +14,8 @@ import { AxiosInstance } from "../../../helpers/AxiosHelper";
 const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
 
-  const submitAndFilterByCity = () => {
+
+  const filterProductsByCity = () => {
     AxiosInstance.get(`/products/city/${selectedCityID}`, {
     })
       .then(products => {
@@ -22,11 +23,15 @@ const SearchBlock = (props) => {
       })
       .catch(err => console.log(err))
   }
+
+  // Metodo para setear "selectedCityID" state capturado en el componente DropdownList
   const getAndSetSelectedCityID = (selectedCityID) => setSelectedCityId(selectedCityID)
 
+  // Al realizar submit del form de buscador, se llama al endpoint de buscar productos por Id de Ciudad
+  // y mediante props seteo la lista de productos a mostrar (productsToDisplay)
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitAndFilterByCity();
+    filterProductsByCity();
   }
 
   return (
