@@ -6,10 +6,9 @@ import { useState, useEffect} from 'react'
 // import axios from 'axios'
 import { AxiosInstance } from '../../../helpers/AxiosHelper'
 
-export default function Categories() {
+export default function Categories({ setSelectedCategory }) {
 
     const [categories, setCategories] = useState([]);
-
 
     useEffect(()=> {
         AxiosInstance.get('/categories')
@@ -25,7 +24,7 @@ export default function Categories() {
             <CategoryListContainerStyle>
                 {
                     categories.map((item) =>
-                        <CardStyle key={item.id}>
+                        <CardStyle key={item.id} onClick={() => setSelectedCategory(item.id)}>
                             <CategoryItem {...item} />
                         </CardStyle>
                     )
