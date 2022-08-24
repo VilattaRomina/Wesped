@@ -1,16 +1,15 @@
 import React from 'react';
-//import products from '../../../data/products.json';
-import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle,CardStyle } from './RecommendationsStyles';
+import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle, CardStyle } from './RecommendationsStyles';
 import RecommendationsItem from './recommendationsItems/RecommendationsItem';
 
-export default function Recommendations({ products }) {
+export default function Recommendations({ productsToDisplay }) {
 
   return (
     <RecommendationContainerStyle>
       <RecomendationTitle>Recomendaciones</RecomendationTitle>
       <ListRecommendationsStyle>
         {
-          products.map(item =>
+          productsToDisplay.map(item =>
             <CardStyle key={item.id} >
               <RecommendationsItem {...item} />
             </CardStyle>

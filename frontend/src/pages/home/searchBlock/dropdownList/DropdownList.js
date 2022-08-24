@@ -2,11 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { SelectStyled, OptionStyled, ContainerStyled } from './DropdownListStyled';
 import { AxiosInstance } from '../../../../helpers/AxiosHelper';
 
-export default function DropdownList({ picCity, icon }) {
+export default function DropdownList({ picCity, icon, getAndSetSelectedCityID }) {
   const [displayList, setDisplayList] = useState("none");
   const selectRef = useRef();
   const [city, setCity] = useState("¿A dónde vamos?");
   const [cities, setCities] = useState([]);
+  const [selectedCityID, setSelectedCityId] = useState(0);
+
 
   // Fill cities dropdown list with values coming from API endpoint 
   useEffect(() => {
@@ -32,10 +34,12 @@ export default function DropdownList({ picCity, icon }) {
   };
   const handleSelect = (e) => {
     setCity(e.target.textContent);
-    picCity(e.target.textContent);
+    setSelectedCityId(e.target.children[1].children[2].value)
   };
 
-
+  setTimeout(() => {
+    getAndSetSelectedCityID(selectedCityID)
+  }, 25)
 
   return (
     <>
@@ -44,7 +48,6 @@ export default function DropdownList({ picCity, icon }) {
       </SelectStyled>
 
       <ContainerStyled displayList={displayList}>
-
         {cities.map((city, i) => (
           <div key={i} className="important" onClick={handleSelect}>
             <OptionStyled>
@@ -52,11 +55,11 @@ export default function DropdownList({ picCity, icon }) {
               <div className="city-container">
                 <h4>{city.name + ", "}</h4>
                 <p>{city.country} </p>
+                <input type="hidden" name="cityID" value={city.id} />
               </div>
             </OptionStyled>
           </div>
-        ))
-        }
+        ))}
 
       </ContainerStyled>
     </>
