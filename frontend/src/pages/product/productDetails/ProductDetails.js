@@ -8,7 +8,20 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosInstance } from '../../../helpers/AxiosHelper';
 
+
 export default function ProductDetails() {
+
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+      setIsOpen(true)
+  }
+
+  function closeModal() {
+      setIsOpen(false);
+  }
+
 
   const { productId } = useParams();
 
@@ -28,10 +41,10 @@ export default function ProductDetails() {
   return (
     <>
       {product ? 
-        <BodyStyle>
+        <BodyStyle isOpen={modalIsOpen}>
           <HeaderStyle>
             <Title>
-              {/* <h4>{products.category.id}</h4> */}
+               <h4>Categoria: {product.category.id}</h4> 
               <h2>{product.title}</h2>
             </Title>
             <Arrow>
@@ -42,13 +55,13 @@ export default function ProductDetails() {
           </HeaderStyle>
           <UbicationStyle>
             <FaMapMarkerAlt />
-            <h4>Ubicacion</h4>
+            <h4>Ubicacion: {product.city.id}</h4>
           </UbicationStyle>
           <ShareStyle>
             <div><BiShareAlt /></div>
             <div><FaRegHeart /></div>
           </ShareStyle>
-          <GalleryBlock images={product.images}/> 
+          <GalleryBlock images={product.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal}/> 
           <GalleryMobile images={product.images}/>
           <DescriptionStyle>
         <h4>Descripción del lugar</h4>
@@ -60,7 +73,6 @@ export default function ProductDetails() {
         {product.features.map(item =>(
           <div key={item.id}>{item.title}</div>
         ))}
-        
       </FeaturesStyle>
       <TitleStyles>Qué tenés que saber</TitleStyles>
       <LineStyles />
