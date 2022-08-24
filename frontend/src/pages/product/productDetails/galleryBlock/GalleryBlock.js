@@ -1,22 +1,12 @@
 import React from 'react'
 import { ContainerStyles, ContainerImageRight, ImageLeft, ImageRight, CardRight, CardLeft, LinkStyles, CloseModalStyle, ModalStyle} from './GalleryBlockStyles'
 //import images from '../../../../data/images.json'
-import { useState } from 'react';
+//import { useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 
-export default function GalleryBlock({images}) {
-
-    const [modalIsOpen, setIsOpen] = useState(false);
-
-    function openModal() {
-        setIsOpen(true)
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
+export default function GalleryBlock({images, openModal, closeModal, modalIsOpen}) {
 
     return (
         <>

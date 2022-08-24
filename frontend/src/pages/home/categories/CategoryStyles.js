@@ -40,7 +40,9 @@ export const CategoryListContainerStyle = styled.div`
       width: 100%;
     }
 
-    @media (min-width: 415px) and (max-width: 768px) {
+    @media (min-width: 415px) and (max-width: 900px) {
+      display: flex;
+    gap: 14px;
       flex-flow: row wrap;
       align-items: stretch;
     }
@@ -54,7 +56,7 @@ transition: transform 500ms ease;
   transform: scale(1.05);
 }
 
-@media (min-width: 415px) and (max-width: 768px) {
+@media (min-width: 415px) and (max-width: 900px) {
     width: calc(50% - 7px)
 }
 `
