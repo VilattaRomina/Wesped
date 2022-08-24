@@ -25,8 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
-          <Route path="/productos/*" element={<Product />}/>
-          <Route path="/categorias" element={<CategoryFilter />} />
+          <Route path="/producto/*" element={<Product />} />
         </Routes>
         <Footer />
       </ThemeProvider>
