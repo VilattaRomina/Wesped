@@ -10,8 +10,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema PI_GRUPO9
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `pi_grupo9` DEFAULT CHARACTER SET utf8mb3 ;
-USE `pi_grupo9` ;
+CREATE SCHEMA IF NOT EXISTS `PI_GRUPO9` DEFAULT CHARACTER SET utf8mb3 ;
+USE `PI_GRUPO9` ;
 
 -- -----------------------------------------------------
 -- Table `PI_GRUPO9`.`categories`
