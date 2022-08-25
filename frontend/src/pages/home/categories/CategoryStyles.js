@@ -5,7 +5,7 @@ export const CategoryContainerStyle = styled.section`
   max-width: 1366px;
   margin: 0 auto;
   background: #F3F1ED;
-  padding: 240px 32px 16px 32px;
+  padding: 240px 32px 0px 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
