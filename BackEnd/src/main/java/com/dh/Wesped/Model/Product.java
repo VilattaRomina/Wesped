@@ -1,5 +1,6 @@
 package com.dh.Wesped.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,25 +24,24 @@ public class Product {
     private Double latitude;
     private Double rating;
     private Boolean availability;
-    @JsonIncludeProperties(value = {"id"})
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIncludeProperties(value = {"id", "title"})
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "categories_id")
     private Category category;
-    @JsonIncludeProperties(value = {"id"})
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "cities_id")
     private City city;
-    @JsonIncludeProperties(value = {"id","urlImage"})
-    @OneToMany(mappedBy = "product")
+    @JsonIncludeProperties(value = {"id", "urlImage"})
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "product_id")
     private Set<Image> images = new HashSet<>();
-   // @JsonIncludeProperties(value = {"id"})
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "product_has_features",
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "features_id")})
     private Set<Feature> features = new HashSet<>();
-   // @JsonIncludeProperties(value = {"id"})
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "product_has_policy",
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "policy_id")})
@@ -50,17 +50,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(String title, String description, Double longitude, Double latitude, Double rating, Boolean availability, Category category, City city, Set<Feature> features, Set<Policy> policies) {
+    public Product(String title, String description, Double longitude, Double latitude, Double rating, Boolean availability) {
         this.title = title;
         this.description = description;
         this.longitude = longitude;
         this.latitude = latitude;
         this.rating = rating;
         this.availability = availability;
-        this.category = category;
-        this.city = city;
-        this.features = features;
-        this.policies = policies;
     }
 
     @Override
@@ -75,6 +71,7 @@ public class Product {
                 ", availability=" + availability +
                 ", category=" + category +
                 ", city=" + city +
+                ", images=" + images +
                 ", features=" + features +
                 ", policies=" + policies +
                 '}';

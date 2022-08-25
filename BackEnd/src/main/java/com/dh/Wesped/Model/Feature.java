@@ -25,10 +25,9 @@ public class Feature {
     public Feature() {
     }
 
-    public Feature(String title, String icon, Set<Product> products) {
+    public Feature(String title, String icon) {
         this.title = title;
         this.icon = icon;
-        this.products = products;
     }
 
     @Override
@@ -37,7 +36,6 @@ public class Feature {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", icon='" + icon + '\'' +
-                ", products=" + products +
                 '}';
     }
 }

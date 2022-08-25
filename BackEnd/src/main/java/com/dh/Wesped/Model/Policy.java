@@ -26,10 +26,9 @@ public class Policy {
     public Policy() {
     }
 
-    public Policy(String title, String description, Set<Product> products) {
+    public Policy(String title, String description) {
         this.title = title;
         this.description = description;
-        this.products = products;
     }
 
     @Override
@@ -38,8 +37,6 @@ public class Policy {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", products=" + products +
                 '}';
     }
 }
-
