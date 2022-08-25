@@ -23,7 +23,7 @@ export default function Recommendations({ products, loggedUser, selectedCategory
     return arrayOfProducts.slice(0, 6);
   };
 
-  const productsToDisplay = !loggedUser.valid ? shuffleResults(products) : products;
+  const productsToDisplay = !loggedUser?.valid ? shuffleResults(products) : products;
 
   return (
     <RecommendationContainerStyle>
