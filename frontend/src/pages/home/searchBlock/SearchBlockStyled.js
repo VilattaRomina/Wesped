@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 //General
 export const ContainerSearchBlock = styled.div`
-  background: #0073A3;
+  background: rgba(0, 115, 163, .9);
   padding: 0.1em;
   z-index:10;
   position:fixed;
