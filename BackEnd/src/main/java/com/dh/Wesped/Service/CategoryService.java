@@ -50,6 +50,7 @@ public class CategoryService {
         Optional<Category> categorySearched = Optional.ofNullable(findById(id));
         if (categorySearched.isPresent()) {
             categoryRepository.deleteById(id);
+            /*categoryRepository.resetAutoIncrement();*/
         } else {
             throw new ResourceNotFoundException("No encontramos categoria con id: " + id);
         }

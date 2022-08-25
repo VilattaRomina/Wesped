@@ -1,5 +1,6 @@
 package com.dh.Wesped.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +20,9 @@ public class Category {
     private String title;
     private String description;
     private String urlImage;
-    /*Si agregamos este atributo, el endpoint de Categorias retorna el json de productos
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
-    private Set<Product> products = new HashSet<>();*/
+    private Set<Product> products = new HashSet<>();
 
     public Category() {
     }
