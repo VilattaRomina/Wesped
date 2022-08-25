@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const InputContainer = styled.div`
   position: relative;
   max-width: 420px;
-  min-width: 254px;
+  min-width: 200px;
   height: 40px;
   background: #FFFFFF;
   color: #DFE4EA;
@@ -15,6 +15,7 @@ export const InputContainer = styled.div`
   @media (max-width: 760px) {
     max-width: 100%;
     min-width: 100%;
+
   }
 
 `;
@@ -25,7 +26,8 @@ export const Input = styled.div`
   height: 40px;
   border: none;
   margin-right: 20px;
-
+  padding-block-start: 4px;
+  
   @media all and (max-width:760px){
     width:100%;
     margin-left:10px;

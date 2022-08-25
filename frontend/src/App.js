@@ -9,6 +9,7 @@ import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
 import Product from "./pages/product/Product";
 
+
 function App() {
   const [loggedUser, setLoggedUser] = useState({ valid: false, email: "" });
 
@@ -21,10 +22,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <Header loggedUser={loggedUser} isLoggedUser={isLoggedUser} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home loggedUser={loggedUser} />} />
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
-          <Route path="/productos/*" element={<Product />}/>
+          <Route path="/producto/*" element={<Product />} />
         </Routes>
         <Footer />
       </ThemeProvider>

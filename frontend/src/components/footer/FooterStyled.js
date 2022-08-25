@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerFooter = styled.div`
 background:${props => props.theme.primary};
+opacity: .8;
 width: 100vw;
 height: 60px;
 display: flex;
@@ -10,7 +11,6 @@ justify-content: space-between;
 padding:20px;
 position: fixed;
 bottom:0;
-
 
 @media (min-width:769px){
   width:100%;
@@ -28,7 +28,6 @@ export const FooterBlock = styled.div`
 export const FooterText = styled.p`
   font-weight: 700;
   font-size: 16px;
-
   @media (min-width: 415px) and (max-width: 768px){
     font-size:15px;
   }

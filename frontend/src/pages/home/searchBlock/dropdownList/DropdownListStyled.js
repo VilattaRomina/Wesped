@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export  const SelectStyled = styled.div`
+export const SelectStyled = styled.div`
   width: 100%;
   height: 100%;
   padding-left: 1em;
   color: #eeee;
   border: none;
+  
 
   &:focus {
     outline: none;
@@ -15,6 +16,7 @@ export  const SelectStyled = styled.div`
     width: 100%;
     height: 100%;
     padding: 0.45em 0;
+    font-size: 17px;
   }
 `;
 

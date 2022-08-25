@@ -39,6 +39,8 @@
     width: 100%;
     border: none;
     left: 10px;
+    color: #545776;
+  font-size: 16px;
   }
   .react-datepicker {
     border-radius: 2px;
