@@ -3,7 +3,7 @@ import React from 'react';
 import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle,CardStyle } from './RecommendationsStyles';
 import RecommendationsItem from './recommendationsItems/RecommendationsItem';
 
-export default function Recommendations({ products }) {
+export default function Recommendations({ products, setSelectedCategory }) {
 
   return (
     <RecommendationContainerStyle>

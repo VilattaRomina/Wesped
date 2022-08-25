@@ -3,6 +3,7 @@ import {
   ContainerSearchBlock,
   SearchBlockTitle,
   SearchBar,
+  ButtonStyle
 } from "./SearchBlockStyled";
 
 
@@ -29,10 +30,9 @@ function SearchBlock(picDate, city, ) {
           icon={<FaRegCalendarAlt />}
         />
 
-        <div>
-          <Button width="12.5rem" theme="secondary">Buscar</Button>
-        </div>
-
+        <ButtonStyle>
+          <Button width="100%" theme="secondary">Buscar</Button>
+        </ButtonStyle>
 
       </SearchBar>
     </ContainerSearchBlock>

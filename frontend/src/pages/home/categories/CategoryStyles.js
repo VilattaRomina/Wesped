@@ -14,15 +14,13 @@ export const CategoryContainerStyle = styled.section`
     padding-top: 20px;
   }
 
-  
-
 `
 export const TitleStyle = styled.h2`
 font-weight: 600;
 font-size: 25px;
 line-height: 28px;
 color: #383B58;
-margin-bottom: 10px;
+margin-bottom: 20px;
 
 @media (max-width: 414px) {
   font-size:21px
@@ -50,6 +48,7 @@ export const CategoryListContainerStyle = styled.div`
 
 export const CardStyle = styled.div`
 width: 100%;
+cursor:pointer;
 
 transition: transform 500ms ease;
 &:hover {

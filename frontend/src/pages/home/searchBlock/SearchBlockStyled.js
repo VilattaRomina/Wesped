@@ -38,23 +38,20 @@ export const SearchBar = styled.div`
   justify-content: center;
   gap: 10px;
   padding: 0px 20px 20px 20px;
-  
 
   @media(max-width: 760px){
     flex-direction: column;
     align-items: flex-end;
+   
   }
 `;
 
 export const ButtonStyle = styled.div`
-padding:10px;
-max-width: 206px;
-min-width: 166px;
+min-width: 254px;
+height: 40px;
 
-
-@media (max-width: 414px) {
-  max-width: 100%;
-  min-width: 100%;
+@media (max-width: 760px) {
+  width:100%;
 }
 `
 

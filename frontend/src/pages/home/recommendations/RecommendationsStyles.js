@@ -17,7 +17,7 @@ export const RecommendationContainerStyle = styled.section`
 export const RecomendationTitle = styled.h2`
   font-weight: 600;
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #383B58;
 
   @media (max-width: 414px) {
