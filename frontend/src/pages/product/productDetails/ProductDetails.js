@@ -32,7 +32,6 @@ export default function ProductDetails() {
   useEffect(() => {
     AxiosInstance.get(`/products/${productId}`)
       .then((res) => {
-        console.log(res.data);
         res.data.images = res.data.images.sort((lhs, rhs) => lhs.id - rhs.id)
         setProduct(res.data);
     })
