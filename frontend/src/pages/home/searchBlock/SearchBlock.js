@@ -3,6 +3,7 @@ import {
   ContainerSearchBlock,
   SearchBlockTitle,
   SearchBar,
+  ButtonStyle
 } from "./SearchBlockStyled";
 import DropdownList from "./dropdownList/DropdownList";
 import Schedule from "../searchBlock/schedule/Schedule";
@@ -49,7 +50,9 @@ const SearchBlock = (props) => {
             input={<Schedule icon={<FaRegCalendarAlt />} picDate={props.picDate} />}
             icon={<FaRegCalendarAlt />}
           />
-          <Button type="submit" width="12.5rem" theme="secondary">Buscar</Button>
+          <ButtonStyle>
+          <Button type="submit" width="100%" theme="secondary">Buscar</Button>
+          </ButtonStyle>
         </SearchBar>
       </form>
     </ContainerSearchBlock>

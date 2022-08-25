@@ -58,9 +58,9 @@ export const UbicationStyle = styled.div`
 
 export const ShareStyle = styled.div`
   height:50px;
-  padding: 20px 0 10px 30px;
+  padding: 20px 0 20px 30px;
   display:flex;
-  font-size:18px;
+  font-size:20px;
   div{
     padding-right:10px;
   }
@@ -87,7 +87,17 @@ export const FeaturesStyle = styled.section`
   padding: 40px 30px 30px 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap:30px;
+  gap:20px;
+  align-items: center;
+  justify-items: start;
+  
+
+  span{
+    color:${props => (props.theme.primary)};
+    font-size: 22px;
+    padding-right:15px;
+
+  }
 
   @media (max-width: 768px){
     grid-template-columns: 1fr 1fr ;
@@ -99,6 +109,8 @@ export const PoliciesStyle = styled.section`
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap:30px;
+  align-items: center;
+  justify-items: start;
   p{
     color: ${props => props.theme.text_secondary}
   }

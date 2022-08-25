@@ -58,8 +58,8 @@ background-color: rgba(0,0,0,0.9);
 height:100%;
 width:100vw;
 position: absolute;
-top:12px;
-padding-top:100px;
+top:50px;
+padding-top:120px;
 display: ${props => props.isOpen ? " " : "none"};
 
 

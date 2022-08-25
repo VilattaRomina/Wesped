@@ -7,6 +7,7 @@ import GalleryMobile from './galleryMobile/GalleryMobile';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosInstance } from '../../../helpers/AxiosHelper';
+import { Icons } from '../../../ui/icons';
 
 
 export default function ProductDetails() {
@@ -44,7 +45,7 @@ export default function ProductDetails() {
         <BodyStyle isOpen={modalIsOpen}>
           <HeaderStyle>
             <Title>
-               <h4>Categoria: {product.category.id}</h4> 
+               <h4>{product.category.title}</h4> 
               <h2>{product.title}</h2>
             </Title>
             <Arrow>
@@ -55,7 +56,7 @@ export default function ProductDetails() {
           </HeaderStyle>
           <UbicationStyle>
             <FaMapMarkerAlt />
-            <h4>Ubicacion: {product.city.id}</h4>
+            <h4>{product.city.name + ", " + product.city.country}</h4>
           </UbicationStyle>
           <ShareStyle>
             <div><BiShareAlt /></div>
@@ -71,7 +72,7 @@ export default function ProductDetails() {
       <LineStyles />
       <FeaturesStyle>
         {product.features.map(item =>(
-          <div key={item.id}>{item.title}</div>
+          <div key={item.id}><span>{Icons[item.icon]}</span>{item.title}</div>
         ))}
       </FeaturesStyle>
       <TitleStyles>Qué tenés que saber</TitleStyles>

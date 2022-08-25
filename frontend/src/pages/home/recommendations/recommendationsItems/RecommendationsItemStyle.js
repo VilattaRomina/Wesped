@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 
 export const ItemRecommendationStyle = styled.div`
@@ -81,4 +82,8 @@ export const DescriptionStyle = styled.p`
   
 `
 
+export const LinkStyle =styled(Link)`
+ color:#fff;
+ text-decoration: none;
+`
 ;
