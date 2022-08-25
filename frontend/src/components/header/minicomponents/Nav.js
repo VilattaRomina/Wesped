@@ -46,10 +46,11 @@ const Nav = (props) => {
         <BackgroundMenu className={`react-icon ${clicked ? "active" : ""}`} handleClick={handleClick}>
           <Link to="/registro" onClick={handleClick}>
             Crear cuenta
+          <hr />
           </Link>
-
           <Link to="/login" onClick={handleClick}>
             Ingresar
+          <hr />
           </Link>
         </BackgroundMenu>
       </StyledNav>

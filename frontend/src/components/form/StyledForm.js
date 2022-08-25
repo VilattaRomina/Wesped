@@ -5,7 +5,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #f5f5f5;
 height: 90vh;
 font-family: 'Roboto';
 gap: 1rem;
@@ -20,9 +19,11 @@ button{
 
 @media only screen and (max-width: 414px) {
     width: 100%;
-    
     input, button{
         width: 80vw;
+    }
+    button{
+        margin-top: 1rem;
     }
   }
 
@@ -33,8 +34,6 @@ button{
           width: 70vw;
       }
     }
-
-}
   `
 
 export const Div = styled.div`
