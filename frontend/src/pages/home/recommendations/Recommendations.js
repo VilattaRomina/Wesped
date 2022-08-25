@@ -2,7 +2,7 @@ import React from 'react';
 import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle, CardStyle } from './RecommendationsStyles';
 import RecommendationsItem from './recommendationsItems/RecommendationsItem';
 
-export default function Recommendations({ products, loggedUser, selectedCategory }) {
+export default function Recommendations({ products, loggedUser, title }) {
 
   // Si se va a utilizar en otro componente, mover funcion a carpeta Helpers
   const shuffleResults = (arrayOfProducts) => {
@@ -27,7 +27,7 @@ export default function Recommendations({ products, loggedUser, selectedCategory
 
   return (
     <RecommendationContainerStyle>
-      <RecomendationTitle>{selectedCategory ? selectedCategory.title : 'Recomendaciones'}</RecomendationTitle>
+      <RecomendationTitle>{title ? `Recomendaciones en ${title}` : "Recomendaciones"}</RecomendationTitle>
       <ListRecommendationsStyle>
         {
           productsToDisplay.map(item =>
