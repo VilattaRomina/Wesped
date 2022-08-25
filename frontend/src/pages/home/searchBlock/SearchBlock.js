@@ -21,6 +21,7 @@ const SearchBlock = (props) => {
     })
       .then(products => {
         props.setProductsToDisplayByCity(products.data)
+        props.setRecommendationsTitle(products.data[0].city.name)
       })
       .catch(err => console.log(err))
   }
@@ -51,7 +52,7 @@ const SearchBlock = (props) => {
             icon={<FaRegCalendarAlt />}
           />
           <ButtonStyle>
-          <Button type="submit" width="100%" theme="secondary">Buscar</Button>
+            <Button type="submit" width="100%" theme="secondary">Buscar</Button>
           </ButtonStyle>
         </SearchBar>
       </form>
