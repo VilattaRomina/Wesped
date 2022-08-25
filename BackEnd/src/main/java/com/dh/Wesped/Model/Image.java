@@ -18,20 +18,18 @@ public class Image {
     private String title;
     private String description;
     private String urlImage;
-
     @JsonIncludeProperties(value = {"id"})
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
     public Image() {
     }
 
-    public Image(String title, String description, String urlImage, Product product) {
+    public Image(String title, String description, String urlImage) {
         this.title = title;
         this.description = description;
         this.urlImage = urlImage;
-        this.product = product;
     }
 
     @Override
@@ -41,7 +39,7 @@ public class Image {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", urlImage='" + urlImage + '\'' +
-                ", product=" + product +
+                ", product_id=" + product.getId() +
                 '}';
     }
 }

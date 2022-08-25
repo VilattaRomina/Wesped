@@ -2,6 +2,7 @@ package com.dh.Wesped.Model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +19,9 @@ public class City {
     private Integer id;
     private String name;
     private String country;
-    /*Si agregamos este atributo, el endpoint de Ciudades retorna el json de productos
+    @JsonIgnore
     @OneToMany(mappedBy = "city")
-    private Set<Product> products = new HashSet<>();*/
+    private Set<Product> products = new HashSet<>();
 
     public City() {
     }
