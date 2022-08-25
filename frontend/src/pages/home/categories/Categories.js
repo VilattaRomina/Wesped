@@ -24,7 +24,7 @@ export default function Categories({ setSelectedCategory }) {
             <CategoryListContainerStyle>
                 {
                     categories.map((item) =>
-                        <CardStyle key={item.id} onClick={() => setSelectedCategory(item.id)}>
+                        <CardStyle key={item.id} onClick={() => setSelectedCategory(item)}>
                             <CategoryItem {...item} />
                         </CardStyle>
                     )

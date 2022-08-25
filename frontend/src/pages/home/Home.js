@@ -19,7 +19,7 @@ const Home = ({ loggedUser }) => {
 
   useEffect(() => {
     const url = selectedCategory
-      ? `/products/category/${selectedCategory}`
+      ? `/products/category/${selectedCategory.id}`
       : "/products";
     AxiosInstance.get(url).then((res) => setProducts(res.data));
   }, [selectedCategory]);
@@ -28,7 +28,7 @@ const Home = ({ loggedUser }) => {
     <>
       <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} />
       <Categories setSelectedCategory={setSelectedCategory} />
-      <Recommendations products={products} loggedUser={loggedUser} />
+      <Recommendations products={products} loggedUser={loggedUser} selectedCategory={selectedCategory} />
     </>
   );
 };
