@@ -22,7 +22,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Header loggedUser={loggedUser} isLoggedUser={isLoggedUser} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home loggedUser={loggedUser} />} />
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
           <Route path="/producto/*" element={<Product />} />
