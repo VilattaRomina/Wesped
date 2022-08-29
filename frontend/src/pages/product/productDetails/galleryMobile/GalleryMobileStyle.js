@@ -10,14 +10,13 @@ margin-bottom:20px;
 
 @media (max-width: 768px) {
     display: block;
-    height: 341px;
   
     .carousel-slider{
       height: 100%;
     }
 
     .carousel .slider-wrapper{
-      height: 300px;
+      height: 400px;
     }
 
     .carousel .control-dots {
