@@ -15,7 +15,7 @@ const Header = (props) => {
   const randomSloganIndex = Math.round(Math.random() * 3);
 
   return (
-    <>
+    <div>
       <StyledHeader>
         <LogoSlogan>
           <Link to="/">
@@ -27,7 +27,7 @@ const Header = (props) => {
         </LogoSlogan>
         <Nav loggedUser={props.loggedUser} isLoggedUser={props.isLoggedUser}/>
       </StyledHeader>
-    </>
+    </div>
   );
 };
 

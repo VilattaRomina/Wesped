@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const ContainerFooter = styled.div`
 background:${props => props.theme.primary};
-opacity: .8;
+//background:${props => (props.theme.secondary)};
+opacity: .9;
 width: 100vw;
 height: 60px;
 display: flex;
@@ -27,7 +28,7 @@ export const FooterBlock = styled.div`
 `
 export const FooterText = styled.p`
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   @media (min-width: 415px) and (max-width: 768px){
     font-size:15px;
   }
@@ -41,7 +42,7 @@ export const FooterText = styled.p`
 
 export const FooterIcon = styled.div`
   padding-right:10px;
-  font-size: 18px;
+  font-size: 20px;
   align-items: center;
   line-height: 0;
 

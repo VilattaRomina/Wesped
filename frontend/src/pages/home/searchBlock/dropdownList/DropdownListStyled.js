@@ -75,6 +75,6 @@ export const OptionStyled = styled.div`
     width: 95%;
     height: 0.2em;
     border-radius: 0.5em;
-    background: #1dbeb4;
+    background: ${props => (props.theme.secondary)};
   }
 `;

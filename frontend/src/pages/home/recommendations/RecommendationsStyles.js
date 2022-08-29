@@ -6,11 +6,12 @@ export const RecommendationContainerStyle = styled.section`
   align-items: flex-start;
   margin: 0 auto;
   max-width: 1366px;
-  padding: 20px 32px 76px 32px;
+  padding: 20px 32px 100px 32px;
 
   @media (max-width: 414px) {
     background-color:${props => props.theme.secondary};
     padding: 10px 20px 76px 20px;
+    margin-top:20px;
   }
 
 `

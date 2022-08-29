@@ -5,7 +5,6 @@ export const ScheduleMainStyled = styled.div`
   & * {
     background: white;
   }
-  font-family: 'roboto';
   font-size: 0.8rem;
   display: flex;
   width: max-content;
