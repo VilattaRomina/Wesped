@@ -7,7 +7,7 @@ import Register from "./pages/register/Register";
 import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
-import Product from "./pages/product/Product";
+import ProductDetails from "./pages/product/productDetails/ProductDetails";
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Home loggedUser={loggedUser} />} />
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
-          <Route path="/producto/*" element={<Product />} />
+          <Route path='/producto/:productId' element={<ProductDetails />} />
         </Routes>
         <Footer />
       </ThemeProvider>
