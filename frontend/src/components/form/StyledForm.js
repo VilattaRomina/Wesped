@@ -6,7 +6,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 height: 90vh;
-font-family: 'Roboto';
 gap: 1rem;
 h1{
     color: #1dbeb4;

@@ -10,25 +10,37 @@ margin-bottom:20px;
 
 @media (max-width: 768px) {
     display: block;
-
+    height: 341px;
+  
     .carousel-slider{
-      height: 400px;
+      height: 100%;
     }
-   
+
+    .carousel .slider-wrapper{
+      height: 300px;
+    }
+
+    .carousel .control-dots {
+      display:none;
+    }
    
   }
 
   @media (max-width: 600px) {
     display: block;
    
-    .carousel-slider{
-      max-height: 350px;
+    // .carousel-slider{
+    //   max-height: 350px;
+    // }
+
+    .carousel .slide img{
+      height:100%;
     }
 }
 
 @media (max-width: 530px) {
   .carousel-slider{
-    max-height: 300px;
+    max-height: 275px;
   }
 }
 `

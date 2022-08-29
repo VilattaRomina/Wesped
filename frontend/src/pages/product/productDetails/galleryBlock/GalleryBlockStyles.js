@@ -58,15 +58,21 @@ background-color: rgba(0,0,0,0.9);
 height:100%;
 width:100vw;
 position: absolute;
-top:50px;
-padding-top:120px;
+top:0px;
+left: 0px;
+padding-top:141px;
 display: ${props => props.isOpen ? " " : "none"};
+
+.carousel .slider-wrapper{
+  height:480px;
+}
 
 
 div{
-max-width:670px;;
-max-height:437px;
+max-width:721px;;
+max-height:628px;
 margin: auto;
+border-radius: 10px;
    
 }
 
@@ -77,9 +83,10 @@ margin: auto;
 `
 
 export const CloseModalStyle = styled.div`
-top: 75px;
-right: 50px;
-font-size: 20px;
+top: 100px;
+right: 40px;
+font-size: 30px;
+font-weight:600;
 color: white;
 position: absolute;
 cursor:pointer;

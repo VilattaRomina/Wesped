@@ -2,31 +2,33 @@ import styled from 'styled-components';
 
 //General
 export const ContainerSearchBlock = styled.div`
-  background: rgba(0, 115, 163, .9);
+  background: ${props => (props.theme.secondary)};
+  opacity: .9;
   padding: 0.1em;
   z-index:10;
   position:fixed;
   top:80px;
   width: 100%;
+  
+  }
+  
 
   @media (max-width: 768px) {
     position: static;
     padding-top: 80px;
-  }
+   
 `;
 //title
 export const SearchBlockTitle = styled.h1`
 
   color: #fff;
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 780;
   font-size: 36px;
   line-height: 42px;
   text-align: center;
   padding: 0.5em;
 
-  @media (max-width: 800px){
+  @media (max-width: 847px){
     font-size: 30px;
   }
 

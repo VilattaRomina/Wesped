@@ -4,6 +4,7 @@ import SearchBlock from "./searchBlock/SearchBlock";
 import Recommendations from "./recommendations/Recommendations";
 import { useState, useEffect } from "react";
 import { AxiosInstance } from "../../helpers/AxiosHelper";
+import Section from "../../components/section/Section";
 
 const Home = ({ loggedUser }) => {
   const [products, setProducts] = useState([]);
@@ -28,8 +29,11 @@ const Home = ({ loggedUser }) => {
   return (
     <>
       <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} />
+      <Section>
       <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
       <Recommendations products={products} loggedUser={loggedUser} selectedCategory={selectedCategory} title={title} />
+      </Section>
+      
     </>
   );
 };

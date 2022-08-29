@@ -47,6 +47,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 flex: 1;
+gap:20px;
 `;
 
 export const CategoryStyle = styled.h3`
@@ -62,14 +63,12 @@ export const TitleStyle = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  padding-bottom: 19px;
   color: #383B58;
 `;
 export const LocationTextStyle = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-  padding-bottom: 19px;
   color:#383B58
 
 `
@@ -77,7 +76,6 @@ export const DescriptionStyle = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-  padding-bottom: 19px;
   color:#383B58;
   
 `
@@ -87,3 +85,14 @@ export const LinkStyle =styled(Link)`
  text-decoration: none;
 `
 ;
+
+export const IconStyle = styled.div`
+display:flex;
+font-size: 16px;
+
+
+p{
+  padding-right:10px;
+  color:${props => (props.theme.text_secondary)};
+}
+`
