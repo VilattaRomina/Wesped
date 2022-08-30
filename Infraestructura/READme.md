@@ -103,5 +103,3 @@ Por otra parte, se definieron **variables** en la configuración CI/CD de nuestr
 
 
 ---
-
-QWERTY
