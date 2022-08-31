@@ -71,14 +71,8 @@ CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`users` (
   `surname` VARCHAR(60) NOT NULL,
   `email` VARCHAR(225) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `cities_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `cities_id`),
-  INDEX `fk_users_cities1_idx` (`cities_id` ASC) VISIBLE,
-  CONSTRAINT `fk_users_cities1`
-    FOREIGN KEY (`cities_id`)
-    REFERENCES `PI_GRUPO9`.`cities` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `city` VARCHAR(225) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -107,7 +101,6 @@ CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`booking` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-USE `PI_GRUPO9` ;
 
 -- -----------------------------------------------------
 -- Table `pi_grupo9`.`features`
