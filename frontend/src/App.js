@@ -7,7 +7,9 @@ import Register from "./pages/register/Register";
 import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
-import Product from "./pages/product/Product";
+import ProductDetails from "./pages/product/productDetails/ProductDetails";
+import Booking from "./pages/booking/Booking";
+
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({ valid: false, email: "" });
@@ -21,10 +23,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <Header loggedUser={loggedUser} isLoggedUser={isLoggedUser} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home loggedUser={loggedUser} />} />
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
-          <Route path="/productos/*" element={<Product />}/>
+          <Route path='/producto/:productId' element={<ProductDetails />} />
+          <Route path='/producto/:productId/reservas' element={<Booking />} />
         </Routes>
         <Footer />
       </ThemeProvider>

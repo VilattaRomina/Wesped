@@ -37,21 +37,19 @@ export const BurgerButton = styled.div`
 .nav-icon-5.open span:nth-child(1){
     transform: rotate(45deg);
     top: 13px;
-    background-color: #fff;
 }
 .nav-icon-5.open span:nth-child(2){
     opacity:0;
 }
 .nav-icon-5.open span:nth-child(3){
     transform: rotate(-45deg);
-    background-color: #fff;
     top: 13px;
 }
 `
 
 export const StyledBackgroundMenu = styled.div`
     position: absolute;
-    background-color: rgba(34, 34, 34, .5);
+    background-color: rgba(255, 255, 255, .5);
     backdrop-filter: blur(4px);
     height: 100vh;
     width: 100%;
@@ -67,16 +65,20 @@ export const StyledBackgroundMenu = styled.div`
         left:0px;
     }
     a{
-        //background-color: rgba(34, 34, 34, .5);
         border-radius: 10px;
         position: relative;
         padding: 1rem;
         top: 100px;
-        left: 100px;
         display: block;
         margin: .5rem;
         font-size: 1.8rem;
         text-decoration: none;
-        color: #fff;
+        text-align: end;
+        color: #333;
+    }
+    hr{
+        color:#333;
+        opacity: 0.4;
+        margin-top: 5px;
 }
 `

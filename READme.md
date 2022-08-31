@@ -78,7 +78,13 @@ La palabra remite al húesped, vocablo que significa "el que hospeda y es hosped
 ![](/Wesped/otros/1s.png)
 
     - segundo sprint
+
+![](/Wesped/otros/2s1.png)
+![](/Wesped/otros/2s2.png)
+
     - tercer sprint 
+![](/Wesped/otros/3s.jpeg)
+
     - cuarto sprint
 
 <hr/>
@@ -90,7 +96,7 @@ La palabra remite al húesped, vocablo que significa "el que hospeda y es hosped
 Email: <a>maialemarin@utp.edu.co</a> 
 <br>
 
-- <b>Pablo Alarcón</b> <p>roles: Back</p> 
+- <b>Pablo Alarcón</b> <p>roles: Back, Front</p> 
 Email: <a>apablo.alarcon@gmail.com</a> 
 <br>
 
@@ -102,7 +108,7 @@ Email: <a>vilattaromina@gmail.com</a>
 Email: <a>dinaperezmontes@gmail.com</a> 
 <br>
 
-- <b>Andres Felipe Fajardo Parra</b> <p>roles:Testing</p>
+- <b>Andres Felipe Fajardo Parra</b> <p>roles:Testing, Back</p>
 Email: <a>pipeparra32@gmail.com</a> 
 <br>
 

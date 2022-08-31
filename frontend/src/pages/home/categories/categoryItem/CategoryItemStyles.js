@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
+export const ImageCategoryStyles = styled.div`
+    height: 273px;
+    width: 100%;
 
-
-export const ItemCategoriesStyles = styled.div`
-    cursor: pointer;
-`
-
-export const ImageCategoryStyles = styled.img`
-    min-width: 100%;
-    max-width: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 `;
 
 export const InfoCategoryStyle = styled.div`
