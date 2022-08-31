@@ -82,7 +82,14 @@ CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`users` (
   `email` VARCHAR(225) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `city` VARCHAR(225) NOT NULL,
-  PRIMARY KEY (`id`))
+  `roles_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `roles_id`),
+  INDEX `fk_users_roles1_idx` (`roles_id` ASC) VISIBLE,
+  CONSTRAINT `fk_users_roles1`
+    FOREIGN KEY (`roles_id`)
+    REFERENCES `PI_GRUPO9`.`roles` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
