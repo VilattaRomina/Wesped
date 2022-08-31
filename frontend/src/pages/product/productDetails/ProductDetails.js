@@ -1,14 +1,21 @@
-import { BoxHeaderStyle,HeaderStyle, Title, LinkStyle, Arrow, UbicationStyle, BodyStyle, ShareStyle, DescriptionStyle, LineStyles, FeaturesStyle, PoliciesStyle, TitleStyles } from './ProductDetailsStyles'
-import { FaMapMarkerAlt, FaRegHeart, FaChevronLeft, } from "react-icons/fa";
+import { BodyStyle, 
+  ShareStyle,
+  DescriptionStyle, 
+  LineStyles, 
+  FeaturesStyle,
+  TitleStyles } from './ProductDetailsStyles'
+import { FaRegHeart } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
-import GalleryBlock from './galleryBlock/GalleryBlock';
-import GalleryMobile from './galleryMobile/GalleryMobile';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosInstance } from '../../../helpers/AxiosHelper';
 import { Icons } from '../../../ui/icons';
+import GalleryBlock from './galleryBlock/GalleryBlock';
+import GalleryMobile from './galleryMobile/GalleryMobile';
 import Section from '../../../components/section/Section';
-import { BoxUbicationStyle } from './ProductDetailsStyles';
+import HeaderProduct from './headerProduct/HeaderProduct';
+import UbicationProduct from './ubicationProduct/UbicationProduct';
+import Policies from './policies/Policies';
 
 export default function ProductDetails() {
 
@@ -39,25 +46,8 @@ export default function ProductDetails() {
     <>
       {product ?
         <BodyStyle isOpen={modalIsOpen}>
-          <BoxHeaderStyle>
-          <HeaderStyle>
-            <Title>
-              <h4>{product.category.title}</h4>
-              <h2>{product.title}</h2>
-            </Title>
-            <Arrow>
-              <LinkStyle to="/">
-                <FaChevronLeft />
-              </LinkStyle>
-            </Arrow>
-          </HeaderStyle>
-          </BoxHeaderStyle>
-          <BoxUbicationStyle>
-          <UbicationStyle>
-            <FaMapMarkerAlt />
-            <h4>{product.city.name + ", " + product.city.country}</h4>
-          </UbicationStyle>
-          </BoxUbicationStyle>
+          <HeaderProduct product={product} />
+          <UbicationProduct product={product}/>
           <Section>
             <ShareStyle>
               <div><BiShareAlt /></div>
@@ -78,14 +68,7 @@ export default function ProductDetails() {
             </FeaturesStyle>
             <TitleStyles>Qué tenés que saber</TitleStyles>
             <LineStyles />
-            <PoliciesStyle>
-              {product.policies.map(item => (
-                <div key={item.id}>
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
-                </div>
-              ))}
-            </PoliciesStyle>
+            <Policies product={product}/>
           </Section>
         </BodyStyle> :
         <p>Cargando...</p>
