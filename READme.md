@@ -83,6 +83,8 @@ La palabra remite al húesped, vocablo que significa "el que hospeda y es hosped
 ![](/Wesped/otros/2s2.png)
 
     - tercer sprint 
+![](/Wesped/otros/3s.jpeg)
+
     - cuarto sprint
 
 <hr/>
