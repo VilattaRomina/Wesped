@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
 import ProductDetails from "./pages/product/productDetails/ProductDetails";
+import Booking from "./pages/booking/Booking";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
           <Route path="/registro" element={<Register />} />
           <Route path='/producto/:productId' element={<ProductDetails />} />
+          <Route path='/producto/:productId/reservas' element={<Booking />} />
         </Routes>
         <Footer />
       </ThemeProvider>
