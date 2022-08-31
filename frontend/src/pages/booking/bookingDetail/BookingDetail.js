@@ -1,28 +1,38 @@
 import React from 'react'
-import {ConfirmationBlock, Title, InfoDetailProduct, ContainerButton, ContainerDate  } from './BookingDetailStyle'
+import { CardStyle,ContainerStyle, Title, Image,InfoDetailProduct, ContainerButton, ContainerDate } from './BookingDetailStyle';
+import Button from '../../../components/button/Button'
 
 export default function BookingDetail() {
   return (
-    <ConfirmationBlock >
+    <CardStyle >
+      <ContainerStyle>
+        <div>
         <Title>Detalle de la reserva</Title>
-        <img src='https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' alt='imagen del producto'/>
-        <InfoDetailProduct >
-            <h4>Categoria</h4>
-            <h2>Nombre</h2>   
+        <Image src='https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' alt='imagen del producto' />
+        </div>
+      <div>
+      <InfoDetailProduct >
+          <h3>Categoria</h3>
+          <h2>Nombre</h2>
+          <p>Ubicación</p>
         </InfoDetailProduct>
-        <hr/>
+        <hr />
         <ContainerDate>
-        <h4>CheckIn</h4>
-        <div>Date</div>
+          <h4>Check in</h4>
+          <div>Date</div>
         </ContainerDate>
-        <hr/>
+        <hr />
         <ContainerDate>
-        <h4>CheckOut</h4>
-        <div>Date</div>
+          <h4>Check out</h4>
+          <div>Date</div>
         </ContainerDate>
+        <hr />
         <ContainerButton >
-            <button>Confirmar reserva</button>
+          <Button>Confirmar reserva</Button>
         </ContainerButton>
-    </ConfirmationBlock>
+      </div>
+      </ContainerStyle>
+       
+    </CardStyle>
   )
 }

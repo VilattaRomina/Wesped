@@ -16,6 +16,12 @@ export const ContainerBooking = styled.div`
 width:400px;
 margin-top:70px;
 margin-bottom:20px;
+@media (max-width: 768px){
+  width:700px;
+}
+@media (max-width: 414px){
+  width:350px;
+}
 `
 export const ContainerForm = styled.div`
 width:900px;

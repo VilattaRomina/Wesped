@@ -15,4 +15,9 @@ export const PoliciesStyle = styled.div`
     grid-template-columns: 1fr 1fr ;
     gap:40px;
   }
+
+  @media (max-width: 414px){
+    grid-template-columns: 1fr;
+    gap:40px;
+  }
 `
