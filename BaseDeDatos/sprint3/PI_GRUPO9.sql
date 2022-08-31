@@ -63,6 +63,16 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
+-- Table `PI_GRUPO9`.`roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`roles` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(25) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+-- -----------------------------------------------------
 -- Table `PI_GRUPO9`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`users` (
