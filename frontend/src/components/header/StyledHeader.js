@@ -18,8 +18,7 @@ export const StyledHeader = styled.header`
 export const Slogan = styled.span`
   color: #545776;
   font-size: 20px;
-  font-style: italic;E
-  font-family: Roboto;
+  font-style: italic;
   animation: fadeIn 2s;
 
   @keyframes fadeIn {
