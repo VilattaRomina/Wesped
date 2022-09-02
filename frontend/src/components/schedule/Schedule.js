@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ScheduleMainStyled, ButtonScheduleStyled } from "./ScheduleStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Button from "../../../../components/button/Button";
+import Button from "../button/Button";
 import "./CalendarStyled.css";
 
 const Container = ({ children }) => {
@@ -28,7 +28,7 @@ const Container = ({ children }) => {
 
 /* Calendar*/
 const Calendar = ({ picDate }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
     const [start, end] = dates;
