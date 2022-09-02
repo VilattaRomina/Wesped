@@ -7,21 +7,32 @@ box-shadow: 0px 10px 6px 5px rgba(0,0,0,0.1);
 
 `
 export const ContainerStyle= styled.div`
-padding:16px;
+padding:25px 10px;
 margin:10px;
 display: flex;
 gap:10px;
 flex-direction: column;
 
-@media (max-width: 768px){
+
+// @media (max-width: 768px){
+//   display:grid;
+//   grid-template-columns: 1fr 1fr;
+// }
+
+@media (max-width: 1050px){
   display:grid;
   grid-template-columns: 1fr 1fr;
 }
 
-@media (max-width: 414px){
-  display: flex;
-  flex-direction: column;
+// @media (max-width: 414px){
+//   display: flex;
+//   flex-direction: column;
 
+// }
+
+@media (max-width:615px){
+  display: flex;
+  flex-direction:column;
 }
 `
 export const Title = styled.h2`
@@ -29,18 +40,28 @@ export const Title = styled.h2`
     font-weight: 700;
     padding-bottom:18px;
 `
+export const ContainerImage = styled.div`
+height:300px;
+@media (max-width: 768px){
+padding-right:10px;
+}
+`
 export const Image = styled.img`
 width:100%;
-`
-export const ContainerInfo = styled.div`
-display: flex;
+height:100%;
+border-radius:10px;
+object-fit: cover;
+
+@media (max-width: 768px){
+  height:100%;
+  }
 `
 
 export const InfoDetailProduct = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top:40px;
+  padding-top:20px;
  
   h3{
     font-weight: 700;
@@ -65,7 +86,10 @@ export const InfoDetailProduct = styled.div`
     line-height: 16px;
     color:#383B58;
     padding-bottom: 40px;
-    
+  }
+
+  span{
+    padding-right:5px;
   }
 `
 export const ContainerDate = styled.div`
