@@ -13,7 +13,7 @@ export const ScheduleMainStyled = styled.div`
 `;
 
 export const ButtonScheduleStyled = styled.div`
-  widht: auto;
+  width: auto;
   height: auto;
   padding: 0.5em;
   display: flex;

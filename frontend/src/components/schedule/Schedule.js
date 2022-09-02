@@ -4,12 +4,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
+import {usePathname} from '../../hooks/hooks'
 
-const Container = ({ children }) => {
+const Container = ({ children, buttonText }) => {
   
   return (
     <div
-      style={{ background: "#FFFFFF", position: "relative", color: "#0073A3" }}
+      style={{ background: "#000", position: "relative", color: "#0073A3" }}
     >
       <ScheduleMainStyled>
         <div>{children}</div>
@@ -17,7 +18,7 @@ const Container = ({ children }) => {
 
       <ButtonScheduleStyled>
           <Button width="12.5rem" theme="secondary">
-            Aplicar
+            {usePathname().includes("producto")? "Iniciar reserva" : "Aplicar"}
           </Button>
 
       </ButtonScheduleStyled>
@@ -27,7 +28,7 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate }) => {
+const Calendar = ({ picDate, inline }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
@@ -45,8 +46,11 @@ const Calendar = ({ picDate }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
+      inline={inline}
+      dateFormat="dd/MM/yyyy"
+      minDate={new Date()}
       placeholderText="Chech in - Check out"
-      formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
+      formatWeekDay={(nameOfDay) => nameOfDay.slice(0, 1)}
       renderCustomHeader={({
         monthDate,
         customHeaderCount,
@@ -100,6 +104,6 @@ const Calendar = ({ picDate }) => {
 };
 
 /*Schedule component*/
-export default function Schedule({ placeHolderText, picDate }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} />;
+export default function Schedule({ placeHolderText, picDate, inline }) {
+  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} />;
 }
