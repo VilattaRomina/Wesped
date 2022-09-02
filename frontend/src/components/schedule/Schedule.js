@@ -1,27 +1,48 @@
 import React, { useState } from "react";
-import { ScheduleMainStyled, ButtonScheduleStyled } from "./ScheduleStyle";
+import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
 import {usePathname} from '../../hooks/hooks'
 
-const Container = ({ children, buttonText }) => {
+const Container = ({ children }) => {
+  const isInProductPage = usePathname().includes("product");
   
+  const styles = {
+    background: "rgb(236, 236, 236)", 
+    position: "relative", 
+    color: "#0073A3",
+    display: isInProductPage? "flex" : "",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    padding: isInProductPage? "2rem" : "0",
+  }
+
   return (
     <div
-      style={{ background: "#000", position: "relative", color: "#0073A3" }}
+      style={styles}
     >
       <ScheduleMainStyled>
         <div>{children}</div>
       </ScheduleMainStyled>
 
+    {isInProductPage?
+    <ScheduleIngresarReservaDiv>
+      <p>Agregá tus fechas de viaje para obtener precios exactos</p>
+      <ButtonScheduleStyled>
+          <Button width="27rem" theme="secondary">
+            {isInProductPage? "Iniciar reserva" : "Aplicar"}
+          </Button>
+      </ButtonScheduleStyled>
+    </ScheduleIngresarReservaDiv>
+      :
       <ButtonScheduleStyled>
           <Button width="12.5rem" theme="secondary">
-            {usePathname().includes("producto")? "Iniciar reserva" : "Aplicar"}
+            {isInProductPage? "Iniciar reserva" : "Aplicar"}
           </Button>
-
       </ButtonScheduleStyled>
+    }
     </div>
   );
 };
