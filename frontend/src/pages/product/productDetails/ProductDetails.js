@@ -13,9 +13,10 @@ import { Icons } from '../../../ui/icons';
 import GalleryBlock from './galleryBlock/GalleryBlock';
 import GalleryMobile from './galleryMobile/GalleryMobile';
 import Section from '../../../components/section/Section';
-import HeaderProduct from './headerProduct/HeaderProduct';
+import HeaderProduct from '../../../components/headerProduct/HeaderProduct';
 import UbicationProduct from './ubicationProduct/UbicationProduct';
-import Policies from './policies/Policies';
+import Policies from '../../../components/policies/Policies';
+import Map from './map/Map'
 
 export default function ProductDetails() {
 
@@ -66,6 +67,9 @@ export default function ProductDetails() {
                 <div key={item.id}><span>{Icons[item.icon]}</span><p>{item.title}</p></div>
               ))}
             </FeaturesStyle>
+            <TitleStyles>¿Dónde vas a estar?</TitleStyles>
+            <LineStyles />
+            <Map />
             <TitleStyles>Qué tenés que saber</TitleStyles>
             <LineStyles />
             <Policies product={product}/>

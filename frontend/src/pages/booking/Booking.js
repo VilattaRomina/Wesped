@@ -1,10 +1,10 @@
 import React from 'react'
-import HeaderProduct from '../product/productDetails/headerProduct/HeaderProduct'
+import HeaderProduct from '../../components/headerProduct/HeaderProduct'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosInstance } from '../../helpers/AxiosHelper';
 import { BodyStyle, LineStyles, ContainerStyle, ContainerBooking} from './BookingStyle'
-import Policies from '../product/productDetails/policies/Policies';
+import Policies from '../../components/policies/Policies'
 import Section from '../../components/section/Section';
 import BookingDetail from './bookingDetail/BookingDetail';
 
