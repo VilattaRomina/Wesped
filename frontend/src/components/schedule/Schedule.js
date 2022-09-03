@@ -1,34 +1,67 @@
 import React, { useState } from "react";
-import { ScheduleMainStyled, ButtonScheduleStyled } from "./ScheduleStyle";
+import { useNavigate } from "react-router-dom";
+import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Button from "../../../../components/button/Button";
+import Button from "../button/Button";
 import "./CalendarStyled.css";
+import { usePathname } from '../../hooks/hooks'
 
 const Container = ({ children }) => {
-  
+  const pathName = usePathname();
+  const isInProductPage = pathName.includes("product");
+  const navigate = useNavigate();
+
+  const styles = {
+    background: isInProductPage ? "rgb(236, 236, 236)" : "#fff",
+    position: "relative",
+    color: "#0073A3",
+    display: isInProductPage ? "flex" : "",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    padding: isInProductPage ? "2rem" : "0",
+  }
+
+  const handleClick = () => {
+    const isLoggedUser = true;
+    if (!isLoggedUser)
+      navigate('/login');
+
+    navigate(`${pathName}/reservas`)
+  }
+
   return (
     <div
-      style={{ background: "#FFFFFF", position: "relative", color: "#0073A3" }}
+      style={styles}
     >
-      <ScheduleMainStyled>
+      <ScheduleMainStyled isInProductPage={isInProductPage}>
         <div>{children}</div>
       </ScheduleMainStyled>
 
-      <ButtonScheduleStyled>
+      {isInProductPage ?
+        <ScheduleIngresarReservaDiv>
+          <p>Agregá tus fechas de viaje para obtener precios exactos</p>
+          <ButtonScheduleStyled>
+            <Button width="28rem" theme="secondary" onClick={handleClick}>
+              {isInProductPage ? "Iniciar reserva" : "Aplicar"}
+            </Button>
+          </ButtonScheduleStyled>
+        </ScheduleIngresarReservaDiv>
+        :
+        <ButtonScheduleStyled>
           <Button width="12.5rem" theme="secondary">
-            Aplicar
+            {isInProductPage ? "Iniciar reserva" : "Aplicar"}
           </Button>
-
-      </ButtonScheduleStyled>
+        </ButtonScheduleStyled>
+      }
     </div>
   );
 };
 
 
 /* Calendar*/
-const Calendar = ({ picDate }) => {
-  const [startDate, setStartDate] = useState(new Date());
+const Calendar = ({ picDate, inline, readOnly }) => {
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -45,8 +78,12 @@ const Calendar = ({ picDate }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
+      readOnly={readOnly}
+      inline={inline}
+      dateFormat="dd/MM/yyyy"
+      minDate={new Date()}
       placeholderText="Chech in - Check out"
-      formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
+      formatWeekDay={(nameOfDay) => nameOfDay.slice(0, 1)}
       renderCustomHeader={({
         monthDate,
         customHeaderCount,
@@ -100,6 +137,6 @@ const Calendar = ({ picDate }) => {
 };
 
 /*Schedule component*/
-export default function Schedule({ placeHolderText, picDate }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} />;
+export default function Schedule({ placeHolderText, picDate, inline, readOnly }) {
+  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} />;
 }
