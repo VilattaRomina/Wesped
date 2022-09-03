@@ -9,11 +9,11 @@ import { usePathname } from '../../hooks/hooks'
 
 const Container = ({ children }) => {
   const pathName = usePathname();
-  const isInProductPage = usePathname().includes("product");
+  const isInProductPage = pathName.includes("product");
   const navigate = useNavigate();
 
   const styles = {
-    background: "rgb(236, 236, 236)",
+    background: isInProductPage ? "rgb(236, 236, 236)" : "#fff",
     position: "relative",
     color: "#0073A3",
     display: isInProductPage ? "flex" : "",
@@ -34,7 +34,7 @@ const Container = ({ children }) => {
     <div
       style={styles}
     >
-      <ScheduleMainStyled>
+      <ScheduleMainStyled isInProductPage={isInProductPage}>
         <div>{children}</div>
       </ScheduleMainStyled>
 

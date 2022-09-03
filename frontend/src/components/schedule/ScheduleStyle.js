@@ -7,9 +7,9 @@ export const ScheduleMainStyled = styled.div`
   font-size: 0.8rem;
   display: inline-flex;
   width: max-content;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16);
-  padding: 1rem;
-  border-radius: 5px;
+  box-shadow: ${props => props.isInProductPage ? "0px 2px 5px 0px rgba(0, 0, 0, 0.16)" : ""};
+  padding: ${props => props.isInProductPage ? "1rem" : "0px"};
+  border-radius: ${props => props.isInProductPage ? "5px" : "0px"};
 `;
 
 export const ButtonScheduleStyled = styled.div`
