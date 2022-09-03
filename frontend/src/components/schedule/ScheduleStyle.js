@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from '../../ui/theme'
 import "react-datepicker/dist/react-datepicker.css";
 
 export const ScheduleMainStyled = styled.div`
@@ -30,6 +31,7 @@ export const ScheduleIngresarReservaDiv = styled.div`
   align-items: center;
   background-color: #fff;
   p{
+    color: ${theme.text_primary};
     padding: 1rem;
     font-weight: bold;
   }

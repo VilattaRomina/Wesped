@@ -1,22 +1,33 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
-import {usePathname} from '../../hooks/hooks'
+import { usePathname } from '../../hooks/hooks'
 
 const Container = ({ children }) => {
+  const pathName = usePathname();
   const isInProductPage = usePathname().includes("product");
-  
+  const navigate = useNavigate();
+
   const styles = {
-    background: "rgb(236, 236, 236)", 
-    position: "relative", 
+    background: "rgb(236, 236, 236)",
+    position: "relative",
     color: "#0073A3",
-    display: isInProductPage? "flex" : "",
+    display: isInProductPage ? "flex" : "",
     justifyContent: "space-evenly",
     alignItems: "center",
-    padding: isInProductPage? "2rem" : "0",
+    padding: isInProductPage ? "2rem" : "0",
+  }
+
+  const handleClick = () => {
+    const isLoggedUser = true;
+    if (!isLoggedUser)
+      navigate('/login');
+
+    navigate(`${pathName}/reservas`)
   }
 
   return (
@@ -27,22 +38,22 @@ const Container = ({ children }) => {
         <div>{children}</div>
       </ScheduleMainStyled>
 
-    {isInProductPage?
-    <ScheduleIngresarReservaDiv>
-      <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-      <ButtonScheduleStyled>
-          <Button width="27rem" theme="secondary">
-            {isInProductPage? "Iniciar reserva" : "Aplicar"}
-          </Button>
-      </ButtonScheduleStyled>
-    </ScheduleIngresarReservaDiv>
-      :
-      <ButtonScheduleStyled>
+      {isInProductPage ?
+        <ScheduleIngresarReservaDiv>
+          <p>Agregá tus fechas de viaje para obtener precios exactos</p>
+          <ButtonScheduleStyled>
+            <Button width="28rem" theme="secondary" onClick={handleClick}>
+              {isInProductPage ? "Iniciar reserva" : "Aplicar"}
+            </Button>
+          </ButtonScheduleStyled>
+        </ScheduleIngresarReservaDiv>
+        :
+        <ButtonScheduleStyled>
           <Button width="12.5rem" theme="secondary">
-            {isInProductPage? "Iniciar reserva" : "Aplicar"}
+            {isInProductPage ? "Iniciar reserva" : "Aplicar"}
           </Button>
-      </ButtonScheduleStyled>
-    }
+        </ButtonScheduleStyled>
+      }
     </div>
   );
 };
