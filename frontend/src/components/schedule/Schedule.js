@@ -60,7 +60,7 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline }) => {
+const Calendar = ({ picDate, inline, readOnly }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
@@ -78,6 +78,7 @@ const Calendar = ({ picDate, inline }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
+      readOnly={readOnly}
       inline={inline}
       dateFormat="dd/MM/yyyy"
       minDate={new Date()}
@@ -136,6 +137,6 @@ const Calendar = ({ picDate, inline }) => {
 };
 
 /*Schedule component*/
-export default function Schedule({ placeHolderText, picDate, inline }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} />;
+export default function Schedule({ placeHolderText, picDate, inline, readOnly }) {
+  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} />;
 }
