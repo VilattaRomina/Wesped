@@ -13,7 +13,7 @@ import { Icons } from '../../../ui/icons';
 import GalleryBlock from './galleryBlock/GalleryBlock';
 import GalleryMobile from './galleryMobile/GalleryMobile';
 import Section from '../../../components/section/Section';
-import HeaderProduct from './headerProduct/HeaderProduct';
+import HeaderProduct from '../../../components/headerProduct/HeaderProduct';
 import UbicationProduct from './ubicationProduct/UbicationProduct';
 import Policies from './policies/Policies';
 

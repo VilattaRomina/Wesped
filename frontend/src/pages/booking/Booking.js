@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderProduct from '../product/productDetails/headerProduct/HeaderProduct'
+import HeaderProduct from '../../components/headerProduct/HeaderProduct'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosInstance } from '../../helpers/AxiosHelper';
