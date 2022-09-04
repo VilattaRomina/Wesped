@@ -69,7 +69,7 @@ export default function ProductDetails() {
             </FeaturesStyle>
             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
             <LineStyles />
-            <Map />
+            <Map product={product}/>
             <TitleStyles>Qué tenés que saber</TitleStyles>
             <LineStyles />
             <Policies product={product}/>
