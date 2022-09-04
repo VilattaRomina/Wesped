@@ -12,7 +12,7 @@ import BookingForm from './bookingForm/BookingForm'
 
 
 
-export default function Booking() {
+export default function Booking(to) {
 
   const { productId } = useParams();
 
@@ -22,8 +22,14 @@ export default function Booking() {
     apellido: '',
     email:'',
     ciudad:'',
+    startDate: '',
+    endDate: '',
+    checkInHour: '',
 })
-const [selected, setSeclected] = useState();
+
+const picDate = (startDate, endDate) => {
+  setValues({ ...values, startDate, endDate });
+}
  
 
   useEffect(() => {
@@ -38,7 +44,6 @@ const [selected, setSeclected] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(values);
-    console.log(selected);
   };
 
 
@@ -49,8 +54,8 @@ const handleChange = (e) => {
   })
 }
 
-const handleSelectChange = ({value })=> {
-  setSeclected(value)
+const handleSelectChange = ({ value })=> {
+  setValues({...values, checkInHour: value})
 }
 
 
@@ -58,14 +63,14 @@ const handleSelectChange = ({value })=> {
     <>
       {product ?
         <BodyStyle>
-          <HeaderProduct product={product} />
+          <HeaderProduct product={product} to={"/producto/" + productId}/>
           <Section>
             <ContainerStyle>
               <ContainerForm>
-                <BookingForm values={values} handleChange={handleChange} handleSelectChange={handleSelectChange}/>
+                <BookingForm values={values} handleChange={handleChange} handleSelectChange={handleSelectChange} picDate={picDate} />
               </ContainerForm>
               <ContainerBooking>
-                <BookingDetail product={product}  images={product.images} handleSubmit={handleSubmit}/>
+                <BookingDetail product={product}  images={product.images} handleSubmit={handleSubmit} startDate={values.startDate} endDate={values.endDate}/>
               </ContainerBooking>
             </ContainerStyle>
           </Section>
