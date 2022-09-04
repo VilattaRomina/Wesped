@@ -6,10 +6,11 @@ export const ScheduleMainStyled = styled.div`
   background: white;
   font-size: 0.8rem;
   display: inline-flex;
-  width: max-content;
+  width: 100%;
   box-shadow: ${props => props.isInProductPage ? "0px 2px 5px 0px rgba(0, 0, 0, 0.16)" : ""};
   padding: ${props => props.isInProductPage ? "1rem" : "0px"};
   border-radius: ${props => props.isInProductPage ? "5px" : "0px"};
+  margin:${props => props.isInProductPage ? "20px" : "0px"};
 `;
 
 export const ButtonScheduleStyled = styled.div`
@@ -19,6 +20,7 @@ export const ButtonScheduleStyled = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+
 `;
 
 export const ScheduleIngresarReservaDiv = styled.div`
