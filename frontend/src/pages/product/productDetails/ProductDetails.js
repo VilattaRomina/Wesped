@@ -17,7 +17,7 @@ import GalleryMobile from './galleryMobile/GalleryMobile';
 import Section from '../../../components/section/Section';
 import HeaderProduct from '../../../components/headerProduct/HeaderProduct';
 import UbicationProduct from './ubicationProduct/UbicationProduct';
-import Policies from './policies/Policies';
+import Policies from '../../../components/policies/Policies';
 import Schedule from '../../../components/schedule/Schedule';
 import Map from './map/Map'
 
@@ -72,7 +72,7 @@ export default function ProductDetails() {
             </FeaturesStyle>
             <TitleStyles>Fechas disponibles</TitleStyles>
             <Schedule inline buttonText="Iniciar reserva" readOnly={true} />
-            <TitleStyles>¿Dónde vas a estar?</TitleStyles>
+             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
             <LineStyles />
             <Map product={product}/>
             <TitleStyles>Qué tenés que saber</TitleStyles>
