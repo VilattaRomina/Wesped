@@ -3,7 +3,7 @@ import { CardStyle, ContainerStyle, ContainerImage, Title, Image, InfoDetailProd
 import Button from '../../../components/button/Button'
 import {HiLocationMarker} from 'react-icons/hi'
 
-export default function BookingDetail({ handleSubmit, product, images }) {
+export default function BookingDetail({ handleSubmit, product, images, startDate, endDate}) {
 
 
   return (
@@ -24,12 +24,12 @@ export default function BookingDetail({ handleSubmit, product, images }) {
           <hr />
           <ContainerDate>
             <h4>Check in</h4>
-            <div>Date</div>
+            <div>{startDate ? startDate.toLocaleDateString()  : null }</div>
           </ContainerDate>
           <hr />
           <ContainerDate>
             <h4>Check out</h4>
-            <div>Date</div>
+            <div>{endDate ? endDate.toLocaleDateString() : null }</div>
           </ContainerDate>
           <hr />
           <ContainerButton>

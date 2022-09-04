@@ -9,12 +9,12 @@ flex-direction: column;
 export const FormTitle = styled.h2`
   color: ${(props) => props.theme.text_secondary};
   font-weight: 700;
-  margin:20px 0 0 0px;
+  margin:25px 0 0 0px;
 `
 
 export const FormStyle = styled.form`
 background-color: ${(props) => props.theme.background};
-margin: 20px 20px 10px 0px;
+margin: 15px 20px 10px 0px;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0px 10px 6px 5px rgba(0,0,0,0.1);
@@ -27,7 +27,14 @@ color:${(props) => props.theme.text_secondary};
 @media (max-width: 414px){
   flex-direction:column;
 }
-
+`
+export const CalendarContainerStyle = styled.div`
+background-color: ${(props) => props.theme.background};
+margin: 15px 20px 10px 0px;
+padding: 5px;
+border-radius: 10px;
+box-shadow: 0px 10px 6px 5px rgba(0,0,0,0.1);
+width: 100%;
 `
 export const InputContainer = styled.div`
   display: flex;

@@ -1,10 +1,11 @@
 import React from 'react'
-import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput,LabelStyle, SubTitle, Column} from './BookingFormStyle'
+import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput,LabelStyle, SubTitle, Column, CalendarContainerStyle} from './BookingFormStyle'
 import Select from 'react-select'
+import Schedule from '../../../components/schedule/Schedule'
 
 
 
-export default function BookingForm({ handleChange, handleSelectChange}) {
+export default function BookingForm({ handleChange, handleSelectChange, picDate }) {
 
   const optionsHours = [
     "0:00 AM",
@@ -46,6 +47,7 @@ export default function BookingForm({ handleChange, handleSelectChange}) {
                         name="nombre"
                         placeholder="Nombre"
                         onChange={handleChange}
+                        disabled={true}
                         />  
                     </InputContainer>
                     <InputContainer>
@@ -55,6 +57,7 @@ export default function BookingForm({ handleChange, handleSelectChange}) {
                          name="apellido"
                          placeholder="Apellido"
                          onChange={handleChange}
+                         disabled={true}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -64,6 +67,7 @@ export default function BookingForm({ handleChange, handleSelectChange}) {
                          name="email"
                          placeholder="correo@electronico.com"
                          onChange={handleChange}
+                         disabled={true}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -78,6 +82,10 @@ export default function BookingForm({ handleChange, handleSelectChange}) {
                     </InputContainer>
                 </FormStyle>
             </ColumnForm>
+            <FormTitle>Seleccioná tu fecha de reserva</FormTitle>
+            <CalendarContainerStyle>
+                <Schedule inline picDate={picDate} />
+            </CalendarContainerStyle>
 
             <FormTitle>Indica tu horario estimado de llegada</FormTitle>
         <FormStyle>

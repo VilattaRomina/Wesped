@@ -38,12 +38,13 @@ flex-direction: column;
 export const Title = styled.h2`
     color: ${(props) => props.theme.text_primary};
     font-weight: 700;
-    padding-bottom:18px;
+    padding-bottom:20px;
+    font-size:24px;
 `
 export const ContainerImage = styled.div`
-height:300px;
-@media (max-width: 768px){
-padding-right:10px;
+height:320px;
+@media (max-width: 1050px){
+padding-right:15px;
 }
 `
 export const Image = styled.img`
@@ -61,7 +62,7 @@ export const InfoDetailProduct = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top:20px;
+  padding-top:35px;
  
   h3{
     font-weight: 700;
@@ -77,7 +78,7 @@ export const InfoDetailProduct = styled.div`
     font-size: 24px;
     line-height: 28px;
     color: #383B58;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
   }
 
   p{
@@ -85,7 +86,7 @@ export const InfoDetailProduct = styled.div`
     font-size: 14px;
     line-height: 16px;
     color:#383B58;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
   }
 
   span{
@@ -104,7 +105,7 @@ color:#383B58;
 export const ContainerButton = styled.div`
 display: flex;
 justify-content: center;
-padding-top:40px;
+padding-top:45px;
 
 `
 

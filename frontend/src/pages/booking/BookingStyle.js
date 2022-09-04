@@ -23,9 +23,7 @@ grid-template-columns: 2fr 1fr;
 `
 export const ContainerForm = styled.div`
 // width:900px;
-margin-right:30px;
-margin-bottom:20px;
-margin-left:30px;
+margin: 20px 30px 10px 30px;
 @media(max-width:1100px){
   // width:650px;
 }
@@ -42,7 +40,7 @@ margin-left:30px;
 `
 export const ContainerBooking = styled.div`
 // width:400px;
-margin-top:60px;
+margin-top:80px;
 margin-bottom:30px;
 margin-right:30px;
 @media (max-width: 768px){
