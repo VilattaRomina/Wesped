@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ErrorMessage = ({ children, isError }) => {
+const ErrorMessage = ({ children, visible }) => {
     return (
-        <StyledErrorMessage isError={isError}>
+        <StyledErrorMessage visible={visible}>
             {children}
         </StyledErrorMessage>
     )
@@ -13,6 +13,6 @@ export default ErrorMessage
 
 const StyledErrorMessage = styled.div`
     color: red;
-    display: ${props => props.isError ? "inline" : "none"};
+    display: ${props => props.visible ? "inline" : "none"};
     font-style: italic;
 `
