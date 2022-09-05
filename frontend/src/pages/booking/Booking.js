@@ -3,7 +3,7 @@ import HeaderProduct from '../../components/headerProduct/HeaderProduct'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosInstance } from '../../helpers/AxiosHelper';
-import { BodyStyle, LineStyles, ContainerStyle, ContainerBooking, ContainerForm } from './BookingStyle'
+import { BodyStyle, LineStyles, ContainerStyle, ContainerBooking,ContainerForm } from './BookingStyle'
 import Policies from '../product/productDetails/policies/Policies';
 import Section from '../../components/section/Section';
 import BookingDetail from './bookingDetail/BookingDetail';
