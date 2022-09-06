@@ -1,4 +1,4 @@
-package com.dh.Wesped.Security;
+package com.dh.Wesped.Security.Jwt;
 
 import org.apache.log4j.Logger;
 import org.springframework.security.core.AuthenticationException;
@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class JwtEntryPoint implements AuthenticationEntryPoint {
 
-    private static final Logger logger = Logger.getLogger(JwtAuthenticationEntryPoint.class);
+    private static final Logger logger = Logger.getLogger(JwtEntryPoint.class);
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        logger.error("Responding with unauthorized error. Message - {}" + authException.getMessage());
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+        logger.error("Fallo en el metodo commence");
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "No esta autorizado");
     }
 }
