@@ -15,7 +15,7 @@ height:80px;
 
 export const HeaderStyle = styled.div`
   color: #fff;
-  padding: 15px 30px;
+  padding: 15px 20px 15px 30px;
   
   display:flex;
   justify-content: space-between;
@@ -30,13 +30,13 @@ export const Title = styled.div`
     flex-direction:column;
     
       h4{
-          font-size: 16px;  
+          font-size: 17px;  
           font-weight:300;
           padding-bottom:5px;
       }
 
       h2{
-          font-size: 25px;
+          font-size: 28px;
           line-height: 28px;
       }
 

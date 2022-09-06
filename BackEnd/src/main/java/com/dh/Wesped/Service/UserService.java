@@ -6,9 +6,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserService {
 
     private static final Logger logger = Logger.getLogger(UserService.class);
@@ -27,5 +29,14 @@ public class UserService {
     public List<User> getAllUsers() {
         logger.debug("Listando usuarios: ");
         return userRepository.findAll();
+    }
+
+    public User userByEmail(String email) {
+        logger.debug("Buscando usuario con email: " + email);
+        return userRepository.findByEmail(email);
+    }
+
+    public Boolean existsUserByEmail(String email) {
+        return userRepository.existsByEmail(email);
     }
 }
