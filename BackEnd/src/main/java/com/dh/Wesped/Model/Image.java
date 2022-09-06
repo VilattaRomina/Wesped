@@ -35,11 +35,9 @@ public class Image {
     @Override
     public String toString() {
         return "Image{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", urlImage='" + urlImage + '\'' +
-                ", product_id=" + product.getId() +
                 '}';
     }
 }
