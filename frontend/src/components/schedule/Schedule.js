@@ -8,6 +8,7 @@ import "./CalendarStyled.css";
 import { usePathname } from '../../hooks/hooks'
 
 const Container = ({ children }) => {
+  const [closeCalendar, setCloseCalendar] = useState(false);
   const pathName = usePathname();
   const isInProductPage = pathName.includes("product");
   const navigate = useNavigate();
@@ -20,15 +21,18 @@ const Container = ({ children }) => {
     justifyContent: "space-evenly",
     alignItems: "center",
     padding: isInProductPage ? "2rem" : "0",
-  }
+    visibility: closeCalendar ? "hidden" : ""
+  };
 
-  const handleClick = () => {
+  const startReservationBtnClick = () => {
     const isLoggedUser = true;
     if (!isLoggedUser)
       navigate('/login');
 
     navigate(`${pathName}/reservas`)
   }
+
+  const applyDatesBtnClick = () => setCloseCalendar(true);
 
   return (
     <div
@@ -42,16 +46,12 @@ const Container = ({ children }) => {
         <ScheduleIngresarReservaDiv>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
           <ButtonScheduleStyled>
-            <Button width="28rem" theme="secondary" onClick={handleClick}>
-              {isInProductPage ? "Iniciar reserva" : "Aplicar"}
-            </Button>
+            <Button width="28rem" theme="secondary" onClick={startReservationBtnClick}>Iniciar reserva</Button>
           </ButtonScheduleStyled>
         </ScheduleIngresarReservaDiv>
         :
         <ButtonScheduleStyled>
-          <Button width="12.5rem" theme="secondary">
-            {isInProductPage ? "Iniciar reserva" : "Aplicar"}
-          </Button>
+          <Button width="12.5rem" theme="secondary" onClick={applyDatesBtnClick}>Aplicar</Button>
         </ButtonScheduleStyled>
       }
     </div>
@@ -60,14 +60,13 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline, readOnly }) => {
+const Calendar = ({ inline, readOnly, monthsShown }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-    picDate(start, end);
   };
 
   return (
@@ -76,10 +75,12 @@ const Calendar = ({ picDate, inline, readOnly }) => {
       startDate={startDate}
       endDate={endDate}
       calendarContainer={Container}
+      shouldCloseOnSelect={false}
       selectsRange
       isClearable
       readOnly={readOnly}
       inline={inline}
+      monthsShown={monthsShown}
       dateFormat="dd/MM/yyyy"
       minDate={new Date()}
       placeholderText="Chech in - Check out"
@@ -131,12 +132,11 @@ const Calendar = ({ picDate, inline, readOnly }) => {
           <div className="react-datepicker__month"></div>
         </div>
       )}
-      monthsShown={2}
     />
   );
 };
 
 /*Schedule component*/
-export default function Schedule({ placeHolderText, picDate, inline, readOnly }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} />;
+export default function Schedule({ inline, readOnly, monthsShown }) {
+  return <Calendar inline={inline} readOnly={readOnly} monthsShown={monthsShown} />;
 }
