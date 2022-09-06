@@ -10,7 +10,9 @@ import { usePathname } from '../../hooks/hooks'
 const Container = ({ children }) => {
   const [closeCalendar, setCloseCalendar] = useState(false);
   const pathName = usePathname();
-  const isInProductPage = pathName.includes("product");
+  const isInBookingPage = pathName.includes("reservas");
+  const isInProductPage = pathName.includes("producto") && !isInBookingPage;
+  const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
 
   const styles = {
@@ -18,10 +20,11 @@ const Container = ({ children }) => {
     position: "relative",
     color: "#0073A3",
     display: isInProductPage ? "flex" : "",
-    justifyContent: "space-evenly",
-    alignItems: "center",
+    justifyContent: isInProductPage ? "space-evenly" : "",
+    alignItems: isInProductPage ? "center" : "",
     padding: isInProductPage ? "2rem" : "0",
-    visibility: closeCalendar ? "hidden" : ""
+    visibility: closeCalendar ? "hidden" : "",
+    width: '100%'
   };
 
   const startReservationBtnClick = () => {
@@ -42,19 +45,25 @@ const Container = ({ children }) => {
         <div>{children}</div>
       </ScheduleMainStyled>
 
-      {isInProductPage ?
+      {isInProductPage &&
         <ScheduleIngresarReservaDiv>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
           <ButtonScheduleStyled>
-            <Button width="28rem" theme="secondary" onClick={startReservationBtnClick}>Iniciar reserva</Button>
+            <Button width="28rem" theme="secondary" onClick={startReservationBtnClick}>
+              Iniciar reserva
+            </Button>
           </ButtonScheduleStyled>
         </ScheduleIngresarReservaDiv>
-        :
+      }
+      {
+        isInHomePage &&
         <ButtonScheduleStyled>
-          <Button width="12.5rem" theme="secondary" onClick={applyDatesBtnClick}>Aplicar</Button>
+          <Button width="12.5rem" theme="secondary">
+            Aplicar
+          </Button>
         </ButtonScheduleStyled>
       }
-    </div>
+    </div >
   );
 };
 

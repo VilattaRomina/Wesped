@@ -21,7 +21,7 @@ import Policies from '../../../components/policies/Policies';
 import Schedule from '../../../components/schedule/Schedule';
 import Map from './map/Map'
 
-export default function ProductDetails() {
+export default function ProductDetails(to) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -50,7 +50,7 @@ export default function ProductDetails() {
     <>
       {product ?
         <BodyStyle isOpen={modalIsOpen}>
-          <HeaderProduct product={product} />
+          <HeaderProduct product={product} to={"/"}/>
           <UbicationProduct product={product} />
           <Section>
             <ShareStyle>
