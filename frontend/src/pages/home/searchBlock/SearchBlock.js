@@ -18,7 +18,7 @@ const SearchBlock = (props) => {
 
   const filterProductsByCity = () => {
     if (!selectedCityID) return;
-
+    
     AxiosInstance.get(`/products/city/${selectedCityID}`, {
     })
       .then(products => {
