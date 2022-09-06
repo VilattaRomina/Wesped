@@ -1,9 +1,11 @@
-import { BodyStyle, 
+import {
+  BodyStyle,
   ShareStyle,
-  DescriptionStyle, 
-  LineStyles, 
+  DescriptionStyle,
+  LineStyles,
   FeaturesStyle,
-  TitleStyles } from './ProductDetailsStyles'
+  TitleStyles
+} from './ProductDetailsStyles'
 import { FaRegHeart } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import { useState, useEffect } from 'react';
@@ -13,11 +15,13 @@ import { Icons } from '../../../ui/icons';
 import GalleryBlock from './galleryBlock/GalleryBlock';
 import GalleryMobile from './galleryMobile/GalleryMobile';
 import Section from '../../../components/section/Section';
-import HeaderProduct from './headerProduct/HeaderProduct';
+import HeaderProduct from '../../../components/headerProduct/HeaderProduct';
 import UbicationProduct from './ubicationProduct/UbicationProduct';
-import Policies from './policies/Policies';
+import Policies from '../../../components/policies/Policies';
+import Schedule from '../../../components/schedule/Schedule';
+import Map from './map/Map'
 
-export default function ProductDetails() {
+export default function ProductDetails(to) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -46,12 +50,12 @@ export default function ProductDetails() {
     <>
       {product ?
         <BodyStyle isOpen={modalIsOpen}>
-          <HeaderProduct product={product} />
-          <UbicationProduct product={product}/>
+          <HeaderProduct product={product} to={"/"}/>
+          <UbicationProduct product={product} />
           <Section>
             <ShareStyle>
               <div><BiShareAlt /></div>
-              <div><FaRegHeart /></div>
+              <div style={{ cursor: "pointer" }}><FaRegHeart /></div>
             </ShareStyle>
             <GalleryBlock images={product.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal} />
             <GalleryMobile images={product.images} />
@@ -66,9 +70,14 @@ export default function ProductDetails() {
                 <div key={item.id}><span>{Icons[item.icon]}</span><p>{item.title}</p></div>
               ))}
             </FeaturesStyle>
+            <TitleStyles>Fechas disponibles</TitleStyles>
+            <Schedule inline buttonText="Iniciar reserva" readOnly={true} />
+             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
+            <LineStyles />
+            <Map product={product}/>
             <TitleStyles>Qué tenés que saber</TitleStyles>
             <LineStyles />
-            <Policies product={product}/>
+            <Policies product={product} />
           </Section>
         </BodyStyle> :
         <p>Cargando...</p>
