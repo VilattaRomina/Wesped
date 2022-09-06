@@ -34,8 +34,7 @@ public class Policy {
     @Override
     public String toString() {
         return "Policy{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

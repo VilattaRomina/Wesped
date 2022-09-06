@@ -67,19 +67,12 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 ", rating=" + rating +
                 ", availability=" + availability +
-                ", category=" + category +
-                ", city=" + city +
-                ", images=" + images +
-                ", features=" + features +
-                ", policies=" + policies +
-                ", bookings=" + bookings +
                 '}';
     }
 }
