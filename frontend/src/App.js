@@ -9,6 +9,7 @@ import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
 import ProductDetails from "./pages/product/productDetails/ProductDetails";
 import Booking from "./pages/booking/Booking";
+import BookingS from "./pages/successfulBooking/BookingS"
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/registro" element={<Register />} />
           <Route path='/producto/:productId' element={<ProductDetails />} />
           <Route path='/producto/:productId/reservas' element={<Booking />} />
+          <Route path="/BookingS" element={<BookingS/>}/>
         </Routes>
         <Footer />
       </ThemeProvider>
