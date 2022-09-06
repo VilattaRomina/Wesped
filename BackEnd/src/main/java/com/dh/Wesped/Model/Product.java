@@ -1,5 +1,6 @@
 package com.dh.Wesped.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.Getter;
@@ -46,6 +47,10 @@ public class Product {
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "policy_id")})
     private Set<Policy> policies = new HashSet<>();
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "product_id")
+    private Set<Booking> bookings = new HashSet<>();
 
     public Product() {
     }
@@ -62,18 +67,12 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 ", rating=" + rating +
                 ", availability=" + availability +
-                ", category=" + category +
-                ", city=" + city +
-                ", images=" + images +
-                ", features=" + features +
-                ", policies=" + policies +
                 '}';
     }
 }

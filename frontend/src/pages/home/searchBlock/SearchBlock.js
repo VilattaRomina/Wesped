@@ -6,7 +6,7 @@ import {
   ButtonStyle
 } from "./SearchBlockStyled";
 import DropdownList from "./dropdownList/DropdownList";
-import Schedule from "../searchBlock/schedule/Schedule";
+import Schedule from "../../../components/schedule/Schedule";
 import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 import Button from "../../../components/button/Button";
 import SearchInput from "../searchBlock/SearchInput"

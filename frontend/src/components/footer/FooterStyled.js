@@ -5,7 +5,7 @@ background:${props => props.theme.primary};
 //background:${props => (props.theme.secondary)};
 opacity: .9;
 width: 100vw;
-height: 60px;
+height: 40px;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -45,7 +45,8 @@ export const FooterIcon = styled.div`
   font-size: 20px;
   align-items: center;
   line-height: 0;
-
+  cursor: pointer;
+  
   @media (max-width: 414px) {
     display: none;
   }
