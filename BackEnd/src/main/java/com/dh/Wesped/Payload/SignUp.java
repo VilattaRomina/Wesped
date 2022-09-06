@@ -17,6 +17,4 @@ public class SignUp {
     private String email;
     @NonNull
     private String password;
-    @Nullable
-    private String city;
 }

@@ -59,12 +59,10 @@ public class AuthenticationController {
         }
 
         User user = new User(signUp.getName(), signUp.getSurname(),
-                signUp.getEmail(), signUp.getPassword(), signUp.getCity());
+                signUp.getEmail(), signUp.getPassword());
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        if(user.getCity() == null || user.getCity().isEmpty())
-            user.setCity("null");
+        user.setCity("null");
 
         Role userRole = new Role("user");
         userRole.setId(2);
