@@ -27,7 +27,7 @@ const Container = ({ children }) => {
   }
 
 
-  const handleClick = () => {
+  const startBooking = () => {
     const isLoggedUser = true;
     if (!isLoggedUser)
       navigate('/login');
@@ -47,7 +47,7 @@ const Container = ({ children }) => {
         <ScheduleIngresarReservaDiv>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
           <ButtonScheduleStyled>
-            <Button width="28rem" theme="secondary" onClick={handleClick}>
+            <Button width="28rem" theme="secondary" onClick={startBooking}>
               Iniciar reserva
             </Button>
           </ButtonScheduleStyled>
