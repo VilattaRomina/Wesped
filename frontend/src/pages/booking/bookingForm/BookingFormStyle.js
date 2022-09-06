@@ -87,5 +87,9 @@ p{
     font-size:15px;
 }
 `
+export const TextError = styled.p `
+color: red;
+padding:5px;
+`
 
 

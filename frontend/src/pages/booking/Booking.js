@@ -10,8 +10,6 @@ import BookingDetail from './bookingDetail/BookingDetail';
 import BookingForm from './bookingForm/BookingForm'
 
 
-
-
 export default function Booking(to) {
 
   const { productId } = useParams();
@@ -25,10 +23,13 @@ export default function Booking(to) {
     startDate: '',
     endDate: '',
     checkInHour: '',
+    errorDate: false,
+    errorHour: false,
+   
 })
 
 const picDate = (startDate, endDate) => {
-  setValues({ ...values, startDate, endDate });
+  setValues({ ...values, startDate, endDate,  errorDate: false, });
 }
  
 
@@ -44,18 +45,33 @@ const picDate = (startDate, endDate) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(values);
+    let errorDate = false;
+    let errorHour = false;
+
+    if(values.startDate === '' || values.endDate === '' ){
+      // setValues({ ...values, errorDate: true})
+      errorDate = true;
+    }
+    if(values.checkInHour === ''){
+      // setValues({ ...values, errorHour: true });
+      errorHour = true;
+    }
+
+    setValues({ ...values, errorDate: errorDate, errorHour: errorHour })
   };
+ 
 
 
 const handleChange = (e) => {
   setValues({
       ...values,
-      [e.target.name] : e.target.value
+      [e.target.name] : e.target.value,  
   })
 }
 
 const handleSelectChange = ({ value })=> {
-  setValues({...values, checkInHour: value})
+  setValues({...values, checkInHour: value, errorHour: false,})
+  
 }
 
 

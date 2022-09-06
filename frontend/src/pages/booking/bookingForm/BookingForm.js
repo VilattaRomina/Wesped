@@ -1,11 +1,12 @@
 import React from 'react'
-import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput,LabelStyle, SubTitle, Column, CalendarContainerStyle} from './BookingFormStyle'
+import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput,LabelStyle, SubTitle, Column, CalendarContainerStyle, TextError} from './BookingFormStyle'
 import Select from 'react-select'
 import Schedule from '../../../components/schedule/Schedule'
 
 
 
-export default function BookingForm({ handleChange, handleSelectChange, picDate }) {
+
+export default function BookingForm({ values, handleChange, handleSelectChange, picDate }) {
 
   const optionsHours = [
     "0:00 AM",
@@ -35,6 +36,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
      "seleccionar hora de llegada",
    ];
 
+   console.log('booking form', values);
     return (
         <>
             <ColumnForm>
@@ -77,7 +79,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
                          name="ciudad"
                          placeholder="Ciudad"
                          onChange={handleChange}
-                         required={true}
+                         required
                         />
                     </InputContainer>
                 </FormStyle>
@@ -86,7 +88,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
             <CalendarContainerStyle>
                 <Schedule inline picDate={picDate} />
             </CalendarContainerStyle>
-
+            {values.errorDate && <TextError>Debe seleccionar un rango de fechas</TextError>}
             <FormTitle>Indica tu horario estimado de llegada</FormTitle>
         <FormStyle>
             <SubTitle>Tu habitacion va a estar lista para el check-in entre las 10:00AM y las 11:00PM
@@ -98,6 +100,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
                 options={optionsHours.map(item => ({label: item, value: item}))}
                 onChange = {handleSelectChange}
                 />
+                {values.errorHour && <TextError>Debe seleccionar una opción</TextError>}
             </Column>
         </FormStyle>
         </>
