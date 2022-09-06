@@ -17,6 +17,8 @@ const SearchBlock = (props) => {
 
 
   const filterProductsByCity = () => {
+    if (!selectedCityID) return;
+
     AxiosInstance.get(`/products/city/${selectedCityID}`, {
     })
       .then(products => {
@@ -48,7 +50,7 @@ const SearchBlock = (props) => {
             icon={<FaMapMarkerAlt />}
           />
           <SearchInput
-            input={<Schedule icon={<FaRegCalendarAlt />} picDate={props.picDate} />}
+            input={<Schedule icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={2} />}
             icon={<FaRegCalendarAlt />}
           />
           <ButtonStyle>
