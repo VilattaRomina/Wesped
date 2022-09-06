@@ -1,17 +1,19 @@
 package com.dh.Wesped.Security;
 
-
 import com.dh.Wesped.Model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
+@Setter
 public class AppUser implements UserDetails {
 
     private Integer id;
@@ -20,20 +22,22 @@ public class AppUser implements UserDetails {
     private String email;
     @JsonIgnore
     private String password;
+    private String city;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public AppUser(Integer id, String name, String surname, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public AppUser(Integer id, String name, String surname, String email, String password, String city, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
+        this.city = city;
         this.authorities = authorities;
     }
 
-    public static AppUser create(User user) {
+    public static AppUser build(User user) {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getName());
+        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getName().name());
         authorities.add(authority);
         return new AppUser(
                 user.getId(),
@@ -41,24 +45,8 @@ public class AppUser implements UserDetails {
                 user.getSurname(),
                 user.getEmail(),
                 user.getPassword(),
-                authorities
-        );
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getEmail() {
-        return email;
+                user.getCity(),
+                authorities);
     }
 
     @Override
@@ -94,5 +82,16 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

@@ -2,5 +2,5 @@ package com.dh.Wesped.Model;
 
 public enum RoleName {
 
-    admin, user
+    ROLE_ADMIN, ROLE_USER
 }
