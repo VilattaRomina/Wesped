@@ -34,13 +34,6 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, String email, String password) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-    }
-
     public User(String name, String surname, String email, String password, String city) {
         this.name = name;
         this.surname = surname;
@@ -52,14 +45,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", city='" + city + '\'' +
-                ", role=" + role +
-                ", bookings=" + bookings +
                 '}';
     }
 }

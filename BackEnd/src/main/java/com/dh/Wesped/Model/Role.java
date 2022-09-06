@@ -17,8 +17,8 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    //@Enumerated(EnumType.STRING)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleName name;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "roles_id")
@@ -27,16 +27,14 @@ public class Role {
     public Role() {
     }
 
-    public Role(String name) {
+    public Role(RoleName name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
         return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", users=" + users +
+                "name=" + name +
                 '}';
     }
 }

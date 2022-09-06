@@ -5,8 +5,10 @@ import com.dh.Wesped.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -21,8 +23,9 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping
-    public ResponseEntity<Booking> createNewBooking(@RequestBody Booking booking) {
+    public ResponseEntity<Booking> createNewBooking(@RequestBody @Valid Booking booking) {
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.newBooking(booking));
     }
 
