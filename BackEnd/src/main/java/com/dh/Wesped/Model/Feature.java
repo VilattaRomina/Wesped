@@ -33,8 +33,7 @@ public class Feature {
     @Override
     public String toString() {
         return "Feature{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", icon='" + icon + '\'' +
                 '}';
     }
