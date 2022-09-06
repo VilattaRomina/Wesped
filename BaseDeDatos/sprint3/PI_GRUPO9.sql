@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`users` (
   `name` VARCHAR(60) NOT NULL,
   `surname` VARCHAR(60) NOT NULL,
   `email` VARCHAR(225) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `city` VARCHAR(225) NOT NULL,
   `roles_id` INT NOT NULL,
   PRIMARY KEY (`id`, `roles_id`),
