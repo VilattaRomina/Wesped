@@ -8,6 +8,7 @@ import { Form, Div, Label } from '../../components/form/StyledForm'
 import validator from 'validator'
 import { AxiosInstance } from '../../helpers/AxiosHelper'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const RegisterForm = () => {
     const [error, setError] = useState({ visible: false, message: "" });
@@ -40,12 +41,12 @@ const RegisterForm = () => {
                 email: email,
                 password: password,
             }
-            axios.post("http://localhost:8080/auth/signup", newUser).then(res => console.log(res.data.message))
-            // TODO mostrar correctamente que el usuario se creo correctamente
-            navigate('/login')
+            axios.post("http://localhost:8080/auth/signup", newUser).then(res => {
+                Swal.fire(res.data.message, 'sdasdasd', 'success').then(() => navigate('/login'))
+                console.log(res.data.message)
+            })
             return;
         }
-
         setError({ visible: true, message: "Por favor verifique que los datos estén correctos." })
     }
 

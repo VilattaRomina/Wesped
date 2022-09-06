@@ -145,5 +145,5 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
 
 /*Schedule component*/
 export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown}/>;
+  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} />;
 }
