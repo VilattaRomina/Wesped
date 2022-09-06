@@ -16,9 +16,8 @@ const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
 
 
-  const filterProductsByCity = () => {
+  const filterProductsByCityAndOrDates = () => {
     if (!selectedCityID) return;
-
     AxiosInstance.get(`/products/city/${selectedCityID}`, {
     })
       .then(products => {
@@ -35,7 +34,7 @@ const SearchBlock = (props) => {
   // y mediante props seteo la lista de productos a mostrar (productsToDisplay)
   const handleSubmit = (e) => {
     e.preventDefault();
-    filterProductsByCity();
+    filterProductsByCityAndOrDates();
   }
 
   return (
