@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import ErrorMessage from '../../components/form/ErrorMessage'
@@ -11,32 +11,7 @@ import axios from 'axios'
 
 const RegisterForm = () => {
     const [error, setError] = useState({ visible: false, message: "" });
-    const [userLocationCity, setUserLocationCity] = useState(null);
-    const [userCoordinates, setUserCoordinates] = useState(null);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const success = res => {
-            setUserCoordinates({
-                latitude: res.coords.latitude,
-                longitude: res.coords.longitude
-            })
-        }
-        const error = err => console.warn(err)
-        const options = {
-            enableHighAccuracy: true,
-            timeout: 5000
-        }
-
-        navigator.geolocation.getCurrentPosition(success, error, options);
-    }, [])
-
-    useEffect(() => {
-        if (userCoordinates)
-            axios.get(`${process.env.REACT_APP_LOCATION_IQ_API_ENDPOINT}/reverse?key=${process.env.REACT_APP_LOCATION_IQ_TOKEN}&lat=${userCoordinates.latitude}&lon=${userCoordinates.longitude}&format=json`)
-                .then(res => setUserLocationCity(res.data.address.state))
-
-    }, [userCoordinates])
 
     const nameInputRef = useRef("");
     const surnameInputRef = useRef();
@@ -58,17 +33,16 @@ const RegisterForm = () => {
         const passwordLengthIsMoreThanSix = password.length >= 6;
         const areMatchingPasswords = validator.equals(confirmedPassword, password);
 
-        if (nameIsValid && surnameIsValid && emailIsValid && passwordLengthIsMoreThanSix && areMatchingPasswords && userLocationCity) {
+        if (nameIsValid && surnameIsValid && emailIsValid && passwordLengthIsMoreThanSix && areMatchingPasswords) {
             const newUser = {
                 name: name,
                 surname: surname,
                 email: email,
                 password: password,
-                city: userLocationCity
             }
             axios.post("http://localhost:8080/auth/signup", newUser).then(res => console.log(res.data.message))
             // TODO mostrar correctamente que el usuario se creo correctamente
-            navigate('/')
+            navigate('/login')
             return;
         }
 
