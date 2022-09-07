@@ -1,8 +1,9 @@
 import React from "react";
 import Modal from "react-modal";
-import { DivStyle, ImageStyle, H2Style, H3Style } from "./BookingSStyled";
+import { BodyStyle,DivStyle, ImageStyle, H2Style, H3Style } from "./BookingSStyled";
 import logo from "../../ui/success-booking.png";
 import ButtonC from "../../components/button/Button";
+import {Link} from 'react-router-dom'
 
 const modalStyles = {
   content: {
@@ -35,15 +36,11 @@ const buttonStyles = {
 Modal.setAppElement("#root");
 
 function BookingS() {
-  let subtitle;
+  
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = "#f00";
   }
 
   function closeModal() {
@@ -51,11 +48,10 @@ function BookingS() {
   }
 
   return (
-    <div>
+    <BodyStyle >
       <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={modalStyles}
         contentLabel="Example Modal"
@@ -64,6 +60,7 @@ function BookingS() {
           <ImageStyle src={logo} alt="Logo Success" />
           <H2Style>¡Muchas Gracias!</H2Style>
           <H3Style>Su reserva se ha realizado con éxito</H3Style>
+          <Link to={'/'}>
           <ButtonC
             width="12.5rem"
             theme="secondary"
@@ -72,9 +69,10 @@ function BookingS() {
           >
             ok
           </ButtonC>
+          </Link>
         </DivStyle>
       </Modal>
-    </div>
+    </BodyStyle>
   );
 }
 

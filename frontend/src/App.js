@@ -29,7 +29,7 @@ function App() {
           <Route path="/registro" element={<Register />} />
           <Route path='/producto/:productId' element={<ProductDetails />} />
           <Route path='/producto/:productId/reservas' element={<Booking />} />
-          <Route path="/BookingS" element={<BookingS/>}/>
+          <Route path='/producto/:productId/reservas/reserva-exitosa' element={<BookingS />} />
         </Routes>
         <Footer />
       </ThemeProvider>
