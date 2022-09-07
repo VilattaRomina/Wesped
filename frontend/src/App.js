@@ -33,8 +33,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <Header />
         <Routes>
-          <Route path="/" element={<Home loggedUser={loggedUser} />} />
-          <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Register />} />
           <Route path='/producto/:productId' element={<ProductDetails />} />
           <Route path='/producto/:productId/reservas' element={<Booking />} />

@@ -1,8 +1,12 @@
 import React from 'react';
 import { RecommendationContainerStyle, RecomendationTitle, ListRecommendationsStyle, CardStyle } from './RecommendationsStyles';
 import RecommendationsItem from './recommendationsItems/RecommendationsItem';
+import { useContext } from 'react';
+import { UserContext } from '../../../hooks/UseContext';
 
-export default function Recommendations({ products, loggedUser, title }) {
+export default function Recommendations({ products, title }) {
+
+  const { loggedUser } = useContext(UserContext)
 
   // Si se va a utilizar en otro componente, mover funcion a carpeta Helpers
   const shuffleResults = (arrayOfProducts) => {
@@ -23,7 +27,8 @@ export default function Recommendations({ products, loggedUser, title }) {
     return arrayOfProducts.slice(0, 6);
   };
 
-  const productsToDisplay = !loggedUser?.valid ? shuffleResults(products) : products;
+  const productsToDisplay = loggedUser?.id === undefined ? shuffleResults(products) : products;
+  console.log(productsToDisplay);
 
   return (
     <RecommendationContainerStyle>
@@ -38,7 +43,6 @@ export default function Recommendations({ products, loggedUser, title }) {
           )
         }
       </ListRecommendationsStyle>
-
     </RecommendationContainerStyle>
   )
 }
