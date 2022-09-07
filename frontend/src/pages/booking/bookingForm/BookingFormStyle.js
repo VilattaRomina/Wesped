@@ -59,6 +59,7 @@ export const TextInput = styled.input`
   color: '#383B58';
   opacity: 0.8;
 
+
 `
 export const ErrorText = styled.p`
   color: red;
