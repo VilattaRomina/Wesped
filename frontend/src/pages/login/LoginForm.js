@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import ErrorMessage from '../../components/form/ErrorMessage'
-import axios from 'axios'
+import { AxiosInstance } from '../../helpers/AxiosHelper'
 import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from '../../helpers/LocalStorageHelper'
 import { UserContext } from '../../hooks/UseContext'
@@ -38,7 +38,7 @@ const LoginForm = () => {
         }
 
         try {
-            axios.post('http://localhost:8080/auth/signin', userCredentials).then(({ data }) => {
+            AxiosInstance.post('/auth/signin', userCredentials).then(({ data }) => {
                 LocalStorageHelper.setItem('Token', data.token)
                 const { id, name, surname, email, city } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
                 setLoggedUser({
@@ -58,7 +58,7 @@ const LoginForm = () => {
             })
 
         } catch (error) {
-            console.log(error)
+            console.warn(error)
         }
     }
 

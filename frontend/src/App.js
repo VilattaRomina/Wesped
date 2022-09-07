@@ -18,23 +18,18 @@ const user = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
-  console.log(loggedUser);
 
   useEffect(() => {
     if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city })
   }, [])
-
-  const isLoggedUser = (loggedUser) => {
-    setLoggedUser(loggedUser);
-  }
 
   return (
     <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
       <ThemeProvider theme={theme}>
         <Header />
         <Routes>
-          <Route path="/" element={<Home loggedUser={loggedUser} />} />
-          <Route path="/login" element={<Login isLoggedUser={isLoggedUser} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Register />} />
           <Route path='/producto/:productId' element={<ProductDetails />} />
           <Route path='/producto/:productId/reservas' element={<Booking />} />

@@ -11,7 +11,6 @@ import "./CalendarStyled.css";
 const Container = ({ children }) => {
 
   const { loggedUser } = useContext(UserContext)
-  console.log(loggedUser);
 
   const pathName = usePathname();
   const isInBookingPage = pathName.includes("reservas");
