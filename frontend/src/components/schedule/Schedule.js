@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { usePathname } from '../../hooks/hooks'
+import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
 import { UserContext } from "../../hooks/UseContext";
