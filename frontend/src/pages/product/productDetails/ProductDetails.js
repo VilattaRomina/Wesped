@@ -50,7 +50,7 @@ export default function ProductDetails(to) {
     <>
       {product ?
         <BodyStyle isOpen={modalIsOpen}>
-          <HeaderProduct product={product} to={"/"}/>
+          <HeaderProduct product={product} to={"/"} />
           <UbicationProduct product={product} />
           <Section>
             <ShareStyle>
@@ -71,10 +71,10 @@ export default function ProductDetails(to) {
               ))}
             </FeaturesStyle>
             <TitleStyles>Fechas disponibles</TitleStyles>
-            <Schedule inline buttonText="Iniciar reserva" readOnly={true} />
-             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
+            <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={2}   />
+            <TitleStyles>¿Dónde vas a estar?</TitleStyles>
             <LineStyles />
-            <Map product={product}/>
+            <Map product={product} />
             <TitleStyles>Qué tenés que saber</TitleStyles>
             <LineStyles />
             <Policies product={product} />
