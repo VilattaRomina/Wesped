@@ -18,14 +18,14 @@ const SearchBlock = (props) => {
 
   const filterProductsByCity = () => {
     if (!selectedCityID) return;
-    
+
     AxiosInstance.get(`/products/city/${selectedCityID}`, {
     })
       .then(products => {
         props.setProductsToDisplayByCity(products.data)
         props.setRecommendationsTitle(products.data[0].city.name)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.warn(err))
   }
 
   // Metodo para setear "selectedCityID" state capturado en el componente DropdownList

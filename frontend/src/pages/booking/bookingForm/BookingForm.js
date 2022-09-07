@@ -1,9 +1,13 @@
-import React from 'react'
-import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput, LabelStyle, SubTitle, Column, CalendarContainerStyle, TextError} from './BookingFormStyle'
+import React,  { useContext }  from 'react'
+import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput, LabelStyle, SubTitle, Column, CalendarContainerStyle, TextError } from './BookingFormStyle'
 import Select from 'react-select'
 import Schedule from '../../../components/schedule/Schedule'
+import { UserContext } from '../../../hooks/UseContext'
 
-export default function BookingForm({ values, handleChange, handleSelectChange, picDate }) {
+
+
+export default function BookingForm({ values,handleChange, handleSelectChange, picDate }) {
+    const { loggedUser } = useContext(UserContext)
 
     const optionsHours = [
         "0:00",
@@ -46,6 +50,7 @@ export default function BookingForm({ values, handleChange, handleSelectChange, 
                             placeholder="Nombre"
                             onChange={handleChange}
                             disabled={true}
+                            value={loggedUser ? loggedUser?.name : ""}
                             style={{background: '#DFE4EA'}}
                         />
                     </InputContainer>
@@ -57,6 +62,7 @@ export default function BookingForm({ values, handleChange, handleSelectChange, 
                             placeholder="Apellido"
                             onChange={handleChange}
                             disabled={true}
+                            value={loggedUser ? loggedUser?.surname : ""}
                             style={{background: '#DFE4EA'}}
                         />
                     </InputContainer>
@@ -68,17 +74,19 @@ export default function BookingForm({ values, handleChange, handleSelectChange, 
                             placeholder="correo@electronico.com"
                             onChange={handleChange}
                             disabled={true}
+                            value={loggedUser ? loggedUser?.email : ""}
                             style={{background: '#DFE4EA'}}
                         />
                     </InputContainer>
                     <InputContainer>
                         <LabelStyle>Ciudad</LabelStyle>
                         <TextInput
-                         type="text"
-                         name="ciudad"
-                         placeholder="Ciudad"
-                         onChange={handleChange}
-                         required={true}
+                            type="text"
+                            name="ciudad"
+                            placeholder="Ciudad"
+                            onChange={handleChange}
+                            required={true}
+                            value={loggedUser ? loggedUser?.city : ""}
                         />
                     </InputContainer>
                 </FormStyle>

@@ -1,34 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
-import { GlobalStyle, ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
+import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
+import { UserContext } from "../../hooks/UseContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
-import { usePathname } from '../../hooks/hooks'
-
-
-
 
 const Container = ({ children }) => {
+
+  const { loggedUser } = useContext(UserContext)
+
   const pathName = usePathname();
   const isInBookingPage = pathName.includes("reservas");
   const isInProductPage = pathName.includes("producto") && !isInBookingPage;
   const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
 
+  const styles = {
+    background: isInProductPage ? "rgb(236, 236, 236)" : "#fff",
+    position: "relative",
+    color: "#0073A3",
+    display: isInProductPage ? "flex" : "",
+    justifyContent: isInProductPage ? "space-evenly" : "",
+    alignItems: isInProductPage ? "center" : "",
+    padding: isInProductPage ? "2rem" : "0",
+    width: '100%',
+
+  }
 
 
   const startBooking = () => {
-    const isLoggedUser = true;
-    if (!isLoggedUser)
+    if (!loggedUser) {
       navigate('/login');
+      return
+    }
 
     navigate(`${pathName}/reservas`)
   }
 
   return (
-    <GlobalStyle isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
+    <div
+      style={styles}
+    >
       <ScheduleMainStyled isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>{children}</div>
       </ScheduleMainStyled>
@@ -51,7 +66,7 @@ const Container = ({ children }) => {
           </Button>
         </ButtonScheduleStyled>
       }
-    </GlobalStyle>
+    </div>
   );
 };
 
@@ -92,14 +107,14 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
           <button
             aria-label="Previous Month"
             className={
-              "react-datepicker__navigation react-datepicker__navigation--previous"
+              "react-datepicker_navigation react-datepicker_navigation--previous"
             }
             style={customHeaderCount === 1 ? { visibility: "hidden" } : null}
             onClick={decreaseMonth}
           >
             <span
               className={
-                "react-datepicker__navigation-icon react-datepicker__navigation-icon--previous"
+                "react-datepicker_navigation-icon react-datepicker_navigation-icon--previous"
               }
             >
               {"<"}
@@ -113,14 +128,14 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
           <button
             aria-label="Next Month"
             className={
-              "react-datepicker__navigation react-datepicker__navigation--next"
+              "react-datepicker_navigation react-datepicker_navigation--next"
             }
             style={customHeaderCount === 0 ? { visibility: "hidden" } : null}
             onClick={increaseMonth}
           >
             <span
               className={
-                "react-datepicker__navigation-icon react-datepicker__navigation-icon--next"
+                "react-datepicker_navigation-icon react-datepicker_navigation-icon--next"
               }
             >
               {">"}
@@ -133,7 +148,7 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
   );
 };
 
-/*Schedule component*/
+
 export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown }) {
   return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} />;
 }

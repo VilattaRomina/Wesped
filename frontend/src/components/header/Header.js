@@ -4,7 +4,7 @@ import Nav from "./minicomponents/Nav";
 import { Link } from "react-router-dom";
 import { StyledHeader, LogoSlogan, Slogan } from './StyledHeader'
 
-const Header = (props) => {
+const Header = () => {
   const slogan = [
     "Sentite como en tu hogar",
     "Tu mejor descanso en un solo lugar",
@@ -25,7 +25,7 @@ const Header = (props) => {
             <Slogan>{slogan[randomSloganIndex]}</Slogan>
           </Link>
         </LogoSlogan>
-        <Nav loggedUser={props.loggedUser} isLoggedUser={props.isLoggedUser}/>
+        <Nav />
       </StyledHeader>
     </div>
   );
