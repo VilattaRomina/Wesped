@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from 'react-router-dom'
-import { usePathname } from "../../../hooks/Hooks";
+import { usePathname } from "../../../hooks/hooks";
 import { UserContext } from "../../../hooks/UseContext";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
