@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const CardStyle = styled.div`
 border-radius:10px;
 background-color: ${props => props.theme.background};
-box-shadow: 0px 10px 6px 5px rgba(0,0,0,0.1);
-
+box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.1);
 `
-export const ContainerStyle= styled.div`
+
+export const ContainerStyle = styled.div`
 padding:25px 10px;
 margin:10px;
 display: flex;

@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
+import { UserContext } from "../../hooks/UseContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
-import { usePathname } from '../../hooks/hooks'
 
 const Container = ({ children }) => {
+
+  const { loggedUser } = useContext(UserContext)
+
   const pathName = usePathname();
   const isInBookingPage = pathName.includes("reservas");
   const isInProductPage = pathName.includes("producto") && !isInBookingPage;
@@ -22,15 +26,16 @@ const Container = ({ children }) => {
     justifyContent: isInProductPage ? "space-evenly" : "",
     alignItems: isInProductPage ? "center" : "",
     padding: isInProductPage ? "2rem" : "0",
-    width:'100%',
-    
+    width: '100%',
+
   }
 
 
-  const handleClick = () => {
-    const isLoggedUser = true;
-    if (!isLoggedUser)
+  const startBooking = () => {
+    if (!loggedUser) {
       navigate('/login');
+      return
+    }
 
     navigate(`${pathName}/reservas`)
   }
@@ -40,26 +45,26 @@ const Container = ({ children }) => {
       style={styles}
     >
       <ScheduleMainStyled isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
-        <div style={{width:'100%', display:'flex', justifyContent:'space-around'}}>{children}</div>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>{children}</div>
       </ScheduleMainStyled>
 
-      { isInProductPage &&
+      {isInProductPage &&
         <ScheduleIngresarReservaDiv>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
           <ButtonScheduleStyled>
-            <Button width="28rem" theme="secondary" onClick={handleClick}>
+            <Button width="28rem" theme="secondary" onClick={startBooking}>
               Iniciar reserva
             </Button>
           </ButtonScheduleStyled>
         </ScheduleIngresarReservaDiv>
       }
       {
-        isInHomePage && 
-          <ButtonScheduleStyled>
-            <Button width="12.5rem" theme="secondary">
-              Aplicar
-            </Button>
-          </ButtonScheduleStyled>
+        isInHomePage &&
+        <ButtonScheduleStyled>
+          <Button width="12.5rem" theme="secondary">
+            Aplicar
+          </Button>
+        </ButtonScheduleStyled>
       }
     </div>
   );
@@ -67,7 +72,7 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline, readOnly }) => {
+const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
@@ -85,6 +90,7 @@ const Calendar = ({ picDate, inline, readOnly }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
+      monthsShown={monthsShown}
       readOnly={readOnly}
       inline={inline}
       dateFormat="dd/MM/yyyy"
@@ -101,14 +107,14 @@ const Calendar = ({ picDate, inline, readOnly }) => {
           <button
             aria-label="Previous Month"
             className={
-              "react-datepicker__navigation react-datepicker__navigation--previous"
+              "react-datepicker_navigation react-datepicker_navigation--previous"
             }
             style={customHeaderCount === 1 ? { visibility: "hidden" } : null}
             onClick={decreaseMonth}
           >
             <span
               className={
-                "react-datepicker__navigation-icon react-datepicker__navigation-icon--previous"
+                "react-datepicker_navigation-icon react-datepicker_navigation-icon--previous"
               }
             >
               {"<"}
@@ -122,14 +128,14 @@ const Calendar = ({ picDate, inline, readOnly }) => {
           <button
             aria-label="Next Month"
             className={
-              "react-datepicker__navigation react-datepicker__navigation--next"
+              "react-datepicker_navigation react-datepicker_navigation--next"
             }
             style={customHeaderCount === 0 ? { visibility: "hidden" } : null}
             onClick={increaseMonth}
           >
             <span
               className={
-                "react-datepicker__navigation-icon react-datepicker__navigation-icon--next"
+                "react-datepicker_navigation-icon react-datepicker_navigation-icon--next"
               }
             >
               {">"}
@@ -138,12 +144,11 @@ const Calendar = ({ picDate, inline, readOnly }) => {
           <div className="react-datepicker__month"></div>
         </div>
       )}
-      monthsShown={2}
     />
   );
 };
 
-/*Schedule component*/
-export default function Schedule({ placeHolderText, picDate, inline, readOnly }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} />;
+
+export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown }) {
+  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} />;
 }
