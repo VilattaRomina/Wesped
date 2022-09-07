@@ -1,46 +1,59 @@
 import React, { useRef, useState } from 'react'
-
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import ErrorMessage from '../../components/form/ErrorMessage'
 import classes from './register.module.css'
-
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Form, Div, Label } from '../../components/form/StyledForm'
 import validator from 'validator'
-
+import { AxiosInstance } from '../../helpers/AxiosHelper'
+import Swal from 'sweetalert2'
 
 const RegisterForm = () => {
     const [error, setError] = useState({ visible: false, message: "" });
+    const navigate = useNavigate();
 
-    // const nameInputRef = useRef();
-    // const surnameInputRef = useRef();
-    // const emailInputRef = useRef();
-    // const passwordInputRef = useRef();
-    // const confirmPasswordInputRef = useRef();
+    const nameInputRef = useRef("");
+    const surnameInputRef = useRef();
+    const emailInputRef = useRef();
+    const passwordInputRef = useRef();
+    const confirmPasswordInputRef = useRef();
 
     const submitHandler = event => {
         event.preventDefault();
-        //     debugger
-        //     const name = nameInputRef.current.value.trim();
-        //     const surname = surnameInputRef.current.value.trim();
-        //     const email = emailInputRef.current.value.trim();
-        //     const password = passwordInputRef.current.value.trim();
-        //     const confirmedPassword = confirmPasswordInputRef.current.value.trim();
+        const name = nameInputRef.current.value.trim();
+        const surname = surnameInputRef.current.value.trim();
+        const email = emailInputRef.current.value.trim();
+        const password = passwordInputRef.current.value.trim();
+        const confirmedPassword = confirmPasswordInputRef.current.value.trim();
 
-        //     const emailIsValid = validator.isEmail(email);
-        //     const passwordLengthIsMoreThanSix = password.length > 6;
-        //     const areMatchingPasswords = validator.equals(confirmedPassword, password);
+        const nameIsValid = !validator.isEmpty(name) && name.length >= 2;
+        const surnameIsValid = !validator.isEmpty(surname) && surname.length >= 2
+        const emailIsValid = validator.isEmail(email);
+        const passwordIsValid = password.length >= 6;
+        const passwordsMatch = validator.equals(confirmedPassword, password);
 
-        //     if (emailIsValid && passwordLengthIsMoreThanSix && areMatchingPasswords)
-        //         console.table([{
-        //             name: name,
-        //             surname: surname,
-        //             email: email,
-        //             password: password
-        //         }])
+        if (!passwordsMatch) {
+            setError({ visible: true, message: "Por favor verifique que las contraseñas coincidan" })
+            return
+        }
 
-        //     setError({ visible: true, message: "Por favor verifique los campos erróneos." })
+        if (nameIsValid && surnameIsValid && emailIsValid && passwordIsValid && passwordsMatch) {
+            const newUser = {
+                name: name,
+                surname: surname,
+                email: email,
+                password: password,
+            }
+
+            AxiosInstance.post("/auth/signup", newUser).then(res => {
+                if (res.status === 201) Swal.fire(res.data, '', 'success').then(() => navigate('/login'))
+            }).catch(err => Swal.fire(err.response.data, '', 'error'))
+
+            return;
+        }
+
+        setError({ visible: true, message: "Por favor verifique los datos ingresados" })
     }
 
     return (
@@ -50,23 +63,21 @@ const RegisterForm = () => {
                 <div className={classes.A}>
                     <div className={classes.B}>
                         <Label htmlFor="name">Nombre</Label>
-                        <Input width="13.5rem" type="text" id="name" required />
+                        <Input width="13.5rem" type="text" id="name" required reference={nameInputRef} visible={error.visible} />
                     </div>
-
                     <div className={classes.B}>
                         <Label htmlFor="surname">Apellido</Label>
-                        <Input width="13.5rem" type="text" id="surname" required />
+                        <Input width="13.5rem" type="text" id="surname" required reference={surnameInputRef} visible={error.visible} />
                     </div>
                 </div>
             </Div>
-
             <Div>
                 <Label htmlFor="email">Correo electrónico</Label>
-                <Input width="28rem" type="email" id="email" required />
+                <Input width="28rem" type="email" id="email" required reference={emailInputRef} visible={error.visible} />
                 <Label htmlFor="password">Contraseña</Label>
-                <Input width="28rem" type="password" id="password" required />
+                <Input width="28rem" type="password" id="password" required reference={passwordInputRef} visible={error.visible} />
                 <Label htmlFor="confirm-password">Confirmar contraseña</Label>
-                <Input width="28rem" type="password" id="confirm-password" required />
+                <Input width="28rem" type="password" id="confirm-password" required reference={confirmPasswordInputRef} visible={error.visible} />
                 <Div align="center">
                     <ErrorMessage visible={error.visible}>{error?.message ?? ""}</ErrorMessage>
                     <Button type="submit" width="12.5rem"><b>Crear Cuenta</b></Button>
@@ -75,7 +86,6 @@ const RegisterForm = () => {
                     </span>
                 </Div>
             </Div>
-
         </Form>
     )
 }
