@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Input = (props) => {
-  return <StyledInput type={props.type} id={props.id} width={props.width} onChange={props.onChange} visible={props.visible} ref={props.reference}/>;
+  return <StyledInput type={props.type} id={props.id} width={props.width} onChange={props.onChange} visible={props.visible} ref={props.reference} required={props.required} />;
 };
 
 export default Input;

@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Form, Div, Label } from '../../components/form/StyledForm'
 import validator from 'validator'
 import { AxiosInstance } from '../../helpers/AxiosHelper'
-import axios from 'axios'
 import Swal from 'sweetalert2'
 
 const RegisterForm = () => {
@@ -28,26 +27,33 @@ const RegisterForm = () => {
         const password = passwordInputRef.current.value.trim();
         const confirmedPassword = confirmPasswordInputRef.current.value.trim();
 
-        const nameIsValid = !validator.isEmpty(name);
-        const surnameIsValid = !validator.isEmpty(surname)
+        const nameIsValid = !validator.isEmpty(name) && name.length >= 2;
+        const surnameIsValid = !validator.isEmpty(surname) && surname.length >= 2
         const emailIsValid = validator.isEmail(email);
-        const passwordLengthIsMoreThanSix = password.length >= 6;
-        const areMatchingPasswords = validator.equals(confirmedPassword, password);
+        const passwordIsValid = password.length >= 6;
+        const passwordsMatch = validator.equals(confirmedPassword, password);
 
-        if (nameIsValid && surnameIsValid && emailIsValid && passwordLengthIsMoreThanSix && areMatchingPasswords) {
+        if (!passwordsMatch) {
+            setError({ visible: true, message: "Por favor verifique que las contraseñas coincidan" })
+            return
+        }
+
+        if (nameIsValid && surnameIsValid && emailIsValid && passwordIsValid && passwordsMatch) {
             const newUser = {
                 name: name,
                 surname: surname,
                 email: email,
                 password: password,
             }
-            axios.post("http://localhost:8080/auth/signup", newUser).then(res => {
-                Swal.fire(res.data.message, 'sdasdasd', 'success').then(() => navigate('/login'))
-                console.log(res.data.message)
-            })
+
+            AxiosInstance.post("/auth/signup", newUser).then(res => {
+                if (res.status === 201) Swal.fire(res.data, '', 'success').then(() => navigate('/login'))
+            }).catch(err => Swal.fire(err.response.data, '', 'error'))
+
             return;
         }
-        setError({ visible: true, message: "Por favor verifique que los datos estén correctos." })
+
+        setError({ visible: true, message: "Por favor verifique los datos ingresados" })
     }
 
     return (

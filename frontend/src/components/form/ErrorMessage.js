@@ -14,5 +14,5 @@ export default ErrorMessage
 const StyledErrorMessage = styled.div`
     color: red;
     display: ${props => props.visible ? "inline" : "none"};
-    font-style: italic;
+    font-weight: bold;
 `
