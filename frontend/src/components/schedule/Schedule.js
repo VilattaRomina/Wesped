@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
+import { GlobalStyle, ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
 import { usePathname } from '../../hooks/hooks'
+
+
+
 
 const Container = ({ children }) => {
   const pathName = usePathname();
@@ -14,17 +17,6 @@ const Container = ({ children }) => {
   const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
 
-  const styles = {
-    background: isInProductPage ? "rgb(236, 236, 236)" : "#fff",
-    position: "relative",
-    color: "#0073A3",
-    display: isInProductPage ? "flex" : "",
-    justifyContent: isInProductPage ? "space-evenly" : "",
-    alignItems: isInProductPage ? "center" : "",
-    padding: isInProductPage ? "2rem" : "0",
-    width:'100%',
-    
-  }
 
 
   const handleClick = () => {
@@ -36,9 +28,7 @@ const Container = ({ children }) => {
   }
 
   return (
-    <div
-      style={styles}
-    >
+    <GlobalStyle isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
       <ScheduleMainStyled isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
         <div style={{width:'100%', display:'flex', justifyContent:'space-around'}}>{children}</div>
       </ScheduleMainStyled>
@@ -47,7 +37,7 @@ const Container = ({ children }) => {
         <ScheduleIngresarReservaDiv>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
           <ButtonScheduleStyled>
-            <Button width="28rem" theme="secondary" onClick={handleClick}>
+            <Button width="28rem" theme="secondary" onClick={handleClick} >
               Iniciar reserva
             </Button>
           </ButtonScheduleStyled>
@@ -61,7 +51,7 @@ const Container = ({ children }) => {
             </Button>
           </ButtonScheduleStyled>
       }
-    </div>
+    </GlobalStyle>
   );
 };
 
