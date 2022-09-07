@@ -10,16 +10,16 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
     const { loggedUser } = useContext(UserContext)
 
     const optionsHours = [
-        "0:00",
-        "1:00",
-        "2:00",
-        "3:00",
-        "4:00",
-        "5:00",
-        "6:00",
-        "7:00",
-        "8:00",
-        "9:00",
+        "00:00",
+        "01:00",
+        "02:00",
+        "03:00",
+        "04:00",
+        "05:00",
+        "06:00",
+        "07:00",
+        "08:00",
+        "09:00",
         "10:00",
         "11:00",
         "12:00",
@@ -85,8 +85,7 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
                             name="ciudad"
                             placeholder="Ciudad"
                             onChange={handleChange}
-                            required={true}
-                            value={loggedUser ? loggedUser?.city : ""}
+                            required 
                         />
                     </InputContainer>
                 </FormStyle>

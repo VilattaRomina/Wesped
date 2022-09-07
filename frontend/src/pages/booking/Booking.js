@@ -1,13 +1,14 @@
 import React from 'react'
 import HeaderProduct from '../../components/headerProduct/HeaderProduct'
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { AxiosInstance } from '../../helpers/AxiosHelper';
 import { BodyStyle, LineStyles, ContainerStyle, ContainerBooking, ContainerForm } from './BookingStyle'
 import Policies from '../../components/policies/Policies';
 import Section from '../../components/section/Section';
 import BookingDetail from './bookingDetail/BookingDetail';
 import BookingForm from './bookingForm/BookingForm'
+import Swal from 'sweetalert2'
 
 
 export default function Booking(to) {
@@ -56,7 +57,9 @@ export default function Booking(to) {
     let errorDate = false;
     let errorHour = false;
     const token = "algo";
+
     const user = 1;
+
 
     if (values.startDate === '' || values.endDate === '') {
       errorDate = true;
@@ -75,8 +78,8 @@ export default function Booking(to) {
         },
         data: {
           hour: `${values.checkInHour}:00`,
-          checkin: values.startDate,
-          checkout: values.endDate,
+          checkin: values.startDate.getFullYear() + "/" + (values.startDate.getMonth() + 1) + "/" + values.startDate.getDate(),
+          checkout: values.endDate.getFullYear() + "/" + (values.endDate.getMonth() + 1) + "/" + values.endDate.getDate(),
           product: {
             id: productId
           },
@@ -101,7 +104,17 @@ export default function Booking(to) {
             id: 1
           }
         },
-      })*/
+      })
+      .then((res) =>{
+         if (res.status === 200) {
+            useNavigate('')
+         } else if {
+          return Swal.fire ({
+            icon: 'error',
+            text:'Lamentablemente la reserva no ha podido realizarse. Por favor, intente mas tarde'
+          })
+         })
+        }*/
     }
     
 

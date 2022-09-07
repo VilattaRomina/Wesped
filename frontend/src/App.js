@@ -4,14 +4,14 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import ProductDetails from "./pages/product/productDetails/ProductDetails";
+import Booking from "./pages/booking/Booking";
 import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
-import ProductDetails from "./pages/product/productDetails/ProductDetails";
-import Booking from "./pages/booking/Booking";
+import { UserContext } from "./hooks/UseContext";
 import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from "./helpers/LocalStorageHelper";
-import { UserContext } from "./hooks/UseContext";
 
 
 const user = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
