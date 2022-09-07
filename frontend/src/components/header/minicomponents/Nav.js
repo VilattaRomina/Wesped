@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from 'react-router-dom'
-import { usePathname } from "../../../hooks/hooks";
+import { usePathname } from "../../../hooks/Hooks";
+import { UserContext } from "../../../hooks/UseContext";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
 import Button from "../../button/Button";
@@ -9,11 +10,14 @@ import BurgerMenu from "./burgerMenu/BurgerMenu";
 import BackgroundMenu from "./burgerMenu/BackgroundMenu";
 import validator from 'validator'
 
-const Nav = (props) => {
+const Nav = () => {
+  const { loggedUser } = useContext(UserContext)
+
   const isHome = validator.equals(usePathname(), '/')
   const isLogin = validator.equals(usePathname(), '/login')
   const isRegister = validator.equals(usePathname(), '/registro')
-  const isUserLogged = props?.loggedUser?.valid ?? false
+  const isProduct = usePathname().includes('/producto')
+  const isUserLogged = loggedUser?.id === undefined ? false : true;
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -23,9 +27,9 @@ const Nav = (props) => {
     <IconContext.Provider value={{ size: "2.5rem", color: "#545776" }}>
       <StyledNav>
 
-        {isUserLogged && <LoggedIn username={props.loggedUser.email} isLoggedUser={props.isLoggedUser} />}
+        {isUserLogged && <LoggedIn />}
         {
-          ((isLogin || isHome) && !isUserLogged) &&
+          ((isHome || isLogin || isProduct) && !isUserLogged) &&
           <Link to="/registro">
             <Button width="12.5rem" theme="primary">
               Crear cuenta
@@ -33,7 +37,7 @@ const Nav = (props) => {
           </Link>
         }
         {
-          ((isRegister || isHome) && !isUserLogged) &&
+          ((isHome || isRegister || isProduct) && !isUserLogged) &&
           <Link to="/login">
             <Button width="12.5rem" theme="primary">
               Ingresar
@@ -46,11 +50,11 @@ const Nav = (props) => {
         <BackgroundMenu className={`react-icon ${clicked ? "active" : ""}`} handleClick={handleClick}>
           <Link to="/registro" onClick={handleClick}>
             Crear cuenta
-          <hr />
+            <hr />
           </Link>
           <Link to="/login" onClick={handleClick}>
             Ingresar
-          <hr />
+            <hr />
           </Link>
         </BackgroundMenu>
       </StyledNav>
