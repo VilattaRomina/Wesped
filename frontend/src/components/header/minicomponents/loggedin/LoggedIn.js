@@ -13,7 +13,9 @@ const LoggedIn = () => {
     const navigate = useNavigate();
 
     const signOutHandler = () => {
-       
+        setLoggedUser(false)
+        localStorage.clear()
+        navigate('/')
     }
     return (
         <StyledLoggedIn>
