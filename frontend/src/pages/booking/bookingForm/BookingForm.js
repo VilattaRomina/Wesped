@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput, LabelStyle, SubTitle, Column, CalendarContainerStyle } from './BookingFormStyle'
 import Select from 'react-select'
 import Schedule from '../../../components/schedule/Schedule'
+import { UserContext } from '../../../hooks/UseContext'
 
 
 
 export default function BookingForm({ handleChange, handleSelectChange, picDate }) {
+    const { loggedUser } = useContext(UserContext)
 
     const optionsHours = [
         "0:00 AM",
@@ -48,6 +50,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
                             placeholder="Nombre"
                             onChange={handleChange}
                             disabled={true}
+                            value={loggedUser ? loggedUser?.name : ""}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -58,6 +61,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
                             placeholder="Apellido"
                             onChange={handleChange}
                             disabled={true}
+                            value={loggedUser ? loggedUser?.surname : ""}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -68,6 +72,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
                             placeholder="correo@electronico.com"
                             onChange={handleChange}
                             disabled={true}
+                            value={loggedUser ? loggedUser?.email : ""}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -78,6 +83,7 @@ export default function BookingForm({ handleChange, handleSelectChange, picDate 
                             placeholder="Ciudad"
                             onChange={handleChange}
                             required={true}
+                            value={loggedUser ? loggedUser?.city : ""}
                         />
                     </InputContainer>
                 </FormStyle>

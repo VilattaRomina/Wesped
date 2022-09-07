@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../../../../hooks/UseContext'
 import { StyledAvatar } from './StyledAvatar'
 
-const Avatar = ({ username }) => {
-    const initials = username?.split(" ")[0][0] ?? "" + username?.split(" ")[1][0] ?? "";
+const Avatar = () => {
+    const { loggedUser } = useContext(UserContext)
+
+    const initials = `${loggedUser?.name[0]}${loggedUser?.surname[0]}`
 
     return (
         <StyledAvatar>
