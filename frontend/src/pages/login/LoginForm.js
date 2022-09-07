@@ -8,6 +8,8 @@ import { AxiosInstance } from '../../helpers/AxiosHelper'
 import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from '../../helpers/LocalStorageHelper'
 import { UserContext } from '../../hooks/UseContext'
+import { SignedInOk } from '../../components/signedInOk/SignedInOk'
+import axios from 'axios'
 
 const LoginForm = () => {
     const { setLoggedUser } = useContext(UserContext)
@@ -47,6 +49,10 @@ const LoginForm = () => {
                     surname: surname,
                     email: email,
                     city: city,
+                })
+                SignedInOk.fire({
+                    icon: 'success',
+                    title: `Sesión iniciada correctamente.`
                 })
                 navigate('/')
 
