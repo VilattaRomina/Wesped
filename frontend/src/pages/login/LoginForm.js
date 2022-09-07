@@ -58,7 +58,7 @@ const LoginForm = () => {
             })
 
         } catch (error) {
-            console.log(error)
+            console.warn(error)
         }
     }
 

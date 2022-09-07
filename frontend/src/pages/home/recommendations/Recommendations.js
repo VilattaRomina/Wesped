@@ -28,7 +28,6 @@ export default function Recommendations({ products, title }) {
   };
 
   const productsToDisplay = loggedUser?.id === undefined ? shuffleResults(products) : products;
-  console.log(productsToDisplay);
 
   return (
     <RecommendationContainerStyle>
