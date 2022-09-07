@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
+import { usePathname } from '../../hooks/hooks'
 import { useNavigate } from "react-router-dom";
 import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
+import { UserContext } from "../../hooks/UseContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
-import { usePathname } from '../../hooks/Hooks'
-import { UserContext } from "../../hooks/UseContext";
 
 const Container = ({ children }) => {
 
