@@ -91,6 +91,7 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
+      showPreviousMonths={false}
       monthsShown={monthsShown}
       readOnly={readOnly}
       inline={inline}
