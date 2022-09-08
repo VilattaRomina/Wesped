@@ -7,12 +7,12 @@ export const GlobalStyle = styled.div`
     position: "relative";
     color: "#0073A3";
     display:  ${props => props.isInProductPage ? "flex" : ""};
-    justifyContent:  ${props => props.isInProductPage ? "space-evenly" : ""};
-    alignItems:  ${props => props.isInProductPage ? "center" : ""};
-    padding:  ${props => props.isInProductPage? "2rem" : "0"};
+    justify-content:  ${props => props.isInProductPage ? "space-evenly" : ""};
+    align-items:  ${props => props.isInProductPage ? "center" : ""};
+    padding:  ${props => props.isInProductPage ? "2rem" : "0"};
     width:100%; 
     
-    @media (max-width: 414px){
+    @media (max-width: 768px){
       display:flex;
       flex-direction:column;
     }

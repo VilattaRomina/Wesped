@@ -25,7 +25,7 @@ export default function RecommendationsItem({ id, images, category, title, city,
 
                     </IconStyle>
                     <DescriptionStyle>{description}</DescriptionStyle>
-                    <LinkStyle to={`/producto/${id}`}><Button width="100%">Ver detalle</Button></LinkStyle>
+                    <LinkStyle to={`/producto/${id}`} tabIndex='-1'><Button width="100%">Ver detalle</Button></LinkStyle>
 
                 </InfoRecommendationsStyle>
             </ItemRecommendationStyle>
