@@ -49,9 +49,11 @@ export const LinkStyles = styled.p`
 position:absolute;
 color: #fff;
 bottom:20px;
-right:40px;
+right:50px;
 font-size: 18px;
+font-weight: 700;
 cursor:pointer;
+text-decoration: underline;
 `
 export const ModalStyle = styled.div`
 background-color: rgba(0,0,0,0.9);
