@@ -8,11 +8,20 @@ import { AxiosInstance } from '../../helpers/AxiosHelper'
 import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from '../../helpers/LocalStorageHelper'
 import { UserContext } from '../../hooks/UseContext'
+import { SignedInOk } from '../../components/signedInOk/SignedInOk'
+import Swal from 'sweetalert2'
 
 const LoginForm = () => {
     const { setLoggedUser } = useContext(UserContext)
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate()
+
+    const showErrorMsg = () => {
+        setIsError(true)
+        setTimeout(() => {
+            setIsError(false)
+        }, 5000)
+    }
 
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -25,10 +34,8 @@ const LoginForm = () => {
         const password = passwordInputRef.current.value.trim();
 
         if (password.length < 6) {
-            setIsError(true)
-            setTimeout(() => {
-                setIsError(false)
-            }, 2000)
+            Swal.fire('Usuario o contraseña inválidos', 'Por favor verifique que haya ingresado credenciales correctas', 'error')
+            showErrorMsg()
             return
         }
 
@@ -40,21 +47,26 @@ const LoginForm = () => {
         try {
             AxiosInstance.post('/auth/signin', userCredentials).then(({ data }) => {
                 LocalStorageHelper.setItem('Token', data.token)
-                const { id, name, surname, email, city } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
+                const { id, name, surname, email } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
                 setLoggedUser({
                     id: id,
                     name: name,
                     surname: surname,
                     email: email,
-                    city: city,
+                })
+                SignedInOk.fire({
+                    icon: 'success',
+                    title: `Sesión iniciada correctamente.`
                 })
                 navigate('/')
 
-            }).catch(() => {
-                setIsError(true)
-                setTimeout(() => {
-                    setIsError(false)
-                }, 2000)
+            }).catch(({ response }) => {
+                if (response.status === 401) {
+                    Swal.fire('Usuario no registrado', 'Por favor regístrese para continuar', 'error')
+                    navigate('/registro')
+                    showErrorMsg()
+                }
+                else if (response.status >= 400 && response.status !== 401) Swal.fire('Algo no salió como se esperaba', 'Por favor intente nuevamente', 'warning')
             })
 
         } catch (error) {

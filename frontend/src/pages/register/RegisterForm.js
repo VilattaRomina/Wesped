@@ -19,6 +19,13 @@ const RegisterForm = () => {
     const passwordInputRef = useRef();
     const confirmPasswordInputRef = useRef();
 
+    const showErrorMsg = (errorMsg) => {
+        setError({ visible: true, message: errorMsg })
+        setTimeout(() => {
+            setError({ visible: false })
+        }, 5000)
+    }
+
     const submitHandler = event => {
         event.preventDefault();
         const name = nameInputRef.current.value.trim();
@@ -27,14 +34,21 @@ const RegisterForm = () => {
         const password = passwordInputRef.current.value.trim();
         const confirmedPassword = confirmPasswordInputRef.current.value.trim();
 
-        const nameIsValid = !validator.isEmpty(name) && name.length >= 2;
-        const surnameIsValid = !validator.isEmpty(surname) && surname.length >= 2
+        const nameIsValid = !validator.isEmpty(name) && name.length >= 2 && validator.isAlpha(name);
+        const surnameIsValid = !validator.isEmpty(surname) && surname.length >= 2 && validator.isAlpha(name);
         const emailIsValid = validator.isEmail(email);
         const passwordIsValid = password.length >= 6;
         const passwordsMatch = validator.equals(confirmedPassword, password);
 
+        if (!nameIsValid || !surnameIsValid) {
+            Swal.fire('Verificar datos ingresados', 'Por favor verifique que su nombre y apellido estén correctos', 'error')
+            showErrorMsg('Por favor verifique que los datos ingresados')
+            return
+        }
+
         if (!passwordsMatch) {
-            setError({ visible: true, message: "Por favor verifique que las contraseñas coincidan" })
+            Swal.fire('Verificar contraseñas', 'Por favor verifique que las contraseñas coincidan', 'error')
+            showErrorMsg('Por favor verifique que las contraseñas coincidan')
             return
         }
 
@@ -49,11 +63,7 @@ const RegisterForm = () => {
             AxiosInstance.post("/auth/signup", newUser).then(res => {
                 if (res.status === 201) Swal.fire(res.data, '', 'success').then(() => navigate('/login'))
             }).catch(err => Swal.fire(err.response.data, '', 'error'))
-
-            return;
         }
-
-        setError({ visible: true, message: "Por favor verifique los datos ingresados" })
     }
 
     return (
