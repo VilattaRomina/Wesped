@@ -72,11 +72,31 @@
   }
   div .react-datepicker__header--custom {
     background-color: white;
+    
   }
+
+   .react-datepicker__month-container .react-datepicker__header--custom div{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  div .react-datepicker__header--custom button{
+    border: none;
+    background: none;
+    font-size: 20px;
+    margin: auto;
+  }
+  
+  .react-datepicker__month-container .react-datepicker__header--custom .react-datepicker__day-names {
+    justify-content: right;
+  }
+  
   div .react-datepicker__day--selected {
     background-color: #1DBEB4;
     border-radius: 50%;
   }
+
   div .react-datepicker__header {
     border-bottom: none;
     text-transform: capitalize;

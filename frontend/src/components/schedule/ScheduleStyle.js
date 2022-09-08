@@ -9,7 +9,7 @@ export const GlobalStyle = styled.div`
     display:  ${props => props.isInProductPage ? "flex" : ""};
     justify-content:  ${props => props.isInProductPage ? "space-evenly" : ""};
     align-items:  ${props => props.isInProductPage ? "center" : ""};
-    padding:  ${props => props.isInProductPage ? "2rem" : "0"};
+    padding:  ${props => props.isInProductPage? "2rem" : "0"};
     width:100%; 
     
     @media (max-width: 768px){
@@ -31,8 +31,6 @@ export const ScheduleMainStyled = styled.div`
   @media (max-width:768px){
     margin: 20px 0;
   }
-
-  
 `;
 
 export const ButtonScheduleStyled = styled.div`

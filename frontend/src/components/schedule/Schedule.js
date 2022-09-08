@@ -19,17 +19,6 @@ const Container = ({ children }) => {
   const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
 
-  // const styles = {
-  //   background: isInProductPage ? "rgb(236, 236, 236)" : "#fff",
-  //   position: "relative",
-  //   color: "#0073A3",
-  //   display: isInProductPage ? "flex" : "",
-  //   justifyContent: isInProductPage ? "space-evenly" : "",
-  //   alignItems: isInProductPage ? "center" : "",
-  //   padding: isInProductPage ? "2rem" : "0",
-  //   width: '100%',
-
-  // }
 
 
   const startBooking = () => {
