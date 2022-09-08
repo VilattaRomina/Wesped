@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
+import Swal from "sweetalert2";
 
 const Container = ({ children }) => {
 
@@ -22,6 +23,7 @@ const Container = ({ children }) => {
 
   const startBooking = () => {
     if (!loggedUser) {
+      Swal.fire('Por favor inicia sesión primero', '', 'warning')
       navigate('/login');
       return
     }
@@ -30,7 +32,7 @@ const Container = ({ children }) => {
   }
 
   return (
-    <GlobalStyle  isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}
+    <GlobalStyle isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}
     >
       <ScheduleMainStyled isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>{children}</div>
