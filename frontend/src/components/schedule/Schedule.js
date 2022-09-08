@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
-import { ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
+import { GlobalStyle, ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
 import { UserContext } from "../../hooks/UseContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,17 +18,17 @@ const Container = ({ children }) => {
   const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
 
-  const styles = {
-    background: isInProductPage ? "rgb(236, 236, 236)" : "#fff",
-    position: "relative",
-    color: "#0073A3",
-    display: isInProductPage ? "flex" : "",
-    justifyContent: isInProductPage ? "space-evenly" : "",
-    alignItems: isInProductPage ? "center" : "",
-    padding: isInProductPage ? "2rem" : "0",
-    width: '100%',
+  // const styles = {
+  //   background: isInProductPage ? "rgb(236, 236, 236)" : "#fff",
+  //   position: "relative",
+  //   color: "#0073A3",
+  //   display: isInProductPage ? "flex" : "",
+  //   justifyContent: isInProductPage ? "space-evenly" : "",
+  //   alignItems: isInProductPage ? "center" : "",
+  //   padding: isInProductPage ? "2rem" : "0",
+  //   width: '100%',
 
-  }
+  // }
 
 
   const startBooking = () => {
@@ -41,8 +41,7 @@ const Container = ({ children }) => {
   }
 
   return (
-    <div
-      style={styles}
+    <GlobalStyle  isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}
     >
       <ScheduleMainStyled isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>{children}</div>
@@ -66,7 +65,7 @@ const Container = ({ children }) => {
           </Button>
         </ButtonScheduleStyled>
       }
-    </div>
+    </GlobalStyle>
   );
 };
 
