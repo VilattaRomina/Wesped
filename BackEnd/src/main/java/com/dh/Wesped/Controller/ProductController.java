@@ -51,14 +51,14 @@ public class ProductController {
     }
 
     @GetMapping("/booking/{checkinDate}/{checkoutDate}")
-    public ResponseEntity<List<Product>> getAllProductsByDates(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable LocalDate checkinDate,
-                                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable LocalDate checkoutDate) {
+    public ResponseEntity<List<Product>> getAllProductsByDates(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkinDate,
+                                                               @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate checkoutDate) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.filterByDates(checkinDate, checkoutDate));
     }
 
     @GetMapping("/booking/{checkinDate}/{checkoutDate}/{cityId}")
-    public ResponseEntity<List<Product>> getAllProductsByDatesAndCity(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable LocalDate checkinDate,
-                                                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable LocalDate checkoutDate,
+    public ResponseEntity<List<Product>> getAllProductsByDatesAndCity(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkinDate,
+                                                                      @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate checkoutDate,
                                                                       @PathVariable Integer cityId) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.filterByDatesAndCity(checkinDate, checkoutDate, cityId));
     }

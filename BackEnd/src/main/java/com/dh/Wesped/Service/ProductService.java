@@ -65,7 +65,7 @@ public class ProductService {
     //@Transactional
     public List<Product> filterByDatesAndCity(LocalDate checkin, LocalDate checkout, Integer cityId) {
         logger.debug("Buscando productos sin reservas entre el: " + checkin + " y el " + checkout +
-                "ubicados en la ciudad con id: " + cityId);
+                " ubicados en la ciudad con id: " + cityId);
         return productRepository.findProductsByDatesAndCity(checkin, checkout, cityId);
     }
 }
