@@ -35,7 +35,7 @@ const RegisterForm = () => {
         const confirmedPassword = confirmPasswordInputRef.current.value.trim();
 
         const nameIsValid = !validator.isEmpty(name) && name.length >= 2 && validator.isAlpha(name);
-        const surnameIsValid = !validator.isEmpty(surname) && surname.length >= 2 && validator.isAlpha(name);
+        const surnameIsValid = !validator.isEmpty(surname) && surname.length >= 2 && validator.isAlpha(surname);
         const emailIsValid = validator.isEmail(email);
         const passwordIsValid = password.length >= 6;
         const passwordsMatch = validator.equals(confirmedPassword, password);
