@@ -3,18 +3,18 @@ import { theme } from '../../ui/theme'
 import "react-datepicker/dist/react-datepicker.css";
 
 export const GlobalStyle = styled.div`
-background: ${props => props.isInProductPage ? "rgb(236, 236, 236)" : "#fff"};
+  background: ${props => props.isInProductPage ? "rgb(236, 236, 236)" : "#fff"};
     position: "relative";
     color: "#0073A3";
     display:  ${props => props.isInProductPage ? "flex" : ""};
     justifyContent:  ${props => props.isInProductPage ? "space-evenly" : ""};
     alignItems:  ${props => props.isInProductPage ? "center" : ""};
     padding:  ${props => props.isInProductPage? "2rem" : "0"};
-    width:100%;
-
-    @media (max-width:768px){
+    width:100%; 
+    
+    @media (max-width: 414px){
       display:flex;
-      flex-direction: column;
+      flex-direction:column;
     }
 
 `
