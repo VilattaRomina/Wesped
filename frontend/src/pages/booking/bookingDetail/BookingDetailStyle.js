@@ -17,21 +17,11 @@ justify-content: space-around;
 height: 100%;
 
 
-// @media (max-width: 768px){
-//   display:grid;
-//   grid-template-columns: 1fr 1fr;
-// }
-
 @media (max-width: 1050px){
   display:grid;
   grid-template-columns: 1fr 1fr;
 }
 
-// @media (max-width: 414px){
-//   display: flex;
-//   flex-direction: column;
-
-// }
 
 @media (max-width:615px){
   display: flex;
@@ -46,6 +36,7 @@ export const Title = styled.h2`
 `
 export const ContainerImage = styled.div`
 height:300px;
+
 @media (max-width: 1050px){
 padding-right:15px;
 height:320px;
