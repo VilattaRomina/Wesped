@@ -10,6 +10,7 @@ export const ContainerStyle = styled.div`
 
 display: grid;
 grid-template-columns: 2fr 1fr;
+margin-bottom:30px;
 
 @media (max-width: 768px){
   // flex-direction:column;

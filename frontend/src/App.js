@@ -4,11 +4,12 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import ProductDetails from "./pages/product/productDetails/ProductDetails";
+import Booking from "./pages/booking/Booking";
+import BookingS from "./pages/successfulBooking/BookingS"
 import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
-import ProductDetails from "./pages/product/productDetails/ProductDetails";
-import Booking from "./pages/booking/Booking";
 import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from "./helpers/LocalStorageHelper";
 import { UserContext } from "./hooks/UseContext";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/registro" element={<Register />} />
           <Route path='/producto/:productId' element={<ProductDetails />} />
           <Route path='/producto/:productId/reservas' element={<Booking />} />
+          <Route path='/producto/:productId/reservas/reserva-exitosa' element={<BookingS />} />
         </Routes>
         <Footer />
       </ThemeProvider>
