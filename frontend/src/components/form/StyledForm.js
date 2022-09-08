@@ -44,7 +44,6 @@ gap: 10px;
 span{
     color: #383B58;
     margin-top: .5rem;
-    font-family: 'Roboto';
     font-size: .75rem;
     a{
         text-decoration: none;
@@ -54,7 +53,6 @@ span{
 `
 
 export const Label = styled.label`
-font-family: 'Roboto';
 font-style: normal;
 font-weight: 500;
 font-size: 1rem;

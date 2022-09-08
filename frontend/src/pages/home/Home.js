@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { AxiosInstance } from "../../helpers/AxiosHelper";
 import Section from "../../components/section/Section";
 
-const Home = ({ loggedUser }) => {
+const Home = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [title, setTitle] = useState("");
@@ -30,10 +30,10 @@ const Home = ({ loggedUser }) => {
     <>
       <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} />
       <Section>
-      <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
-      <Recommendations products={products} loggedUser={loggedUser} selectedCategory={selectedCategory} title={title} />
+        <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
+        <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
       </Section>
-      
+
     </>
   );
 };

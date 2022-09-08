@@ -10,13 +10,12 @@ export const ContainerSearchBlock = styled.div`
   top:80px;
   width: 100%;
   
-  }
   
-
+  
   @media (max-width: 768px) {
     position: static;
     padding-top: 80px;
-   
+  } 
 `;
 //title
 export const SearchBlockTitle = styled.h1`

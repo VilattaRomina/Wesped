@@ -3,32 +3,25 @@ import styled from "styled-components";
 export const CardStyle = styled.div`
 border-radius:10px;
 background-color: ${props => props.theme.background};
-box-shadow: 0px 10px 6px 5px rgba(0,0,0,0.1);
-
+box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.1);
+height:100%;
 `
-export const ContainerStyle= styled.div`
-padding:25px 10px;
-margin:10px;
+
+export const ContainerStyle = styled.div`
+padding:15px 10px;
+margin:7px 10px;
 display: flex;
 gap:10px;
 flex-direction: column;
+justify-content: space-around;
+height: 100%;
 
-
-// @media (max-width: 768px){
-//   display:grid;
-//   grid-template-columns: 1fr 1fr;
-// }
 
 @media (max-width: 1050px){
   display:grid;
   grid-template-columns: 1fr 1fr;
 }
 
-// @media (max-width: 414px){
-//   display: flex;
-//   flex-direction: column;
-
-// }
 
 @media (max-width:615px){
   display: flex;
@@ -42,10 +35,19 @@ export const Title = styled.h2`
     font-size:24px;
 `
 export const ContainerImage = styled.div`
-height:320px;
+height:300px;
+
 @media (max-width: 1050px){
 padding-right:15px;
+height:320px;
 }
+
+@media (max-width: 805px){
+  padding-right:15px;
+  height:345px;
+  }
+
+
 `
 export const Image = styled.img`
 width:100%;

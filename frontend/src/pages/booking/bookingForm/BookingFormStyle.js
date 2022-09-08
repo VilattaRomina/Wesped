@@ -17,7 +17,7 @@ background-color: ${(props) => props.theme.background};
 margin: 15px 20px 10px 0px;
 padding: 20px;
 border-radius: 10px;
-box-shadow: 0px 10px 6px 5px rgba(0,0,0,0.1);
+box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.1);
 display:flex;
 flex-wrap: wrap;
 flex-direction: row;
@@ -33,7 +33,7 @@ background-color: ${(props) => props.theme.background};
 margin: 15px 20px 10px 0px;
 padding: 5px;
 border-radius: 10px;
-box-shadow: 0px 10px 6px 5px rgba(0,0,0,0.1);
+box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.1);
 width: 100%;
 `
 export const InputContainer = styled.div`
@@ -49,7 +49,7 @@ export const LabelStyle = styled.label`
 padding-bottom:8px;
 `
 
-export const TextInput= styled.input`
+export const TextInput = styled.input`
   border-radius: 5px;
   width: 100%;
   height: 40px;
@@ -58,6 +58,7 @@ export const TextInput= styled.input`
   text-indent: 5px;
   color: '#383B58';
   opacity: 0.8;
+
 
 `
 export const ErrorText = styled.p`
@@ -86,6 +87,10 @@ p{
     padding-bottom:10px;
     font-size:15px;
 }
+`
+export const TextError = styled.p `
+color: red;
+padding:5px;
 `
 
 

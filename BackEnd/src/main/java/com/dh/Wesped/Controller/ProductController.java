@@ -4,9 +4,12 @@ import com.dh.Wesped.Exceptions.BadRequestException;
 import com.dh.Wesped.Model.Product;
 import com.dh.Wesped.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -45,5 +48,18 @@ public class ProductController {
     @GetMapping("/city/{cityId}")
     public ResponseEntity<List<?>> getAllProductsByCityId(@PathVariable Integer cityId) {
         return ResponseEntity.ok(productService.filterByCity(cityId));
+    }
+
+    @GetMapping("/booking/{checkinDate}/{checkoutDate}")
+    public ResponseEntity<List<Product>> getAllProductsByDates(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkinDate,
+                                                               @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate checkoutDate) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.filterByDates(checkinDate, checkoutDate));
+    }
+
+    @GetMapping("/booking/{checkinDate}/{checkoutDate}/{cityId}")
+    public ResponseEntity<List<Product>> getAllProductsByDatesAndCity(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkinDate,
+                                                                      @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate checkoutDate,
+                                                                      @PathVariable Integer cityId) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.filterByDatesAndCity(checkinDate, checkoutDate, cityId));
     }
 }

@@ -23,7 +23,7 @@ export default function GalleryBlock({images, openModal, closeModal, modalIsOpen
                         </CardRight>
                     ))}
                 </ContainerImageRight>
-                <LinkStyles onClick={openModal}>Ver mas</LinkStyles>
+                <LinkStyles onClick={openModal}>Ver más</LinkStyles>
             </ContainerStyles>
             <ModalStyle
             isOpen={modalIsOpen}

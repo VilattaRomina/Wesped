@@ -72,16 +72,17 @@ CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`roles` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
+
 -- -----------------------------------------------------
 -- Table `PI_GRUPO9`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PI_GRUPO9`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(60) NOT NULL,
-  `surname` VARCHAR(60) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `surname` VARCHAR(100) NOT NULL,
   `email` VARCHAR(225) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `city` VARCHAR(225) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `city` VARCHAR(50) NOT NULL,
   `roles_id` INT NOT NULL,
   PRIMARY KEY (`id`, `roles_id`),
   INDEX `fk_users_roles1_idx` (`roles_id` ASC) VISIBLE,

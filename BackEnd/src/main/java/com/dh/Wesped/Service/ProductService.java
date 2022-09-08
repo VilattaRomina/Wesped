@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -52,5 +54,18 @@ public class ProductService {
     public List<Product> filterByCity(Integer id) {
         logger.debug("Buscando productos con ciudad id: " + id);
         return productRepository.findByCityId(id);
+    }
+
+    //@Transactional
+    public List<Product> filterByDates(LocalDate checkin, LocalDate checkout) {
+        logger.debug("Buscando productos sin reservas entre el: " + checkin + " y el " + checkout);
+        return productRepository.findProductsByDates(checkin, checkout);
+    }
+
+    //@Transactional
+    public List<Product> filterByDatesAndCity(LocalDate checkin, LocalDate checkout, Integer cityId) {
+        logger.debug("Buscando productos sin reservas entre el: " + checkin + " y el " + checkout +
+                " ubicados en la ciudad con id: " + cityId);
+        return productRepository.findProductsByDatesAndCity(checkin, checkout, cityId);
     }
 }
