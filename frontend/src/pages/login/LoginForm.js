@@ -30,7 +30,7 @@ const LoginForm = () => {
             setIsError(true)
             setTimeout(() => {
                 setIsError(false)
-            }, 2000)
+            }, 5000)
             return
         }
 
@@ -42,13 +42,12 @@ const LoginForm = () => {
         try {
             AxiosInstance.post('/auth/signin', userCredentials).then(({ data }) => {
                 LocalStorageHelper.setItem('Token', data.token)
-                const { id, name, surname, email, city } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
+                const { id, name, surname, email } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
                 setLoggedUser({
                     id: id,
                     name: name,
                     surname: surname,
                     email: email,
-                    city: city,
                 })
                 SignedInOk.fire({
                     icon: 'success',
@@ -60,7 +59,7 @@ const LoginForm = () => {
                 setIsError(true)
                 setTimeout(() => {
                     setIsError(false)
-                }, 2000)
+                }, 5000)
             })
 
         } catch (error) {
