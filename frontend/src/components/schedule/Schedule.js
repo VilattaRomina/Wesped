@@ -24,7 +24,7 @@ const Container = ({ children }) => {
   const startBooking = () => {
     if (!loggedUser) {
       Swal.fire('Por favor inicia sesión primero', '', 'warning')
-      navigate('/login');
+      navigate('/login', {state: pathName});
       return
     }
 

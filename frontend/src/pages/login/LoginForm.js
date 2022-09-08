@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from 'react'
 import { Form, Div, Label } from '../../components/form/StyledForm'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import ErrorMessage from '../../components/form/ErrorMessage'
@@ -15,6 +15,7 @@ const LoginForm = () => {
     const { setLoggedUser } = useContext(UserContext)
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate()
+    const { state } = useLocation();
 
     const showErrorMsg = () => {
         setIsError(true)
@@ -58,7 +59,7 @@ const LoginForm = () => {
                     icon: 'success',
                     title: `Sesión iniciada correctamente.`
                 })
-                navigate(-1)
+                navigate(state? state : '/')
 
             }).catch(({ response }) => {
                 if (response.status === 401) {
