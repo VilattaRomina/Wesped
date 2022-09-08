@@ -6,16 +6,13 @@ import { IconContext } from 'react-icons'
 import { IoCloseCircleOutline } from 'react-icons/io5'
 import { useContext } from 'react'
 import { UserContext } from '../../../../hooks/UseContext'
-import { useNavigate } from 'react-router-dom'
 
 const LoggedIn = () => {
     const { setLoggedUser } = useContext(UserContext)
-    const navigate = useNavigate();
 
     const signOutHandler = () => {
         setLoggedUser(false)
         localStorage.clear()
-        navigate('/')
     }
     return (
         <StyledLoggedIn>
