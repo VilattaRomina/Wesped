@@ -58,7 +58,7 @@ const LoginForm = () => {
                     icon: 'success',
                     title: `Sesión iniciada correctamente.`
                 })
-                navigate('/')
+                navigate(-1)
 
             }).catch(({ response }) => {
                 if (response.status === 401) {
