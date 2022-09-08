@@ -62,7 +62,7 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
+const Calendar = ({ picDate, inline, readOnly, monthsShown, includeDateIntervals }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
@@ -80,6 +80,7 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
+      includeDateIntervals={includeDateIntervals}
       showPreviousMonths={false}
       monthsShown={monthsShown}
       readOnly={readOnly}
@@ -140,6 +141,6 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown }) => {
 };
 
 
-export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} />;
+export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown, includeDateIntervals }) {
+  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} includeDateIntervals={includeDateIntervals} />;
 }
