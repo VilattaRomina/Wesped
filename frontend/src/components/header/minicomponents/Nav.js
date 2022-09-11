@@ -30,7 +30,7 @@ const Nav = () => {
         {isUserLogged && <LoggedIn />}
         {
           ((isHome || isLogin || isProduct) && !isUserLogged) &&
-          <Link to="/registro">
+          <Link to="/registro" tabIndex={-1}>
             <Button width="12.5rem" theme="primary">
               Crear cuenta
             </Button>
@@ -38,7 +38,7 @@ const Nav = () => {
         }
         {
           ((isHome || isRegister || isProduct) && !isUserLogged) &&
-          <Link to="/login">
+          <Link to="/login" tabIndex={-1}>
             <Button width="12.5rem" theme="primary">
               Ingresar
             </Button>
