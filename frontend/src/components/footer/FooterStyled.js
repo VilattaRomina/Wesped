@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const ContainerFooter = styled.div`
 background:${props => props.theme.primary};
-//background:${props => (props.theme.secondary)};
 opacity: .9;
 width: 100vw;
 height: 40px;
