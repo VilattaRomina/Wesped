@@ -8,6 +8,7 @@ import { Form, Div, Label } from '../../components/form/StyledForm'
 import validator from 'validator'
 import { AxiosInstance } from '../../helpers/AxiosHelper'
 import Swal from 'sweetalert2'
+import { SignedInOk } from '../../components/signedInOk/SignedInOk'
 
 const RegisterForm = () => {
     const [error, setError] = useState({ visible: false, message: "" });
@@ -61,8 +62,8 @@ const RegisterForm = () => {
             }
 
             AxiosInstance.post("/auth/signup", newUser).then(res => {
-                if (res.status === 201) Swal.fire(res.data, '', 'success').then(() => navigate('/login'))
-            }).catch(err => Swal.fire(err.response.data, '', 'error'))
+                if (res.status === 201) SignedInOk.fire(res.data, '', 'success').then(() => navigate('/login'))
+            }).catch(err => SignedInOk.fire(err.response.data, '', 'error'))
         }
     }
 
