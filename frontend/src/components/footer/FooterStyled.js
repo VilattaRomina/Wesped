@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const ContainerFooter = styled.div`
 background:${props => props.theme.primary};
-//background:${props => (props.theme.secondary)};
 opacity: .9;
 width: 100vw;
 height: 40px;
@@ -12,6 +11,7 @@ justify-content: space-between;
 padding:20px;
 position: fixed;
 bottom:0;
+z-index: 9;
 
 @media (min-width:769px){
   width:100%;

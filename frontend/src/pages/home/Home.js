@@ -5,29 +5,37 @@ import Recommendations from "./recommendations/Recommendations";
 import { useState, useEffect } from "react";
 import { AxiosInstance } from "../../helpers/AxiosHelper";
 import Section from "../../components/section/Section";
+import Spinner from '../../components/spinner/Spinner'
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [title, setTitle] = useState("");
+  const [loaded, setLoaded] = useState(true);
 
   const setProductsToDisplayByCity = (city) => setProducts(city);
 
   useEffect(() => {
+    setLoaded(false)
     AxiosInstance.get("/products").then((res) => {
       setProducts(res.data);
-    });
+    }).then(() => setLoaded(true));
   }, []);
 
   useEffect(() => {
     const url = selectedCategory
       ? `/products/category/${selectedCategory}`
       : "/products";
-    AxiosInstance.get(url).then((res) => setProducts(res.data));
+    setLoaded(false);
+    AxiosInstance.get(url).then((res) => {
+      setProducts(res.data)
+      setLoaded(true)
+    });
   }, [selectedCategory]);
 
   return (
     <>
+      {!loaded && <Spinner>Cargando...</Spinner>}
       <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} />
       <Section>
         <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
