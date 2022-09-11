@@ -63,8 +63,7 @@ const LoginForm = () => {
 
             }).catch(({ response }) => {
                 if (response.status === 401) {
-                    Swal.fire('Usuario no registrado', 'Por favor regístrese para continuar', 'error')
-                    navigate('/registro')
+                    SignedInOk.fire('Usuario no encontrado', 'Por favor intente nuevamente', 'error')
                     showErrorMsg()
                 }
                 else if (response.status >= 400 && response.status !== 401) Swal.fire('Algo no salió como se esperaba', 'Por favor intente nuevamente', 'warning')
