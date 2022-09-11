@@ -13,5 +13,5 @@ export const StyledSpinnerContainer = styled.div`
     position: absolute;
     font-size: 3rem;
     font-weight: bold;
-    z-index: 10;
+    z-index: 8;
 `
