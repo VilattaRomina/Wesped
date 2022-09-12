@@ -4,11 +4,11 @@ export const CategoryContainerStyle = styled.section`
   min-width: calc(320px - 4rem);
   max-width: 1366px;
   margin: 0 auto;
-  background: #F3F1ED;
-  padding: 240px 32px 0px 32px;
+  padding: 250px 32px 0px 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  
   
   @media (max-width:768px) {
     padding-top: 20px;
@@ -40,9 +40,9 @@ export const CategoryListContainerStyle = styled.div`
 
     @media (min-width: 415px) and (max-width: 930px) {
       display: flex;
-    gap: 14px;
+      gap: 14px;
       flex-flow: row wrap;
-       align-items: stretch;
+      align-items: stretch;
     }
 `
 
