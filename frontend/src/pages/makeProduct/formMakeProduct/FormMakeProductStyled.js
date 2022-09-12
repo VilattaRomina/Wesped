@@ -111,3 +111,55 @@ export const Label3MPStyled = styled.label`
   margin-bottom: 10px;
 `;
 
+
+//Inputs 
+export const InputMPStyled = styled.input`
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border: none;
+  display: block;
+  padding-left: 10px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: ${props => props.theme.secondary};
+  background-color: rgba(0, 0, 0, 0.07);
+  outline-color:${props => props.theme.primary};
+
+  width: 90%;
+  height: ${({ height }) => height || "40px"};
+  margin-bottom: 15px;
+  @media all and (max-width: 900px) {
+    width: 100%;
+    height: 40px;
+  }
+  @media all and (max-width: 600px) {
+    width: 100%;
+    height: 40px;
+  }
+`;
+export const Input2MPStyled= styled.input`
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border: none;
+  display: block;
+  padding-left: 10px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: ${props => props.theme.secondary};
+  background-color: rgba(0, 0, 0, 0.07);
+  outline-color: ${props => props.theme.primary};
+  width: 70%;
+  height: 40px;
+  @media all and (max-width: 900px) {
+    width: 100%;
+    height: 40px;
+  }
+  @media all and (max-width: 600px) {
+    width: 100%;
+    height: 40px;
+  }
+`;
