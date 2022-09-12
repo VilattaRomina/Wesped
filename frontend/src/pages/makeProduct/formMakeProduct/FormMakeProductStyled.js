@@ -163,3 +163,75 @@ export const Input2MPStyled= styled.input`
     height: 40px;
   }
 `;
+
+//required options and selects
+export const RequiredMPStyled = styled.p`
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: red;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 10px;
+`;
+
+export const SelectMPStyled = styled.select`
+  width: 500px;
+  padding-left: 20px;
+  height: 40px;
+  font-size: 16px;
+  color: ${props => props.theme.secondary};
+  border-color: rgba(0, 0, 0, 0.2);
+  outline: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  &:focus {
+    border-color: rgba(0, 0, 0, 0.1);
+    outline: rgba(0, 0, 0, 0.1);
+  }
+  @media all and (max-width: 600px) {
+    padding-left: 5px;
+    width: 155px;
+  }
+`;
+export const Select2MPStyled = styled.select`
+  width: 90%;
+  padding-left: 20px;
+  height: 40px;
+  font-size: 16px;
+  color: ${props => props.theme.secondary};
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  outline: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  &:focus {
+    border-color: rgba(0, 0, 0, 0.1);
+    outline: rgba(0, 0, 0, 0.1);
+  }
+  @media all and (max-width: 900px) {
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+  @media all and (max-width: 600px) {
+    padding-left: 5px;
+    width: 155px;
+  }
+`;
+export const OptionMPStyled = styled.option`
+  width: 500px;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color:${props => props.theme.secondary};
+  border-color: ${props => props.theme.secondary};
+  outline:${props => props.theme.secondary};
+  &:focus {
+    border-color:${props => props.theme.secondary};
+    outline: ${props => props.theme.secondary};
+  }
+  @media all and (max-width: 600px) {
+    padding-left: 5px;
+    width: 155px;
+  }
+`;
