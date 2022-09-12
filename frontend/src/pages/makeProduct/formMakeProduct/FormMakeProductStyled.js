@@ -83,3 +83,31 @@ export const Div2MPStyled = styled.div`
   }
 `;
 
+//labels
+export const LabelMPStyled = styled.label`
+  display: block;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: ${props => props.theme.secondary};
+  margin-bottom: 10px;
+`;
+export const Label2MPStyled = styled.label`
+  display: block;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: ${props => props.theme.secondary};
+`;
+export const Label3MPStyled = styled.label`
+  display: block;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: ${props => props.theme.secondary};
+  margin-bottom: 10px;
+`;
+
