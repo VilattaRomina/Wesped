@@ -20,6 +20,7 @@ import UbicationProduct from './ubicationProduct/UbicationProduct';
 import Policies from '../../../components/policies/Policies';
 import Schedule from '../../../components/schedule/Schedule';
 import Map from './map/Map'
+import Body from '../../../components/body/Body';
 
 export default function ProductDetails(to) {
 
@@ -49,6 +50,7 @@ export default function ProductDetails(to) {
   return (
     <>
       {product ?
+      <Body>
         <BodyStyle isOpen={modalIsOpen}>
           <HeaderProduct product={product} to={"/"} />
           <UbicationProduct product={product} />
@@ -79,7 +81,8 @@ export default function ProductDetails(to) {
             <LineStyles />
             <Policies product={product} />
           </Section>
-        </BodyStyle> :
+        </BodyStyle> 
+        </Body> :
         <p>Cargando...</p>
       }
     </>
