@@ -66,8 +66,8 @@ export default function FormMakeProduct({ product }) {
       });
     });
   };
-
-  let url = AxiosInstance.post(`/products/save`);
+//--------VALIDAR CONEXIONES ------ 
+  // let url = AxiosInstance.post(`/products/save`);
 
   //cities values
   useEffect(() => {
