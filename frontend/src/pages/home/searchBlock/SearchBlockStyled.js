@@ -5,7 +5,7 @@ export const ContainerSearchBlock = styled.div`
   background: ${props => (props.theme.secondary)};
   opacity: .9;
   padding: 0.1em;
-  z-index:10;
+  z-index:5;
   position:fixed;
   top:80px;
   width: 100%;

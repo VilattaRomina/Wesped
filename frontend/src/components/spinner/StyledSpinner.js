@@ -4,7 +4,8 @@ import { theme } from '../../ui/theme'
 export const StyledSpinnerContainer = styled.div`
     height: 100vh;
     width: 100vw;
-    background-color: rgba(255,255,255,0.4);
+    /* background-color: rgba(255,255,255,0.4); */
+    background-color: ${props => props.theme.secondary};
     backdrop-filter: blur(2px);
     display: flex;
     justify-content: center;

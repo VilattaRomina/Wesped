@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledButton = styled.button`
   border-radius: 5px;
-  color: #1dbeb4;
+  color: #4cd4d1;
   padding: 10px;
   width: ${(props) => props.width};
   cursor: pointer;
@@ -12,15 +12,15 @@ export const StyledButton = styled.button`
    height: 2.5rem;
    font-size: 1rem;
    font-family: 'Roboto', sans-serif;
-   border: 1px solid #1dbeb4;
+   border: 1px solid #4cd4d1;
    &:hover {
-   background-color: #1dbeb4;
+   background-color: #4cd4d1;
    color: #fff;
    }
    &:active {
    background-color: #37d3c9;
    }`
-            : `background-color: #1dbeb4;
+            : `background-color: #4cd4d1;
    color: #fff;
    border: none;
    height: 2.5rem;
@@ -32,7 +32,7 @@ export const StyledButton = styled.button`
     color: #fff;
   }
   &:active {
-    background-color: #44ddd3;
+    background-color: #4cd4d1;
   }
   `}
 `;

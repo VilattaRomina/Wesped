@@ -1,43 +1,33 @@
-import React from 'react'
-// import GoogleMaps from 'simple-react-google-maps'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import { MapStyle } from './MapStyle'
+import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
+import "leaflet/dist/leaflet.css"
+import L from 'leaflet';
 
+delete L.Icon.Default.prototype._getIconUrl;
 
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
 
-export default function Map({product}) {
+export default function MapView({product}) {
 
-const containerStyle = {
-  width: '100%',
-  height: '400px'
-};
-
-const center = {
-  lat: product.longitude,
-  lng: product.latitude
-};
+  const position = [product.longitude, product.latitude]
 
   return (
-    <MapStyle>
-       <LoadScript
-      googleMapsApiKey="AIzaSyAzigRs7GV_3NryOpKj7XR7gvbW9vs9HHc"
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-      >
-        
-      </GoogleMap>
-    </LoadScript>
-    {/* <GoogleMaps
-  apiKey={"AIzaSyAzigRs7GV_3NryOpKj7XR7gvbW9vs9HHc"}
-  style={{height: "400px", width: "100%"}}
-  zoom={15}
-  center={{lat: product.longitude, lng: product.latitude}}
-  markers={{lat: product.longitude, lng: product.latitude}} 
-/> */}
-    </MapStyle>
-    
+    <MapContainer
+     center={position} zoom={14} >
+        <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    <Marker position={position} >
+    <Popup>
+        {product.title}
+      </Popup>
+    </Marker>
+    </MapContainer>
   )
 }
+
+  
