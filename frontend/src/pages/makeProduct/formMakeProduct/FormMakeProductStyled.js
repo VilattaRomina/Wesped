@@ -235,3 +235,48 @@ export const OptionMPStyled = styled.option`
     width: 155px;
   }
 `;
+//more +
+export const MoreMPStyled  = styled.div`
+  background: ${props => props.theme.primary}
+  color: white;
+  width: 35px;
+  height: 35px;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+export const ButtonMPStyled = styled.div`
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+// cards for descriptions and policy
+export const CardMPStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20px;
+  width: 30%;
+  box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  margin-bottom: 10px;
+  @media all and (max-width: 700px) {
+    width: 90%;
+  }
+`;
+export const ContainerPoliciesStyled = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @media all and (max-width: 700px) {
+    flex-wrap: wrap;
+  }
+`;
