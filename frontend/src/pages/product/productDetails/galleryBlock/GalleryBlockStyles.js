@@ -56,14 +56,15 @@ cursor:pointer;
 text-decoration: underline;
 `
 export const ModalStyle = styled.div`
-background-color: rgba(0,0,0,0.9);
+background-color: rgba(0,0,0,0.8);
 height:100%;
 width:100vw;
 position: absolute;
 top:0px;
 left: 0px;
-padding-top:141px;
+padding-top:250px;
 display: ${props => props.isOpen ? " " : "none"};
+min-height: 800px;
 
 .carousel .slider-wrapper{
   height:480px;
@@ -75,7 +76,11 @@ max-width:721px;;
 max-height:628px;
 margin: auto;
 border-radius: 10px;
-   
+
+}
+
+.carousel .thumbs-wrapper {
+    display: none;
 }
 
 @media (max-width: 768px){
