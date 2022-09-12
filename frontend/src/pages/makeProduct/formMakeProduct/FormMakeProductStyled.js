@@ -236,21 +236,21 @@ export const OptionMPStyled = styled.option`
   }
 `;
 //more +
-export const MoreMPStyled  = styled.div`
-  background: ${props => props.theme.primary}
-  color: white;
-  width: 35px;
-  height: 35px;
-  font-size: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
+// export const MoreMPStyled  = styled.div`
+//   background: ${props => props.theme.primary}
+//   color: white;
+//   width: 35px;
+//   height: 35px;
+//   font-size: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   &:hover {
+//     opacity: 0.8;
+//   }
+// `;
 export const ButtonMPStyled = styled.div`
   margin-top: 50px;
   width: 100%;

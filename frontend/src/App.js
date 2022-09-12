@@ -13,6 +13,7 @@ import { ThemeProvider } from 'styled-components';
 import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from "./helpers/LocalStorageHelper";
 import { UserContext } from "./hooks/UseContext";
+import MakeProduct from "./pages/makeProduct/MakeProduct";
 
 
 const user = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
@@ -35,6 +36,7 @@ function App() {
           <Route path='/producto/:productId' element={<ProductDetails />} />
           <Route path='/producto/:productId/reservas' element={<Booking />} />
           <Route path='/producto/:productId/reservas/reserva-exitosa' element={<BookingS />} />
+          <Route path='/administracion' element={<MakeProduct />} />
         </Routes>
         <Footer />
       </ThemeProvider>

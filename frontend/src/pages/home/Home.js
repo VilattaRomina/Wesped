@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { AxiosInstance } from "../../helpers/AxiosHelper";
 import Section from "../../components/section/Section";
 import Spinner from '../../components/spinner/Spinner'
+import Body from "../../components/body/Body";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -38,8 +39,10 @@ const Home = () => {
       {!loaded && <Spinner>Cargando...</Spinner>}
       <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} />
       <Section>
+        <Body>
         <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
         <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
+        </Body>
       </Section>
 
     </>
