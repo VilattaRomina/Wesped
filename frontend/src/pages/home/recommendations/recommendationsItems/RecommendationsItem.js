@@ -1,5 +1,5 @@
 import React from 'react'
-import { ItemRecommendationStyle, ImageRecommendationStyle, InfoRecommendationsStyle, CategoryStyle, TitleStyle, LocationTextStyle, DescriptionStyle, ImageWrapperStyle, LinkStyle, IconStyle } from './RecommendationsItemStyle'
+import { ItemRecommendationStyle, ImageRecommendationStyle, InfoRecommendationsStyle, CategoryStyle, TitleStyle, LocationTextStyle, DescriptionStyle, ImageWrapperStyle, LinkStyle, IconStyle} from './RecommendationsItemStyle'
 import { HiLocationMarker } from 'react-icons/hi'
 import Card from '../../../../components/card/Card'
 import Button from '../../../../components/button/Button'
@@ -24,7 +24,9 @@ export default function RecommendationsItem({ id, images, category, title, city,
                         ))}
 
                     </IconStyle>
+                    <div>
                     <DescriptionStyle>{description}</DescriptionStyle>
+                    </div> 
                     <LinkStyle to={`/producto/${id}`} tabIndex='-1'><Button width="100%">Ver detalle</Button></LinkStyle>
 
                 </InfoRecommendationsStyle>

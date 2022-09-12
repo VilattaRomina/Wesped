@@ -20,6 +20,7 @@ import UbicationProduct from './ubicationProduct/UbicationProduct';
 import Policies from '../../../components/policies/Policies';
 import Schedule from '../../../components/schedule/Schedule';
 import Map from './map/Map'
+import './map/Map.css'
 import Body from '../../../components/body/Body';
 
 export default function ProductDetails(to) {
@@ -77,6 +78,7 @@ export default function ProductDetails(to) {
             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
             <LineStyles />
             <Map product={product} />
+            
             <TitleStyles>Qué tenés que saber</TitleStyles>
             <LineStyles />
             <Policies product={product} />

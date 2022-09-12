@@ -13,7 +13,7 @@ export const FormTitle = styled.h2`
 `
 
 export const FormStyle = styled.form`
-background-color: ${(props) => props.theme.background};
+background-color: #fff;
 margin: 15px 20px 10px 0px;
 padding: 20px;
 border-radius: 10px;
@@ -29,7 +29,7 @@ color:${(props) => props.theme.text_secondary};
 }
 `
 export const CalendarContainerStyle = styled.div`
-background-color: ${(props) => props.theme.background};
+background-color: #fff;
 margin: 15px 20px 10px 0px;
 padding: 5px;
 border-radius: 10px;

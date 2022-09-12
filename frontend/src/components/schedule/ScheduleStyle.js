@@ -7,7 +7,7 @@ export const GlobalStyle = styled.div`
     position: "relative";
     color: "#0073A3";
     display:  ${props => props.isInProductPage ? "flex" : ""};
-    justify-content:  ${props => props.isInProductPage ? "space-evenly" : ""};
+    justify-content:  space-evenly;
     align-items:  ${props => props.isInProductPage ? "center" : ""};
     padding:  ${props => props.isInProductPage? "2rem" : "0"};
     width:100%; 

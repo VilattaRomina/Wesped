@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ImageCategoryStyles = styled.div`
-    height: 273px;
+    /* height: 250px; */
     width: 100%;
 
     img {

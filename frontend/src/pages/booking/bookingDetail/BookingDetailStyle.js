@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardStyle = styled.div`
 border-radius:10px;
-background-color: ${props => props.theme.background};
+background-color: #fff;
 box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.1);
 height:100%;
 `

@@ -10,6 +10,7 @@ export const CategoryContainerStyle = styled.section`
   flex-direction: column;
   align-items: flex-start;
   
+  
   @media (max-width:768px) {
     padding-top: 20px;
   }
@@ -40,9 +41,9 @@ export const CategoryListContainerStyle = styled.div`
 
     @media (min-width: 415px) and (max-width: 930px) {
       display: flex;
-    gap: 14px;
+      gap: 14px;
       flex-flow: row wrap;
-       align-items: stretch;
+      align-items: stretch;
     }
 `
 

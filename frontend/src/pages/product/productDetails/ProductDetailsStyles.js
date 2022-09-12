@@ -15,7 +15,6 @@ height:80px;
 export const HeaderStyle = styled.div`
   color: #fff;
   padding: 15px 30px;
-  
   display:flex;
   justify-content: space-between;
   align-items: center;
@@ -104,8 +103,9 @@ export const FeaturesStyle = styled.div`
   
 
   span{
-    color:${props => (props.theme.primary)};
-    font-size: 24px;
+    color:${props => (props.theme.secondary)};
+    opacity:0.9;
+    font-size: 25px;
     padding-right:15px;
 
   }
@@ -135,6 +135,7 @@ export const PoliciesStyle = styled.div`
 
 export const LineStyles = styled.hr`
   border-color:${props => props.theme.primary};
+  opacity: 0.5;
 `
 export const TitleStyles = styled.h4`
   padding: 20px 0 12px 30px;
