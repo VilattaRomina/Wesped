@@ -8,9 +8,12 @@ import { Form, Div, Label } from '../../components/form/StyledForm'
 import validator from 'validator'
 import { AxiosInstance } from '../../helpers/AxiosHelper'
 import Swal from 'sweetalert2'
+import { SignedInOk } from '../../components/signedInOk/SignedInOk'
+import Spinner from '../../components/spinner/Spinner'
 
 const RegisterForm = () => {
     const [error, setError] = useState({ visible: false, message: "" });
+    const [loaded, setLoaded] = useState(true);
     const navigate = useNavigate();
 
     const nameInputRef = useRef("");
@@ -28,6 +31,7 @@ const RegisterForm = () => {
 
     const submitHandler = event => {
         event.preventDefault();
+        setLoaded(false)
         const name = nameInputRef.current.value.trim();
         const surname = surnameInputRef.current.value.trim();
         const email = emailInputRef.current.value.trim();
@@ -61,42 +65,52 @@ const RegisterForm = () => {
             }
 
             AxiosInstance.post("/auth/signup", newUser).then(res => {
-                if (res.status === 201) Swal.fire(res.data, '', 'success').then(() => navigate('/login'))
-            }).catch(err => Swal.fire(err.response.data, '', 'error'))
+                if (res.status === 201) {
+                    SignedInOk.fire(res.data, '', 'success')
+                    navigate('/login')
+                    setLoaded(true)
+                }
+            }).catch(({ response }) => {
+                if (response.status === 400) SignedInOk.fire(response.data, 'Por favor inicie sesión o utilice otro correo', 'error')
+                if (response.status >= 500) SignedInOk.fire('Algo salió mal', 'Por favor intente nuevamente', 'error')
+            })
         }
     }
 
     return (
-        <Form onSubmit={submitHandler}>
-            <h1>Crear cuenta</h1>
-            <Div>
-                <div className={classes.A}>
-                    <div className={classes.B}>
-                        <Label htmlFor="name">Nombre</Label>
-                        <Input width="13.5rem" type="text" id="name" required reference={nameInputRef} visible={error.visible} />
+        <>
+            {!loaded && <Spinner>Cargando...</Spinner>}
+            <Form onSubmit={submitHandler}>
+                <h1>Crear cuenta</h1>
+                <Div>
+                    <div className={classes.A}>
+                        <div className={classes.B}>
+                            <Label htmlFor="name">Nombre</Label>
+                            <Input width="13.5rem" type="text" id="name" required reference={nameInputRef} visible={error.visible} />
+                        </div>
+                        <div className={classes.B}>
+                            <Label htmlFor="surname">Apellido</Label>
+                            <Input width="13.5rem" type="text" id="surname" required reference={surnameInputRef} visible={error.visible} />
+                        </div>
                     </div>
-                    <div className={classes.B}>
-                        <Label htmlFor="surname">Apellido</Label>
-                        <Input width="13.5rem" type="text" id="surname" required reference={surnameInputRef} visible={error.visible} />
-                    </div>
-                </div>
-            </Div>
-            <Div>
-                <Label htmlFor="email">Correo electrónico</Label>
-                <Input width="28rem" type="email" id="email" required reference={emailInputRef} visible={error.visible} />
-                <Label htmlFor="password">Contraseña</Label>
-                <Input width="28rem" type="password" id="password" required reference={passwordInputRef} visible={error.visible} />
-                <Label htmlFor="confirm-password">Confirmar contraseña</Label>
-                <Input width="28rem" type="password" id="confirm-password" required reference={confirmPasswordInputRef} visible={error.visible} />
-                <Div align="center">
-                    <ErrorMessage visible={error.visible}>{error?.message ?? ""}</ErrorMessage>
-                    <Button type="submit" width="12.5rem"><b>Crear Cuenta</b></Button>
-                    <span>
-                        ¿Ya tienes una cuenta? <Link to={`/login`}>Iniciar sesión</Link>
-                    </span>
                 </Div>
-            </Div>
-        </Form>
+                <Div>
+                    <Label htmlFor="email">Correo electrónico</Label>
+                    <Input width="28rem" type="email" id="email" required reference={emailInputRef} visible={error.visible} />
+                    <Label htmlFor="password">Contraseña</Label>
+                    <Input width="28rem" type="password" id="password" required reference={passwordInputRef} visible={error.visible} />
+                    <Label htmlFor="confirm-password">Confirmar contraseña</Label>
+                    <Input width="28rem" type="password" id="confirm-password" required reference={confirmPasswordInputRef} visible={error.visible} />
+                    <Div align="center">
+                        <ErrorMessage visible={error.visible}>{error?.message ?? ""}</ErrorMessage>
+                        <Button type="submit" width="12.5rem"><b>Crear Cuenta</b></Button>
+                        <span>
+                            ¿Ya tienes una cuenta? <Link to={`/login`}>Iniciar sesión</Link>
+                        </span>
+                    </Div>
+                </Div>
+            </Form>
+        </>
     )
 }
 

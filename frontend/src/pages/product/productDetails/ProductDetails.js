@@ -75,7 +75,7 @@ export default function ProductDetails(to) {
               ))}
             </FeaturesStyle>
             <TitleStyles>Fechas disponibles</TitleStyles>
-            <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={2}   />
+            <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={2} includeDateIntervals={[]} />
             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
             <LineStyles />
             {/* <Map product={product} /> */}
