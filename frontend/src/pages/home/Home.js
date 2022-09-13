@@ -37,13 +37,13 @@ const Home = () => {
   return (
     <>
       {!loaded && <Spinner>Cargando...</Spinner>}
+      <Body>
       <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} />
-      <Section>
-        <Body>
+      <Section> 
         <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
         <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
-        </Body>
       </Section>
+      </Body>
 
     </>
   );
