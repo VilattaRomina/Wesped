@@ -65,7 +65,7 @@ left: 0px;
 padding-top:250px;
 display: ${props => props.isOpen ? " " : "none"};
 min-height: 800px;
-
+z-index: 1;
 .carousel .slider-wrapper{
   height:480px;
 }
