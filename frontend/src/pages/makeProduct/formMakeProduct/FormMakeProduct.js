@@ -1,201 +1,145 @@
-import {
-    ContainerMPStyled,
-    TitleMPStyled,
-    FormMPStyled,
-    DivMPStyled,
-    Div2MPStyled,
-    LabelMPStyled,
-    InputMPStyled,
-    Input2MPStyled,
-    RequiredMPStyled,
-    Label2MPStyled,
-    Label3MPStyled,
-    SelectMPStyled,
-    Select2MPStyled,
-    OptionMPStyled,
-    ContainerPoliciesStyled,
-    CardMPStyled,
-    ButtonMPStyled 
-  } from "./FormMakeProductStyled";
-import Button from "../../../components/button/Button";
+import React from "react";
+import Select from 'react-select'
+import { AtributeInputBlock, AtributesBlockStyle, ContainerStyle, AtributesContainerStyle, DescriptionBlockStyle, DescriptionStyle, FormStyle, InputContainerStyle, InputStyle, LabelStyle, SelectContainerStyle, AtributeNameField, AtributeIconField, PolicyContainerStyle, TitleStyle, PolicyBodyStyle, PolicyBlockStyle, PolicyName, PolicyField, ImageContainerStyle, ImageBlockStyle, ButtonStyle, IconButtonStyle  } from './FormMakeProductStyled'
 
-export default function FormMakeProduct({ product }) {
+
+export default function FormMakeProduct() {
 
 
   return (
     <>
-      <div>
-        <h3>Crear Propiedad</h3>
-        <form>
-          <div>
-            <div>
-              <label htmlFor="name">Nombre del producto</label>
-              <input
-                required
+        {/* form */}
+        <FormStyle>
+          <ContainerStyle>
+            <InputContainerStyle>
+              <LabelStyle>Nombre de la propiedad</LabelStyle>
+              <InputStyle
+                name="nombre"
                 type="text"
-                id="name"
-                name="name"
+                placeholder="nombre del hotel"
               />
-              <p >
-                Campo obligatorio
-              </p>
-            </div>
-            <div>
-              <label htmlFor="category">Categoria</label>
-
-              <select  
-              >
-                <option>Hotel</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <div className="margin-right-form-sing-up">
-              <label htmlFor="direction">Dirección</label>
-              <input
-                required
+            </InputContainerStyle>
+            <InputContainerStyle>
+              <LabelStyle >Dirección</LabelStyle>
+              <InputStyle
+                name="direccion"
                 type="text"
-                id="direction"
-                name="direction"
-                
+                placeholder="Av. Colon 1124"
               />
-              <p>
-                Campo obligatorio
-              </p>
-            </div>
-            <div>
-              <label htmlFor="city">Ciudad</label>
-
-              <select
-              >
-                <option>Buenos Aires</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <div>
-              <label htmlFor="latitude">
-                Latitud (Coordenada)
-              </label>
-
-              <input
-                type="text"
-                id="latitude"
-                name="latitude"
-               
-              />
-              <p
-              >
-                Campo obligatorio
-              </p>
-            </div>
-
-            <div>
-              <label htmlFor="longitude">
-                Longitud (Coordenada)
-              </label>
-
-              <input
-                type="text"
-                id="longitude"
-                name="longitude"
-                
-              />
-              <p
-               
-              >
-                Campo obligatorio
-              </p>
-            </div>
-          </div>
-
-          <label htmlFor="description">Descripción</label>
-          <textarea
-            id="description"
-            name="description"
-            required
-            
-            
-          />
-
-          <p
-            
-          >
-            Campo obligatorio
-          </p>
-
-          <h3>Agregar atributos</h3>
-
-          <div ></div>
-          <div>
-            <select
-              
-            >
-              <option>Wifi</option>
-              
-            </select>
-
-            <button >+</button>
-          </div>
-
-          <h3>Políticas del producto</h3>
-
-          <div>
-            <div>
-              <label>Normas de la casa</label>
-              <label htmlFor="policy">Descripción</label>
-              <textarea
-                id="description-policies"
-                name="description"
-                
-              />
-            </div>
-
-            <div>
-              <label>Salud y Seguridad</label>
-              <label htmlFor="security">Descripción</label>
-              <textarea
-                id="description-security"
-                name="description"
-               
-              />
-            </div>
-
-            <div>
-              <label>Política de cancelación</label>
-              <label htmlFor="cancelation">Descripción</label>
-              <textarea
-                id="description-cancelation"
-                name="description"
-               
-              />
-            </div>
-          </div>
-
-          <h3>Cargar imágenes</h3>
-
-          <div></div>
-          <div>
-            <input
-              id="img-product-by-admin"
-              placeholder="insertar https://"
-              type="text"
-              name="urlImage"
-            
-              
+            </InputContainerStyle>
+          </ContainerStyle>
+          <ContainerStyle>
+            <InputContainerStyle>
+              <LabelStyle>Categoría</LabelStyle>
+              <SelectContainerStyle >
+              <Select />
+              </SelectContainerStyle>  
+            </InputContainerStyle>
+            <InputContainerStyle>
+              <LabelStyle>Ciudad</LabelStyle>
+              <SelectContainerStyle >
+              <Select />
+              </SelectContainerStyle>  
+            </InputContainerStyle>
+          </ContainerStyle>
+          {/* bloque descripcion */}
+          <DescriptionBlockStyle>
+            <LabelStyle>Descripción</LabelStyle>
+            <DescriptionStyle
+              name="descripcion"
+              placeholder="Escribir aqui"
             />
+          </DescriptionBlockStyle>
 
-            <button >+</button>
-          </div>
-          <ButtonMPStyled>
-            <Button type="submit" width="12.5rem">
-              Crear
-            </Button>
-          </ButtonMPStyled>
-        </form>
-      </div>
+          {/* latitud y longitud */}
+          <InputContainerStyle>
+            <LabelStyle>Latitud</LabelStyle>
+            <InputStyle
+              name="latitude"
+              type="text"
+              placeholder="44.6578"
+            />
+          </InputContainerStyle>
+          <InputContainerStyle>
+            <LabelStyle>Longitud</LabelStyle>
+            <InputStyle
+              name="longitud"
+              type="text"
+              placeholder="-34.6578"
+            />
+          </InputContainerStyle>
+          {/* atributos */}
+          <AtributesContainerStyle>
+            <TitleStyle>Agregar atributos</TitleStyle>
+            <AtributesBlockStyle>
+              <AtributeInputBlock>
+                <LabelStyle>Nombre</LabelStyle>
+                <AtributeNameField
+                  name="nombreAtributo"
+                  type="text"
+                  placeholder="Wifi"
+                />
+              </AtributeInputBlock>
+              <AtributeInputBlock>
+                <LabelStyle >Icono</LabelStyle>
+                <AtributeIconField
+                  name="icono"
+                  type="text"
+                  placeholder="fa-Wifi"
+                />
+              </AtributeInputBlock>
+              <ButtonStyle>
+                <IconButtonStyle />
+              </ButtonStyle>
+            </AtributesBlockStyle>
+          </AtributesContainerStyle>
+
+          {/* politicas */}
+          <PolicyContainerStyle>
+            <TitleStyle>Políticas del producto</TitleStyle>
+            <PolicyBodyStyle>
+              <PolicyBlockStyle>
+                <PolicyName>Normas de la casa</PolicyName>
+                <LabelStyle >Descripción</LabelStyle>
+                <PolicyField
+                  name="normas"
+                  type="textarea"
+                  placeholder="Escribir aqui"
+                />
+              </PolicyBlockStyle>
+              <PolicyBlockStyle>
+                <PolicyName>Salud y seguridad</PolicyName>
+                <LabelStyle >Descripción</LabelStyle>
+                <PolicyField
+                  name="salud"
+                  type="textarea"
+                  placeholder="Escribir aqui"
+                />
+              </PolicyBlockStyle>
+              <PolicyBlockStyle>
+                <PolicyName>Politica de cancelación</PolicyName>
+                <LabelStyle >Descripción</LabelStyle>
+                <PolicyField
+                  name="cancelacion"
+                  type="textarea"
+                  placeholder="Escribir aqui"
+                />
+              </PolicyBlockStyle>
+            </PolicyBodyStyle>
+          </PolicyContainerStyle>
+          {/* imagenes */}
+          <ImageContainerStyle>
+            <TitleStyle>Cargar imagenes</TitleStyle>
+            <ImageBlockStyle>
+              <InputStyle
+                name="imagen"
+                type="url"
+                placeholder="Insertar https://"
+              />
+            </ImageBlockStyle>
+          </ImageContainerStyle>
+        </FormStyle>
+      
     </>
   );
- }
+}

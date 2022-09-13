@@ -1,282 +1,227 @@
 import styled from "styled-components";
-
-//Containers and forms
-export const TitleMPStyled = styled.h3`
-  font-family: Roboto;
-  font-weight: bold;
-  font-size: 24px;
-  color:  ${props => props.theme.secondary};
-  padding-top: 40px;
-  height: auto;
-  margin-bottom: 30px;
-`;
-export const ContainerMPStyled = styled.div`
-  padding-left: 3.4vw;
-  background-color: rgba(0, 0, 0, 0.07);
-  @media all and (max-width: 900px) {
-    padding-left: 4.5vw;
-  }
-  @media all and (max-width: 600px) {
-    padding-left: 3.4vw;
-  }
-  overflow-y: auto !important;
-  height: 100%;
-  height: calc(100vh - 228px);
-  padding-bottom: 100px;
-`; 
-
-export const FormMPStyled = styled.form`
-  background-color: white;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  background-color: white;
-  width: 90%;
-  border-radius: 10px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  @media all and (max-width: 800px) {
-    width: 85%;
-  }
-  @media all and (max-width: 600px) {
-    width: 80%;
-  }
-  textarea {
-    width: 90%;
-    min-width: 90%;
-    max-width: 90%;
-    min-height: 70px;
-    margin-bottom: 10px;
-    padding: 20px;
-    outline-color: ${props => props.theme.primary};
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-`;
-//divs
-export const DivMPStyled = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  @media all and (max-width: 900px) {
-    flex-direction: column;
-  }
-  .margin-right-form-sing-up {
-    margin-right: 18px;
-  }
-  div {
-    width: 100%;
-  }
-`;
-export const Div2MPStyled = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
-
-  div {
-    margin-left: 58px;
-  }
-`;
-
-//labels
-export const LabelMPStyled = styled.label`
-  display: block;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  color: ${props => props.theme.secondary};
-  margin-bottom: 10px;
-`;
-export const Label2MPStyled = styled.label`
-  display: block;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  color: ${props => props.theme.secondary};
-`;
-export const Label3MPStyled = styled.label`
-  display: block;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  color: ${props => props.theme.secondary};
-  margin-bottom: 10px;
-`;
+import { FiPlus} from 'react-icons/fi';
 
 
-//Inputs 
-export const InputMPStyled = styled.input`
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  border: none;
-  display: block;
-  padding-left: 10px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  color: ${props => props.theme.secondary};
-  background-color: rgba(0, 0, 0, 0.07);
-  outline-color:${props => props.theme.primary};
-
-  width: 90%;
-  height: ${({ height }) => height || "40px"};
-  margin-bottom: 15px;
-  @media all and (max-width: 900px) {
-    width: 100%;
-    height: 40px;
-  }
-  @media all and (max-width: 600px) {
-    width: 100%;
-    height: 40px;
-  }
-`;
-export const Input2MPStyled= styled.input`
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  border: none;
-  display: block;
-  padding-left: 10px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  color: ${props => props.theme.secondary};
-  background-color: rgba(0, 0, 0, 0.07);
-  outline-color: ${props => props.theme.primary};
-  width: 70%;
-  height: 40px;
-  @media all and (max-width: 900px) {
-    width: 100%;
-    height: 40px;
-  }
-  @media all and (max-width: 600px) {
-    width: 100%;
-    height: 40px;
-  }
-`;
-
-//required options and selects
-export const RequiredMPStyled = styled.p`
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  color: red;
-  text-align: right;
-  margin-top: -5px;
-  margin-bottom: 10px;
-`;
-
-export const SelectMPStyled = styled.select`
-  width: 500px;
-  padding-left: 20px;
-  height: 40px;
-  font-size: 16px;
-  color: ${props => props.theme.secondary};
-  border-color: rgba(0, 0, 0, 0.2);
-  outline: rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  &:focus {
-    border-color: rgba(0, 0, 0, 0.1);
-    outline: rgba(0, 0, 0, 0.1);
-  }
-  @media all and (max-width: 600px) {
-    padding-left: 5px;
-    width: 155px;
-  }
-`;
-export const Select2MPStyled = styled.select`
-  width: 90%;
-  padding-left: 20px;
-  height: 40px;
-  font-size: 16px;
-  color: ${props => props.theme.secondary};
-  background-color: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  outline: rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  &:focus {
-    border-color: rgba(0, 0, 0, 0.1);
-    outline: rgba(0, 0, 0, 0.1);
-  }
-  @media all and (max-width: 900px) {
-    margin-bottom: 15px;
-    margin-top: 10px;
-  }
-  @media all and (max-width: 600px) {
-    padding-left: 5px;
-    width: 155px;
-  }
-`;
-export const OptionMPStyled = styled.option`
-  width: 500px;
-  padding-left: 20px;
-  margin-bottom: 15px;
-  font-size: 16px;
-  color:${props => props.theme.secondary};
-  border-color: ${props => props.theme.secondary};
-  outline:${props => props.theme.secondary};
-  &:focus {
-    border-color:${props => props.theme.secondary};
-    outline: ${props => props.theme.secondary};
-  }
-  @media all and (max-width: 600px) {
-    padding-left: 5px;
-    width: 155px;
-  }
-`;
-//more +
-// export const MoreMPStyled  = styled.div`
-//   background: ${props => props.theme.primary}
-//   color: white;
-//   width: 35px;
-//   height: 35px;
-//   font-size: 40px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   &:hover {
-//     opacity: 0.8;
-//   }
-// `;
-export const ButtonMPStyled = styled.div`
-  margin-top: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-// cards for descriptions and policy
-export const CardMPStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 20px;
-  width: 30%;
-  box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  margin-bottom: 10px;
-  @media all and (max-width: 700px) {
-    width: 90%;
-  }
-`;
-export const ContainerPoliciesStyled = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  @media all and (max-width: 700px) {
+export const FormStyle = styled.form`
+    padding: 0 30px;
+    display: flex;
     flex-wrap: wrap;
-  }
+    justify-content: space-around;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+`
+
+export const ContainerStyle = styled.div`
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 5px;
+`
+
+export const InputContainerStyle = styled.div`
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
 `;
+
+export const InputStyle = styled.input`
+    border-radius: 5px;
+    width: 100%;
+    height: 38px;
+    border: solid 1.5px #d3d3d3;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    text-indent: 10px;
+    &:focus {
+      outline-width: 0px;
+    }
+`;
+
+export const SelectContainerStyle = styled.div`
+    width: 100%;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+`
+
+export const LabelStyle = styled.label`
+    width: 100%;
+    color: ${(props) => props.theme.color_text_primary};
+    line-height: 32px; 
+    font-weight: 700;
+    font-size: 15px;
+`;
+
+export const DescriptionBlockStyle = styled.div`
+    width: 100%;
+    margin-top: 30px;
+`
+
+export const DescriptionStyle = styled.textarea`
+  font-family:'Quicksand','Roboto', sans-serif;  
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  height: 120px;
+  border: solid 1.5px #d3d3d3;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  text-indent: 5px;
+  font-size: 15px;
+  &:focus {
+    outline-width: 0px;
+  }
+`
+export const LatLonStyle = styled.div`
+width: 100%;
+`
+
+export const AtributesContainerStyle = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+`;
+
+
+export const AtributesBlockStyle = styled.div`
+  background:  rgba(190, 190, 190, 0.2);
+  border-radius: 5px;
+  height: 100%;
+  max-height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  padding: 10px 20px 20px 20px;
+  gap: 20px;
+  
+`;
+
+export const AtributeInputBlock = styled.div`
+  width: 800px;
+  max-width: 100%;
+`
+
+export const AtributeNameField = styled.input`
+  border-radius: 5px;
+  /* width: 850px; */
+  width: 100%;
+  height: 40px;
+  border: solid 1.5px #d3d3d3;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  text-indent: 5px;
+  &:focus {
+    outline-width: 0px;
+  } 
+`
+
+export const AtributeIconField = styled.input`
+  border-radius: 5px;
+  /* width: 650px; */
+  width: 100%;
+  height: 40px;
+  border: solid 1.5px #d3d3d3;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  text-indent: 5px;
+  &:focus {
+    outline-width: 0px;
+  }
+`
+
+export const PolicyContainerStyle = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px; 
+`
+
+export const PolicyBodyStyle = styled.div`
+  width: 100%;
+  border: solid 1.5px #d3d3d3;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const PolicyBlockStyle = styled.div`
+  width: 100%;
+  padding: 2rem;
+  @media screen and (max-width: 1124px){
+    padding: 1rem 2rem;
+  }
+`
+
+export const PolicyName = styled.h5`
+  font-size: 18px;
+  padding-bottom: 10px;
+`
+
+export const PolicyField = styled.textarea`
+  font-family:'Quicksand','Roboto', sans-serif;  
+  border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  border: solid 1.5px #d3d3d3;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  text-indent: 5px;
+  padding: 10px ;
+  font-size: 15px;
+  &:focus {
+    outline-width: 0px;
+  }
+`
+
+export const ImageContainerStyle = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+`
+
+export const TitleStyle = styled.h3`
+  margin-bottom: 10px;
+`
+
+export const ImageBlockStyle = styled.div`
+  background:  rgba(190, 190, 190, 0.2);
+  border-radius: 5px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+  margin-bottom: 30px;
+`
+export const ButtonStyle =styled.button`
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  background: ${props => props.theme.secondary};
+  cursor: pointer;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+   &:hover {
+    background-color: ${props => props.theme.primary};
+    color: #fff;
+   }
+   padding: 0 1px ;
+`
+export const IconButtonStyle = styled(FiPlus)`
+color: #fff;
+font-size: 34px;
+
+
+
+`
+
+
+
+
