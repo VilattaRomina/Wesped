@@ -19,6 +19,10 @@ export const ContainerStyle = styled.div`
     flex-direction: column;
     gap: 10px;
     padding: 0 5px;
+
+    @media (max-width: 620px){
+      width: 100%;
+    }
 `
 
 export const InputContainerStyle = styled.div`
@@ -43,7 +47,13 @@ export const InputStyle = styled.input`
 
 export const SelectContainerStyle = styled.div`
     width: 100%;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    .css-1s2u09g-control{
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    .css-qc6sy-singleValue{
+      color: hsl(0deg 0% 54%);
+    }
 `
 
 export const LabelStyle = styled.label`
@@ -68,7 +78,8 @@ export const DescriptionStyle = styled.textarea`
   border: solid 1.5px #d3d3d3;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   text-indent: 5px;
-  font-size: 15px;
+  font-size: 16px;
+  resize: none;
   &:focus {
     outline-width: 0px;
   }
@@ -128,6 +139,7 @@ export const AtributeIconField = styled.input`
   border: solid 1.5px #d3d3d3;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   text-indent: 5px;
+  resize: none;
   &:focus {
     outline-width: 0px;
   }
@@ -149,14 +161,17 @@ export const PolicyBodyStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px){
+    flex-direction: column;
+    
+  }
 `
 
 export const PolicyBlockStyle = styled.div`
   width: 100%;
   padding: 2rem;
-  @media screen and (max-width: 1124px){
-    padding: 1rem 2rem;
-  }
+  
 `
 
 export const PolicyName = styled.h5`
@@ -174,8 +189,14 @@ export const PolicyField = styled.textarea`
   text-indent: 5px;
   padding: 10px ;
   font-size: 15px;
+  resize: none;
   &:focus {
     outline-width: 0px;
+  }
+
+  @media (max-width: 768px){
+    max-height: 120px;
+    
   }
 `
 
@@ -200,25 +221,36 @@ export const ImageBlockStyle = styled.div`
   width: 100%;
   padding: 0 2rem;
   margin-bottom: 30px;
+  gap: 20px;
+  
 `
 export const ButtonStyle =styled.button`
-  height: 40px;
+  height: 38px;
   border-radius: 4px;
   border: none;
-  background: ${props => props.theme.secondary};
+  background: ${props => props.theme.primary};
   cursor: pointer;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
    &:hover {
-    background-color: ${props => props.theme.primary};
+    background-color: #00f1ec;
     color: #fff;
    }
-   padding: 0 1px ;
+   padding: 0 2px ;
 `
 export const IconButtonStyle = styled(FiPlus)`
 color: #fff;
-font-size: 34px;
+font-size: 30px;
 
+`
 
+export const ContainerButtonGlobal = styled.div`
+padding-bottom: 40px; 
+
+`
+export const ErrorText = styled.p`
+ color: red;
+  width: 100%;
+  padding: 5px;
 
 `
 
