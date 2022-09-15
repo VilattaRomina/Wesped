@@ -28,7 +28,7 @@ export const StyledButton = styled.button`
    font-family: 'Roboto', sans-serif;
    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
    &:hover {
-    background-color: #32d3c8;
+    background-color: #00f1ec;
     color: #fff;
   }
   &:active {
