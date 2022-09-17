@@ -59,12 +59,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // Permitimos todas las peticiones a todos los endpoints de /auth
                 .antMatchers("/auth/**").permitAll()
+                // UI de Swagger pública
+                .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 // Permitimos peticiones de tipo GET unicamente al endpoint de Reservas
-                .antMatchers(HttpMethod.GET, "/bookings/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/bookings","/bookings/product/**").permitAll()
                 // Permitimos peticiones de tipo GET unicamente al endpoint de Categorias
                 .antMatchers(HttpMethod.GET, "/categories/**").permitAll()
                 // Permitimos peticiones de tipo GET unicamente al endpoint de Ciudades
                 .antMatchers(HttpMethod.GET, "/cities/**").permitAll()
+                // Permitimos peticiones de tipo GET unicamente al endpoint de Caracteristicas
+                .antMatchers(HttpMethod.GET, "/features/**").permitAll()
+                // Permitimos peticiones de tipo GET unicamente al endpoint de Politicas
+                .antMatchers(HttpMethod.GET, "/policies/**").permitAll()
                 // Permitimos peticiones de tipo GET unicamente al endpoint de Productos
                 .antMatchers(HttpMethod.GET, "/products/**").permitAll()
                 // TODAS las demas peticiones requieren autenticacion

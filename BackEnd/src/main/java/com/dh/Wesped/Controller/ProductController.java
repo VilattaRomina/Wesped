@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Product> productRegister(@RequestBody Product product) {
         return ResponseEntity.ok(productService.save(product));
@@ -62,4 +64,6 @@ public class ProductController {
                                                                       @PathVariable Integer cityId) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.filterByDatesAndCity(checkinDate, checkoutDate, cityId));
     }
+
+    //TODO: Controller PUT para actualizar producto. Solo para usuarios con rol de ADMIN.
 }

@@ -23,9 +23,11 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @PostMapping
     public ResponseEntity<Booking> createNewBooking(@RequestBody @Valid Booking booking) {
+        booking.setObservations("No Observations");
+        booking.setVaccineCovid19(true);
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.newBooking(booking));
     }
 
@@ -37,5 +39,11 @@ public class BookingController {
     @GetMapping("/product/{productId}")
     public ResponseEntity<List<?>> getAllBookingsByProductId(@PathVariable Integer productId) {
         return ResponseEntity.ok(bookingService.filterByProductId(productId));
+    }
+
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<?>> getAllBookingsByUserId(@PathVariable Integer userId) {
+        return ResponseEntity.ok(bookingService.filterByUserId(userId));
     }
 }

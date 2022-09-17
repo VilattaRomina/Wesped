@@ -21,6 +21,7 @@ public class Product {
     private Integer id;
     private String title;
     private String description;
+    private String address;
     private Double longitude;
     private Double latitude;
     private Double rating;
@@ -55,9 +56,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(String title, String description, Double longitude, Double latitude, Double rating, Boolean availability) {
+    public Product(String title, String description, String address, Double longitude, Double latitude, Double rating, Boolean availability) {
         this.title = title;
         this.description = description;
+        this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
         this.rating = rating;
@@ -69,6 +71,7 @@ public class Product {
         return "Product{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", address='" + address + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 ", rating=" + rating +

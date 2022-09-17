@@ -20,6 +20,8 @@ public class Booking {
     private LocalTime hour;
     private LocalDate checkin;
     private LocalDate checkout;
+    private String observations;
+    private Boolean vaccineCovid19;
     @JsonIncludeProperties(value = "id")
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
@@ -32,10 +34,12 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(LocalTime hour, LocalDate checkin, LocalDate checkout) {
+    public Booking(LocalTime hour, LocalDate checkin, LocalDate checkout, String observations, Boolean vaccineCovid19) {
         this.hour = hour;
         this.checkin = checkin;
         this.checkout = checkout;
+        this.observations = observations;
+        this.vaccineCovid19 = vaccineCovid19;
     }
 
     @Override
@@ -44,6 +48,8 @@ public class Booking {
                 "hour=" + hour +
                 ", checkin=" + checkin +
                 ", checkout=" + checkout +
+                ", observations='" + observations + '\'' +
+                ", vaccineCovid19=" + vaccineCovid19 +
                 '}';
     }
 }

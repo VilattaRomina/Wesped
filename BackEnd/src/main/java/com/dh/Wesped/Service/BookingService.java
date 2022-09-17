@@ -33,4 +33,9 @@ public class BookingService {
         logger.debug("Buscando reservas con producto id: " + id);
         return bookingRepository.findByProductId(id);
     }
+
+    public List<Booking> filterByUserId(Integer id) {
+        logger.debug("Buscando reservas del usuario con id: " + id);
+        return bookingRepository.findByUserId(id);
+    }
 }
