@@ -42,3 +42,9 @@ export const LogoSlogan = styled.div`
     }
   }
 `;
+
+export const NavContainer = styled.div`
+display: flex;
+align-items: center;
+
+`
