@@ -22,7 +22,7 @@ function App() {
   const [loggedUser, setLoggedUser] = useState(null);
 
   useEffect(() => {
-    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city })
+    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.rol })
   }, [])
 
   return (
