@@ -50,12 +50,13 @@ const LoginForm = () => {
         try {
             AxiosInstance.post('/auth/signin', userCredentials).then(({ data }) => {
                 LocalStorageHelper.setItem('Token', data.token)
-                const { id, name, surname, email } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
+                const { id, name, surname, email, authorities } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
                 setLoggedUser({
                     id: id,
                     name: name,
                     surname: surname,
                     email: email,
+                    rol : authorities[0].authority
                 })
                 SignedInOk.fire({
                     icon: 'success',
