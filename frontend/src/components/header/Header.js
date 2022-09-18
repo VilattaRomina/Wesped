@@ -21,6 +21,7 @@ const Header = () => {
 
   const randomSloganIndex = Math.round(Math.random() * 3);
 
+
   return (
     <div>
       <StyledHeader>
@@ -33,7 +34,7 @@ const Header = () => {
           </Link>
         </LogoSlogan>
         <NavContainer>
-          {/* {loggedUser.rol ==='ROLE_ADMIN' && <LogoAdmin/>}  */}
+          { loggedUser && (loggedUser.rol ==='ROLE_ADMIN') && <LogoAdmin/>} 
           <Nav />
         </NavContainer>
       </StyledHeader>
