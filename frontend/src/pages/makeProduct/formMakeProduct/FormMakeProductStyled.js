@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { FiPlus} from 'react-icons/fi';
-
 
 export const FormStyle = styled.form`
     padding: 0 30px;
@@ -19,6 +17,7 @@ export const ContainerStyle = styled.div`
     flex-direction: column;
     gap: 10px;
     padding: 0 5px;
+    justify-content: space-between;
 
     @media (max-width: 620px){
       width: 100%;
@@ -50,12 +49,7 @@ export const SelectContainerStyle = styled.div`
     .css-1s2u09g-control{
       box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     }
-
-    .css-qc6sy-singleValue{
-      color: hsl(0deg 0% 54%);
-    }
 `
-
 export const LabelStyle = styled.label`
     width: 100%;
     color: ${(props) => props.theme.color_text_primary};
@@ -103,7 +97,7 @@ export const AtributesBlockStyle = styled.div`
   height: 100%;
   max-height: 200px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   align-items: flex-end;
@@ -160,7 +154,7 @@ export const PolicyBodyStyle = styled.div`
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   @media (max-width: 768px){
     flex-direction: column;
@@ -205,7 +199,7 @@ export const ImageContainerStyle = styled.div`
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  margin-top: 40px;
+  margin: 40px 0;
 `
 
 export const TitleStyle = styled.h3`
@@ -214,33 +208,70 @@ export const TitleStyle = styled.h3`
 
 export const ImageBlockStyle = styled.div`
   background:  rgba(190, 190, 190, 0.2);
-  border-radius: 5px;
-  height: 100px;
-  display: flex;
-  align-items: center;
   width: 100%;
-  padding: 0 2rem;
-  margin-bottom: 30px;
-  gap: 20px;
-  
+font-size: 18px;
+padding: 14px 32px 14px 16px;
+border-radius: 4px 0 0 4px;
+display: flex;
+
+ 
 `
-export const ButtonStyle =styled.button`
-  height: 38px;
-  border-radius: 4px;
-  border: none;
-  background: ${props => props.theme.primary};
-  cursor: pointer;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
-   &:hover {
+export const ButtonStyle = styled.button`  
+border: none;
+border-radius: 0 4px 4px 0;
+cursor:pointer;
+margin-left: 10px;
+background: ${props => props.theme.primary};
+&:hover {
     background-color: #00f1ec;
     color: #fff;
    }
-   padding: 0 2px ;
+.icon{
+    width: 25px;
+    height: 25px;
+    margin:5px;
+    color: #fff;
+}
+   
 `
-export const IconButtonStyle = styled(FiPlus)`
-color: #fff;
-font-size: 30px;
+export const ContainerList = styled.div`
+  width: 100%;
+  min-height: 65px;
+  background:  rgba(190, 190, 190, 0.2);
+  margin: 5px 0;
+  padding: 14px 32px 14px 16px;
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  justify-content: space-between;
+  cursor:pointer;
 
+`;
+
+export const ContainerText = styled.div`
+width: 100%;
+height: 100%;
+font: 20px;
+display: flex;
+align-items: center;
+overflow-wrap: anywhere;
+background-color: #fff;
+box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+border: solid 1.5px #d3d3d3;
+text-indent: 10px;
+
+`
+export const ContainerButton = styled.div`
+border-radius: 0 4px 4px 0;
+cursor:pointer;
+margin-left: 10px;
+background: ${props => props.theme.primary};
+opacity: 0.8;
+.icon{
+    width: 25px;
+    height: 25px;
+    margin:5px;
+    color:#fff
+}
 `
 
 export const ContainerButtonGlobal = styled.div`

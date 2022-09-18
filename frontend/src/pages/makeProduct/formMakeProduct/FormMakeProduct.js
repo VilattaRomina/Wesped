@@ -1,18 +1,18 @@
-import React from "react";
 import Select from 'react-select'
-import { AtributeInputBlock, AtributesBlockStyle, ContainerStyle, AtributesContainerStyle, DescriptionBlockStyle, DescriptionStyle, FormStyle, InputContainerStyle, InputStyle, LabelStyle, SelectContainerStyle, AtributeNameField, AtributeIconField, PolicyContainerStyle, TitleStyle, PolicyBodyStyle, PolicyBlockStyle, PolicyName, PolicyField, ImageContainerStyle, ImageBlockStyle, ButtonStyle, IconButtonStyle, ContainerButtonGlobal, ErrorText } from './FormMakeProductStyled'
+import { AtributesBlockStyle, ContainerStyle, AtributesContainerStyle, DescriptionBlockStyle, DescriptionStyle, FormStyle, InputContainerStyle, InputStyle, LabelStyle, SelectContainerStyle, PolicyContainerStyle, TitleStyle, PolicyBodyStyle, PolicyBlockStyle, PolicyName, PolicyField, ContainerButtonGlobal, ErrorText, ImageBlockStyle, ImageContainerStyle, ButtonStyle, ContainerList, ContainerButton, ContainerText } from './FormMakeProductStyled'
 import Button from '../../../components/button/Button'
 import { useState, useEffect } from "react";
 import { AxiosInstance } from '../../../helpers/AxiosHelper'
+import { AiOutlinePlus, AiOutlineClose } from 'react-icons/ai'
 
 
-
-export default function FormMakeProduct({ values, handleInputChange, handleSelectChange, handleSubmit, handleButton, errors }) {
+export default function FormMakeProduct({ values, handleInputChange,handleSelectAttribute, handleSubmit,errors, handleAddUrlImage, handleDeleteUrlImage, handleCategoryChange, handleCityChange }) {
 
   const [categories, setCategories] = useState([]);
   const [cities, setCities] = useState([]);
-  // const [products, setProducts] = useState ([]);
-
+  const [features, setFeatures] = useState([]);
+ 
+  // peticion GET
   useEffect(() => {
     AxiosInstance.get('/categories')
       .then((res) => {
@@ -24,10 +24,10 @@ export default function FormMakeProduct({ values, handleInputChange, handleSelec
         setCities(res.data);
       })
 
-    // AxiosInstance.get('/products/features')
-    // .then((res) => {
-    //   setProducts(res.data)
-    // })
+    AxiosInstance.get('/features')
+      .then((res) => {
+        setFeatures(res.data)
+      })
   }, [])
 
 
@@ -35,6 +35,7 @@ export default function FormMakeProduct({ values, handleInputChange, handleSelec
     <>
       {/* form */}
       <FormStyle name="form">
+        {/* bloque inputs */}
         <ContainerStyle>
           <InputContainerStyle>
             <LabelStyle>Nombre de la propiedad</LabelStyle>
@@ -67,8 +68,9 @@ export default function FormMakeProduct({ values, handleInputChange, handleSelec
             <SelectContainerStyle >
               <Select
                 defaultValue={{ label: "Hotel", value: "Hotel" }}
-                options={categories.map(item => ({ label: item.title, value: item.title }))}
-                onChange={handleSelectChange}
+                options={categories.map(item => ({ label: item.title, value: item.title, id: item.id }))}
+                // onChange={handleSelectCategory}
+                onChange ={handleCategoryChange}
                 required
               />
               {errors.category && <ErrorText>{errors.category}</ErrorText>}
@@ -79,14 +81,16 @@ export default function FormMakeProduct({ values, handleInputChange, handleSelec
             <SelectContainerStyle >
               <Select
                 defaultValue={{ label: "Ciudad", value: "Ciudad" }}
-                options={cities.map(item => ({ label: item.name + ', ' + item.country, value: item.name + ', ' + item.country }))}
-                onChange={handleSelectChange}
+                options={cities.map(item => ({ label: item.name + ', ' + item.country, value: item.name + ', ' + item.country, id: item.id }))}
+                // onChange={handleSelectCity}
+                onChange = {handleCityChange}
                 required
               />
               {errors.city && <ErrorText>{errors.city}</ErrorText>}
             </SelectContainerStyle>
           </InputContainerStyle>
         </ContainerStyle>
+
         {/* bloque descripcion */}
         <DescriptionBlockStyle>
           <LabelStyle>Descripción</LabelStyle>
@@ -125,63 +129,24 @@ export default function FormMakeProduct({ values, handleInputChange, handleSelec
           />
           {errors.longitude && <ErrorText>{errors.longitude}</ErrorText>}
         </InputContainerStyle>
+
         {/* atributos */}
         <AtributesContainerStyle>
           <TitleStyle>Agregar atributos</TitleStyle>
-          <AtributesBlockStyle>
-            <AtributeInputBlock>
-              <LabelStyle>Nombre</LabelStyle>
-              <AtributeNameField
-                name="attributeName"
-                type="text"
-                placeholder="Wifi"
-                onChange={handleInputChange}
-                value={values.attributeName}
-                required
-              />
-              {errors.attributeName && <ErrorText>{errors.attributeName}</ErrorText>}
-            </AtributeInputBlock>
-            <AtributeInputBlock>
-              <LabelStyle >Icono</LabelStyle>
-              <AtributeIconField
-                name="icon"
-                type="text"
-                placeholder="fa-Wifi"
-                onChange={handleInputChange}
-                value={values.icon}
-                required
-              />
-              {errors.icon && <ErrorText>{errors.icon}</ErrorText>}
-            </AtributeInputBlock>
-            <ButtonStyle onClick={handleButton}>
-              <IconButtonStyle />
-            </ButtonStyle>
-          </AtributesBlockStyle>
-
-
-
 
           <AtributesBlockStyle>
             <LabelStyle>Seleccionar Atributo</LabelStyle>
-            {/* <SelectContainerStyle >
+            <SelectContainerStyle >
               <Select
-                defaultValue={{ label: "Atributo", value: "Atributo" }}
-                options={products.features.map(item => ({ label: item.title + ', ' + item.icon, value: item.title + ', ' + item.icon }))}
-                onChange={handleSelectChange}
+                options={features.map(item => ({ label: item.title, value: item.title, id: item.id }))}
+                onChange={handleSelectAttribute}
                 isMulti
                 required
               />
-            </SelectContainerStyle> */}
-
-
+              {errors.attributes && <ErrorText>{errors.attributes}</ErrorText>}
+            </SelectContainerStyle>
           </AtributesBlockStyle>
-
-
-
-
-
         </AtributesContainerStyle>
-
 
         {/* politicas */}
         <PolicyContainerStyle>
@@ -228,29 +193,40 @@ export default function FormMakeProduct({ values, handleInputChange, handleSelec
             </PolicyBlockStyle>
           </PolicyBodyStyle>
         </PolicyContainerStyle>
+
         {/* imagenes */}
         <ImageContainerStyle>
           <TitleStyle>Cargar imagenes</TitleStyle>
           <ImageBlockStyle>
             <InputStyle
-              name="image"
-              type="url"
+              name="temporaryImageInput"
+              type="text"
               placeholder="Insertar https://"
               onChange={handleInputChange}
-              value={values.image}
               required
             />
-            {errors.image && <ErrorText>{errors.image}</ErrorText>}
-            <ButtonStyle onClick={handleButton}>
-              <IconButtonStyle />
+            <ButtonStyle onClick={handleAddUrlImage}>
+              <AiOutlinePlus className="icon" />
             </ButtonStyle>
           </ImageBlockStyle>
+          {/* lista de url */}
+          {values.urlImages.map((item, index)=>(
+             <ContainerList key={item}>
+              <ContainerText >
+                {item}
+              </ContainerText>
+              <ContainerButton onClick={() => handleDeleteUrlImage(index)}>
+                <AiOutlineClose className="icon" />
+              </ContainerButton>
+           </ContainerList>
+          ))}
         </ImageContainerStyle>
+
         <ContainerButtonGlobal>
           <Button width={'300px'} type="submit" form="form" onClick={handleSubmit}>Crear</Button>
         </ContainerButtonGlobal>
       </FormStyle>
-
+      
     </>
   );
 }
