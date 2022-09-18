@@ -7,6 +7,7 @@ import Register from "./pages/register/Register";
 import ProductDetails from "./pages/product/productDetails/ProductDetails";
 import Booking from "./pages/booking/Booking";
 import BookingS from "./pages/successfulBooking/BookingS"
+import ProductS from "./pages/successfulProduct/ProductS";
 import { Routes, Route } from 'react-router-dom'
 import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
@@ -22,7 +23,9 @@ function App() {
   const [loggedUser, setLoggedUser] = useState(null);
 
   useEffect(() => {
-    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.rol })
+    if (user) {
+       setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.authorities[0].authority })
+    }
   }, [])
 
   return (
@@ -37,6 +40,7 @@ function App() {
           <Route path='/producto/:productId/reservas' element={<Booking />} />
           <Route path='/producto/:productId/reservas/reserva-exitosa' element={<BookingS />} />
           <Route path='/administracion' element={<MakeProduct />} />
+          <Route path='/administracion/producto-exitoso' element={<ProductS />} />
         </Routes>
         <Footer />
       </ThemeProvider>
