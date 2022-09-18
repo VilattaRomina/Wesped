@@ -75,7 +75,6 @@ align-self:center;
     top: 55.33%;
     bottom: 35%;
     font-size: 16px;
-line-height: 19px;
+    line-height: 19px;
 }
 `;
-
