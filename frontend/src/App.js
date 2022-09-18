@@ -14,14 +14,14 @@ import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from "./helpers/LocalStorageHelper";
 import { UserContext } from "./hooks/UseContext";
 
-
 const user = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
 
+
   useEffect(() => {
-    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city })
+    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.rol })
   }, [])
 
   return (
