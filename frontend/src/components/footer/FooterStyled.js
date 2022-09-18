@@ -11,7 +11,7 @@ justify-content: space-between;
 padding:20px;
 /* position: fixed; */
 bottom:0;
-z-index:2;
+z-index:4;
 
 @media (min-width:769px){
   width:100%;

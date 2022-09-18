@@ -57,30 +57,49 @@ text-decoration: underline;
 `
 export const ModalStyle = styled.div`
 background-color: rgba(0,0,0,0.8);
-height:100%;
+/* height:100%; */
+min-height: 100%;
 width:100vw;
 position: absolute;
-top:0px;
+top:160px;
 left: 0px;
-padding-top:250px;
+padding-top:120px;
 display: ${props => props.isOpen ? " " : "none"};
-min-height: 800px;
+/* min-height: 800px; */
 z-index: 1;
-.carousel .slider-wrapper{
+
+
+/* .carousel .slider-wrapper{
   height:480px;
+} */
+
+
+div .carousel.carousel-slider{
+  width: 1200px !important;
+  height: 650px;
+ margin: 0 auto;
+}
+.carousel .thumbs-wrapper {
+    display: none;
 }
 
-
-div{
+.carousel .slider-wrapper {
+ height: 800px;
+  width: 1000px;
+}
+/* div{
 max-width:721px;;
 max-height:628px;
 margin: auto;
 border-radius: 10px;
-
+} */
+.carousel .carousel-status{
+  display:none
 }
 
-.carousel .thumbs-wrapper {
-    display: none;
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow{
+  opacity: 1.0px;
+  font-size: 40px;
 }
 
 @media (max-width: 768px){
@@ -91,7 +110,7 @@ border-radius: 10px;
 
 export const CloseModalStyle = styled.div`
 top: 100px;
-right: 40px;
+right: 200px;
 font-size: 30px;
 font-weight:600;
 color: white;
@@ -100,4 +119,7 @@ cursor:pointer;
 
 
 `
+
+
+
 
