@@ -9,10 +9,8 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   background-color: #fff;
   z-index: 2;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
 
-  @media only screen and (max-width: 414px) {
-    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
-  }
 `;
 
 export const Slogan = styled.span`
@@ -44,3 +42,9 @@ export const LogoSlogan = styled.div`
     }
   }
 `;
+
+export const NavContainer = styled.div`
+display: flex;
+align-items: center;
+
+`

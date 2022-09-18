@@ -4,12 +4,12 @@ export const ContainerFooter = styled.div`
 background:${props => props.theme.primary};
 opacity: .9;
 width: 100vw;
-height: 42px;
+height: 60px;
 display: flex;
 align-items: center;
 justify-content: space-between;
 padding:20px;
-position: fixed;
+/* position: fixed; */
 bottom:0;
 z-index:2;
 

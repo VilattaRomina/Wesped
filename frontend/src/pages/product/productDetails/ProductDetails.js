@@ -19,11 +19,9 @@ import HeaderProduct from '../../../components/headerProduct/HeaderProduct';
 import UbicationProduct from './ubicationProduct/UbicationProduct';
 import Policies from '../../../components/policies/Policies';
 import Schedule from '../../../components/schedule/Schedule';
-// import Map from './map/Map'
-import MapView from './map/Map';
+import Map from './map/Map'
 import './map/Map.css'
-
-
+import Body from '../../../components/body/Body';
 
 export default function ProductDetails(to) {
 
@@ -53,6 +51,7 @@ export default function ProductDetails(to) {
   return (
     <>
       {product ?
+      <Body>
         <BodyStyle isOpen={modalIsOpen}>
           <HeaderProduct product={product} to={"/"} />
           <UbicationProduct product={product} />
@@ -78,13 +77,14 @@ export default function ProductDetails(to) {
             <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={2} includeDateIntervals={[]} />
             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
             <LineStyles />
-            {/* <Map product={product} /> */}
-            <MapView product={product}/>
+            <Map product={product} />
+            
             <TitleStyles>Qué tenés que saber</TitleStyles>
             <LineStyles />
             <Policies product={product} />
           </Section>
-        </BodyStyle> :
+        </BodyStyle> 
+        </Body> :
         <p>Cargando...</p>
       }
     </>

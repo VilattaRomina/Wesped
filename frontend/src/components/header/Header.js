@@ -2,9 +2,16 @@ import React from "react";
 import Logo from "./minicomponents/Logo";
 import Nav from "./minicomponents/Nav";
 import { Link } from "react-router-dom";
-import { StyledHeader, LogoSlogan, Slogan } from './StyledHeader'
+import { StyledHeader, LogoSlogan, Slogan, NavContainer } from './StyledHeader'
+import LogoAdmin from "./minicomponents/logoAdmin/LogoAdmin";
+import { UserContext } from "../../hooks/UseContext";
+import { useContext } from "react";
+
 
 const Header = () => {
+
+  const { loggedUser } = useContext(UserContext)
+
   const slogan = [
     "Sentite como en tu hogar",
     "Tu mejor descanso en un solo lugar",
@@ -13,6 +20,7 @@ const Header = () => {
   ];
 
   const randomSloganIndex = Math.round(Math.random() * 3);
+
 
   return (
     <div>
@@ -25,7 +33,10 @@ const Header = () => {
             <Slogan>{slogan[randomSloganIndex]}</Slogan>
           </Link>
         </LogoSlogan>
-        <Nav />
+        <NavContainer>
+          { loggedUser && (loggedUser.rol ==='ROLE_ADMIN') && <LogoAdmin/>} 
+          <Nav />
+        </NavContainer>
       </StyledHeader>
     </div>
   );
