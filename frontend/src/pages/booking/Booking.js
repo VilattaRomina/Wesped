@@ -67,10 +67,9 @@ export default function Booking(to) {
     e.preventDefault();
     let errorDate = false;
     let errorHour = false;
+
     const token = LocalStorageHelper.getItem('Token');
-
     const user = jwt_decode(token);
-
 
 
     if (values.startDate === '' || values.endDate === '') {
@@ -84,23 +83,6 @@ export default function Booking(to) {
       setValues({ ...values, errorDate: errorDate, errorHour: errorHour })
     } else {
 
-      
-      console.log({
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-        data: {
-          hour: `${values.checkInHour}:00`,
-          checkin: formatDate(values.startDate),
-          checkout: formatDate(values.endDate),
-          product: {
-            id: productId
-          },
-          user: {
-            id: user.user_info.id
-          }
-        },
-      });
 
       AxiosInstance.post(`/bookings`, {
         hour: `${values.checkInHour}:00`,
@@ -126,23 +108,11 @@ export default function Booking(to) {
             icon: 'error',
             text: 'Lamentablemente la reserva no ha podido realizarse. Por favor, intente mas tarde'
           })
-          console.log(error);
+      
         })
     }
 
-
-
-
-
-
   };
-
-
-
-
-
-
-
 
   return (
     <>
