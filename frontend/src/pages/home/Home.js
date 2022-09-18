@@ -18,7 +18,13 @@ const Home = () => {
   useEffect(() => {
     setLoaded(false)
     AxiosInstance.get("/products").then((res) => {
-      setProducts(res.data);
+      let products = res.data;
+
+      if ((products.length % 2) !== 0)
+        products = products.slice(0, products.length - 1);
+
+      setProducts(products)
+
     }).then(() => setLoaded(true));
   }, []);
 
@@ -27,7 +33,7 @@ const Home = () => {
       ? `/products/category/${selectedCategory}`
       : "/products";
     setLoaded(false);
-    AxiosInstance.get(url).then((res) => {
+    AxiosInstance.get(`${url}`).then((res) => {
       setProducts(res.data)
       setLoaded(true)
     });
