@@ -10,9 +10,6 @@ import "./CalendarStyled.css";
 import { SignedInOk } from '../signedInOk/SignedInOk'
 import { useEffect } from "react";
 import { subDays, addDays } from 'date-fns';
-import dayjs from "dayjs";
-import isBetween from 'dayjs/plugin/isBetween';
-dayjs.extend(isBetween)
 
 const Container = ({ children }) => {
 
