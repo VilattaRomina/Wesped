@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const BodyStyle = styled.section`
-  padding-top:81px;
   height:${props => props.isOpen ? "100vh" : "auto"};
   overflow-y:${props => props.isOpen ? "hidden" : "auto"};
 

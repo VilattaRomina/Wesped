@@ -14,7 +14,7 @@ export const ContainerSearchBlock = styled.div`
   
   @media (max-width: 768px) {
     position: static;
-    padding-top: 80px;
+    /* padding-top: 80px; */
   } 
 `;
 //title
