@@ -16,16 +16,14 @@ import LocalStorageHelper from "./helpers/LocalStorageHelper";
 import { UserContext } from "./hooks/UseContext";
 import MakeProduct from "./pages/makeProduct/MakeProduct";
 
-
 const user = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
 
+
   useEffect(() => {
-    if (user) {
-       setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.authorities[0].authority })
-    }
+    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.rol })
   }, [])
 
   return (

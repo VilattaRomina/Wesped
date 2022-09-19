@@ -1,13 +1,24 @@
-import React,  { useContext }  from 'react'
+import React,  { useContext, useEffect, useState }  from 'react'
 import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput, LabelStyle, SubTitle, Column, CalendarContainerStyle, TextError } from './BookingFormStyle'
 import Select from 'react-select'
 import Schedule from '../../../components/schedule/Schedule'
 import { UserContext } from '../../../hooks/UseContext'
-
+import { AxiosInstance } from '../../../helpers/AxiosHelper'
+import { useParams } from 'react-router-dom'
 
 
 export default function BookingForm({ values,handleChange, handleSelectChange, picDate }) {
     const { loggedUser } = useContext(UserContext)
+    const [takenDates, setTakenDates] = useState();
+    const { productId } = useParams();
+
+    useEffect(() => {
+        AxiosInstance.get(`/bookings/product/${productId}`)
+          .then(({ data }) => {
+            const takenDates = data.map(booking => { return { checkin: booking.checkin, checkout: booking.checkout } })
+            setTakenDates(takenDates)
+          })
+      }, [productId])
 
     const optionsHours = [
         "00:00",
@@ -92,7 +103,7 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
             </ColumnForm>
             <FormTitle>Seleccioná tu fecha de reserva</FormTitle>
             <CalendarContainerStyle>
-                <Schedule inline picDate={picDate} monthsShown={2} />
+                <Schedule excludeDateIntervals={takenDates} inline picDate={picDate} monthsShown={2} />
             </CalendarContainerStyle>
             {values.errorDate && <TextError>Debe seleccionar un rango de fechas</TextError>}
             <FormTitle>Indica tu horario estimado de llegada</FormTitle>
