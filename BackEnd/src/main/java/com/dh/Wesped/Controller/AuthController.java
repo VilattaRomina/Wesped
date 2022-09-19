@@ -1,5 +1,6 @@
 package com.dh.Wesped.Controller;
 
+import com.dh.Wesped.Email.EmailSender;
 import com.dh.Wesped.Model.Role;
 import com.dh.Wesped.Model.User;
 import com.dh.Wesped.Security.Jwt.JwtProvider;
@@ -33,6 +34,8 @@ public class AuthController {
     UserService userService;
     @Autowired
     JwtProvider jwtProvider;
+    @Autowired
+    EmailSender emailSender;
 
     @PostMapping("/signup")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest registerRequest, BindingResult bindingResult) {
@@ -53,6 +56,10 @@ public class AuthController {
         role.setId(2);
         user.setRole(role);
         userService.newUser(user);
+        // Envio email de confirmacion de registro
+        String registerBody = emailSender.styleRegisterBody(registerRequest.getName());
+        emailSender.sendEmail(registerRequest.getEmail(), "Wesped - Registro Exitoso",
+                registerBody);
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado exitosamente");
     }
 
