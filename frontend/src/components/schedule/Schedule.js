@@ -62,15 +62,19 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline, readOnly, monthsShown, includeDateIntervals }) => {
+const Calendar = ({inline, readOnly, monthsShown, includeDateIntervals, setSelectedDates }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-    picDate(start, end);
-  };
+    setSelectedDates(() => {
+      if(!start || !end) return null;
+      return {checkin: start, checkout: end}
+    })
+  }
+
 
   return (
     <DatePicker
@@ -141,6 +145,6 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, includeDateIntervals
 };
 
 
-export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown, includeDateIntervals }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} includeDateIntervals={includeDateIntervals} />;
+export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, includeDateIntervals, setSelectedDates }) {
+  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} includeDateIntervals={includeDateIntervals} setSelectedDates={setSelectedDates} />;
 }
