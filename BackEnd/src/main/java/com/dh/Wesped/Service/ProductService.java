@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -69,5 +70,12 @@ public class ProductService {
         return productRepository.findProductsByDatesAndCity(checkin, checkout, cityId);
     }
 
-    //TODO: Metodo para actualizar producto
+    public Product editProduct(Product product) throws BadRequestException {
+        Optional<Product> productSearched = Optional.ofNullable(findById(product.getId()));
+        if (productSearched.isPresent()) {
+            return productRepository.save(product);
+        } else {
+            throw new BadRequestException("El producto con id: " + product.getId() + " no se pudo actualizar");
+        }
+    }
 }
