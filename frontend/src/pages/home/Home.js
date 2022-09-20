@@ -8,7 +8,7 @@ import Section from "../../components/section/Section";
 import Spinner from '../../components/spinner/Spinner'
 import Body from "../../components/body/Body";
 
-const Home = () => {
+const Home = ({ isMobile }) => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [title, setTitle] = useState("");
@@ -44,11 +44,11 @@ const Home = () => {
     <>
       {!loaded && <Spinner>Cargando...</Spinner>}
       <Body>
-      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded}/>
-      <Section> 
-        <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
-        <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
-      </Section>
+        <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded} isMobile={isMobile}/>
+        <Section>
+          <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
+          <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
+        </Section>
       </Body>
 
     </>
