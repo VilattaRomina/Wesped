@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   ContainerSearchBlock,
   SearchBlockTitle,
@@ -11,31 +11,30 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 import Button from "../../../components/button/Button";
 import SearchInput from "../searchBlock/SearchInput"
 import { AxiosInstance } from "../../../helpers/AxiosHelper";
+import { SelectedDatesContext } from "../../../hooks/UseContext";
+import { toJavaDateString, toUserReadableDateString } from "../../../hooks/UseToString";
 
 const SearchBlock = (props) => {
+  const { selectedDatesContext } = useContext(SelectedDatesContext)
   const [selectedCityID, setSelectedCityId] = useState(0);
-  const [selectedDates, setSelectedDates] = useState(null);
 
   const filterProducts = () => {
     props.setLoaded(false)
     let URL;
     let recommendationsTitle;
 
-    const toJavaDateString = (date) => date.toISOString().slice(0, 10);
-    const toUserReadableDateString = (dateString) => dateString.toLocaleDateString('es-US')
-
-    if (!selectedCityID && !selectedDates) return;
-    if (selectedCityID && !selectedDates) URL = `products/city/${selectedCityID}`
-    if (!selectedCityID && selectedDates) URL = `products/booking/${toJavaDateString(selectedDates.checkin)}/${toJavaDateString(selectedDates.checkout)}`
-    if (selectedCityID && selectedDates)  URL = `products/booking/${toJavaDateString(selectedDates.checkin)}/${toJavaDateString(selectedDates.checkout)}/${selectedCityID}`
+    if (!selectedCityID && !selectedDatesContext) return;
+    if (selectedCityID && !selectedDatesContext) URL = `products/city/${selectedCityID}`
+    if (!selectedCityID && selectedDatesContext) URL = `products/booking/${toJavaDateString(selectedDatesContext.checkin)}/${toJavaDateString(selectedDatesContext.checkout)}`
+    if (selectedCityID && selectedDatesContext)  URL = `products/booking/${toJavaDateString(selectedDatesContext.checkin)}/${toJavaDateString(selectedDatesContext.checkout)}/${selectedCityID}`
 
     try {
       AxiosInstance.get(URL)
         .then(products => {
           props.setProductsToDisplayByCity(products.data)
-          if (selectedCityID && !selectedDates) recommendationsTitle = products.data[0].city.name;
-          if (!selectedCityID && selectedDates) recommendationsTitle = `fechas entre ${toUserReadableDateString(selectedDates.checkin)} - ${toUserReadableDateString(selectedDates.checkout)}`;
-          if (selectedCityID && selectedDates) recommendationsTitle = `${products.data[0].city.name} y fechas entre ${toUserReadableDateString(selectedDates.checkin)} - ${toUserReadableDateString(selectedDates.checkout)}`;
+          if (selectedCityID && !selectedDatesContext) recommendationsTitle = products.data[0].city.name;
+          if (!selectedCityID && selectedDatesContext) recommendationsTitle = `fechas entre ${toUserReadableDateString(selectedDatesContext.checkin)} - ${toUserReadableDateString(selectedDatesContext.checkout)}`;
+          if (selectedCityID && selectedDatesContext) recommendationsTitle = `${products.data[0].city.name} y fechas entre ${toUserReadableDateString(selectedDatesContext.checkin)} - ${toUserReadableDateString(selectedDatesContext.checkout)}`;
           props.setRecommendationsTitle(recommendationsTitle)
         })
         .catch(err => console.warn(err))
@@ -68,7 +67,7 @@ const SearchBlock = (props) => {
               icon={<FaMapMarkerAlt />}
             />
             <SearchInput
-              input={<Schedule setSelectedDates={setSelectedDates} icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
+              input={<Schedule icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
               icon={<FaRegCalendarAlt />}
             />
             <ButtonStyle>
