@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { GlobalStyle, ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
@@ -7,9 +7,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
-import { SignedInOk } from '../signedInOk/SignedInOk'
-import { useEffect } from "react";
 import { subDays, addDays } from 'date-fns';
+import Swal from "sweetalert2";
 
 const Container = ({ children }) => {
 
@@ -23,7 +22,7 @@ const Container = ({ children }) => {
 
   const startBooking = () => {
     if (!loggedUser) {
-      SignedInOk.fire('Por favor inicia sesión primero', '', 'warning')
+      Swal.fire('Por favor inicia sesión primero', '', 'error')
       navigate('/login', { state: pathName });
       return
     }
