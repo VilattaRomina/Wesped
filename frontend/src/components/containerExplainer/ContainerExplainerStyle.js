@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const IconMarginStyle = styled.div`
 display: flex;
-justify-content: space-around;
-padding: 40px 0;
+justify-content: space-between;
+padding: 40px;
 margin: 0 auto;
 max-width: 1366px;
 

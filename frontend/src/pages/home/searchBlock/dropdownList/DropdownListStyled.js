@@ -15,7 +15,7 @@ export const SelectStyled = styled.div`
     color: #545776;
     width: 100%;
     height: 100%;
-    padding: 0.45em 0;
+    padding: 0.6em 0;
     font-size: 17px;
   }
 `;
@@ -52,7 +52,8 @@ export const OptionStyled = styled.div`
   & div {
     display: flex;
     flex-direction: column;
-    padding: 1.2em;
+    /* padding: 1.2em; */
+    padding: 15px 10px;
   }
   & div.city-container {
     flex: 1;

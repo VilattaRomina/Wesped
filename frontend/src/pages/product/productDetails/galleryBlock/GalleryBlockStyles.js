@@ -38,6 +38,7 @@ overflow: hidden;
 export const ImageLeft = styled.img`
 max-width: 100%;
 height:100%;
+width: 100%;
 `
 export const ImageRight = styled.img`
 min-width: 100%;
@@ -57,11 +58,11 @@ text-decoration: underline;
 `
 export const ModalStyle = styled.div`
 background-color: rgba(0,0,0,0.8);
-/* height:100%; */
-min-height: 100%;
-width:100vw;
+height:100%;
+min-height: 100vh;
+width:100%;
 position: absolute;
-top:160px;
+top:81px;
 left: 0px;
 padding-top:120px;
 display: ${props => props.isOpen ? " " : "none"};
@@ -69,14 +70,9 @@ display: ${props => props.isOpen ? " " : "none"};
 z-index: 1;
 
 
-/* .carousel .slider-wrapper{
-  height:480px;
-} */
-
-
 div .carousel.carousel-slider{
-  width: 1200px !important;
-  height: 650px;
+  width: 960px !important;
+  height: 600px;
  margin: 0 auto;
 }
 .carousel .thumbs-wrapper {
@@ -87,12 +83,7 @@ div .carousel.carousel-slider{
  height: 800px;
   width: 1000px;
 }
-/* div{
-max-width:721px;;
-max-height:628px;
-margin: auto;
-border-radius: 10px;
-} */
+
 .carousel .carousel-status{
   display:none
 }
@@ -107,10 +98,9 @@ border-radius: 10px;
 }
 
 `
-
 export const CloseModalStyle = styled.div`
-top: 100px;
-right: 200px;
+top: 79px;
+right: 114px;
 font-size: 30px;
 font-weight:600;
 color: white;

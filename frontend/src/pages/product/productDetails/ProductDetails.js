@@ -6,7 +6,6 @@ import {
   FeaturesStyle,
   TitleStyles
 } from './ProductDetailsStyles'
-import { FaRegHeart } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
