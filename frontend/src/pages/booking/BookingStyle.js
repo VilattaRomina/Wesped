@@ -58,6 +58,6 @@ margin-right:30px;
 `
 
 export const LineStyles = styled.hr`
-  border-color:${props => props.theme.primary};
+  border-color:${props => props.theme.text_secondary};
 `
 

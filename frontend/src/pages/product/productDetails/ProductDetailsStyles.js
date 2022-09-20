@@ -8,7 +8,7 @@ export const BodyStyle = styled.section`
 `
 export const BoxHeaderStyle = styled.section`
 height:80px;
-  background-color:${props => props.theme.secondary};
+  background-color:${props => props.theme.background};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
@@ -63,9 +63,10 @@ export const LinkStyle = styled(Link)`
 
 export const ShareStyle = styled.div`
   height:60px;
-  padding: 20px 0 20px 30px;
+  padding: 20px 0 30px 30px;
   display:flex;
-  font-size:20px;
+  font-size:25px;
+  color: #50525e;
   div{
     padding-right:10px;
   }
@@ -103,10 +104,12 @@ export const FeaturesStyle = styled.div`
   
 
   span{
+    color:${props => (props.theme.text_secondary)};
     color:${props => (props.theme.secondary)};
-    opacity:0.9;
+    opacity:0.8;
     font-size: 25px;
     padding-right:15px;
+    /* color: #ff7062; */
 
   }
 
@@ -135,6 +138,7 @@ export const PoliciesStyle = styled.div`
 
 export const LineStyles = styled.hr`
   border-color:${props => props.theme.primary};
+  border-color: #383B58;
   opacity: 0.5;
 `
 export const TitleStyles = styled.h4`

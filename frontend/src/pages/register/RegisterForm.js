@@ -79,7 +79,7 @@ const RegisterForm = () => {
 
     return (
         <>
-            {!loaded && <Spinner>Cargando...</Spinner>}
+            {!loaded && <Spinner/>}
             <Form onSubmit={submitHandler}>
                 <h1>Crear cuenta</h1>
                 <Div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   ContainerSearchBlock,
+  BoxStyle,
   SearchBlockTitle,
   SearchBar,
   ButtonStyle
@@ -11,6 +12,7 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 import Button from "../../../components/button/Button";
 import SearchInput from "../searchBlock/SearchInput"
 import { AxiosInstance } from "../../../helpers/AxiosHelper";
+import '../../home/searchBlock/dropdownList/SearchBlockStyle.css'
 
 const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
@@ -56,28 +58,29 @@ const SearchBlock = (props) => {
   }
 
   return (
-    <>
-      <ContainerSearchBlock>
-        <SearchBlockTitle>
-          Busca ofertas en hoteles, casas y mucho más
-        </SearchBlockTitle>
-        <form onSubmit={handleSubmit}>
-          <SearchBar>
-            <SearchInput
-              input={<DropdownList city={props.city} icon={<FaMapMarkerAlt />} getAndSetSelectedCityID={getAndSetSelectedCityID} />}
-              icon={<FaMapMarkerAlt />}
-            />
-            <SearchInput
-              input={<Schedule setSelectedDates={setSelectedDates} icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
-              icon={<FaRegCalendarAlt />}
-            />
-            <ButtonStyle>
-              <Button type="submit" width="100%" theme="secondary">Buscar</Button>
-            </ButtonStyle>
-          </SearchBar>
-        </form>
-      </ContainerSearchBlock>
-    </>
+    <ContainerSearchBlock className="container-serch-block">
+      <BoxStyle>
+      <SearchBlockTitle>
+        Busca ofertas en hoteles, casas y mucho más
+      </SearchBlockTitle>
+      <form onSubmit={handleSubmit}>
+        <SearchBar>
+          <SearchInput
+            input={<DropdownList city={props.city} icon={<FaMapMarkerAlt />} getAndSetSelectedCityID={getAndSetSelectedCityID} />}
+            icon={<FaMapMarkerAlt />}
+          />
+          <SearchInput
+            input={<Schedule setSelectedDates={setSelectedDates} icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
+            icon={<FaRegCalendarAlt />}
+          />
+          <ButtonStyle>
+            <Button type="submit" width="100%" theme="secondary">Buscar</Button>
+          </ButtonStyle>
+        </SearchBar>
+      </form>
+      </BoxStyle>
+     
+    </ContainerSearchBlock>
   );
 }
 
