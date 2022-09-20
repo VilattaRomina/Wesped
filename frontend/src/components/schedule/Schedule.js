@@ -31,8 +31,7 @@ const Container = ({ children }) => {
   }
 
   return (
-    <GlobalStyle isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}
-    >
+    <GlobalStyle isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
       <ScheduleMainStyled isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>{children}</div>
       </ScheduleMainStyled>
@@ -46,14 +45,6 @@ const Container = ({ children }) => {
             </Button>
           </ButtonScheduleStyled>
         </ScheduleIngresarReservaDiv>
-      }
-      {
-        isInHomePage &&
-        <ButtonScheduleStyled>
-          <Button width="12.5rem" theme="secondary">
-            Aplicar
-          </Button>
-        </ButtonScheduleStyled>
       }
     </GlobalStyle>
   );
@@ -90,8 +81,8 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSele
     setStartDate(start);
     setEndDate(end);
     setSelectedDates(() => {
-      if(!start || !end) return null;
-      return {checkin: start, checkout: end}
+      if (!start || !end) return null;
+      return { checkin: start, checkout: end }
     })
   }
 
@@ -159,7 +150,7 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSele
             className={
               "react-datepicker_navigation react-datepicker_navigation--next"
             }
-            style={customHeaderCount === 0 && monthsShown === 2? { visibility: "hidden" } : null}
+            style={customHeaderCount === 0 && monthsShown === 2 ? { visibility: "hidden" } : null}
             onClick={increaseMonth}
           >
             <span
