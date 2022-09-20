@@ -15,9 +15,9 @@ const LoginForm = () => {
     const { setLoggedUser } = useContext(UserContext)
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate()
-    const { state } = useLocation();
     const [loaded, setLoaded] = useState(true);
-
+    const { state } = useLocation();
+    
     const showErrorMsg = () => {
         setIsError(true)
         setTimeout(() => {

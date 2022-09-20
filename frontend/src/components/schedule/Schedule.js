@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { GlobalStyle, ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
@@ -7,9 +7,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
-import { SignedInOk } from '../signedInOk/SignedInOk'
-import { useEffect } from "react";
 import { subDays, addDays } from 'date-fns';
+import Swal from "sweetalert2";
 
 const Container = ({ children }) => {
 
@@ -23,7 +22,7 @@ const Container = ({ children }) => {
 
   const startBooking = () => {
     if (!loggedUser) {
-      SignedInOk.fire('Por favor inicia sesión primero', '', 'warning')
+      Swal.fire('Por favor inicia sesión primero', '', 'error')
       navigate('/login', { state: pathName });
       return
     }
@@ -62,7 +61,7 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline, readOnly, monthsShown, excludeDateIntervals }) => {
+const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [excludedDates, setExcludedDates] = useState([])
@@ -90,8 +89,12 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, excludeDateIntervals
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-    picDate(start, end);
-  };
+    setSelectedDates(() => {
+      if(!start || !end) return null;
+      return {checkin: start, checkout: end}
+    })
+  }
+
 
   const excludeDays = () => {
     let arr = [];
@@ -174,7 +177,6 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, excludeDateIntervals
   );
 };
 
-
-export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown, excludeDateIntervals }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} />;
+export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) {
+  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} setSelectedDates={setSelectedDates} />;
 }
