@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { GlobalStyle, ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
-import { UserContext } from "../../hooks/UseContext";
+import { SelectedDatesContext, UserContext } from "../../hooks/UseContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
@@ -51,11 +51,11 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals }) => {
   const [excludedDates, setExcludedDates] = useState([])
   const [arrayOfDayDiff, setArrayOfDayDiff] = useState(0);
+  const { selectedDatesContext, setSelectedDatesContext } = useContext(SelectedDatesContext)
+
 
   useEffect(() => {
     if (excludeDateIntervals) {
@@ -77,12 +77,7 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSele
 
   const onChange = (dates) => {
     const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    setSelectedDates(() => {
-      if (!start || !end) return null;
-      return { checkin: start, checkout: end }
-    })
+    setSelectedDatesContext(() => {return { checkin: start, checkout: end }})
   }
 
 
@@ -100,8 +95,8 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSele
   return (
     <DatePicker
       onChange={onChange}
-      startDate={startDate}
-      endDate={endDate}
+      startDate={selectedDatesContext?.checkin}
+      endDate={selectedDatesContext?.checkout}
       calendarContainer={Container}
       selectsRange
       isClearable
@@ -167,6 +162,6 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSele
   );
 };
 
-export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) {
-  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} setSelectedDates={setSelectedDates} />;
+export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, excludeDateIntervals }) {
+  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} />;
 }

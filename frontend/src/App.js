@@ -13,13 +13,14 @@ import { theme } from './ui/theme'
 import { ThemeProvider } from 'styled-components';
 import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from "./helpers/LocalStorageHelper";
-import { UserContext } from "./hooks/UseContext";
+import { UserContext, SelectedDatesContext } from "./hooks/UseContext";
 import MakeProduct from "./pages/makeProduct/MakeProduct";
 
 const user = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
+  const [selectedDatesContext, setSelectedDatesContext] = useState(null)
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -37,20 +38,22 @@ function App() {
 
   return (
     <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
-      <ThemeProvider theme={theme}>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home isMobile={width <= 580}/>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registro" element={<Register />} />
-          <Route path='/producto/:productId' element={<ProductDetails isMobile={width <= 580}/>} />
-          <Route path='/producto/:productId/reservas' element={<Booking isMobile={width <= 580}/>} />
-          <Route path='/producto/:productId/reservas/reserva-exitosa' element={<BookingS />} />
-          <Route path='/administracion' element={<MakeProduct />} />
-          <Route path='/administracion/producto-exitoso' element={<ProductS />} />
-        </Routes>
-        <Footer />
-      </ThemeProvider>
+      <SelectedDatesContext.Provider value={{ selectedDatesContext, setSelectedDatesContext }}>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home isMobile={width <= 580} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={<Register />} />
+            <Route path='/producto/:productId' element={<ProductDetails isMobile={width <= 580} />} />
+            <Route path='/producto/:productId/reservas' element={<Booking isMobile={width <= 580} />} />
+            <Route path='/producto/:productId/reservas/reserva-exitosa' element={<BookingS />} />
+            <Route path='/administracion' element={<MakeProduct />} />
+            <Route path='/administracion/producto-exitoso' element={<ProductS />} />
+          </Routes>
+          <Footer />
+        </ThemeProvider>
+      </SelectedDatesContext.Provider>
     </UserContext.Provider>
   );
 
