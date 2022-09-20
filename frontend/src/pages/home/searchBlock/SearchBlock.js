@@ -11,8 +11,7 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 import Button from "../../../components/button/Button";
 import SearchInput from "../searchBlock/SearchInput"
 import { AxiosInstance } from "../../../helpers/AxiosHelper";
-import '../../home/searchBlock/dropdownList/SearchBlockStyle.css'
-import './SearchBlockStyle.css'
+import '../searchBlock/SearchBlockStyle.css'
 import { SelectedDatesContext } from "../../../hooks/UseContext";
 import { toJavaDateString, toUserReadableDateString } from "../../../hooks/UseToString";
 
@@ -58,7 +57,7 @@ const SearchBlock = (props) => {
 
   return (
     <>
-      <ContainerSearchBlock>
+      <ContainerSearchBlock className="container-serch-block">
         <SearchBlockTitle>
           Busca ofertas en hoteles, casas y mucho más
         </SearchBlockTitle>
