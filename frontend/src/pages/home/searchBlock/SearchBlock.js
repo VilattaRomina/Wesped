@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   ContainerSearchBlock,
   SearchBlockTitle,
@@ -15,18 +15,6 @@ import { AxiosInstance } from "../../../helpers/AxiosHelper";
 const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
   const [selectedDates, setSelectedDates] = useState(null);
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    }
-  }, []);
-  
-  const handleWindowSizeChange = () => setWidth(window.innerWidth);
-  
-  const isMobile = width <= 580;
 
   const filterProducts = () => {
     props.setLoaded(false)
@@ -80,7 +68,7 @@ const SearchBlock = (props) => {
               icon={<FaMapMarkerAlt />}
             />
             <SearchInput
-              input={<Schedule setSelectedDates={setSelectedDates} icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={isMobile ? 1 : 2} />}
+              input={<Schedule setSelectedDates={setSelectedDates} icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
               icon={<FaRegCalendarAlt />}
             />
             <ButtonStyle>
