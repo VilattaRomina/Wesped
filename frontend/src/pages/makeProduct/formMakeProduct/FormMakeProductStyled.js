@@ -8,7 +8,8 @@ export const FormStyle = styled.form`
     width: 100%;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    /* box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5); */
+    box-shadow: 0 0px 4px #bebebe;
 `
 
 export const ContainerStyle = styled.div`
@@ -221,9 +222,9 @@ border: none;
 border-radius: 0 4px 4px 0;
 cursor:pointer;
 margin-left: 10px;
-background: ${props => props.theme.primary};
+background: ${props => props.theme.secondary};
 &:hover {
-    background-color: #00f1ec;
+    background-color: #f25344;
     color: #fff;
    }
 .icon{

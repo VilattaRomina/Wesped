@@ -3,7 +3,8 @@ import { theme } from '../../ui/theme'
 import "react-datepicker/dist/react-datepicker.css";
 
 export const GlobalStyle = styled.div`
-  background: ${props => props.isInProductPage ? "rgb(236, 236, 236)" : "#fff"};
+  /* background: ${props => props.isInProductPage ? "rgb(236, 236, 236)" : "#fff"}; */
+     background: ${props => props.theme.background};
     position: "relative";
     color: "#0073A3";
     display:  ${props => props.isInProductPage ? "flex" : ""};

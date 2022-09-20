@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BoxUbicationStyle = styled.section`
 height:60px;
-background: ${props => props.theme.content_background};
+background: ${props => props.theme.background_secondary};
   
 `
 
@@ -17,6 +17,10 @@ padding: 20px 0 10px 30px;
       font-size: 16px; 
       font-weight: 500; 
       padding-left:10px;
+  }
+
+  .icon{
+    color: #50525e;
   }
 
 `;
