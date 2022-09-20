@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   ContainerSearchBlock,
+  BoxStyle,
   SearchBlockTitle,
   SearchBar,
   ButtonStyle
@@ -11,21 +12,39 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 import Button from "../../../components/button/Button";
 import SearchInput from "../searchBlock/SearchInput"
 import { AxiosInstance } from "../../../helpers/AxiosHelper";
+import './SearchBlockStyle.css'
 
 const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
+  const [selectedDates, setSelectedDates] = useState(null);
 
+  const filterProducts = () => {
+    props.setLoaded(false)
+    let URL;
+    let recommendationsTitle;
 
-  const filterProductsByCity = () => {
-    if (!selectedCityID) return;
+    const toJavaDateString = (date) => date.toISOString().slice(0, 10);
+    const toUserReadableDateString = (dateString) => dateString.toLocaleDateString('es-US')
 
-    AxiosInstance.get(`/products/city/${selectedCityID}`, {
-    })
-      .then(products => {
-        props.setProductsToDisplayByCity(products.data)
-        props.setRecommendationsTitle(products.data[0].city.name)
-      })
-      .catch(err => console.warn(err))
+    if (!selectedCityID && !selectedDates) return;
+    if (selectedCityID && !selectedDates) URL = `products/city/${selectedCityID}`
+    if (!selectedCityID && selectedDates) URL = `products/booking/${toJavaDateString(selectedDates.checkin)}/${toJavaDateString(selectedDates.checkout)}`
+    if (selectedCityID && selectedDates)  URL = `products/booking/${toJavaDateString(selectedDates.checkin)}/${toJavaDateString(selectedDates.checkout)}/${selectedCityID}`
+
+    try {
+      AxiosInstance.get(URL)
+        .then(products => {
+          props.setProductsToDisplayByCity(products.data)
+          if (selectedCityID && !selectedDates) recommendationsTitle = products.data[0].city.name;
+          if (!selectedCityID && selectedDates) recommendationsTitle = `fechas entre ${toUserReadableDateString(selectedDates.checkin)} - ${toUserReadableDateString(selectedDates.checkout)}`;
+          if (selectedCityID && selectedDates) recommendationsTitle = `${products.data[0].city.name} y fechas entre ${toUserReadableDateString(selectedDates.checkin)} - ${toUserReadableDateString(selectedDates.checkout)}`;
+          props.setRecommendationsTitle(recommendationsTitle)
+        })
+        .catch(err => console.warn(err))
+        .then(() => props.setLoaded(true))
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // Metodo para setear "selectedCityID" state capturado en el componente DropdownList
@@ -35,11 +54,12 @@ const SearchBlock = (props) => {
   // y mediante props seteo la lista de productos a mostrar (productsToDisplay)
   const handleSubmit = (e) => {
     e.preventDefault();
-    filterProductsByCity();
+    filterProducts();
   }
 
   return (
-    <ContainerSearchBlock>
+    <ContainerSearchBlock className="container-serch-block">
+      <BoxStyle>
       <SearchBlockTitle>
         Busca ofertas en hoteles, casas y mucho más
       </SearchBlockTitle>
@@ -50,7 +70,7 @@ const SearchBlock = (props) => {
             icon={<FaMapMarkerAlt />}
           />
           <SearchInput
-            input={<Schedule icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={2} />}
+            input={<Schedule setSelectedDates={setSelectedDates} icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
             icon={<FaRegCalendarAlt />}
           />
           <ButtonStyle>
@@ -58,6 +78,8 @@ const SearchBlock = (props) => {
           </ButtonStyle>
         </SearchBar>
       </form>
+      </BoxStyle>
+     
     </ContainerSearchBlock>
   );
 }

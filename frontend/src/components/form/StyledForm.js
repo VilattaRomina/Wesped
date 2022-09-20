@@ -8,12 +8,17 @@ align-items: center;
 height: 90vh;
 gap: 1rem;
 h1{
-    color: #1dbeb4;
+    color: ${props => props.theme.primary};
     margin-top: 1.5rem;
     margin-bottom: 1rem;
 }
 button{
     margin-top: 2.5rem;
+    background-color: ${props => props.theme.primary};
+    &:hover {
+    background-color: #1a9fd6;
+    color: #fff;
+  }
 }
 
 @media only screen and (max-width: 414px) {

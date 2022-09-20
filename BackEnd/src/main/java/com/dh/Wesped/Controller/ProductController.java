@@ -65,5 +65,10 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.filterByDatesAndCity(checkinDate, checkoutDate, cityId));
     }
 
-    //TODO: Controller PUT para actualizar producto. Solo para usuarios con rol de ADMIN.
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping
+    public ResponseEntity<Product> editProduct(@RequestBody Product product) throws BadRequestException {
+        Product editedProduct = productService.editProduct(product);
+        return ResponseEntity.ok(editedProduct);
+    }
 }

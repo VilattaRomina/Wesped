@@ -5,10 +5,11 @@ import Recommendations from "./recommendations/Recommendations";
 import { useState, useEffect } from "react";
 import { AxiosInstance } from "../../helpers/AxiosHelper";
 import Section from "../../components/section/Section";
+import ContainerExplainer from "../../components/containerExplainer/ContainerExplainer";
 import Spinner from '../../components/spinner/Spinner'
 import Body from "../../components/body/Body";
 
-const Home = () => {
+const Home = ({ isMobile }) => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [title, setTitle] = useState("");
@@ -19,7 +20,13 @@ const Home = () => {
   useEffect(() => {
     setLoaded(false)
     AxiosInstance.get("/products").then((res) => {
-      setProducts(res.data);
+      let products = res.data;
+
+      if ((products.length % 2) !== 0)
+        products = products.slice(0, products.length - 1);
+
+      setProducts(products)
+
     }).then(() => setLoaded(true));
   }, []);
 
@@ -28,7 +35,7 @@ const Home = () => {
       ? `/products/category/${selectedCategory}`
       : "/products";
     setLoaded(false);
-    AxiosInstance.get(url).then((res) => {
+    AxiosInstance.get(`${url}`).then((res) => {
       setProducts(res.data)
       setLoaded(true)
     });
@@ -36,9 +43,10 @@ const Home = () => {
 
   return (
     <>
-      {!loaded && <Spinner>Cargando...</Spinner>}
+      {!loaded && <Spinner/>}
       <Body>
-      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} />
+      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded} isMobile={isMobile}/>
+      <ContainerExplainer/>
       <Section> 
         <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
         <Recommendations products={products} selectedCategory={selectedCategory} title={title} />

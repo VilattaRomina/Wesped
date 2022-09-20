@@ -7,7 +7,7 @@ export default function UbicationProduct({ product }) {
   return (
     <BoxUbicationStyle>
       <UbicationStyle>
-        <FaMapMarkerAlt />
+        <FaMapMarkerAlt className='icon'/>
         <h4>{product.city.name + ", " + product.city.country}</h4>
       </UbicationStyle>
     </BoxUbicationStyle>

@@ -16,16 +16,23 @@ import LocalStorageHelper from "./helpers/LocalStorageHelper";
 import { UserContext } from "./hooks/UseContext";
 import MakeProduct from "./pages/makeProduct/MakeProduct";
 
-
 const user = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    if (user) {
-       setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.authorities[0].authority })
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
     }
+  }, []);
+
+  const handleWindowSizeChange = () => setWidth(window.innerWidth);
+
+  useEffect(() => {
+    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.rol })
   }, [])
 
   return (
@@ -33,11 +40,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isMobile={width <= 580}/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Register />} />
-          <Route path='/producto/:productId' element={<ProductDetails />} />
-          <Route path='/producto/:productId/reservas' element={<Booking />} />
+          <Route path='/producto/:productId' element={<ProductDetails isMobile={width <= 580}/>} />
+          <Route path='/producto/:productId/reservas' element={<Booking isMobile={width <= 580}/>} />
           <Route path='/producto/:productId/reservas/reserva-exitosa' element={<BookingS />} />
           <Route path='/administracion' element={<MakeProduct />} />
           <Route path='/administracion/producto-exitoso' element={<ProductS />} />

@@ -2,21 +2,32 @@ import styled from 'styled-components';
 
 //General
 export const ContainerSearchBlock = styled.div`
-  background: ${props => (props.theme.secondary)};
-  opacity: .9;
-  padding: 0.1em;
   z-index:5;
-  position:fixed;
-  top:80px;
+  /* position:fixed; */
   width: 100%;
-  
-  
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ 
   
   @media (max-width: 768px) {
     position: static;
     /* padding-top: 80px; */
   } 
-`;
+`
+
+export const BoxStyle = styled.div`
+  padding: 10px;
+   /* background-color: rgba(0, 0, 0, 0.5); */
+   background-color: rgb(134 129 129 / 44%);
+   max-width: 1366px;
+ margin: 0 auto;
+ width: 100%;
+      
+  `
+
+;
 //title
 export const SearchBlockTitle = styled.h1`
 

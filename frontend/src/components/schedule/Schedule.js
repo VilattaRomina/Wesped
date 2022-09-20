@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { usePathname } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { GlobalStyle, ScheduleMainStyled, ButtonScheduleStyled, ScheduleIngresarReservaDiv } from "./ScheduleStyle";
@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
+import { subDays, addDays } from 'date-fns';
 import Swal from "sweetalert2";
 
 const Container = ({ children }) => {
@@ -16,15 +17,12 @@ const Container = ({ children }) => {
   const pathName = usePathname();
   const isInBookingPage = pathName.includes("reservas");
   const isInProductPage = pathName.includes("producto") && !isInBookingPage;
-  const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
-
-
 
   const startBooking = () => {
     if (!loggedUser) {
-      Swal.fire('Por favor inicia sesión primero', '', 'warning')
-      navigate('/login', {state: pathName});
+      Swal.fire('Por favor inicia sesión primero', '', 'error')
+      navigate('/login', { state: pathName });
       return
     }
 
@@ -32,8 +30,7 @@ const Container = ({ children }) => {
   }
 
   return (
-    <GlobalStyle isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}
-    >
+    <GlobalStyle isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
       <ScheduleMainStyled isInProductPage={isInProductPage} isInBookingPage={isInBookingPage}>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>{children}</div>
       </ScheduleMainStyled>
@@ -48,29 +45,57 @@ const Container = ({ children }) => {
           </ButtonScheduleStyled>
         </ScheduleIngresarReservaDiv>
       }
-      {
-        isInHomePage &&
-        <ButtonScheduleStyled>
-          <Button width="12.5rem" theme="secondary">
-            Aplicar
-          </Button>
-        </ButtonScheduleStyled>
-      }
     </GlobalStyle>
   );
 };
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline, readOnly, monthsShown, includeDateIntervals }) => {
+const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [excludedDates, setExcludedDates] = useState([])
+  const [arrayOfDayDiff, setArrayOfDayDiff] = useState(0);
+
+  useEffect(() => {
+    if (excludeDateIntervals) {
+      const exclude = excludeDateIntervals.map(el => {
+        return {
+          start: new Date(el.checkin),
+          end: new Date(el.checkout)
+        }
+      })
+      setExcludedDates(exclude);
+
+      const dateDiff = excludeDateIntervals.map(el => {
+        return new Date(el.checkout).getDate() - new Date(el.checkin).getDate()
+      })
+      setArrayOfDayDiff(dateDiff)
+    }
+
+  }, [excludeDateIntervals])
+
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-    picDate(start, end);
-  };
+    setSelectedDates(() => {
+      if (!start || !end) return null;
+      return { checkin: start, checkout: end }
+    })
+  }
+
+
+  const excludeDays = () => {
+    let arr = [];
+
+    for (let i = 0; i < arrayOfDayDiff.length; i++) {
+      const dayDiff = arrayOfDayDiff[i];
+      arr.push({ start: excludedDates[i].end, qDays: dayDiff })
+    }
+
+    return arr.map(el => { return { start: subDays(el.start, el.qDays), end: addDays(el.start, 0) } })
+  }
 
   return (
     <DatePicker
@@ -80,12 +105,14 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, includeDateIntervals
       calendarContainer={Container}
       selectsRange
       isClearable
-      includeDateIntervals={includeDateIntervals}
+      highlightDates={[]}
+      excludeDateIntervals={excludeDays()}
       showPreviousMonths={false}
       monthsShown={monthsShown}
       readOnly={readOnly}
       inline={inline}
       dateFormat="dd/MM/yyyy"
+      enableTabLoop={false}
       minDate={new Date()}
       placeholderText="Chech in - Check out"
       formatWeekDay={(nameOfDay) => nameOfDay.slice(0, 1)}
@@ -122,7 +149,7 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, includeDateIntervals
             className={
               "react-datepicker_navigation react-datepicker_navigation--next"
             }
-            style={customHeaderCount === 0 ? { visibility: "hidden" } : null}
+            style={customHeaderCount === 0 && monthsShown === 2 ? { visibility: "hidden" } : null}
             onClick={increaseMonth}
           >
             <span
@@ -140,7 +167,6 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, includeDateIntervals
   );
 };
 
-
-export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown, includeDateIntervals }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} includeDateIntervals={includeDateIntervals} />;
+export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) {
+  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} setSelectedDates={setSelectedDates} />;
 }

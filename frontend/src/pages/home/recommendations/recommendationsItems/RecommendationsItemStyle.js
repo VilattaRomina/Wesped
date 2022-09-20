@@ -78,14 +78,14 @@ export const TitleStyle = styled.h2`
 `;
 export const LocationTextStyle = styled.p`
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
   color:${props => (props.theme.text_secondary)}
 
 `
 export const DescriptionStyle = styled.p`
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
   color:${props => (props.theme.text_secondary)};
   display: -webkit-box;
@@ -106,8 +106,9 @@ export const LinkStyle =styled(Link)`
 export const IconStyle = styled.div`
 display:flex;
 font-size: 18px;
-gap: 20px;
-color: ${props => (props.theme.text_secondary)};
+gap: 25px;
+color: ${props => (props.theme.primary)};
+color: #00567a;
 opacity: 0.8;
 
 `

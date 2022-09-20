@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
-  background-color: #fff;
-  width: 100%;
+export const BodyHeader = styled.header`
+background-color: #fff;
+box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+position: fixed;
+z-index: 2;
+width: 100%;
+
+`
+
+export const StyledHeader = styled.div`
   height: 80px;
-  position: fixed;
   display: flex;
   justify-content: space-between;
-  background-color: #fff;
-  z-index: 2;
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  max-width: 1366px;
+  margin: 0 auto;
 
 `;
 

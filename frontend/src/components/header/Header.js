@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "./minicomponents/Logo";
 import Nav from "./minicomponents/Nav";
 import { Link } from "react-router-dom";
-import { StyledHeader, LogoSlogan, Slogan, NavContainer } from './StyledHeader'
+import { BodyHeader, StyledHeader, LogoSlogan, Slogan, NavContainer } from './StyledHeader'
 import LogoAdmin from "./minicomponents/logoAdmin/LogoAdmin";
 import { UserContext } from "../../hooks/UseContext";
 import { useContext } from "react";
@@ -23,7 +23,7 @@ const Header = () => {
 
 
   return (
-    <div>
+    <BodyHeader>
       <StyledHeader>
         <LogoSlogan>
           <Link to="/">
@@ -38,7 +38,7 @@ const Header = () => {
           <Nav />
         </NavContainer>
       </StyledHeader>
-    </div>
+    </BodyHeader>
   );
 };
 
