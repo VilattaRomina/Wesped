@@ -22,6 +22,7 @@ import Schedule from '../../../components/schedule/Schedule';
 import Map from './map/Map'
 import './map/Map.css'
 import Body from '../../../components/body/Body';
+import Spinner from '../../../components/spinner/Spinner';
 
 export default function ProductDetails(to) {
 
@@ -58,7 +59,7 @@ export default function ProductDetails(to) {
           <Section>
             <ShareStyle>
               <div><BiShareAlt /></div>
-              <div style={{ cursor: "pointer" }}><FaRegHeart /></div>
+              <div style={{ cursor: "pointer" }}></div>
             </ShareStyle>
             <GalleryBlock images={product.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal} />
             <GalleryMobile images={product.images} />
@@ -85,7 +86,7 @@ export default function ProductDetails(to) {
           </Section>
         </BodyStyle> 
         </Body> :
-        <p>Cargando...</p>
+        <Spinner />
       }
     </>
 
