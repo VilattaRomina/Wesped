@@ -156,7 +156,7 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, excludeDateIntervals
             className={
               "react-datepicker_navigation react-datepicker_navigation--next"
             }
-            style={customHeaderCount === 0 ? { visibility: "hidden" } : null}
+            style={customHeaderCount === 0 && monthsShown === 2? { visibility: "hidden" } : null}
             onClick={increaseMonth}
           >
             <span
