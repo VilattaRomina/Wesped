@@ -17,7 +17,6 @@ const Container = ({ children }) => {
   const pathName = usePathname();
   const isInBookingPage = pathName.includes("reservas");
   const isInProductPage = pathName.includes("producto") && !isInBookingPage;
-  const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
 
   const startBooking = () => {
