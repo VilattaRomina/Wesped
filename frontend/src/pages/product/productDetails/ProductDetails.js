@@ -27,7 +27,18 @@ export default function ProductDetails() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState(null);
   const [takenDates, setTakenDates] = useState();
+  const [width, setWidth] = useState(window.innerWidth);
   const { productId } = useParams();
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+  
+  const handleWindowSizeChange = () => setWidth(window.innerWidth);
+  const isMobile = width <= 580;
 
   useEffect(() => {
     AxiosInstance.get(`/bookings/product/${productId}`)
@@ -56,39 +67,39 @@ export default function ProductDetails() {
   return (
     <>
       {product ?
-      <Body>
-        <BodyStyle isOpen={modalIsOpen}>
-          <HeaderProduct product={product} to={"/"} />
-          <UbicationProduct product={product} />
-          <Section>
-            <ShareStyle>
-              <div><BiShareAlt /></div>
-              <div style={{ cursor: "pointer" }}><FaRegHeart /></div>
-            </ShareStyle>
-            <GalleryBlock images={product.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal} />
-            <GalleryMobile images={product.images} />
-            <DescriptionStyle>
-              <h4>Descripción del lugar</h4>
-              <p>{product.description}</p>
-            </DescriptionStyle>
-            <TitleStyles>¿Que ofrece este lugar?</TitleStyles>
-            <LineStyles />
-            <FeaturesStyle>
-              {product.features.map(item => (
-                <div key={item.id}><span>{Icons[item.icon]}</span><p>{item.title}</p></div>
-              ))}
-            </FeaturesStyle>
-            <TitleStyles>Fechas disponibles</TitleStyles>
-            <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={2} excludeDateIntervals={takenDates} />
-            <TitleStyles>¿Dónde vas a estar?</TitleStyles>
-            <LineStyles />
-            <Map product={product} />
-            
-            <TitleStyles>Qué tenés que saber</TitleStyles>
-            <LineStyles />
-            <Policies product={product} />
-          </Section>
-        </BodyStyle> 
+        <Body>
+          <BodyStyle isOpen={modalIsOpen}>
+            <HeaderProduct product={product} to={"/"} />
+            <UbicationProduct product={product} />
+            <Section>
+              <ShareStyle>
+                <div><BiShareAlt /></div>
+                <div style={{ cursor: "pointer" }}><FaRegHeart /></div>
+              </ShareStyle>
+              <GalleryBlock images={product.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal} />
+              <GalleryMobile images={product.images} />
+              <DescriptionStyle>
+                <h4>Descripción del lugar</h4>
+                <p>{product.description}</p>
+              </DescriptionStyle>
+              <TitleStyles>¿Que ofrece este lugar?</TitleStyles>
+              <LineStyles />
+              <FeaturesStyle>
+                {product.features.map(item => (
+                  <div key={item.id}><span>{Icons[item.icon]}</span><p>{item.title}</p></div>
+                ))}
+              </FeaturesStyle>
+              <TitleStyles>Fechas disponibles</TitleStyles>
+              <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={isMobile? 1 : 2} excludeDateIntervals={takenDates} />
+              <TitleStyles>¿Dónde vas a estar?</TitleStyles>
+              <LineStyles />
+              <Map product={product} />
+
+              <TitleStyles>Qué tenés que saber</TitleStyles>
+              <LineStyles />
+              <Policies product={product} />
+            </Section>
+          </BodyStyle>
         </Body> :
         <p>Cargando...</p>
       }
