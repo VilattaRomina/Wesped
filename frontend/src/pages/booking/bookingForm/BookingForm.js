@@ -7,7 +7,7 @@ import { AxiosInstance } from '../../../helpers/AxiosHelper'
 import { useParams } from 'react-router-dom'
 
 
-export default function BookingForm({ values,handleChange, handleSelectChange, picDate }) {
+export default function BookingForm({ values,handleChange, handleSelectChange, picDate, isMobile }) {
     const { loggedUser } = useContext(UserContext)
     const [takenDates, setTakenDates] = useState();
     const { productId } = useParams();
@@ -103,7 +103,7 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
             </ColumnForm>
             <FormTitle>Seleccioná tu fecha de reserva</FormTitle>
             <CalendarContainerStyle>
-                <Schedule excludeDateIntervals={takenDates} inline picDate={picDate} monthsShown={2} />
+                <Schedule excludeDateIntervals={takenDates} inline picDate={picDate} monthsShown={isMobile? 1 : 2} />
             </CalendarContainerStyle>
             {values.errorDate && <TextError>Debe seleccionar un rango de fechas</TextError>}
             <FormTitle>Indica tu horario estimado de llegada</FormTitle>

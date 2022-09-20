@@ -20,7 +20,7 @@ function formatDate(date) {
   return `${year}-${month.toLocaleString('es-AR', { minimumIntegerDigits: 2 })}-${day.toLocaleString('es-AR', { minimumIntegerDigits: 2 })}`
 }
 
-export default function Booking(to) {
+export default function Booking({ isMobile }) {
 
   let navigate = useNavigate();
   const { productId } = useParams();
@@ -94,11 +94,11 @@ export default function Booking(to) {
           id: user.user_info.id
         }
       },
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-      })
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        })
         .then((res) => {
           console.log(res.data);
           navigate('reserva-exitosa');
@@ -107,7 +107,7 @@ export default function Booking(to) {
             icon: 'error',
             text: 'Lamentablemente la reserva no ha podido realizarse. Por favor, intente mas tarde'
           })
-      
+
         })
     }
 
@@ -121,7 +121,7 @@ export default function Booking(to) {
           <Section>
             <ContainerStyle>
               <ContainerForm>
-                <BookingForm values={values} handleChange={handleChange} handleSelectChange={handleSelectChange} picDate={picDate} />
+                <BookingForm values={values} handleChange={handleChange} handleSelectChange={handleSelectChange} picDate={picDate} isMobile={isMobile} />
               </ContainerForm>
               <ContainerBooking>
                 <BookingDetail product={product} images={product.images} handleSubmit={handleSubmit} startDate={values.startDate} endDate={values.endDate} />

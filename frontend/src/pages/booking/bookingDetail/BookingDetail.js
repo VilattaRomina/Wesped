@@ -2,9 +2,12 @@ import React from 'react'
 import { CardStyle, ContainerStyle, ContainerImage, Title, Image, InfoDetailProduct, ContainerButton, ContainerDate } from './BookingDetailStyle';
 import Button from '../../../components/button/Button'
 import {HiLocationMarker} from 'react-icons/hi'
+import { useContext } from 'react';
+import { SelectedDatesContext } from '../../../hooks/UseContext';
+import { toUserReadableDateString } from '../../../hooks/UseToString';
 
 export default function BookingDetail({ handleSubmit, product, images, startDate, endDate}) {
-
+  const { selectedDatesContext } = useContext(SelectedDatesContext)
 
   return (
     <CardStyle >
@@ -24,12 +27,12 @@ export default function BookingDetail({ handleSubmit, product, images, startDate
           <hr />
           <ContainerDate>
             <h4>Check in</h4>
-            <div>{startDate ? startDate.toLocaleDateString()  : null }</div>
+            <div>{selectedDatesContext ? toUserReadableDateString(selectedDatesContext?.checkin)  : null }</div>
           </ContainerDate>
           <hr />
           <ContainerDate>
             <h4>Check out</h4>
-            <div>{endDate ? endDate.toLocaleDateString() : null }</div>
+            <div>{selectedDatesContext ? toUserReadableDateString(selectedDatesContext?.checkout)  : null }</div>
           </ContainerDate>
           <hr />
           <ContainerButton>
