@@ -31,7 +31,7 @@ export default function Recommendations({ products, title }) {
 
   return (
     <RecommendationContainerStyle>
-      <RecomendationTitle>{title ? `Recomendaciones en ${title}` : "Recomendaciones"}</RecomendationTitle>
+      <RecomendationTitle>{title ? `Recomendaciones para ${title}` : "Recomendaciones"}</RecomendationTitle>
       <ListRecommendationsStyle>
         {
           productsToDisplay.map(item =>

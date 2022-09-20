@@ -44,7 +44,7 @@ const Home = () => {
     <>
       {!loaded && <Spinner>Cargando...</Spinner>}
       <Body>
-      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} />
+      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded}/>
       <Section> 
         <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
         <Recommendations products={products} selectedCategory={selectedCategory} title={title} />

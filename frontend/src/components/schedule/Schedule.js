@@ -61,7 +61,7 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({ picDate, inline, readOnly, monthsShown, excludeDateIntervals }) => {
+const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [excludedDates, setExcludedDates] = useState([])
@@ -89,8 +89,12 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, excludeDateIntervals
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-    picDate(start, end);
-  };
+    setSelectedDates(() => {
+      if(!start || !end) return null;
+      return {checkin: start, checkout: end}
+    })
+  }
+
 
   const excludeDays = () => {
     let arr = [];
@@ -173,7 +177,6 @@ const Calendar = ({ picDate, inline, readOnly, monthsShown, excludeDateIntervals
   );
 };
 
-
-export default function Schedule({ placeHolderText, picDate, inline, readOnly, monthsShown, excludeDateIntervals }) {
-  return <Calendar picDate={picDate} placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} />;
+export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) {
+  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} setSelectedDates={setSelectedDates} />;
 }
