@@ -9,16 +9,15 @@ import jwt_decode from 'jwt-decode'
 import LocalStorageHelper from '../../helpers/LocalStorageHelper'
 import { UserContext } from '../../hooks/UseContext'
 import { SignedInOk } from '../../components/signedInOk/SignedInOk'
-import Swal from 'sweetalert2'
 import Spinner from '../../components/spinner/Spinner'
 
 const LoginForm = () => {
     const { setLoggedUser } = useContext(UserContext)
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate()
-    const { state } = useLocation();
     const [loaded, setLoaded] = useState(true);
-
+    const { state } = useLocation();
+    
     const showErrorMsg = () => {
         setIsError(true)
         setTimeout(() => {
@@ -37,7 +36,7 @@ const LoginForm = () => {
         const password = passwordInputRef.current.value.trim();
 
         if (password.length < 6) {
-            Swal.fire('Usuario o contraseña inválidos', 'Por favor verifique que haya ingresado credenciales correctas', 'error')
+            SignedInOk.fire('Usuario o contraseña inválidos', 'Por favor verifique que haya ingresado credenciales correctas', 'error')
             showErrorMsg()
             return
         }
@@ -56,7 +55,7 @@ const LoginForm = () => {
                     name: name,
                     surname: surname,
                     email: email,
-                    rol : authorities[0].authority
+                    rol: authorities[0].authority
                 })
                 SignedInOk.fire({
                     icon: 'success',

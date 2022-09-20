@@ -24,21 +24,19 @@ import './map/Map.css'
 import Body from '../../../components/body/Body';
 import Spinner from '../../../components/spinner/Spinner';
 
-export default function ProductDetails(to) {
-
+export default function ProductDetails({isMobile}) {
   const [modalIsOpen, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true)
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+  const [product, setProduct] = useState(null);
+  const [takenDates, setTakenDates] = useState();
   const { productId } = useParams();
 
-  const [product, setProduct] = useState(null);
-
+  useEffect(() => {
+    AxiosInstance.get(`/bookings/product/${productId}`)
+      .then(({ data }) => {
+        const takenDates = data.map(booking => { return { checkin: booking.checkin, checkout: booking.checkout } })
+        setTakenDates(takenDates)
+      })
+  }, [productId])
 
   useEffect(() => {
     AxiosInstance.get(`/products/${productId}`)
@@ -48,6 +46,13 @@ export default function ProductDetails(to) {
       })
 
   }, [productId]);
+
+  function openModal() {
+    setIsOpen(true)
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <>
@@ -75,7 +80,7 @@ export default function ProductDetails(to) {
               ))}
             </FeaturesStyle>
             <TitleStyles>Fechas disponibles</TitleStyles>
-            <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={2} includeDateIntervals={[]} />
+            <Schedule inline buttonText="Iniciar reserva" readOnly={true} monthsShown={isMobile? 1 : 2} excludeDateIntervals={takenDates} />
             <TitleStyles>¿Dónde vas a estar?</TitleStyles>
             <LineStyles />
             <Map product={product} />

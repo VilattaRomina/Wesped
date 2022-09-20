@@ -24,14 +24,14 @@ export default function Recommendations({ products, title }) {
       arrayOfProducts[randomIndex] = selectedItem;
     }
 
-    return arrayOfProducts.slice(0, 6);
+    return arrayOfProducts.slice(0, 10);
   };
 
   const productsToDisplay = loggedUser?.id === undefined ? shuffleResults(products) : products;
 
   return (
     <RecommendationContainerStyle>
-      <RecomendationTitle>{title ? `Recomendaciones en ${title}` : "Recomendaciones"}</RecomendationTitle>
+      <RecomendationTitle>{title ? `Recomendaciones para ${title}` : "Recomendaciones"}</RecomendationTitle>
       <ListRecommendationsStyle>
         {
           productsToDisplay.map(item =>
