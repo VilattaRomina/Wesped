@@ -24,7 +24,7 @@ export default function Recommendations({ products, title }) {
       arrayOfProducts[randomIndex] = selectedItem;
     }
 
-    return arrayOfProducts.slice(0, 6);
+    return arrayOfProducts.slice(0, 10);
   };
 
   const productsToDisplay = loggedUser?.id === undefined ? shuffleResults(products) : products;

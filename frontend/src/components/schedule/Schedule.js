@@ -7,7 +7,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button/Button";
 import "./CalendarStyled.css";
-import Swal from "sweetalert2";
+import { SignedInOk } from '../signedInOk/SignedInOk'
+import { useEffect } from "react";
+import { subDays, addDays } from 'date-fns';
 
 const Container = ({ children }) => {
 
@@ -19,12 +21,10 @@ const Container = ({ children }) => {
   const isInHomePage = !isInProductPage && !isInBookingPage;
   const navigate = useNavigate();
 
-
-
   const startBooking = () => {
     if (!loggedUser) {
-      Swal.fire('Por favor inicia sesión primero', '', 'warning')
-      navigate('/login', {state: pathName});
+      SignedInOk.fire('Por favor inicia sesión primero', '', 'warning')
+      navigate('/login', { state: pathName });
       return
     }
 
@@ -62,9 +62,30 @@ const Container = ({ children }) => {
 
 
 /* Calendar*/
-const Calendar = ({inline, readOnly, monthsShown, includeDateIntervals, setSelectedDates }) => {
+const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [excludedDates, setExcludedDates] = useState([])
+  const [arrayOfDayDiff, setArrayOfDayDiff] = useState(0);
+
+  useEffect(() => {
+    if (excludeDateIntervals) {
+      const exclude = excludeDateIntervals.map(el => {
+        return {
+          start: new Date(el.checkin),
+          end: new Date(el.checkout)
+        }
+      })
+      setExcludedDates(exclude);
+
+      const dateDiff = excludeDateIntervals.map(el => {
+        return new Date(el.checkout).getDate() - new Date(el.checkin).getDate()
+      })
+      setArrayOfDayDiff(dateDiff)
+    }
+
+  }, [excludeDateIntervals])
+
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -76,6 +97,17 @@ const Calendar = ({inline, readOnly, monthsShown, includeDateIntervals, setSelec
   }
 
 
+  const excludeDays = () => {
+    let arr = [];
+
+    for (let i = 0; i < arrayOfDayDiff.length; i++) {
+      const dayDiff = arrayOfDayDiff[i];
+      arr.push({ start: excludedDates[i].end, qDays: dayDiff })
+    }
+
+    return arr.map(el => { return { start: subDays(el.start, el.qDays), end: addDays(el.start, 0) } })
+  }
+
   return (
     <DatePicker
       onChange={onChange}
@@ -84,12 +116,14 @@ const Calendar = ({inline, readOnly, monthsShown, includeDateIntervals, setSelec
       calendarContainer={Container}
       selectsRange
       isClearable
-      includeDateIntervals={includeDateIntervals}
+      highlightDates={[]}
+      excludeDateIntervals={excludeDays()}
       showPreviousMonths={false}
       monthsShown={monthsShown}
       readOnly={readOnly}
       inline={inline}
       dateFormat="dd/MM/yyyy"
+      enableTabLoop={false}
       minDate={new Date()}
       placeholderText="Chech in - Check out"
       formatWeekDay={(nameOfDay) => nameOfDay.slice(0, 1)}
@@ -144,7 +178,6 @@ const Calendar = ({inline, readOnly, monthsShown, includeDateIntervals, setSelec
   );
 };
 
-
-export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, includeDateIntervals, setSelectedDates }) {
-  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} includeDateIntervals={includeDateIntervals} setSelectedDates={setSelectedDates} />;
+export default function Schedule({ placeHolderText, inline, readOnly, monthsShown, excludeDateIntervals, setSelectedDates }) {
+  return <Calendar placeholderText={placeHolderText} inline={inline} readOnly={readOnly} monthsShown={monthsShown} excludeDateIntervals={excludeDateIntervals} setSelectedDates={setSelectedDates} />;
 }
