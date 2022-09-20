@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   ContainerSearchBlock,
+  BoxStyle,
   SearchBlockTitle,
   SearchBar,
   ButtonStyle
@@ -11,6 +12,7 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 import Button from "../../../components/button/Button";
 import SearchInput from "../searchBlock/SearchInput"
 import { AxiosInstance } from "../../../helpers/AxiosHelper";
+import '../../home/searchBlock/dropdownList/SearchBlockStyle.css'
 
 const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
@@ -39,7 +41,9 @@ const SearchBlock = (props) => {
   }
 
   return (
-    <ContainerSearchBlock>
+    <ContainerSearchBlock className="container-serch-block">
+      <BoxStyle>
+
       <SearchBlockTitle>
         Busca ofertas en hoteles, casas y mucho más
       </SearchBlockTitle>
@@ -58,6 +62,7 @@ const SearchBlock = (props) => {
           </ButtonStyle>
         </SearchBar>
       </form>
+      </BoxStyle>
     </ContainerSearchBlock>
   );
 }
