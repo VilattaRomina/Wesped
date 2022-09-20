@@ -12,7 +12,7 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 import Button from "../../../components/button/Button";
 import SearchInput from "../searchBlock/SearchInput"
 import { AxiosInstance } from "../../../helpers/AxiosHelper";
-import '../../home/searchBlock/dropdownList/SearchBlockStyle.css'
+import './SearchBlockStyle.css'
 
 const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
