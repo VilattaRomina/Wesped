@@ -20,8 +20,8 @@ justify-content: space-between;
 padding:20px;
 max-width: 1366px;
 margin: 0 auto;
-
-
+bottom:0;
+z-index:2;
 
 @media (min-width:769px){
   width:100%;
