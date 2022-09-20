@@ -23,22 +23,11 @@ import Map from './map/Map'
 import './map/Map.css'
 import Body from '../../../components/body/Body';
 
-export default function ProductDetails() {
+export default function ProductDetails({isMobile}) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState(null);
   const [takenDates, setTakenDates] = useState();
-  const [width, setWidth] = useState(window.innerWidth);
   const { productId } = useParams();
-
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    }
-  }, []);
-  
-  const handleWindowSizeChange = () => setWidth(window.innerWidth);
-  const isMobile = width <= 580;
 
   useEffect(() => {
     AxiosInstance.get(`/bookings/product/${productId}`)
