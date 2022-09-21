@@ -14,10 +14,10 @@ import Spinner from '../../components/spinner/Spinner'
 const LoginForm = () => {
     const { setLoggedUser } = useContext(UserContext)
     const [isError, setIsError] = useState(false);
-    const navigate = useNavigate()
     const [loaded, setLoaded] = useState(true);
+    const navigate = useNavigate()
     const { state } = useLocation();
-    
+
     const showErrorMsg = () => {
         setIsError(true)
         setTimeout(() => {
@@ -31,7 +31,6 @@ const LoginForm = () => {
 
     const submitLoginHandler = e => {
         e.preventDefault();
-        setLoaded(false)
         const email = emailInputRef.current.value.trim();
         const password = passwordInputRef.current.value.trim();
 
@@ -47,6 +46,7 @@ const LoginForm = () => {
         }
 
         try {
+            setLoaded(false)
             AxiosInstance.post('/auth/signin', userCredentials).then(({ data }) => {
                 LocalStorageHelper.setItem('Token', data.token)
                 const { id, name, surname, email, authorities } = LocalStorageHelper.getItem('Token') ? jwt_decode(LocalStorageHelper.getItem('Token'))["user_info"] : null;
@@ -62,14 +62,14 @@ const LoginForm = () => {
                     title: `Sesión iniciada correctamente.`
                 })
                 navigate(state ? state : '/')
-                
+
             }).catch(({ response }) => {
                 if (response.status === 401) {
                     SignedInOk.fire('Usuario no encontrado', 'Por favor intente nuevamente', 'error')
                     showErrorMsg()
                 }
                 else if (response.status >= 400 && response.status !== 401) SignedInOk.fire('Algo no salió como se esperaba', 'Por favor intente nuevamente', 'warning')
-            }).then(() => setLoaded(true))            
+            }).then(() => setLoaded(true))
         } catch (error) {
             console.warn(error)
         }
@@ -77,26 +77,26 @@ const LoginForm = () => {
 
     return (
         <>
-            {!loaded 
-            ? 
-            <Spinner/> 
-            : 
-            <Form onSubmit={submitLoginHandler}>
-                <h1>Iniciar Sesión</h1>
-                <Div alignItems="start">
-                    <Label htmlFor="email">Correo electrónico</Label>
-                    <Input width="28rem" type="email" id="email" required reference={emailInputRef} visible={isError} />
-                    <Label htmlFor="password">Contraseña</Label>
-                    <Input width="28rem" type="password" id="password" required reference={passwordInputRef} visible={isError} />
-                </Div>
-                <Div align="center">
-                    <ErrorMessage visible={isError}>Por favor vuelva a intentarlo, usuario o contraseña inválidos</ErrorMessage>
-                    <Button type="submit" width="12.5rem"><b>Ingresar</b></Button>
-                    <span>
-                        ¿Aún no tienes cuenta? <Link to={`/registro`}>Registrate</Link>
-                    </span>
-                </Div>
-            </Form>
+            {!loaded
+                ?
+                <Spinner />
+                :
+                <Form onSubmit={submitLoginHandler}>
+                    <h1>Iniciar Sesión</h1>
+                    <Div alignItems="start">
+                        <Label htmlFor="email">Correo electrónico</Label>
+                        <Input width="28rem" type="email" id="email" required reference={emailInputRef} visible={isError} />
+                        <Label htmlFor="password">Contraseña</Label>
+                        <Input width="28rem" type="password" id="password" required reference={passwordInputRef} visible={isError} />
+                    </Div>
+                    <Div align="center">
+                        <ErrorMessage visible={isError}>Por favor vuelva a intentarlo, usuario o contraseña inválidos</ErrorMessage>
+                        <Button type="submit" width="12.5rem"><b>Ingresar</b></Button>
+                        <span>
+                            ¿Aún no tienes cuenta? <Link to={`/registro`}>Registrate</Link>
+                        </span>
+                    </Div>
+                </Form>
             }
         </>
     )
