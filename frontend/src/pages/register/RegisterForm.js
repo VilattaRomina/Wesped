@@ -78,7 +78,10 @@ const RegisterForm = () => {
 
     return (
         <>
-            {!loaded && <Spinner/>}
+            {!loaded 
+            ? 
+            <Spinner/>
+            :
             <Form onSubmit={submitHandler}>
                 <h1>Crear cuenta</h1>
                 <Div>
@@ -109,6 +112,7 @@ const RegisterForm = () => {
                     </Div>
                 </Div>
             </Form>
+            }
         </>
     )
 }
