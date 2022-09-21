@@ -22,9 +22,11 @@ import Map from './map/Map'
 import './map/Map.css'
 import Body from '../../../components/body/Body';
 import Spinner from '../../../components/spinner/Spinner';
+import Share from '../../../components/share-social-media/Share';
 
 export default function ProductDetails({isMobile}) {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [showShare, setShowShare] = useState(false);
   const [product, setProduct] = useState(null);
   const [takenDates, setTakenDates] = useState();
   const { productId } = useParams();
@@ -53,17 +55,23 @@ export default function ProductDetails({isMobile}) {
     setIsOpen(false);
   }
 
+  const isToggle = ()=> {
+    setShowShare(!showShare);
+  }
+
+
+
   return (
     <>
       {product ?
       <Body>
-        <BodyStyle isOpen={modalIsOpen}>
+        <BodyStyle isOpen={modalIsOpen} >
           <HeaderProduct product={product} to={"/"} />
           <UbicationProduct product={product} />
           <Section>
             <ShareStyle>
-              <div><BiShareAlt /></div>
-              <div style={{ cursor: "pointer" }}></div>
+              <div style={{ cursor: "pointer" }}><BiShareAlt onClick={isToggle}/></div>
+              <Share showShare={showShare}/>
             </ShareStyle>
             <GalleryBlock images={product.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal} />
             <GalleryMobile images={product.images} />
