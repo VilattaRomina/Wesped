@@ -69,7 +69,7 @@ const LoginForm = () => {
                     showErrorMsg()
                 }
                 else if (response.status >= 400 && response.status !== 401) SignedInOk.fire('Algo no salió como se esperaba', 'Por favor intente nuevamente', 'warning')
-            }).then(() => setLoaded(true))
+            }).finally(() => setLoaded(true))
         } catch (error) {
             console.warn(error)
         }
