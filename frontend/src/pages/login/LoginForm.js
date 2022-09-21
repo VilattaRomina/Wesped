@@ -77,7 +77,10 @@ const LoginForm = () => {
 
     return (
         <>
-            {!loaded && <Spinner/>}
+            {!loaded 
+            ? 
+            <Spinner/> 
+            : 
             <Form onSubmit={submitLoginHandler}>
                 <h1>Iniciar Sesión</h1>
                 <Div alignItems="start">
@@ -94,6 +97,7 @@ const LoginForm = () => {
                     </span>
                 </Div>
             </Form>
+            }
         </>
     )
 }
