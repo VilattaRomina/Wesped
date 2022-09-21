@@ -13,7 +13,6 @@ import jwt_decode from 'jwt-decode';
 import LocalStorageHelper from '../../helpers/LocalStorageHelper'
 
 function formatDate(date) {
-  console.log(date);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();

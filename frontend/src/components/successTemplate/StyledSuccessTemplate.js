@@ -34,7 +34,7 @@ export const DivStyle = styled.div`
 
 export const ButtonStyle = styled.button`
   position: absolute;
-  background: #1dbeb4;
+  background: ${props => props.theme.secondary};
   border-radius: 5px;
 `;
 
@@ -48,7 +48,7 @@ export const H2Style = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  color: #1dbeb4;
+  color: ${props => props.theme.secondary};
   padding-bottom:10px;
 
 @media (max-width: 414px) {

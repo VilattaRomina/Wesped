@@ -107,8 +107,7 @@ export const IconStyle = styled.div`
 display:flex;
 font-size: 18px;
 gap: 25px;
-color: ${props => (props.theme.primary)};
-color: #00567a;
-opacity: 0.8;
+color: ${props => (props.theme.secondary)};
+opacity: 0.5;
 
 `

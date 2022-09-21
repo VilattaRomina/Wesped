@@ -4,6 +4,7 @@ import { ContainerStyles, ContainerImageRight, ImageLeft, ImageRight, CardRight,
 //import { useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import {CgCloseO} from 'react-icons/cg'
 
 
 export default function GalleryBlock({images, openModal, closeModal, modalIsOpen}) {
@@ -35,8 +36,8 @@ export default function GalleryBlock({images, openModal, closeModal, modalIsOpen
                         </div>
                     ))}
                 </Carousel>
+                <CloseModalStyle onClick={closeModal}><CgCloseO/></CloseModalStyle>
 
-                <CloseModalStyle onClick={closeModal}>X</CloseModalStyle>
 
             </ModalStyle>
         </>

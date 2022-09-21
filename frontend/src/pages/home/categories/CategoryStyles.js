@@ -31,6 +31,7 @@ export const CategoryListContainerStyle = styled.div`
     display: flex;
     gap: 14px;
     flex-flow: row nowrap;
+    width: 100%;
   
     @media (max-width: 414px) {
       display: flex;
@@ -38,7 +39,7 @@ export const CategoryListContainerStyle = styled.div`
       width: 100%;
     }
 
-    @media (min-width: 415px) and (max-width: 930px) {
+    @media (min-width: 415px) and (max-width: 768px) {
       display: flex;
       gap: 14px;
       flex-flow: row wrap;

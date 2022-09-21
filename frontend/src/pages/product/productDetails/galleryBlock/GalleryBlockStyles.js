@@ -38,6 +38,7 @@ overflow: hidden;
 export const ImageLeft = styled.img`
 max-width: 100%;
 height:100%;
+width: 100%;
 `
 export const ImageRight = styled.img`
 min-width: 100%;
@@ -58,29 +59,38 @@ text-decoration: underline;
 export const ModalStyle = styled.div`
 background-color: rgba(0,0,0,0.8);
 height:100%;
-width:100vw;
+min-height: 100vh;
+width:100%;
 position: absolute;
-top:0px;
+top:81px;
 left: 0px;
-padding-top:250px;
+padding-top:120px;
 display: ${props => props.isOpen ? " " : "none"};
-min-height: 800px;
+/* min-height: 800px; */
 z-index: 1;
-.carousel .slider-wrapper{
-  height:480px;
+
+
+div .carousel.carousel-slider{
+  width: 960px !important;
+  height: 600px;
+ margin: 0 auto;
 }
-
-
-div{
-max-width:721px;;
-max-height:628px;
-margin: auto;
-border-radius: 10px;
-
-}
-
 .carousel .thumbs-wrapper {
     display: none;
+}
+
+.carousel .slider-wrapper {
+ height: 800px;
+  width: 1000px;
+}
+
+.carousel .carousel-status{
+  display:none
+}
+
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow{
+  opacity: 1.0px;
+  font-size: 40px;
 }
 
 @media (max-width: 768px){
@@ -88,10 +98,9 @@ border-radius: 10px;
 }
 
 `
-
 export const CloseModalStyle = styled.div`
-top: 100px;
-right: 40px;
+top: 79px;
+right: 114px;
 font-size: 30px;
 font-weight:600;
 color: white;
@@ -100,4 +109,7 @@ cursor:pointer;
 
 
 `
+
+
+
 
