@@ -26,20 +26,20 @@ const SearchBlock = (props) => {
 
     if (!selectedCityID && !selectedDatesContext) return;
     if (selectedCityID && !selectedDatesContext) URL = `products/city/${selectedCityID}`
-    if (!selectedCityID && selectedDatesContext) URL = `products/booking/${toJavaDateString(selectedDatesContext.checkin)}/${toJavaDateString(selectedDatesContext.checkout)}`
-    if (selectedCityID && selectedDatesContext)  URL = `products/booking/${toJavaDateString(selectedDatesContext.checkin)}/${toJavaDateString(selectedDatesContext.checkout)}/${selectedCityID}`
+    if (!selectedCityID && selectedDatesContext) URL = `products/booking/${toJavaDateString(selectedDatesContext?.checkin)}/${toJavaDateString(selectedDatesContext?.checkout)}`
+    if (selectedCityID && selectedDatesContext) URL = `products/booking/${toJavaDateString(selectedDatesContext?.checkin)}/${toJavaDateString(selectedDatesContext?.checkout)}/${selectedCityID}`
 
     try {
       AxiosInstance.get(URL)
         .then(products => {
           props.setProductsToDisplayByCity(products.data)
-          if (selectedCityID && !selectedDatesContext) recommendationsTitle = products.data[0].city.name;
-          if (!selectedCityID && selectedDatesContext) recommendationsTitle = `fechas entre ${toUserReadableDateString(selectedDatesContext.checkin)} - ${toUserReadableDateString(selectedDatesContext.checkout)}`;
-          if (selectedCityID && selectedDatesContext) recommendationsTitle = `${products.data[0].city.name} y fechas entre ${toUserReadableDateString(selectedDatesContext.checkin)} - ${toUserReadableDateString(selectedDatesContext.checkout)}`;
+          if (selectedCityID && !selectedDatesContext) recommendationsTitle = products?.data[0]?.city?.name;
+          if (!selectedCityID && selectedDatesContext) recommendationsTitle = `fechas entre ${toUserReadableDateString(selectedDatesContext?.checkin)} - ${toUserReadableDateString(selectedDatesContext?.checkout)}`;
+          if (selectedCityID && selectedDatesContext) recommendationsTitle = `${products?.data[0]?.city?.name} y fechas entre ${toUserReadableDateString(selectedDatesContext?.checkin)} - ${toUserReadableDateString(selectedDatesContext?.checkout)}`;
           props.setRecommendationsTitle(recommendationsTitle)
         })
         .catch(err => console.warn(err))
-        .then(() => props.setLoaded(true))
+        .finally(() => props.setLoaded(true))
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +68,7 @@ const SearchBlock = (props) => {
               icon={<FaMapMarkerAlt />}
             />
             <SearchInput
-              input={<Schedule icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
+              input={<Schedule icon={<FaRegCalendarAlt />} monthsShown={props.isMobile ? 1 : 2} />}
               icon={<FaRegCalendarAlt />}
             />
             <ButtonStyle>
