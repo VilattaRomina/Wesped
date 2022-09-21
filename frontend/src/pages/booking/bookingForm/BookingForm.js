@@ -1,4 +1,4 @@
-import React,  { useContext, useEffect, useState }  from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FormStyle, FormTitle, ColumnForm, InputContainer, TextInput, LabelStyle, SubTitle, Column, CalendarContainerStyle, TextError } from './BookingFormStyle'
 import Select from 'react-select'
 import Schedule from '../../../components/schedule/Schedule'
@@ -7,18 +7,24 @@ import { AxiosInstance } from '../../../helpers/AxiosHelper'
 import { useParams } from 'react-router-dom'
 
 
-export default function BookingForm({ values,handleChange, handleSelectChange, picDate, isMobile }) {
+export default function BookingForm({ values, handleChange, handleSelectChange, isMobile }) {
     const { loggedUser } = useContext(UserContext)
     const [takenDates, setTakenDates] = useState();
     const { productId } = useParams();
 
+
     useEffect(() => {
-        AxiosInstance.get(`/bookings/product/${productId}`)
-          .then(({ data }) => {
-            const takenDates = data.map(booking => { return { checkin: booking.checkin, checkout: booking.checkout } })
-            setTakenDates(takenDates)
-          })
-      }, [productId])
+        try {
+            AxiosInstance.get(`/bookings/product/${productId}`)
+                .then(({ data }) => {
+                    const takenDates = data.map(booking => { return { checkin: booking.checkin, checkout: booking.checkout } })
+                    setTakenDates(takenDates)
+                })
+                .catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }, [productId])
 
     const optionsHours = [
         "00:00",
@@ -62,7 +68,7 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
                             onChange={handleChange}
                             disabled={true}
                             value={loggedUser ? loggedUser?.name : ""}
-                            style={{background: '#DFE4EA'}}
+                            style={{ background: '#DFE4EA' }}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -74,7 +80,7 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
                             onChange={handleChange}
                             disabled={true}
                             value={loggedUser ? loggedUser?.surname : ""}
-                            style={{background: '#DFE4EA'}}
+                            style={{ background: '#DFE4EA' }}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -86,7 +92,7 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
                             onChange={handleChange}
                             disabled={true}
                             value={loggedUser ? loggedUser?.email : ""}
-                            style={{background: '#DFE4EA'}}
+                            style={{ background: '#DFE4EA' }}
                         />
                     </InputContainer>
                     <InputContainer>
@@ -96,30 +102,30 @@ export default function BookingForm({ values,handleChange, handleSelectChange, p
                             name="ciudad"
                             placeholder="Ciudad"
                             onChange={handleChange}
-                            required 
+                            required
                         />
                     </InputContainer>
                 </FormStyle>
             </ColumnForm>
             <FormTitle>Seleccioná tu fecha de reserva</FormTitle>
             <CalendarContainerStyle>
-                <Schedule excludeDateIntervals={takenDates} inline picDate={picDate} monthsShown={isMobile? 1 : 2} />
+                <Schedule excludeDateIntervals={takenDates} inline monthsShown={isMobile ? 1 : 2} />
             </CalendarContainerStyle>
             {values.errorDate && <TextError>Debe seleccionar un rango de fechas</TextError>}
             <FormTitle>Indica tu horario estimado de llegada</FormTitle>
-        <FormStyle>
-            <SubTitle>Tu habitacion va a estar lista para el check-in entre las 10:00AM y las 11:00PM
-            </SubTitle>
-            <Column>
-                <p>Indica tu horario estimado de llegada</p>
-                <Select
-                defaultValue={{label: optionsHours[24], value: optionsHours[24]}}
-                options={optionsHours.map(item => ({label: item, value: item}))}
-                onChange = {handleSelectChange}
-                />
-                {values.errorHour && <TextError>Debe seleccionar una opción</TextError>}
-            </Column>
-        </FormStyle>
+            <FormStyle>
+                <SubTitle>Tu habitacion va a estar lista para el check-in entre las 10:00AM y las 11:00PM
+                </SubTitle>
+                <Column>
+                    <p>Indica tu horario estimado de llegada</p>
+                    <Select
+                        defaultValue={{ label: optionsHours[24], value: optionsHours[24] }}
+                        options={optionsHours.map(item => ({ label: item, value: item }))}
+                        onChange={handleSelectChange}
+                    />
+                    {values.errorHour && <TextError>Debe seleccionar una opción</TextError>}
+                </Column>
+            </FormStyle>
         </>
 
     )

@@ -18,16 +18,22 @@ const Home = ({ isMobile }) => {
   const setProductsToDisplayByCity = (city) => setProducts(city);
 
   useEffect(() => {
-    setLoaded(false)
-    AxiosInstance.get("/products").then((res) => {
-      let products = res.data;
-
-      if ((products.length % 2) !== 0)
+    try {
+      setLoaded(false)
+      AxiosInstance.get("/products").then((res) => {
+        let products = res.data;
+        
+        if ((products.length % 2) !== 0)
         products = products.slice(0, products.length - 1);
-
-      setProducts(products)
-
-    }).then(() => setLoaded(true));
+        
+        setProducts(products)
+        
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoaded(true));
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   useEffect(() => {
@@ -37,22 +43,25 @@ const Home = ({ isMobile }) => {
     setLoaded(false);
     AxiosInstance.get(`${url}`).then((res) => {
       setProducts(res.data)
-      setLoaded(true)
-    });
+    })
+    .catch(err => console.log(err))
+    .finally( () => setLoaded(true));
   }, [selectedCategory]);
 
   return (
     <>
-      {!loaded && <Spinner/>}
-      <Body>
-      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded} isMobile={isMobile}/>
-      <ContainerExplainer/>
-      <Section> 
-        <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
-        <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
-      </Section>
-      </Body>
-
+      {!loaded ?
+        <Spinner />
+        :
+        <Body>
+          <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded} isMobile={isMobile} />
+          <ContainerExplainer />
+          <Section>
+            <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
+            <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
+          </Section>
+        </Body>
+      }
     </>
   );
 };

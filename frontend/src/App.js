@@ -33,7 +33,7 @@ function App() {
   const handleWindowSizeChange = () => setWidth(window.innerWidth);
 
   useEffect(() => {
-    if (user) setLoggedUser({ id: user.id, name: user.name, surname: user.surname, email: user.email, city: user.city, rol: user.rol })
+    if (user) setLoggedUser({ id: user?.id, name: user?.name, surname: user?.surname, email: user?.email, city: user?.city, rol: user?.authorities[0].authority })
   }, [])
 
   return (
