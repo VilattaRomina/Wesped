@@ -15,14 +15,14 @@ export default function BookingDetail({ handleSubmit, product, images }) {
         <div>
           <Title>Detalle de la reserva</Title>
           <ContainerImage>
-            <Image src={images[8].urlImage} />
+            <Image src={images? images[8]?.urlImage : ''} />
           </ContainerImage>
         </div>
         <div>
           <InfoDetailProduct >
-            <h3>{product.category.title}</h3>
-            <h2>{product.title}</h2>
-            <p><span><HiLocationMarker /></span>{product.city.name + ", " + product.city.country}</p>
+            <h3>{product?.category?.title}</h3>
+            <h2>{product?.title}</h2>
+            <p><span><HiLocationMarker /></span>{product?.city?.name + ", " + product?.city?.country}</p>
           </InfoDetailProduct>
           <hr />
           <ContainerDate>
