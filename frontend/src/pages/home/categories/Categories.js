@@ -5,34 +5,50 @@ import { CategoryContainerStyle, TitleStyle, CategoryListContainerStyle, CardSty
 import { useState, useEffect } from 'react'
 // import axios from 'axios'
 import { AxiosInstance } from '../../../helpers/AxiosHelper'
+import Spinner from '../../../components/spinner/Spinner'
 
 export default function Categories({ setSelectedCategory, setRecommendationsTitle }) {
-
+    const [loaded, setLoaded] = useState(true)
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        AxiosInstance.get('/categories')
-            .then((res) => {
-                setCategories(res.data);
-            })
+        try {
+            setLoaded(false)
+            AxiosInstance.get('/categories')
+                .then((res) => {
+                    setCategories(res.data);
+                })
+                .catch(err => console.log(err))
+                .finally(() => setLoaded(true))
+        } catch (error) {
+            console.log(error);
+        }
     }, [])
 
 
     return (
-        <CategoryContainerStyle>
-            <TitleStyle>Buscar por tipo de alojamiento</TitleStyle>
-            <CategoryListContainerStyle>
-                {
-                    categories.map((item) =>
-                        <CardStyle key={item.id} onClick={() => {
-                            setSelectedCategory(item.id)
-                            setRecommendationsTitle(item.title)
-                        }}>
-                            <CategoryItem {...item} />
-                        </CardStyle>
-                    )
-                }
-            </CategoryListContainerStyle>
-        </CategoryContainerStyle>
+        <>
+            {
+                !loaded
+                    ?
+                    <Spinner />
+                    :
+                    <CategoryContainerStyle>
+                        <TitleStyle>Buscar por tipo de alojamiento</TitleStyle>
+                        <CategoryListContainerStyle>
+                            {
+                                categories.map((item) =>
+                                    <CardStyle key={item.id} onClick={() => {
+                                        setSelectedCategory(item.id)
+                                        setRecommendationsTitle(item.title)
+                                    }}>
+                                        <CategoryItem {...item} />
+                                    </CardStyle>
+                                )
+                            }
+                        </CategoryListContainerStyle>
+                    </CategoryContainerStyle>
+            }
+        </>
     )
 }
