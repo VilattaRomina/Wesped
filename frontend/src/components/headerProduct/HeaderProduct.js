@@ -8,8 +8,8 @@ export default function HeaderProduct({product, to}) {
           <BoxHeaderStyle>
           <HeaderStyle>
             <Title>
-              <h4>{product.title}</h4>
-              <h2>{product.category.title}</h2>
+              <h4>{product?.title}</h4>
+              <h2>{product?.category?.title}</h2>
             </Title>
             <Arrow>
               <LinkStyle to={to}>
