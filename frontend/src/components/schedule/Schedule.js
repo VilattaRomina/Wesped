@@ -100,7 +100,6 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
-      highlightDates={[]}
       excludeDateIntervals={excludeDays()}
       showPreviousMonths={false}
       monthsShown={monthsShown}
