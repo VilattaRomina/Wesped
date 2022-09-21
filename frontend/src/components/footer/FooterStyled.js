@@ -47,12 +47,13 @@ export const FooterText = styled.p`
 `;
 
 
-export const FooterIcon = styled.div`
+export const FooterIcon = styled.a`
   padding-right:10px;
   font-size: 20px;
   align-items: center;
   line-height: 0;
   cursor: pointer;
+  color: inherit;
   
   @media (max-width: 414px) {
     display: none;

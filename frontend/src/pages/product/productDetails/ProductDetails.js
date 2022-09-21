@@ -22,9 +22,11 @@ import Map from './map/Map'
 import './map/Map.css'
 import Body from '../../../components/body/Body';
 import Spinner from '../../../components/spinner/Spinner';
+import Share from '../../../components/share-social-media/Share';
 
 export default function ProductDetails({ isMobile }) {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [showShare, setShowShare] = useState(false);
   const [product, setProduct] = useState(null);
   const [takenDates, setTakenDates] = useState();
   const [loaded, setLoaded] = useState(true)
@@ -57,9 +59,15 @@ export default function ProductDetails({ isMobile }) {
     setIsOpen(false);
   }
 
+  const isToggle = () => {
+    setShowShare(!showShare);
+  }
+
+
+
   return (
     <>
-      {!loaded || !product?
+      {!loaded || !product ?
         <Spinner />
         :
         <Body>
@@ -68,19 +76,19 @@ export default function ProductDetails({ isMobile }) {
             <UbicationProduct product={product} />
             <Section>
               <ShareStyle>
-                <div><BiShareAlt /></div>
-                <div style={{ cursor: "pointer" }}></div>
+                <div style={{ cursor: "pointer" }}><BiShareAlt onClick={isToggle} /></div>
+                <Share showShare={showShare} />
               </ShareStyle>
-              <GalleryBlock images={product?.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal} />
-              <GalleryMobile images={product?.images} />
+              <GalleryBlock images={product.images} modalIsOpen={modalIsOpen} openModal={openModal} closeModal={closeModal} />
+              <GalleryMobile images={product.images} />
               <DescriptionStyle>
                 <h4>Descripción del lugar</h4>
-                <p>{product?.description}</p>
+                <p>{product.description}</p>
               </DescriptionStyle>
               <TitleStyles>¿Que ofrece este lugar?</TitleStyles>
               <LineStyles />
               <FeaturesStyle>
-                {product?.features.map(item => (
+                {product.features.map(item => (
                   <div key={item.id}><span>{Icons[item.icon]}</span><p>{item.title}</p></div>
                 ))}
               </FeaturesStyle>
@@ -89,12 +97,13 @@ export default function ProductDetails({ isMobile }) {
               <TitleStyles>¿Dónde vas a estar?</TitleStyles>
               <LineStyles />
               <Map product={product} />
+
               <TitleStyles>Qué tenés que saber</TitleStyles>
               <LineStyles />
               <Policies product={product} />
             </Section>
           </BodyStyle>
-        </Body>
+        </Body> 
       }
     </>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { BodyStyle, DivStyle, ImageStyle, H2Style, H3Style } from "./StyledSuccessTemplate";
-import logo from "../../ui/success-booking.png";
+import logo from "../../ui/success.png";
 import Button from "../../components/button/Button";
 import { Link } from 'react-router-dom'
 

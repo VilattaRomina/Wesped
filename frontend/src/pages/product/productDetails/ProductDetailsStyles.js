@@ -67,6 +67,7 @@ export const ShareStyle = styled.div`
   display:flex;
   font-size:25px;
   color: #50525e;
+  position: relative;
   div{
     padding-right:10px;
   }
