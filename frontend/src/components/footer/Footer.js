@@ -13,10 +13,9 @@ export default function Footer() {
                 <FooterText> ©2022 Wesped</FooterText>
             </FooterBlock>
             <FooterBlock>
-                <FooterIcon><FaFacebook /></FooterIcon>
-                <FooterIcon><FaLinkedinIn /></FooterIcon>
-                <FooterIcon><FaTwitter /></FooterIcon>
-                <FooterIcon><FaInstagram /></FooterIcon>
+                <FooterIcon href="https://www.linkedin.com/in/wesped-%E3%85%A4-802504250/"><FaLinkedinIn /></FooterIcon>
+                <FooterIcon href="https://twitter.com/WespedP"><FaTwitter /></FooterIcon>
+                <FooterIcon href="https://www.instagram.com/wespedp/"><FaInstagram /></FooterIcon>
             </FooterBlock>
         </ContainerFooter >
         </BodyFooter>
