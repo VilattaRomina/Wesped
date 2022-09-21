@@ -32,12 +32,18 @@ export default function Booking({ isMobile }) {
 
   // peticion GET
   useEffect(() => {
-    setLoaded(false)
-    AxiosInstance.get(`/products/${productId}`)
+    try {
+      setLoaded(false)
+      AxiosInstance.get(`/products/${productId}`)
       .then((res) => {
         setProduct(res.data);
         res.data.images = res.data.images.sort((lhs, rhs) => lhs.id - rhs.id)
-      }).then(() => setLoaded(true))
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoaded(true))
+    } catch (error) {
+      console.log(error)
+    }
   }, [productId]);
 
 
