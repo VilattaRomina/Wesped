@@ -68,12 +68,11 @@ const RegisterForm = () => {
                 if (res.status === 201) {
                     SignedInOk.fire(res.data, '', 'success')
                     navigate('/login')
-                    setLoaded(true)
                 }
             }).catch(({ response }) => {
                 if (response.status === 400) SignedInOk.fire(response.data, 'Por favor inicie sesión o utilice otro correo', 'error')
                 if (response.status >= 500) SignedInOk.fire('Algo salió mal', 'Por favor intente nuevamente', 'error')
-            })
+            }).then( () => setLoaded(true))
         }
     }
 
