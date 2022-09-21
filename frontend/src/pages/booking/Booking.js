@@ -29,7 +29,6 @@ export default function Booking({ isMobile }) {
   const [product, setProduct] = useState(null);
   const { selectedDatesContext } = useContext(SelectedDatesContext)
   const [loaded, setLoaded] = useState(true)
-
   // peticion GET
   useEffect(() => {
     try {
@@ -119,6 +118,8 @@ export default function Booking({ isMobile }) {
 
   };
 
+  console.log(product);
+
   return (
     <>
       {!loaded
@@ -133,7 +134,7 @@ export default function Booking({ isMobile }) {
                 <BookingForm values={values} handleChange={handleChange} handleSelectChange={handleSelectChange} isMobile={isMobile} />
               </ContainerForm>
               <ContainerBooking>
-                <BookingDetail product={product} images={product.images} handleSubmit={handleSubmit} />
+                <BookingDetail product={product} images={product?.images} handleSubmit={handleSubmit} />
               </ContainerBooking>
             </ContainerStyle>
           </Section>
