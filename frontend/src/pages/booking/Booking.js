@@ -11,13 +11,15 @@ import BookingForm from './bookingForm/BookingForm'
 import Swal from 'sweetalert2';
 import jwt_decode from 'jwt-decode';
 import LocalStorageHelper from '../../helpers/LocalStorageHelper'
+import { useContext } from 'react';
+import { SelectedDatesContext } from '../../hooks/UseContext';
+import Spinner from '../../components/spinner/Spinner';
 
 function formatDate(date) {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
-
-  return `${year}-${month.toLocaleString('es-AR', { minimumIntegerDigits: 2 })}-${day.toLocaleString('es-AR', { minimumIntegerDigits: 2 })}`
+  return `${year}-${month?.toLocaleString('es-AR', { minimumIntegerDigits: 2 })}-${day?.toLocaleString('es-AR', { minimumIntegerDigits: 2 })}`
 }
 
 export default function Booking({ isMobile }) {
@@ -25,13 +27,17 @@ export default function Booking({ isMobile }) {
   let navigate = useNavigate();
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  const { selectedDatesContext } = useContext(SelectedDatesContext)
+  const [loaded, setLoaded] = useState(true)
+
   // peticion GET
   useEffect(() => {
+    setLoaded(false)
     AxiosInstance.get(`/products/${productId}`)
       .then((res) => {
         setProduct(res.data);
         res.data.images = res.data.images.sort((lhs, rhs) => lhs.id - rhs.id)
-      })
+      }).then(() => setLoaded(true))
   }, [productId]);
 
 
@@ -40,8 +46,6 @@ export default function Booking({ isMobile }) {
     apellido: '',
     email: '',
     ciudad: '',
-    startDate: '',
-    endDate: '',
     checkInHour: '',
     errorDate: false,
     errorHour: false,
@@ -53,9 +57,6 @@ export default function Booking({ isMobile }) {
       [e.target.name]: e.target.value,
     })
   }
-  const picDate = (startDate, endDate) => {
-    setValues({ ...values, startDate, endDate, errorDate: false, });
-  }
 
   const handleSelectChange = ({ value }) => {
     setValues({ ...values, checkInHour: value, errorHour: false, })
@@ -66,72 +67,73 @@ export default function Booking({ isMobile }) {
     e.preventDefault();
     let errorDate = false;
     let errorHour = false;
-
     const token = LocalStorageHelper.getItem('Token');
     const user = jwt_decode(token);
 
-
-    if (values.startDate === '' || values.endDate === '') {
+    if (!selectedDatesContext?.checkin || !selectedDatesContext?.checkout)
       errorDate = true;
-    }
-    if (values.checkInHour === '') {
+
+    if (values.checkInHour === '')
       errorHour = true;
-    }
 
     if (errorHour || errorDate) {
       setValues({ ...values, errorDate: errorDate, errorHour: errorHour })
     } else {
-
-
-      AxiosInstance.post(`/bookings`, {
-        hour: `${values.checkInHour}:00`,
-        checkin: formatDate(values.startDate),
-        checkout: formatDate(values.endDate),
-        product: {
-          id: productId
-        },
-        user: {
-          id: user.user_info.id
-        }
-      },
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
+      try {
+        setLoaded(false)
+        AxiosInstance.post(`/bookings`, {
+          hour: `${values.checkInHour}:00`,
+          checkin: formatDate(selectedDatesContext?.checkin),
+          checkout: formatDate(selectedDatesContext?.checkout),
+          product: {
+            id: Number(productId)
           },
-        })
-        .then((res) => {
-          console.log(res.data);
-          navigate('reserva-exitosa');
-        }).catch((error) => {
-          Swal.fire({
-            icon: 'error',
-            text: 'Lamentablemente la reserva no ha podido realizarse. Por favor, intente mas tarde'
+          user: {
+            id: user.user_info.id
+          }
+        },
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            },
           })
-
-        })
+          .then(() => {
+            navigate('reserva-exitosa');
+          }).catch((error) => {
+            console.error(error);
+            Swal.fire({
+              icon: 'error',
+              text: 'Lamentablemente la reserva no ha podido realizarse. Por favor, intente mas tarde'
+            })
+          }).finally(() => setLoaded(true))
+      } catch (error) {
+        console.error(error);
+      }
     }
 
   };
 
   return (
     <>
-      {product ?
+      {!loaded
+        ?
+        <Spinner />
+        :
         <BodyStyle>
           <HeaderProduct product={product} to={"/producto/" + productId} />
           <Section>
             <ContainerStyle>
               <ContainerForm>
-                <BookingForm values={values} handleChange={handleChange} handleSelectChange={handleSelectChange} picDate={picDate} isMobile={isMobile} />
+                <BookingForm values={values} handleChange={handleChange} handleSelectChange={handleSelectChange} isMobile={isMobile} />
               </ContainerForm>
               <ContainerBooking>
-                <BookingDetail product={product} images={product.images} handleSubmit={handleSubmit} startDate={values.startDate} endDate={values.endDate} />
+                <BookingDetail product={product} images={product.images} handleSubmit={handleSubmit} />
               </ContainerBooking>
             </ContainerStyle>
           </Section>
           <LineStyles />
           <Policies product={product} />
-        </BodyStyle> :
-        <p>Cargando...</p>
+        </BodyStyle>
       }
     </>
   )

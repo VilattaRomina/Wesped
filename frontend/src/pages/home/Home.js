@@ -43,16 +43,18 @@ const Home = ({ isMobile }) => {
 
   return (
     <>
-      {!loaded && <Spinner/>}
-      <Body>
-      <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded} isMobile={isMobile}/>
-      <ContainerExplainer/>
-      <Section> 
-        <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
-        <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
-      </Section>
-      </Body>
-
+      {!loaded ?
+        <Spinner />
+        :
+        <Body>
+          <SearchBlock setProductsToDisplayByCity={setProductsToDisplayByCity} setRecommendationsTitle={setTitle} setLoaded={setLoaded} isMobile={isMobile} />
+          <ContainerExplainer />
+          <Section>
+            <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
+            <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
+          </Section>
+        </Body>
+      }
     </>
   );
 };
