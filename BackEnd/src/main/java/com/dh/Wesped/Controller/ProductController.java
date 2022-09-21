@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -35,6 +36,13 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<Product>> listAll() {
         return ResponseEntity.ok(productService.listAll());
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<List<Product>> randomProducts() {
+        List<Product> productsList = productService.listAll();
+        Collections.shuffle(productsList);
+        return ResponseEntity.ok(productsList);
     }
 
     @GetMapping("/{id}")

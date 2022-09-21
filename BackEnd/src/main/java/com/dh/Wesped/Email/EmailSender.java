@@ -38,14 +38,11 @@ public class EmailSender {
         return "<div style=\"border-color: #4682B4;\n" +
                 "                border-style: solid;\n" +
                 "                color:#2F4F4F;\n" +
-                "                display: flex;\n" +
-                "                flex-direction: column;\n" +
-                "                align-items: center;\n" +
                 "                font-family:'Roboto', sans-serif;\n" +
                 "                font-size:16px;\n" +
                 "                width: fit-content;\">\n" +
-                "        <h1>Bienvenid@ a Wesped</h1>\n" +
-                "        <h2>Hola " + name + "</h2>\n" +
+                "        <h1 style=\"text-align: center;\">Bienvenid@ a Wesped</h1>\n" +
+                "        <h2 style=\"text-align: center;\">Hola " + name + "</h2>\n" +
                 "        <p>Te acabas de registrar exitosamente en Wesped</p>\n" +
                 "        <p>Ya puedes iniciar sesión y empezar a buscar tu próximo lugar de hospedaje</p>\n" +
                 "    </div>";
@@ -58,8 +55,7 @@ public class EmailSender {
                 "                font-family:'Roboto', sans-serif;\n" +
                 "                font-size:16px;\n" +
                 "                width: fit-content;\">\n" +
-                "        <h1 style=\"display: flex;\n" +
-                "                    justify-content: center;\">Reserva exitosa</h1>\n" +
+                "        <h1 style=\"text-align: center;\">Reserva exitosa</h1>\n" +
                 "        <h3>¡Hola " + name + "!, estos son los detalles de tu reserva:</h2>\n" +
                 "        <p>Acabas de realizar una reserva para " + productName + " </p>\n" +
                 "        <p>Hora estimada de llegada: " + hour + "</p>\n" +
