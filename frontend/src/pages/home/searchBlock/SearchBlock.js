@@ -68,7 +68,7 @@ const SearchBlock = (props) => {
               icon={<FaMapMarkerAlt />}
             />
             <SearchInput
-              input={<Schedule icon={<FaRegCalendarAlt />} picDate={props.picDate} monthsShown={props.isMobile ? 1 : 2} />}
+              input={<Schedule icon={<FaRegCalendarAlt />} monthsShown={props.isMobile ? 1 : 2} />}
               icon={<FaRegCalendarAlt />}
             />
             <ButtonStyle>
