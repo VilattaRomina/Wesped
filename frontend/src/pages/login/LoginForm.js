@@ -61,17 +61,15 @@ const LoginForm = () => {
                     icon: 'success',
                     title: `Sesión iniciada correctamente.`
                 })
-                setLoaded(true)
                 navigate(state ? state : '/')
-
+                
             }).catch(({ response }) => {
                 if (response.status === 401) {
                     SignedInOk.fire('Usuario no encontrado', 'Por favor intente nuevamente', 'error')
                     showErrorMsg()
                 }
                 else if (response.status >= 400 && response.status !== 401) SignedInOk.fire('Algo no salió como se esperaba', 'Por favor intente nuevamente', 'warning')
-            })
-
+            }).then(() => setLoaded(true))            
         } catch (error) {
             console.warn(error)
         }
