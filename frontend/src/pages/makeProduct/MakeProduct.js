@@ -81,21 +81,24 @@ export default function MakeProduct() {
 
     if (!values.rules) {
       validationErrors.rules = "Este campo es obligatorio."
-    } else if (!regexComments.test(values.rules)) {
-      validationErrors.rules = "superó el máximo de caracteres disponibles"
     }
+    //  else if (!regexComments.test(values.rules)) {
+    //   validationErrors.rules = "superó el máximo de caracteres disponibles"
+    // }
 
     if (!values.health) {
       validationErrors.health = "Este campo es obligatorio."
-    } else if (!regexComments.test(values.health)) {
-      validationErrors.health = "superó el máximo de caracteres disponibles"
-    }
+    } 
+    // else if (!regexComments.test(values.health)) {
+    //   validationErrors.health = "superó el máximo de caracteres disponibles"
+    // }
 
     if (!values.cancellation) {
       validationErrors.cancellation = "Este campo es obligatorio."
-    } else if (!regexComments.test(values.cancellation)) {
-      validationErrors.cancellation = "superó el máximo de caracteres disponibles"
-    }
+    } 
+    // else if (!regexComments.test(values.cancellation)) {
+    //   validationErrors.cancellation = "superó el máximo de caracteres disponibles"
+    // }
 
     if (values.urlImages.length === 0) {
       validationErrors.image = "Este campo es obligatorio."
