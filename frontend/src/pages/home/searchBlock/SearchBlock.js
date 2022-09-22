@@ -20,16 +20,16 @@ const SearchBlock = (props) => {
   const [selectedCityID, setSelectedCityId] = useState(0);
 
   const filterProducts = () => {
-    props.setLoaded(false)
     let URL;
     let recommendationsTitle;
-
+    
     if (!selectedCityID && !selectedDatesContext) return;
     if (selectedCityID && !selectedDatesContext) URL = `products/city/${selectedCityID}`
     if (!selectedCityID && selectedDatesContext) URL = `products/booking/${toJavaDateString(selectedDatesContext?.checkin)}/${toJavaDateString(selectedDatesContext?.checkout)}`
     if (selectedCityID && selectedDatesContext) URL = `products/booking/${toJavaDateString(selectedDatesContext?.checkin)}/${toJavaDateString(selectedDatesContext?.checkout)}/${selectedCityID}`
-
+    
     try {
+      props.setLoaded(false)
       AxiosInstance.get(URL)
         .then(products => {
           props.setProductsToDisplayByCity(products.data)
