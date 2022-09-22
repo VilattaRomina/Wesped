@@ -23,6 +23,7 @@ export const RecomendationTitle = styled.h2`
   @media (max-width: 414px) {
     color:#ffffff;
     font-size:24px;
+    color: #383B58;
   }
 
 `
