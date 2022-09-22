@@ -134,8 +134,21 @@ Se subieron las imágenes necesarias en el Bucket para poder obtener los links d
 
 ### **Issue #77: Crear url para acceder al sitio**
 
-Se utiliza el servicio de www.noip.com, con lo que la URL de nuestro sitio es: http://wesped.sytes.net/
+Se utiliza el servicio de www.noip.com, con lo que la URL de nuestro sitio es: [wesped](http://wesped.sytes.net/)
 
 ---
 
 ### **Issue #78: Crear pipelines para la automatización de infraestructura**
+
+Se crea el archivo [main.tf](Terraform/main.tf) que contiene la creación de los diferentes recursos necesarios tanto para el Back como para el Front. El objetivo de este archivo es la creación de la infraestructura desde cero.
+
+
+> - Issues realizadas por Alejandra Marin.
+
+
+---
+
+
+## DISEÑO FINAL DE LA RED
+
+![Gráfico](Red/DisenioFinalRed.png)
