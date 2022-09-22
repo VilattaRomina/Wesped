@@ -110,7 +110,6 @@ Por otra parte, se definieron **variables** en la configuración CI/CD de nuestr
 
 ### **Issue #65: Deploy en AWS**
 
-
 > Deploy del código en el servidor web EC2 y Bucket en AWS.
 
 Para el Deploy, se hizo uso de la pipeline contenida en el archivo `.gitlab-ci.yml`. Lo que permite una integración continua de nuestro proyecto cuando se realizan cambios en las carpetas de Back End y Front End; logrando así, automatizar el deploy en AWS.
@@ -124,7 +123,7 @@ En el transcurso del proyecto, se realizó la carga de los diferentes scripts a 
 Se subieron las imágenes necesarias en el Bucket para poder obtener los links de cada una de ellas, e insertar dichos links en nuestra base de datos.
 
 
-> - Issue realizadas por Alejandra Marin.
+> - Issue realizada por Alejandra Marin.
 
 
 ---
@@ -135,5 +134,8 @@ Se subieron las imágenes necesarias en el Bucket para poder obtener los links d
 
 ### **Issue #77: Crear url para acceder al sitio**
 
+Se utiliza el servicio de www.noip.com, con lo que la URL de nuestro sitio es: http://wesped.sytes.net/
+
+---
 
 ### **Issue #78: Crear pipelines para la automatización de infraestructura**
