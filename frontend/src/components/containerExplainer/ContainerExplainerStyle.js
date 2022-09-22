@@ -16,7 +16,7 @@ justify-content: space-between;
 export const IconContainerStyle = styled.div`
 /* background-color: #fef7ef; */
 background-color: ${props => props.theme.background};
-margin-top: 30px;
+margin-top: 20px;
 
 
 `
