@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import {
   ContainerSearchBlock,
+  BoxStyle,
   SearchBlockTitle,
   SearchBar,
   ButtonStyle
@@ -58,6 +59,7 @@ const SearchBlock = (props) => {
   return (
     <>
       <ContainerSearchBlock className="container-serch-block">
+      <BoxStyle>
         <SearchBlockTitle>
           Busca ofertas en hoteles, casas y mucho más
         </SearchBlockTitle>
@@ -76,6 +78,7 @@ const SearchBlock = (props) => {
             </ButtonStyle>
           </SearchBar>
         </form>
+        </BoxStyle>
       </ContainerSearchBlock>
     </>
   );
