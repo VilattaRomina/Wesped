@@ -103,3 +103,37 @@ Por otra parte, se definieron **variables** en la configuración CI/CD de nuestr
 
 
 ---
+
+
+## SPRINT 3
+
+
+### **Issue #65: Deploy en AWS**
+
+
+> Deploy del código en el servidor web EC2 y Bucket en AWS.
+
+Para el Deploy, se hizo uso de la pipeline contenida en el archivo `.gitlab-ci.yml`. Lo que permite una integración continua de nuestro proyecto cuando se realizan cambios en las carpetas de Back End y Front End; logrando así, automatizar el deploy en AWS.
+
+> Crear tablas en la base de datos en AWS.
+
+En el transcurso del proyecto, se realizó la carga de los diferentes scripts a la RDS a través de Workbench; y se realizó conexión a través de la EC2 con el comando `mysql` para verificar que las tablas estuvieran correctamente cargadas.
+
+> Añadir imágenes en AWS Bucket para generar la URL
+
+Se subieron las imágenes necesarias en el Bucket para poder obtener los links de cada una de ellas, e insertar dichos links en nuestra base de datos.
+
+
+> - Issue realizadas por Alejandra Marin.
+
+
+---
+
+
+## SPRINT 4
+
+
+### **Issue #77: Crear url para acceder al sitio**
+
+
+### **Issue #78: Crear pipelines para la automatización de infraestructura**
