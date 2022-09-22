@@ -9,8 +9,6 @@ export const RecommendationContainerStyle = styled.section`
   padding: 20px 32px 100px 32px;
 
   @media (max-width: 414px) {
-    background-color:${props => props.theme.primary};
-    background-color: #0073A3;
     padding: 10px 20px 76px 20px;
     margin-top:20px;
   }

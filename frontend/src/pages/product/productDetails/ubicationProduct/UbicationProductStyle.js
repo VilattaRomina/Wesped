@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const BoxUbicationStyle = styled.section`
 height:60px;
 background: ${props => props.theme.background};
-  
 `
 
 export const UbicationStyle = styled.div`

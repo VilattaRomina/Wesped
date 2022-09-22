@@ -106,7 +106,7 @@ export const FeaturesStyle = styled.div`
 
   span{
     color:${props => (props.theme.secondary)};
-    opacity:0.5;
+    opacity:0.9;
     font-size: 22px;
     padding-right:15px;
     /* color: #ff7062; */
