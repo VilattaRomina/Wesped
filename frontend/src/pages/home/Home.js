@@ -40,12 +40,10 @@ const Home = ({ isMobile }) => {
     const url = selectedCategory
       ? `/products/category/${selectedCategory}`
       : "/products";
-    setLoaded(false);
     AxiosInstance.get(`${url}`).then((res) => {
       setProducts(res.data)
     })
     .catch(err => console.log(err))
-    .finally( () => setLoaded(true));
   }, [selectedCategory]);
 
   return (
@@ -58,7 +56,7 @@ const Home = ({ isMobile }) => {
           <ContainerExplainer />
           <Section>
             <Categories setSelectedCategory={setSelectedCategory} setRecommendationsTitle={setTitle} />
-            <Recommendations products={products} selectedCategory={selectedCategory} title={title} />
+            <Recommendations products={products}  title={title} />
           </Section>
         </Body>
       }
