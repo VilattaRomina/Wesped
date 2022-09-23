@@ -12,7 +12,7 @@ export default function RecommendationsItem({ id, images, category, title, city,
         <Card>
             <ItemRecommendationStyle >
                 <ImageWrapperStyle>
-                    <ImageRecommendationStyle src={images.sort((lhs, rhs) => lhs.id - rhs.id)[0].urlImage} alt="img" />
+                    <ImageRecommendationStyle src={images?.sort((lhs, rhs) => lhs.id - rhs.id)[0]?.urlImage} alt="img" />
                 </ImageWrapperStyle>
                 <InfoRecommendationsStyle>
                     <CategoryStyle>{category.title}</CategoryStyle>
