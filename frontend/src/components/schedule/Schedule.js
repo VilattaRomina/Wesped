@@ -84,12 +84,15 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals }) => {
   const excludeDays = () => {
     let arr = [];
 
+    if(!excludedDates) return arr; 
+
     for (let i = 0; i < arrayOfDayDiff.length; i++) {
-      const dayDiff = arrayOfDayDiff[i];
+      const dayDiff = Math.abs(arrayOfDayDiff[i]);
+      console.log(dayDiff);
       arr.push({ start: excludedDates[i]?.end, qDays: dayDiff })
     }
 
-    return arr.map(el => { return { start: subDays(el?.start, el?.qDays), end: addDays(el?.start, 0) } })
+    return arr.map(el => { return { start: subDays(el?.start, el?.qDays), end: addDays(el?.start, 1) } })
   }
 
   return (
@@ -100,8 +103,7 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals }) => {
       calendarContainer={Container}
       selectsRange
       isClearable
-      excludeDateIntervals={[]}
-      // excludeDateIntervals={excludeDays()}
+      excludeDateIntervals={excludeDays()}
       showPreviousMonths={false}
       monthsShown={monthsShown}
       readOnly={readOnly}

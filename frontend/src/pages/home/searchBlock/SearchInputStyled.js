@@ -27,7 +27,7 @@ export const Input = styled.div`
   border: none;
   margin-right: 20px;
   /* padding-block-start: 4px; */
-  
+
   @media all and (max-width:760px){
     width:100%;
     margin-left:10px;
