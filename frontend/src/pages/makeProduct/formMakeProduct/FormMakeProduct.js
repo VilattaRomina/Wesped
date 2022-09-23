@@ -221,7 +221,7 @@ export default function FormMakeProduct({ values, handleInputChange,handleSelect
            </ContainerList>
           ))}
         </ImageContainerStyle>
-
+        {errors.urlImages && <ErrorText>{errors.urlImages}</ErrorText>}
         <ContainerButtonGlobal>
           <Button width={'300px'} type="submit" form="form" onClick={handleSubmit}>Crear</Button>
         </ContainerButtonGlobal>

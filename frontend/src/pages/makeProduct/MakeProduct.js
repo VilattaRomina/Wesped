@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Section from '../../components/section/Section'
 import Body from '../../components/body/Body'
 import { BoxHeaderStyle, HeaderStyle, Title, Arrow, LinkStyle, FormBodyStyle, TitleContainer } from './MakeProductStyle'
@@ -19,7 +19,7 @@ export default function MakeProduct() {
   const [categories, setCategories] = useState({
     id: ''
   });
-
+  const [submitCount, setSubmitCount] = useState(0);
   const [attributes, setAttributes] = useState([]);
   const [values, setValues] = useState({
     name: '',
@@ -37,10 +37,7 @@ export default function MakeProduct() {
   const validationForm = () => {
     let validationErrors = {};
     let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-    let regexComments = /^.{1,100}$/;
-    let regexURL = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
     let regexNumbers = /^(-?([0-8]?[0-9](\.\d+)?|90(.[0]+)?)\s?)$/;
-
 
     if (!values.name) {
       validationErrors.name = "Este campo es obligatorio"
@@ -64,50 +61,30 @@ export default function MakeProduct() {
     } else if (!regexNumbers.test(values.latitude)) {
       validationErrors.latitude = "Latitud no valida"
     }
-
     if (!values.longitude) {
       validationErrors.longitude = "Este campo es obligatorio."
     } else if (!regexNumbers.test(values.longitude)) {
       validationErrors.longitude = "Longitud no valida"
     }
-
     if (attributes.length === 0) {
       validationErrors.attributes = "Este campo es obligatorio."
     }
-
-    if (!values.icon) {
-      validationErrors.icon = "Este campo es obligatorio."
-    }
-
     if (!values.rules) {
       validationErrors.rules = "Este campo es obligatorio."
     }
-    //  else if (!regexComments.test(values.rules)) {
-    //   validationErrors.rules = "superó el máximo de caracteres disponibles"
-    // }
-
     if (!values.health) {
       validationErrors.health = "Este campo es obligatorio."
     } 
-    // else if (!regexComments.test(values.health)) {
-    //   validationErrors.health = "superó el máximo de caracteres disponibles"
-    // }
-
     if (!values.cancellation) {
       validationErrors.cancellation = "Este campo es obligatorio."
     } 
-    // else if (!regexComments.test(values.cancellation)) {
-    //   validationErrors.cancellation = "superó el máximo de caracteres disponibles"
-    // }
-
-    if (values.urlImages.length === 0) {
-      validationErrors.image = "Este campo es obligatorio."
-    } else if (!regexURL.test(values.image)) {
-      validationErrors.image = "Debe ingresar una url valida"
-    }
-
+    
+    if ( values.urlImages.length === 0) {
+      validationErrors.urlImages = "Este campo es obligatorio."
+    } 
     return validationErrors;
   }
+
   //eventos
   const handleInputChange = (e) => {
     setValues({
@@ -135,13 +112,25 @@ export default function MakeProduct() {
   const handleSelectAttribute = (attributes) => {
     setAttributes(attributes.map(item => ({ id: item.id })))
     setErrors({
-      ...errors, attributes: [],
+      ...errors, attributes: '',
     })
   }
 
   const handleAddUrlImage = (e) => {
+    let regexURL = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
     e.preventDefault();
-    setValues({ ...values, urlImages: [...values.urlImages, values.temporaryImageInput] })
+    if (!regexURL.test(values.temporaryImageInput)) {
+      setErrors({
+        ...errors, urlImages: "Debe ingresar una url valida"
+      })
+
+    }else{
+      setValues({ ...values, urlImages: [...values.urlImages, values.temporaryImageInput] })
+      setErrors({
+        ...errors, urlImages: ""
+      })
+    }
+    
   }
 
   const handleDeleteUrlImage = (index) => {
@@ -149,64 +138,72 @@ export default function MakeProduct() {
     setValues({ ...values, urlImages: values.urlImages })
   }
 
-  //submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors({ ...errors, ...validationForm(values) })
-
-    const token = LocalStorageHelper.getItem('Token');
-    //post de products
-    AxiosInstance.post(`/products`, {
-      title: values.name,
-      description: values.description,
-      longitude: parseFloat(values.longitude),
-      latitude: parseFloat(values.latitude),
-      rating: 2.5,
-      address: values.address,
-      availability: true,
-      category: categories,
-      city: cities,
-      features: attributes,
-      policies: [{ id: 7 }, { id: 10 }, { id: 9 }],
-    },
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      //post de images con id de products
-      .then((res) => {
-        values.urlImages.forEach((urlImage, index) => {
-          AxiosInstance.post(`/images`, {
-            title: '',
-            description: '',
-            urlImage: urlImage,
-            product: {
-              id: res.data.id
-            }
+  useEffect(() => {
+        //Values es una funcion de js Object que devuelve el valor de cada uno de los nodos de un objeto. El some es una funcion de los arreglos que itera sobre un arreglo y si la funcion booleana que se le pasa por parametro devuelve true, entonces el some devuelve true si no devuelve false
+        if(!Object.values(errors).some(item => Boolean(item) === true) && submitCount){
+          
+          const token = LocalStorageHelper.getItem('Token');
+          //post de products
+          AxiosInstance.post(`/products`, {
+            title: values.name,
+            description: values.description,
+            longitude: parseFloat(values.longitude),
+            latitude: parseFloat(values.latitude),
+            rating: 2.5,
+            address: values.address,
+            availability: true,
+            category: categories,
+            city: cities,
+            features: attributes,
+            policies: [{ id: 7 }, { id: 10 }, { id: 9 }],
           },
             {
               headers: {
                 'Authorization': `Bearer ${token}`
               },
             })
+            //post de images con id de products
             .then((res) => {
-              //si la ultima imagen es correcta entonces redirigir a producto exitoso
-              index === values.urlImages.length - 1 && navigate('producto-exitoso');
-            })
-            .catch((error) => {
+              values.urlImages.forEach((urlImage, index) => {
+                AxiosInstance.post(`/images`, {
+                  title: '',
+                  description: '',
+                  urlImage: urlImage,
+                  product: {
+                    id: res.data.id
+                  }
+                },
+                  {
+                    headers: {
+                      'Authorization': `Bearer ${token}`
+                    },
+                  })
+                  .then((res) => {
+                    //si la ultima imagen es correcta entonces redirigir a producto exitoso
+                    index === values.urlImages.length - 1 && navigate('producto-exitoso');
+                  })
+                  .catch((error) => {
+                    Swal.fire({
+                      icon: 'error',
+                      text: 'Lamentablemente el producto no ha podido crearse. Por favor intente más tarde'
+                    })
+                  })
+              })
+            }).catch((error) => {
               Swal.fire({
                 icon: 'error',
                 text: 'Lamentablemente el producto no ha podido crearse. Por favor intente más tarde'
               })
             })
-        })
-      }).catch((error) => {
-        Swal.fire({
-          icon: 'error',
-          text: 'Lamentablemente el producto no ha podido crearse. Por favor intente más tarde'
-        })
-      })
+          }
+      }, [submitCount]);
+
+  //submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setErrors({ ...errors, ...validationForm() });
+    setSubmitCount(submitCount + 1);
   }
 
 
