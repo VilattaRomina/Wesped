@@ -1,0 +1,216 @@
+{
+  "id": "c212d2c2-fe9c-4744-83d4-a5c9c1bda7db",
+  "version": "2.0",
+  "name": "WESPED",
+  "url": "http://wesped-frontend.s3-website.us-east-2.amazonaws.com",
+  "tests": [{
+    "id": "22405017-7e56-44f4-8eec-8f2d3c589b4a",
+    "name": "CPE-20 Y 21",
+    "commands": [{
+      "id": "567ba250-4392-4d3f-a55e-4d4fc26bb220",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90b4e3b7-93bc-4428-87ae-194500474102",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x1047",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9084c09-f31b-4464-b5aa-b87c1a67e72f",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) > .sc-hHLeRK",
+      "targets": [
+        ["css=a:nth-child(2) > .sc-hHLeRK", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/header/div/div[2]/nav/a[2]/button", "xpath:idRelative"],
+        ["xpath=//a[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Ingresar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "639d6d12-94e0-4cb6-8e01-aaa5641d5699",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7acd90e7-eedf-4042-bf99-df8b30e81f53",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin-test@wesped.com"
+    }, {
+      "id": "502b5efa-d39b-46ba-afbb-a5a2827b0371",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a909892e-9d33-43d8-9444-2636a75ecc49",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "passwordadmin"
+    }, {
+      "id": "55b81a86-e37e-4815-a908-6a910900e799",
+      "comment": "",
+      "command": "click",
+      "target": "css=b",
+      "targets": [
+        ["css=b", "css:finder"],
+        ["xpath=//div[@id='root']/form/div[2]/button/b", "xpath:idRelative"],
+        ["xpath=//b", "xpath:position"],
+        ["xpath=//b[contains(.,'Ingresar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d341150-2a00-4608-b764-ca2a21d999e2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.iconAdm > path",
+      "targets": [
+        ["css=.iconAdm > path", "css:finder"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e3936d0d-393c-4c10-a36a-5fc748208ce9",
+    "name": "CPE-22",
+    "commands": [{
+      "id": "503b0949-c6a5-4282-8eb9-b06d8cba922d",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d120c64d-08b1-4099-946d-44cd0b64371f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "679c8049-a379-49cb-a774-c2490a3b02b5",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) > .sc-hHLeRK",
+      "targets": [
+        ["css=a:nth-child(2) > .sc-hHLeRK", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/header/div/div[2]/nav/a[2]/button", "xpath:idRelative"],
+        ["xpath=//a[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Ingresar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d7a1cbb-e2fc-48cd-9f07-86bd904e09e2",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5eaed5bd-5fd0-45f6-82ca-6998f7b6345f",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "user-test@wesped.com"
+    }, {
+      "id": "17db0c11-f3f2-48ba-a7f4-2f6d6f246272",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7ec2bc4-03f1-4c0e-9957-5e3da0be849d",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/form/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "passworduser"
+    }, {
+      "id": "ae4c988a-cfdb-4282-a9e7-acd56bdc2034",
+      "comment": "",
+      "command": "click",
+      "target": "css=b",
+      "targets": [
+        ["css=b", "css:finder"],
+        ["xpath=//div[@id='root']/form/div[2]/button/b", "xpath:idRelative"],
+        ["xpath=//b", "xpath:position"],
+        ["xpath=//b[contains(.,'Ingresar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2e3c7c0f-35f8-43c6-b96f-58a7d0cc6de8",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["22405017-7e56-44f4-8eec-8f2d3c589b4a"]
+  }],
+  "urls": ["http://wesped-frontend.s3-website.us-east-2.amazonaws.com/"],
+  "plugins": []
+}
