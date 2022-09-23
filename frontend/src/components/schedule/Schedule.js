@@ -88,7 +88,6 @@ const Calendar = ({ inline, readOnly, monthsShown, excludeDateIntervals }) => {
 
     for (let i = 0; i < arrayOfDayDiff.length; i++) {
       const dayDiff = Math.abs(arrayOfDayDiff[i]);
-      console.log(dayDiff);
       arr.push({ start: excludedDates[i]?.end, qDays: dayDiff })
     }
 
